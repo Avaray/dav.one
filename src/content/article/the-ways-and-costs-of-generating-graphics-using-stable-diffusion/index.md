@@ -68,7 +68,7 @@ The second reason was that after a month, credits are blocked, and in order to u
 I think that Google Colab is a good place for training models, but not for generating graphics.  
 If you wan't to pay for a service, I recommend [renting a server](/the-ways-and-costs-of-generating-graphics-using-stable-diffusion#renting-servers).
 
-## Websites and Discord servers
+## Dedicated Websites and Discord servers
 
 Both ways are decent if you wan't to check "what is that AI art?".
 These methods are the simplest to start with, and they don't really require any technical knowledge or installing anything on your computer.

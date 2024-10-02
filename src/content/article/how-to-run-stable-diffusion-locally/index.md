@@ -44,7 +44,7 @@ Pros:
 ## Docker
 
 [Docker](https://www.docker.com/) is a platform that enables developers to automate the deployment of applications inside lightweight, portable containers. In easy words - you download an file that contains everything you need to run Stable Diffusion and you launch it.
-Anyway, it's a bit more complicated than using Stability Matrix, because you will need to:
+Anyway, it's a bit more complicated than using [Stability Matrix](https://dav.one/how-to-run-stable-diffusion-locally/#stability-matrix), because you will need to:
 - [Install and configure Docker](https://www.docker.com/get-started/).
 - Select and download proper image from [Docker Hub](https://hub.docker.com/). 
   Each image has different features and requirements.
@@ -55,7 +55,7 @@ Anyway, it's a bit more complicated than using Stability Matrix, because you wil
 
 Pros:
 - You can switch between different Docker images.
-- It's secure. Things are isolated from your system. 
+- It's secure. Things are isolated from your system. Even if you will run a [Pickle Tensor](https://huggingface.co/docs/hub/en/security-pickle#why-is-it-dangerous) model, it won't harm your computer.
 
 Cons:
 - Sharing models between Docker images is harder. You will need to [configure it](https://docs.docker.com/get-started/docker-concepts/running-containers/sharing-local-files/). 
