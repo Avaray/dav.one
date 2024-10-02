@@ -1,0 +1,30 @@
+---
+import FooterButton from './FooterButton.astro';
+// import { OWNER } from '../consts';
+
+const links = [
+  { href: '/about-me', text: 'About me', icon: 'i-game-icons:astronaut-helmet' },
+  { href: '/about-website', text: 'About website', icon: 'i-game-icons:computing' },
+  { href: '/support-me', text: 'Support me', icon: 'i-game-icons:cherish' },
+];
+---
+
+<footer class='mb-10vh'>
+  <span class='divider py-14'>
+    <div class='i-game-icons:abstract-050 text-primary mx-6 h-128px w-128px rotate-45' />
+  </span>
+
+  <div class='flex flex-col lg:flex-row justify-between items-center select-none gap-10px'>
+    <nav class='flex flex-wrap gap-20px p-6'>
+      {
+        links.map(({ href, text, icon }) => (
+          <FooterButton href={href}>
+            <div class={`${icon} h-10 w-10 mx-auto`}></div>
+            <p>{text}</p>
+          </FooterButton>
+        ))
+      }
+    </nav>
+    <div class='p-6 self-center lg:self-end'>Copyright © 2024 - All rights reserved</div>
+  </div>
+</footer>

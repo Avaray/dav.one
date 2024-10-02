@@ -1,0 +1,17 @@
+---
+import Head from '../components/Head.astro';
+import ThemeWrapper from '../components/ThemeWrapper.astro';
+const { title, description, frontmatter } = Astro.props;
+const data = { ...frontmatter, title, description };
+---
+
+<ThemeWrapper>
+  <Head title={data.title} description={data.description} />
+  <body>
+    <main>
+      <article>
+        <slot />
+      </article>
+    </main>
+  </body>
+</ThemeWrapper>

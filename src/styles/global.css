@@ -1,0 +1,42 @@
+@tailwind;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {}
+
+* {
+  @apply outline-primary;
+}
+
+::selection {
+  @apply text-base-100 bg-primary;
+}
+
+header, main, footer {
+  @apply px-2;
+}
+
+main {
+  @apply prose prose-sm md:prose-base lg:prose-lg max-w-none;
+}
+
+main a {
+  @apply text-primary font-bold tracking-wider no-underline;
+}
+
+main a:hover {
+  @apply underline decoration-2 underline-offset-4;
+}
+
+.btn {
+  @apply no-animation;
+}
+
+pre {
+  @apply bg-base-content bg-opacity-5 text-base-content text-opacity-85
+}
+
+code {
+  @apply text-lg whitespace-normal break-words
+}

@@ -1,0 +1,40 @@
+---
+layout: '../../layouts/PageLayout.astro'
+title: 'About this website'
+description: 'The story of the creation of this website'
+---
+
+import { getCollection } from 'astro:content';
+export const articles = await getCollection('article');
+
+import { customThemesList } from '../../themes.ts';
+
+import { fontList } from '/uno.config.ts';
+export const fontBaseUrl = 'https://fonts.google.com/specimen/';
+
+The website you're looking at is the result of my desire to share knowledge on topics that interest me, as well as my passion for exploring libraries for creating modern web applications. 
+
+To be able to share an impressive total of {Object.keys(articles).length} articles with the world, I used tools and technologies such as:  
+- [Astro](https://astro.build/) - a modern static site generator.
+- [TypeScript](https://www.typescriptlang.org/) - a typed superset of JavaScript.
+- [TailwindCSS](https://tailwindcss.com/) - a utility-first CSS framework.
+- [UnoCSS](https://unocss.dev/) - an instant on-demand atomic CSS engine.
+- [daisyUI](https://daisyui.com/) - awesome library of components for TailwindCSS.
+- [Iconify](https://iconify.design/) - a huge library of icons.
+
+Fonts used: 
+<ul>
+<li>[Another Danger](https://thebrandedquotes.sellfy.store/p/lez5/) - for the logo.</li>
+{ Object.values(fontList).map((font, index) => {
+  const name = font.replace(/:\d+/g, '');
+  return (
+  <li key={index}>
+    <a href={fontBaseUrl + name.replace(/\s/, '+')}>{name}</a> - content.
+  </li>
+  )
+})}
+</ul>
+
+Hosting & Deployments:
+- [Cloudflare Pages](https://pages.cloudflare.com/) - because of clear pricing and their awesome CDN.
+- [GitHub Actions](https://github.com/features/actions) - for automating the deployment process.

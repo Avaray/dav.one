@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang='en' class='max-w-screen-lg mx-auto transition-colors duration-500'>
+  <script is:inline>
+    const currentTheme = localStorage.getItem('theme') || 'default';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    function copyHeadingUrl(url, heading) {
+      url = url.split('#')[0];
+      navigator.clipboard.writeText(`${url}#${heading}`);
+    }
+
+    // I will use this only for the articles
+    // https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API#example
+    async function shareHeadingUrl(url, heading, title) {
+      url = url.split('#')[0];
+      try {
+        await navigator.share({
+          title: title,
+          text: `Check out this section of ${title}`,
+          url: heading ? `${url}#${heading}` : url,
+        });
+        console.log(`Successfully shared ${url}#${heading}`);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  </script>
+  <slot />
+</html>

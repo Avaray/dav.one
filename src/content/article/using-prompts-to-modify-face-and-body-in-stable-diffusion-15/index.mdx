@@ -1,0 +1,206 @@
+---
+title: 'Using prompts to modify face and body in Stable Diffusion 1.5'
+description: 'The biggest influence on how the generated people will look comes from the model we use and our well-written prompts. We can modify the face, body, and clothing by using simple prompts. In this article I will describe how to modify the face and body without using Loras, Positive Textual Inversions, ControlNet, etc. Just pure prompts.'
+created: 'Jul 31 2023'
+icon: 'i-game-icons:cryo-chamber'
+---
+
+import { Image } from 'astro:assets';
+
+{/* age */}
+import img01 from './images/01-00343-3575497043.jpg';
+import img02 from './images/02-01071-3575497043.jpg';
+import img03 from './images/03-01049-3575497043.jpg';
+
+{/* nationalities */}
+import img04 from './images/04-01075-2930817551.jpg'
+import img05 from './images/04-01080-935636450.jpg'
+import img06 from './images/04-01099-2695428000.jpg'
+import img07 from './images/04-01121-2694652527.jpg'
+import img08 from './images/04-01105-2694652511.jpg'
+import img09 from './images/04-01128-1627721923.jpg'
+
+{/* random examples */}
+import img10 from './images/05-01136-2135588213.jpg'
+import img11 from './images/05-01142-2135588219.jpg'
+import img12 from './images/05-01152-3106824169.jpg'
+import img13 from './images/05-01200-3218471724.jpg'
+import img14 from './images/05-01229-2714470423.jpg'
+import img15 from './images/05-01503-2612520002.jpg'
+
+{/* body types */}
+import img16 from './images/00273-28104657.jpg'
+import img17 from './images/00281-28104649.jpg'
+import img18 from './images/00317-28104657.jpg'
+
+## Preparations
+
+The key to success lies in three things: **the Model** (Checkpoint), **Negative Embeddings** (Textual Inversions) or **Good Negative Prompt**, and the **Positive Prompt** written by you.
+
+There are many **models** created by the community.
+Currently, there are several popular, realistic models worth using. Just visit <a href="https://civitai.com/models?ref_code=ADD-THI">CivitAI.com </a> and find your favourite.
+For the purposes of this article, I will use <a href="https://civitai.com/models/94725/addictivefuturerealisticsemiasian?ref_code=ADD-THI">AddictiveFuture Realistic SemiAsian</a>.
+It's not a perfect model, but personally, I really like it.
+This model focuses on creating realistically looking semi-Asian females.
+However, you will soon see that it's possible to achieve slightly different end results.
+
+Using **Negative Embeddings** can be helpful, **but it's not required**.
+They can drastically improve the quality of our work, make the images look better (more realistic) and prevent the appearance of many unwanted things.
+You can find some useful embeddings [in this repository](https://huggingface.co/datasets/AddictiveFuture/sd-negative-embeddings/tree/main).
+Keep in mind they can slightly change the appearance of the generated person. It's best to observe what happens after their use.
+
+Using a good model and a well-chosen Negative Prompt is enough to achieve satisfactory results.
+Below you can see the prompt I've been using recently to generate realistically looking people. Thanks to it, I don't need to use Negative Embeddings.
+
+```
+(low quality:2), (normal quality:2), (worst quality:2), anime, bad anatomy, bad proportions, blurry, cloned face,
+cropped, deformed, dehydrated, disfigured, dot, drawing, duplicate, error, extra arms, extra fingers, extra legs,
+extra limbs, fused fingers, grayscale, gross proportions, illustration, jpeg artifacts, long neck, low quality,
+lowres, malformed limbs, manga, missing arms, missing legs, mole, monochrome, morbid, mutated hands, mutation,
+mutilated, normal quality, out of frame, painting, paintings, poorly drawn face, poorly drawn hands, signature,
+sketches, text, too many fingers, ugly, username, watermark, worst quality
+```
+
+Okay, we're ready. I believe we can begin.
+
+## Prompting age
+
+<p>
+  Just specify whether you want to see a young or old person. These prompts affect the entire body. The older the
+  person, the more the body shape changes, the skin ages with wrinkles and sagging. If you want your prompt to have the
+  most impact on the final result, you should set **Clip Skip** to **1** (it's default value), and **CFG Scale** to
+  around **6**. Keep in mind that a lot depends on the model you are using. The values I provided should work in most
+  cases. Ok, let's use these three prompts and fixed seed (3575497043):
+</p>
+
+
+- photography of girl, 20 years old
+- photography of midlife woman, 40 years old
+- photography of very old woman, elderly woman
+
+
+<div className='flex flex-wrap justify-between'>
+  <Image
+    class='flex-1 max-w-33% h-auto'
+    src={img01}
+    alt='photography of girl, 20 years old'
+    title='photography of girl, 20 years old'
+  />
+  <Image
+    class='flex-1 max-w-33% h-auto'
+    src={img02}
+    alt=''
+    title='photography of midlife woman, 40 years old'
+  />
+  <Image
+    class='flex-1 max-w-33% h-auto'
+    src={img03}
+    alt=''
+    title='photography of very old woman, elderly woman'
+  />
+</div>
+
+<p className='op-half'>
+  Do you know why the shoulders are covered in the last picture? No? Explanation at the end of the article.
+</p>
+
+## Prompting nationality
+
+I started experimenting with Nationalities after finding <a href="https://www.reddit.com/r/StableDiffusion/comments/13oea0i/photorealistic_portraits_of_200_ethinicities/">that post on Reddit</a>.
+
+Prompts specifying a particular nationality have an impact on the overall appearance of the person.
+They change the shape of their face, alter the skin color, influence the hairstyle and hair color, affect eyes color,
+affect the clothing, and determine the background of the location where the person is situated.
+If we don't specify these aspects precisely, they will be influenced by the country we mentioned.
+Moreover, even if we specify the clothing the person should wear,
+it may still have colors associated with the country (often seen with Israel, white and blue) or include accessories,
+such as beads frequently seen in African countries.
+Head coverings (scarves, straw hats) can also appear.
+
+On the pictures below, you can see results of prompt: **"photography of midlife X woman, 40 years old"**, where **X** you can replace with following nationalities: **Grenadian, Chinese, Bangladeshi, Sri Lankan, Israeli and Turkish.** Seed was set to random (if you're wondering why random seed, the explanation can be found at the end of the article).
+
+<div className='flex flex-wrap justify-between'>
+  <Image class='flex-1 max-w-33% h-auto' src={img04} alt='' title='Image of Grenadian woman' />
+  <Image class='flex-1 max-w-33% h-auto' src={img05} alt='' title='Image of Chinese woman' />
+  <Image class='flex-1 max-w-33% h-auto' src={img06} alt='' title='Image of Bangladeshi woman' />
+  <Image class='flex-1 max-w-33% h-auto' src={img07} alt='' title='Image of Sri Lankan woman' />
+  <Image class='flex-1 max-w-33% h-auto' src={img08} alt='' title='Image of Israeli woman' />
+  <Image class='flex-1 max-w-33% h-auto' src={img09} alt='' title='Image of Turkish woman' />
+</div>
+
+## Mixing age and nationality
+
+Of course, you can mix age and nationality together. I guess I don't need to explain how to do it.
+
+Below, you can see some example mixes using random seeds (without using <a href="https://github.com/lllyasviel/ControlNet">ControlNet</a> this time).
+You can observe how the clothing and surroundings of the photographed person have changed. This is particularly evident in the case of the Dutch girl (last photo).
+
+<div className='flex flex-wrap justify-between'>
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img10} alt='' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img11} alt='' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img12} alt='' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img13} alt='' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img14} alt='' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img15} alt='' />
+</div>
+
+<p className='op50'>
+  To automate the generation you can use <a href='https://github.com/adieyal/sd-dynamic-prompts'>sd-dynamic-prompts</a>{' '}
+  and{' '}
+  <a href='https://gist.githubusercontent.com/AddictiveFuture/0129d5e4927ed54806c25e01e62f9032/raw/d089bfd6841930000fd066ff7fd382e21e8c8ab8/prompt.txt'>
+    this prompt
+  </a>{' '}
+  (remember to enable that extension before generating images).
+  {/* <p>XYZ plot soon...</p> */}
+</p>
+
+## Prompting body types
+
+Actually, you only need a simple prompt describing body type. You can try prompts like:
+
+<ul>
+  <li>Skinny body type</li>
+  <li>Fat body type</li>
+  <li>Muscular body type</li>
+</ul>
+
+<div className='flex flex-wrap justify-between'>
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img16} alt='' title='Image of skinny body type' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img17} alt='' title='Image of fat body type' />
+  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img18} alt='' title='Image of muscular body type' />
+</div>
+
+Of course, you can specify individual body parts precisely.
+Wide hips, narrow waist, big ass, large breast... whatever else you can come up with.
+
+## If the results are not satisfactory
+
+- Expand the prompt by adding new keywords, for example: **extremely** muscular body type, **sixpack**, **muscles**
+- Increase the [attention](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#attentionemphasis) to the keyword, for example: **(**muscular body type:**1.3)**
+- Try increasing the **CFG Scale** (6+) and **Sampling Steps** (35+). Stick with **Clip Skip 1**
+- Enventually, try working with a <a href='https://civitai.com/models?ref_code=ADD-THI'>different model</a>
+
+## Problems you may encounter
+
+The models you use may not allow you to generate certain things because they might lack information on how certain things look.
+Most of the time, Stable Diffusion either does not generate things it doesn't know or cleverly conceals them.
+A simple example is photos of naked, old women. Usually, models do not know how an old naked woman looks like.
+If we prompt for something like that, we will get a photo of a naked woman, but she won't appear old.
+This happens because Stable Diffusion tries to generate the body the best it can, and since the body won't look old, the face shouldn't either.
+
+Let's stay with older women.
+Suppose we want to create a photo of an older woman wearing some sexy clothes. Maybe a skirt? Or perhaps a croptop that shows the belly?
+Probably we won't get an older woman because there will be a problem with the exposed body parts.
+Again, Stable Diffusion will have to compromise. It will generate those body parts as best as it can, and adjust the face accordingly.
+
+Just try not to combine things that shouldn't go together.
+
+If you significantly change your prompt, you should also use a new seed, preferably a random one at the beginning.
+If you previously generated a light-skinned person and now want to generate a dark-skinned person, you should use a new seed, as the old seed may have information about the skin color stored in it.
+This could result in not being able to fully achieve a dark-skinned person.
+So, if you're unable to achieve the desired results, it may be due to the **wrong configuration**, **limitations of the model**, **your poorly constructed prompt** or **bad seed**.
+
+<p className='op50'>
+  All images were creted on{' '}
+  <a href='https://cloud.vast.ai/?ref_id=62878&creator_id=42512&name=null'>**Vast.ai** servers</a> (using RTX4090)
+</p>
