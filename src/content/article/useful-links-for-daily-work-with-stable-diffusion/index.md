@@ -24,7 +24,7 @@ I recommend checking out the [Spaces](https://huggingface.co/spaces?sort=trendin
 
 ## Styles and Studies
 
-- [SDXL Artistic Studies](https://rikkar69.github.io/SDXL-artist-study/) - awesome studies on [Artists](https://rikkar69.github.io/SDXL-artist-study/), [Art Mediums](https://rikkar69.github.io/SDXL-artist-study/art-mediums/), [Art Movements](https://rikkar69.github.io/SDXL-artist-study/art-movements/), [Camera Models](https://rikkar69.github.io/SDXL-artist-study/cameras/), [Camera Films](https://rikkar69.github.io/SDXL-artist-study/film/). I highly recommend last two, because they are very useful in realistic photography generation.
+- [SDXL Artistic Studies](https://rikkar69.github.io/SDXL-artist-study/) - awesome studies on [Artists](https://rikkar69.github.io/SDXL-artist-study/tags/), [Art Mediums](https://rikkar69.github.io/SDXL-artist-study/art-mediums/), [Art Movements](https://rikkar69.github.io/SDXL-artist-study/art-movements/), [Camera Models](https://rikkar69.github.io/SDXL-artist-study/cameras/), [Camera Films](https://rikkar69.github.io/SDXL-artist-study/film/). I highly recommend last two, because they are very useful in realistic photography generation.
 - [SDXL Artist Style Studies](https://sdxl.parrotzone.art/) - probably the biggest collection of artist styles for SDXL. Unfortunately, images seems to be broken currently. 
 - [Stable Diffusion 1.5 Artists Cheat Sheet](https://supagruen.github.io/StableDiffusion-CheatSheet/) - a cheat sheet for Stable Diffusion 1.5. Might not work with newer models like SDXL. 
 - [Lighting Types in SDXL](https://www.reddit.com/r/StableDiffusion/comments/1cjwi04/made_this_lighting_guide_for_myself_thought_id/) - a Reddit post showing different lighting types in SDXL.
