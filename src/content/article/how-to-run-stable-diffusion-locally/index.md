@@ -21,7 +21,8 @@ Popular User Interfaces (UI) have their own installers. Let's list some of them:
 - [InvokeAI](https://github.com/invoke-ai/InvokeAI)
 
 You need to read the documentation of each installer to know how to use it.
-Some of them supports [FLUX](https://blackforestlabs.ai/), some not yet. Some of them has significantly better performance than others.
+Some of them has significantly better performance than others. 
+Some of them supports [FLUX](https://blackforestlabs.ai/), some not yet. 
 Each of them has different features, so you need to choose the one that suits your needs. 
 
 Cons:
