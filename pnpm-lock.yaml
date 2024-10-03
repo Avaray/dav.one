@@ -13,7 +13,7 @@ importers:
         version: 0.9.3(typescript@5.6.2)
       '@astrojs/mdx':
         specifier: ^3.1.7
-        version: 3.1.7(astro@4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))
+        version: 3.1.7(astro@4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))
       '@astrojs/preact':
         specifier: ^3.5.3
         version: 3.5.3(@babel/core@7.25.2)(preact@10.24.1)(vite@5.4.8(@types/node@22.7.4))
@@ -24,11 +24,11 @@ importers:
         specifier: ^4.0.7
         version: 4.0.7
       '@astrojs/sitemap':
-        specifier: ^3.1.6
-        version: 3.1.6
+        specifier: ^3.2.0
+        version: 3.2.0
       '@astrojs/tailwind':
         specifier: ^5.1.1
-        version: 5.1.1(astro@4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))(tailwindcss@3.4.13)
+        version: 5.1.1(astro@4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))(tailwindcss@3.4.13)
       '@nanostores/persistent':
         specifier: ^0.10.2
         version: 0.10.2(nanostores@0.11.3)
@@ -55,8 +55,8 @@ importers:
         specifier: 1.9.0
         version: 1.9.0
       '@iconify/json':
-        specifier: ^2.2.255
-        version: 2.2.255
+        specifier: ^2.2.256
+        version: 2.2.256
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.15(tailwindcss@3.4.13)
@@ -73,8 +73,8 @@ importers:
         specifier: ^0.62.4
         version: 0.62.4
       astro:
-        specifier: ^4.15.10
-        version: 4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2)
+        specifier: ^4.15.11
+        version: 4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2)
       daisyui:
         specifier: ^4.12.11
         version: 4.12.11(postcss@8.4.47)
@@ -156,8 +156,8 @@ packages:
   '@astrojs/rss@4.0.7':
     resolution: {integrity: sha512-ZEG55XFB19l+DplUvBISmz04UbjDtKliRO4Y5+ERRhAMjgCVVobEBNE6ZwWG1h6orWUocy4nfPihKXDyB73x9g==}
 
-  '@astrojs/sitemap@3.1.6':
-    resolution: {integrity: sha512-1Qp2NvAzVImqA6y+LubKi1DVhve/hXXgFvB0szxiipzh7BvtuKe4oJJ9dXSqaubaTkt4nMa6dv6RCCAYeB6xaQ==}
+  '@astrojs/sitemap@3.2.0':
+    resolution: {integrity: sha512-SkrOCL3Z6HxdiXreZ1+aPBWgnBMJ31EgPdcscgQeLqI2Gqk/4EKLuw9q0SqKU9MmHpcPXXtcd0odfCk4barPoA==}
 
   '@astrojs/tailwind@5.1.1':
     resolution: {integrity: sha512-LwurA10uIKcGRxQP2R81RvAnBT0WPKzBntXZBF4hrAefDgM5Uumn0nsGr6tdIjSARgYz4X+Cq/Vh78t3bql3yw==}
@@ -640,8 +640,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@iconify/json@2.2.255':
-    resolution: {integrity: sha512-wtBKGYrKHOmRlbai6cd4yTfHakLQ4lLD68w5pb1RDf1+6o0QcvLdun1sWZNcqkOvZOZAUOUPVISqKkYDlWY6YA==}
+  '@iconify/json@2.2.256':
+    resolution: {integrity: sha512-u2RwfBUuDE3A8qx3vnXdcJMtirHc9QrRRULfGY6Il6/K76Odfrm4yVqS/fYIh+wXwWl/fZdAZEozqxpZftfnIQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1232,8 +1232,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro@4.15.10:
-    resolution: {integrity: sha512-2NA9VWkIAxruq7GyR6ojpEqPLVlN2pyXqUDxiuXSEaaF1ajoQzLkXUIfhJgYmmVSIeTnd4ps9T4nTOEjWaOKrw==}
+  astro@4.15.11:
+    resolution: {integrity: sha512-uA9fenaRR+j6ksPFsmhM88ttz94a66SET1TZxAJLxctxWkDlgz58BxZYUc1gNlt0azhgzOgh4hP3q9M4YzAmBA==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2571,9 +2571,9 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  sitemap@7.1.2:
-    resolution: {integrity: sha512-ARCqzHJ0p4gWt+j7NlU5eDlIO9+Rkr/JhPFZKKQ1l5GCus7rJH4UdrlVAh0xC/gDS/Qir2UMxqYNHtsKr2rpCw==}
-    engines: {node: '>=12.0.0', npm: '>=5.6.0'}
+  sitemap@8.0.0:
+    resolution: {integrity: sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     hasBin: true
 
   source-map-js@1.2.1:
@@ -3116,12 +3116,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.7(astro@4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))':
+  '@astrojs/mdx@3.1.7(astro@4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))':
     dependencies:
       '@astrojs/markdown-remark': 5.2.0
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.1
-      astro: 4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       gray-matter: 4.0.3
@@ -3171,15 +3171,15 @@ snapshots:
       fast-xml-parser: 4.5.0
       kleur: 4.1.5
 
-  '@astrojs/sitemap@3.1.6':
+  '@astrojs/sitemap@3.2.0':
     dependencies:
-      sitemap: 7.1.2
+      sitemap: 8.0.0
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/tailwind@5.1.1(astro@4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))(tailwindcss@3.4.13)':
+  '@astrojs/tailwind@5.1.1(astro@4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2))(tailwindcss@3.4.13)':
     dependencies:
-      astro: 4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2)
       autoprefixer: 10.4.20(postcss@8.4.47)
       postcss: 8.4.47
       postcss-load-config: 4.0.2(postcss@8.4.47)
@@ -3558,7 +3558,7 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@iconify/json@2.2.255':
+  '@iconify/json@2.2.256':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -4260,7 +4260,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@4.15.10(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2):
+  astro@4.15.11(@types/node@22.7.4)(rollup@4.21.3)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -6118,7 +6118,7 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  sitemap@7.1.2:
+  sitemap@8.0.0:
     dependencies:
       '@types/node': 17.0.45
       '@types/sax': 1.2.7
