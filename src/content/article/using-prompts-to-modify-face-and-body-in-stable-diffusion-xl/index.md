@@ -152,12 +152,21 @@ Some of them, like `Rollei Retro 80s` might not just have an impact on the color
 
 List of Camera Models is available [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/cameras.txt) and list of Camera Films is available [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/camera_films.txt). Both lists were inspired by [SDXL 1.0 Artistic Studies](https://rikkar69.github.io/SDXL-artist-study/cameras/).
 
-## Year and Style
+## Years
 
-You can specify the year and style of the generated person.
-It might have an impact on generated person, his clothing, hairstyle and scenery.
+You can specify the year of the photo. 
+It will have big impact on generated image, people on image, their clothes, hairstyles and scenery.
+I would recommend you to use years from `1826`, when the photography was invented, to date of the model training.
 
+We have five key Periods of Photography, that Stable Diffusion recognizes:
+- Beginning of photography (1826-1839)
+- Growth of photography (1840-1900)
+- Film photography (1900-1970)
+- Color photography (1861-2000)
+- Digital photography (2000-current)
 
+There is no magic here. You just specify the year you want and check the results.  
+You can also specify decade like `50s`, `60s`, `70s`, etc.
 
 <!-- ## Mixing it
 
@@ -181,7 +190,7 @@ Have problems with generating things you want to see? Try to:
 ## Problems you might encounter
 
 - The model you are using might be trained on images of people with specific features. You might be not able to generate people of different nationalities or people with specific age. Also, the model might be forcing some features on the generated person. For example, color of the eyes, color of the hair, freckles, etc. I recommend using only good models, tested by the community.
-- Prompting things that are not related might block you from generating what you want. For example, if you prompt `old lady with big breasts`, you might not get the expected result. The model knows that old ladies rather have saggy breasts, not big ones. So, two things may happen. The model will generate an old lady with saggy breasts or it will generate woman with big breasts, but she will not look old. It works the same way with clothing for example. If you prompt `old lady in bikini`, you might not get the expected result. The model knows that old ladies rather wear clothes that cover their body, not revealing it. A lot depends on the model you are using. I believe there are models that are trained on images of older people, so they might let you generate an old lady in bikini.
+- Prompting things that are not related might block you from generating what you want. For example, if you prompt `old lady with big breasts`, you might not get the expected result. The model knows that old ladies rather have saggy breasts, not big ones. So, two things may happen. The model will generate an old lady with saggy breasts or it will generate woman with big breasts, but she will not look old. It works the same way with clothing for example. If you prompt `old lady in bikini`, you might not get the expected result. The model knows that old ladies rather wear clothes that cover their body, not revealing it. A lot depends on the model you are using. I believe there are models that are trained on images of older people, so they might let you generate an old lady in bikini. Anyway, the key point is to not combine things that should not be combined, because it will be very hard to get the expected result.
 - If newly created prompt does not create the expected result, check your [seed](https://onceuponanalgorithm.org/guide-what-is-a-stable-diffusion-seed-and-how-to-use-it/). Seed might "keep the information" about the previous prompt.
 For example, if you previously generated a dark-skinned person and now you want to generate a light-skinned person, you might still get a dark-skinned person if you don't change the seed. It's better to set a random one at the beginning of your new work.
 - If you wan't to generate a person with unnatural skin color, you might have a serious problem. You will need to grab a model that is suitable for fantasy art or something like that. 
