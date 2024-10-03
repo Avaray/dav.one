@@ -40,3 +40,7 @@ pre {
 code {
   @apply text-lg whitespace-normal break-words
 }
+
+code:not(pre code) {
+  @apply whitespace-nowrap /* Apply nowrap if not inside <pre> */
+}
