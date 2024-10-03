@@ -29,7 +29,7 @@ const everything = [...articles].sort((a, b) => {
         <a href={`${page.slug}`}>
           <div class="flex flex-row p-2 border-base-100">
             
-          <div class="flex flex-col items-center min-w-148px min-h-148px text-center border-rd-10px aspect-square">
+          <div class="max-md:hidden flex flex-col items-center min-w-148px min-h-148px text-center border-rd-10px aspect-square">
             <div class={`text-sm text-nowrap text-primary w-128px h-128px ${page.data.icon}`} />
             <span class='text-sm text-nowrap text-base-content '>
                <FormattedDate date={page.data.updated || page.data.created} />
