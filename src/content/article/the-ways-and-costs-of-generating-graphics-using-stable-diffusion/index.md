@@ -1,6 +1,6 @@
 ---
 title: 'The ways and costs of generating graphics using Stable Diffusion'
-description: 'Generating graphics using Stable Diffusion comes with two main costs: money spent and time lost. If you want to generate high-quality graphics and feel like an artist, you will have to bear these two costs. Mainly depending on your experience and your wallet, the incurred costs will vary.'
+description: 'An in-depth comparison of generation methods, helping you choose between investing in hardware, renting cloud services, or using web platforms. Includes practical insights on costs, performance, and limitations.'
 created: 'Jul 23 2023'
 updated: 'Aug 27 2024'
 icon: 'i-game-icons:take-my-money'

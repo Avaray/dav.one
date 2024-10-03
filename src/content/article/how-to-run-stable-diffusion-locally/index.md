@@ -1,6 +1,6 @@
 ---
 title: 'How to run Stable Diffusion locally on your computer'
-description: "This article is for people who want to run Stable Diffusion locally on their computer and don't know the best way to do it. "
+description: "If you want to run Stable Diffusion locally on your computer and don't know the best way to do it, this article will help you choose the right method."
 created: 'Aug 28 2024'
 icon: 'i-cbi:desktop-computer'
 ---
