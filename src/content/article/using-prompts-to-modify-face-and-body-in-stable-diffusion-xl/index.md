@@ -1,7 +1,7 @@
 ---
 title: 'Using prompts to modify face and body in Stable Diffusion XL'
 description: "The model you choose and the prompts you write are the most significant factors in generating realistic images. If you don't specify exactly how the generated person should look, they will most likely resemble those on which the model was trained. In this article, you'll see how you can manipulate the appearance of a generated person using just prompts."
-created: 'Aug 30 2024'
+created: 'Sep 03 2024'
 icon: 'i-game-icons:dodging'
 draft: true
 ---
@@ -36,6 +36,8 @@ Negative prompts are not just for specifying objects that should not appear in t
 worst quality, low quality, low resolution, painting, illustration, cartoon, sketch, 3d, 2d, blurry, grainy, pixelated, distorted, poorly drawn, bad anatomy, unrealistic proportions, text, watermark, signature, error, artifact
 ```
 
+<!-- Here I will put Diff from daisyUI -->
+
 ## Positive prompt - What we want to generate
 
 Let's generate a photography of a real person. Let the woman be the subject of our work and let's start our positive prompt by specifying that we want to generate a photography of a woman. Prompting hard on the photography types will help us to generate a realistic image. 
@@ -62,11 +64,11 @@ Examples: `oval face shape`, `bushy eyebrows`, `big eyes`, `wide nose`, `full li
 Good thing is that Stable Diffusion knows some hair styles. But probably you don't know them. 
 You can ask AI for the list, browse the internet, read some fashion magazines or just find the [list that already exists](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/hairstyles.txt). When you find the name of the hair style you like, you can use it in the prompt, combining it with the color (if you want).
 
-Examples: `long dark hair`, `short curly hair`, `blonde double bun`, `twisted bangs`, `pink dreadlocks`.
+Examples: `braided wrap-around ponytail`, `short curly hair`, `blonde double bun`, `twisted bangs`, `pink dreadlocks` or something simple like `long dark hair`.
 
 Keep in mind that:
-- Unnatural hair colors (like blue, yellow, green, etc.) are harder to generate.
-- Prompts containing specific words like `pearl`, `orange` or `pineapple` might generate these objects instead of affecting the hair.
+- Unnatural hair colors (like blue, yellow, green, etc.) are harder to generate. You can read [this section](/using-prompts-to-modify-face-and-body-in-stable-diffusion-xl#results-are-not-satisfying) to find out how to get better results.
+- Prompts containing specific words like `pearl`, `orange` or `pineapple` might generate these objects instead of affecting the hair. Don't be surprised if you see woman holding oranges instead of having orange hair.
 
 ## Skin
 
@@ -82,33 +84,118 @@ You can modify the body type in three ways.
 1. By specifying the body type like: `slim body type`, `chubby body type`, `muscular body type`, 
 2. By specifying individual body parts like: , `long legs`, `big belly`, `muscular arms`.
 
-TODO
+I believe that you never seen sumo wrestler without big body weight or bodybuilder without muscles. Things are related. So you can make the generated person looks muscular by specifying that he is a bodybuilder for example. But then you need to prompt the clothing that bodybuilder would wear and the place where he would be. Because with the bodybuilder profession, sport clothes and gym in the background are more likely to appear in the generated image.
 
-<!-- tutaj tez wspomniec o wzroscie -->
+Specyfying the body type or body parts is a bit better than specyfying the profession. Because it does not affect clothing and background.
+Stable Diffusion understands the body parts and body types. So you can open your imagination and describe that as you want.
 
-## Nationality
+## Nationality and Ethnicity
 
-Prompting Nationalities is connected with the skin tone, facial features and body types.
+Stable Diffusion was trained on images of people from all over the world. So it knows how people from different countries look like. 
+Depending on the region of the world people will look different.
+Prompting Nationalities and Ethnicities is connected with the skin tone, facial features and body types. 
+And that's not all. People from different countries have different clothing styles, hair styles, etc.
+The scenery where they live is also different. 
 
-You can get large list of nationalities [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/nationalities.txt).
+You can specify nationality like: `Japanese`, `Spanish`, `Somalian`, etc.  
+And ethnicity like: `Asian`, `European`, `African`, etc.
 
-TODO
-
-## Body Type
-
-<!-- tutaj tez wspomniec o wzroscie -->
+You can get large list of nationalities [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/nationalities.txt). That list was inspired by [this Reddit post](https://www.reddit.com/r/StableDiffusion/comments/13oea0i/photorealistic_portraits_of_200_ethinicities/).
 
 ## Age
 
+Prompting age might be a bit tricky sometimes, because age is connected with the face features, skin, body type, clothing and scenery. 
+
+If you want to generate an **old person**, you can prompt `old woman`, `old lady` or `grandma`. 
+She will most likely have wrinkles, saggy skin, grey hair, and wear clothes that are typical for old people. She will most likely be in the scenery that is typical for old people, like a porch or a living room.
+To increase the chance that the generated person will look old, you can specify features like: `old lady, wrinkles, grey hair`.
+
+If you want to generate a **young person**, you can prompt `young girl`, `girl`, `teenager`, etc.
+She will most likely have smooth skin, no wrinkles, and wear clothes that are typical for young people.
+Also being young is connected with height and body type. Young people are usually shorter and slimmer than older people.
+
+Prompting specific age with the number might not work well, but you can try it like: `a girl, 20 years old`, `40 years old woman`, `woman, 80 years old`, etc. 
+
 ## Scenery
+
+The scenery can have some impact, but it's not always connected with the generated person.
+It can affect the person if you didn't specify that person by yourself.
+
+If you generate `a woman in the gym`, she will most likely have muscles.  
+`A woman in the desert` will most likely have tan skin.  
+`A woman in Vietnamese village` will most likely have Asian [facial features](/using-prompts-to-modify-face-and-body-in-stable-diffusion-xl#face-features). 
+`A woman picking tea` will most likely also be Asian.
 
 ## Lighting
 
+Lighting can also have small impact on generated person.
+It's especially visible when prompting `studio lighting`, `neo-noir lighting` or `direct flash lighting`.
+So, the skin texture might be different, makeup might be more visible or hairstyle might be affected.
+
+List of useful lighting types you can find [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/lighting.txt), inspired by [this Reddit post](https://www.reddit.com/r/StableDiffusion/comments/1cjwi04/made_this_lighting_guide_for_myself_thought_id/).
+
 ## Camera Type and Film
+
+This is very cool thing. You can achieve analog photography look by specifying the camera type or film.
+People are using 200MB or even 800MB Lora's to get analog photography look. 
+But you can achieve that with just a few words in the prompt.
+There is a lot of camera models and film types you can specify. 
+I categorized them into three simple groups: these with analog effect, these with color effect and grayscale effect. Let's list some of them.
+
+Analog effect: `Fujifilm FP-100C`, `Kodak Portra 160`, `Lomography Berlin Kino 400`  
+Color effect: `Kodak Aerochrome`, `Lomography Redscale XR 5-200`, `Rollei Infrared 400`  
+Grayscale effect: `Ilford SFX 200`, `Kodak Tri-X 400`, `Fujifilm Acros II`
+
+From my own studies I can say that they not only affect the colors, but also affect the face.
+Some of them make the face look more detailed and some of them make the face less textured.
+Some of them, like `Rollei Retro 80s` might not just have an impact on the colors and face, but also on the hair style. I think that's because of "retro" and "80s" in the name. Most of them has impact on shadows and highlights.
+
+List of Camera Models is available [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/cameras.txt) and list of Camera Films is available [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/camera_films.txt). Both lists were inspired by [SDXL 1.0 Artistic Studies](https://rikkar69.github.io/SDXL-artist-study/cameras/).
 
 ## Year and Style
 
+You can specify the year and style of the generated person.
+It might have an impact on generated person, his clothing, hairstyle and scenery.
 
-### 
 
-I used resolution of `768x1366`, `DPM++ 3M SDE Karras`, `45 Sampling Steps`, `Guidance Scale 6` and `CLIP_SKIP 1`.
+
+<!-- ## Mixing it
+
+Mixing is the simplest thing in this article. You just put all keywords you want into one prompt. -->
+
+## Name
+
+Names are connected with famous people. Prompting `Emma`, `Jennifer` or `Albert` may affect the appearance of the generated person.
+If you also specify the surname, the effect will be stronger. Most likely the generated person will have similar hairstyle, facial features, skin tone, etc. to the person you specified. 
+
+## Results are not satisfying
+
+Have problems with generating things you want to see? Try to:
+
+- Increase [the attention](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#attentionemphasis) to the keyword, for example: `(muscular body type:1.3)`.
+- Expand the prompt by adding new keywords, for example: `extremely muscular body type, sixpack, muscles` rather than just `muscular body type`.
+- Try increasing the [CFG Scale](https://onceuponanalgorithm.org/guide-stable-diffusions-cfg-scale-explained/).
+- Try Different Sampler and higher Sampling Steps. And keep in mind that different sampler might require different number of Sampling Steps to produce good results.
+- Try different model. You can find them on [CivitAI.com](https://civitai.com/models?ref_code=ADD-THI). Keep in mind that prompts in this article are for SDXL models. Most likely prompting nationality, lighting, camera type and film will not work with Pony Diffusion.
+
+## Problems you might encounter
+
+- The model you are using might be trained on images of people with specific features. You might be not able to generate people of different nationalities or people with specific age. Also, the model might be forcing some features on the generated person. For example, color of the eyes, color of the hair, freckles, etc. I recommend using only good models, tested by the community.
+- Prompting things that are not related might block you from generating what you want. For example, if you prompt `old lady with big breasts`, you might not get the expected result. The model knows that old ladies rather have saggy breasts, not big ones. So, two things may happen. The model will generate an old lady with saggy breasts or it will generate woman with big breasts, but she will not look old. It works the same way with clothing for example. If you prompt `old lady in bikini`, you might not get the expected result. The model knows that old ladies rather wear clothes that cover their body, not revealing it. A lot depends on the model you are using. I believe there are models that are trained on images of older people, so they might let you generate an old lady in bikini.
+- If newly created prompt does not create the expected result, check your [seed](https://onceuponanalgorithm.org/guide-what-is-a-stable-diffusion-seed-and-how-to-use-it/). Seed might "keep the information" about the previous prompt.
+For example, if you previously generated a dark-skinned person and now you want to generate a light-skinned person, you might still get a dark-skinned person if you don't change the seed. It's better to set a random one at the beginning of your new work.
+- If you wan't to generate a person with unnatural skin color, you might have a serious problem. You will need to grab a model that is suitable for fantasy art or something like that. 
+
+## Finish
+
+Hope you enjoyed this article and learned something new. 
+
+Images will be added soon.
+
+<!-- All images were generated on [Vast.ai](https://cloud.vast.ai/?ref_id=62878) machines with [Nvidia RTX4090](https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/) graphics cards.  
+I used [Automatic1111 WebUI](https://github.com/ai-dock/stable-diffusion-webui) with [RealVis](https://civitai.com/models/139562?modelVersionId=789646) and the following settings:
+- Resolution of `768x1366` 
+- Sampler `DPM++ 3M SDE Karras` with `45 Sampling Steps` 
+- Guidance Scale `6` 
+- CLIP_SKIP `1`
+- [Ctrl-X](https://github.com/genforce/ctrl-x) for pose control -->
