@@ -13,7 +13,7 @@ export async function GET(context) {
     items: articles.map((post) => ({
       ...post.data,
       pubDate: post.data.updated || post.data.created,
-      link: `/article/${post.slug}/`,
+      link: `/${post.slug}/`,
     })),
   });
 }
