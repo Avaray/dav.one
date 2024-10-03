@@ -60,7 +60,7 @@ Examples: `oval face shape`, `bushy eyebrows`, `big eyes`, `wide nose`, `full li
 ## Hair Style and Color
 
 Good thing is that Stable Diffusion knows some hair styles. But probably you don't know them. 
-You can ask AI for the list, browse the internet, read some fashion magazines or just find the [list that already exists](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/hairstyles.txt). When you find the name of the hair style you like, you can use it in the prompt, combining it with the color. 
+You can ask AI for the list, browse the internet, read some fashion magazines or just find the [list that already exists](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/hairstyles.txt). When you find the name of the hair style you like, you can use it in the prompt, combining it with the color (if you want).
 
 Examples: `long dark hair`, `short curly hair`, `blonde double bun`, `twisted bangs`, `pink dreadlocks`.
 
