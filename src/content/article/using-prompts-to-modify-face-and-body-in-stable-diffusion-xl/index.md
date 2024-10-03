@@ -168,10 +168,6 @@ We have five key Periods of Photography, that Stable Diffusion recognizes:
 There is no magic here. You just specify the year you want and check the results.  
 You can also specify decade like `50s`, `60s`, `70s`, etc.
 
-<!-- ## Mixing it
-
-Mixing is the simplest thing in this article. You just put all keywords you want into one prompt. -->
-
 ## Name
 
 Names are connected with famous people. Prompting `Emma`, `Jennifer` or `Albert` may affect the appearance of the generated person.
@@ -208,3 +204,8 @@ I used [Automatic1111 WebUI](https://github.com/ai-dock/stable-diffusion-webui) 
 - Guidance Scale `6` 
 - CLIP_SKIP `1`
 - [Ctrl-X](https://github.com/genforce/ctrl-x) for pose control -->
+
+
+<!-- ## Gallery
+
+I think I will put some cool images here.  -->
