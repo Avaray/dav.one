@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
 type Props = CollectionEntry<'article'>['data'];
 
@@ -29,6 +30,7 @@ const { title, description, created, updated } = Astro.props;
         <slot />
       </article>
     </main>
+    <ThemeSwitcher />
     <Footer />
   </body>
 </ThemeWrapper>
