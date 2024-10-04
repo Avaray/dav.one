@@ -25,10 +25,10 @@ Currently, I'm looking for a full-time job as a:
 - ???
 
 In locations:
-- Rzeszów, Poland
-- Düsseldorf, Germany
-- Hilden, Germany
-- Langenfeld, Germany
+- [Rzeszów](https://www.openstreetmap.org/#map=14/50.03719/22.00613), Poland
+- [Düsseldorf](https://www.openstreetmap.org/#map=13/51.22334/6.78148), Germany
+- [Hilden](https://www.openstreetmap.org/#map=14/51.16788/6.92800), Germany
+- [Langenfeld](https://www.openstreetmap.org/#map=13/51.09846/6.93460), Germany
 - Remote
 
 I'm open to various interesting job proposals, not necessarily limited to coding. I am interested in solving problems within companies, streamlining processes, automation, and surely there's more. I am mature and responsible. Despite my age, I am still interested in new things and like to learn new things. If you'd like to get in touch, reach out to me on [LinkedIn](https://www.linkedin.com/in/wasowsky/).
