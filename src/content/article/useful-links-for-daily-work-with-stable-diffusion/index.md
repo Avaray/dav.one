@@ -6,6 +6,17 @@ updated: 'Aug 26 2024'
 icon: 'i-game-icons:andromeda-chain'
 ---
 
+## User Interfaces
+
+- [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) and [reForge](https://github.com/Panchovix/stable-diffusion-webui-reForge)
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+- [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+- [InvokeAI](https://github.com/invoke-ai/InvokeAI)
+- [Fooocus](https://github.com/lllyasviel/Fooocus)
+- [Kohya](https://github.com/bmaltais/kohya_ss)
+- [StableSwarmUI](https://github.com/Stability-AI/StableSwarmUI)
+- [SD.Next](https://github.com/vladmandic/automatic)
+
 ## Tools
 - [Stability Matrix](https://github.com/LykosAI/StabilityMatrix) - a Multi-Platform Package Manager for Stable Diffusion. You can use it to download and run your favorite UI locally without unnecessary configuration.
 - [AI-Dock](https://github.com/ai-dock) - containerized AI tools like [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), [ComfyUI](https://github.com/comfyanonymous/ComfyUI), [InvokeAI](https://github.com/invoke-ai/InvokeAI), [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) and [Fooocus](https://github.com/lllyasviel/Fooocus). You can run them on your local machine or on a [rented server](http://localhost:4321/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
