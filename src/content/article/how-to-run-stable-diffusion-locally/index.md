@@ -56,8 +56,8 @@ Pros:
 
 ## Pinokio
 
-[Pinokio](https://pinokio.computer/) - is _"a browser that lets you install, run, and programmatically control ANY application, automatically"_.
-It's not focused on Stable Diffusion, but you can use it to run popular UIs.
+[Pinokio](https://pinokio.computer/) - is "a browser that lets you install, run, and programmatically control ANY application, automatically".
+Pinokio is not focused on Stable Diffusion, but you can use it to run popular UIs.
 Community feedback is positive. However, due to the issues mentioned below, I have not tested it good enough yet.
 
 Cons:
