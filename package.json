@@ -36,7 +36,7 @@
     "@unocss/preset-icons": "^0.62.4",
     "@unocss/preset-web-fonts": "^0.62.4",
     "astro": "^4.15.11",
-    "daisyui": "^4.12.11",
+    "daisyui": "^4.12.12",
     "tailwindcss": "^3.4.13",
     "unocss": "^0.62.4"
   }
