@@ -3,6 +3,7 @@ import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 const { title, description, frontmatter } = Astro.props;
 const data = { ...frontmatter, title, description };
 ---
@@ -16,6 +17,7 @@ const data = { ...frontmatter, title, description };
         <slot />
       </article>
     </main>
+    <ThemeSwitcher />
     <Footer />
   </body>
 </ThemeWrapper>
