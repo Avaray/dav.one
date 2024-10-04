@@ -12,6 +12,8 @@ I like to solve problems, automate things, and create new things.
 Never planned to threat programming as a profession, but it seems that's what I'm trying to do now. 
 
 Currently, I'm looking for a full-time job as a:
+- Generative AI Engineer
+- Generative AI Content Creator
 - Junior Frontend Developer (React, TypeScript, TailwindCSS, Astro)
 - Junior Backend Developer (Node, Bun)
 - Junior Fullstack Developer
@@ -20,6 +22,7 @@ Currently, I'm looking for a full-time job as a:
 - Junior Manual Tester
 - Junior Automation Tester
 - Junior IT Support
+- ???
 
 In locations:
 - Rzeszów, Poland
