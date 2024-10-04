@@ -5,7 +5,9 @@ description: 'The story of the creation of this website'
 ---
 
 import { getCollection } from 'astro:content';
-export const articles = await getCollection('article');
+export const articles = await getCollection('article', ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
 
 import { customThemesList } from '../../themes.ts';
 
