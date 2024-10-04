@@ -12,7 +12,7 @@
     "taze": "taze major -I"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^3.1.7",
     "@astrojs/preact": "^3.5.3",
     "@astrojs/react": "^3.6.2",
