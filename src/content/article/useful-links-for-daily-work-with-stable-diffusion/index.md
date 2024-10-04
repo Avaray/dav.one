@@ -2,7 +2,7 @@
 title: 'Useful links for daily work with Stable Diffusion'
 description: 'A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion.'
 created: 'Oct 05 2023'
-updated: 'Aug 26 2024'
+updated: 'Oct 04 2024'
 icon: 'i-game-icons:andromeda-chain'
 ---
 
