@@ -68,7 +68,7 @@ Cons:
 ## Docker
 
 [Docker](https://www.docker.com/) is a platform that enables developers to automate the deployment of applications inside lightweight, portable containers. In easy words - you download an file that contains everything you need to run Stable Diffusion and you launch it.
-Anyway, it's a bit more complicated than using [Stability Matrix](https://dav.one/how-to-run-stable-diffusion-locally/#stability-matrix), because you will need to:
+Anyway, it's a bit more complicated than previous methods, because you will need to:
 - [Install and configure Docker](https://www.docker.com/get-started/).
 - Select and download proper image from [Docker Hub](https://hub.docker.com/). 
   Each image has different features and requirements.
