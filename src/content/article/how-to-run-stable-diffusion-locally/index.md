@@ -16,7 +16,7 @@ The perfect scenario is to have a top-tier graphics card like [Nvidia RTX4090](h
 Some of popular User Interfaces (UIs) have their own installers. Even if that's just a simple script that downloads and configures everything for you, it's still an installer. It's better than forcing users to execute commands manually in the [terminal](https://en.wikipedia.org/wiki/Computer_terminal).
 
 This is the list of popular UIs with installers:
-- [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) and [reForge](https://github.com/Panchovix/stable-diffusion-webui-reForge)
+- [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 - [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 - [InvokeAI](https://github.com/invoke-ai/InvokeAI)
