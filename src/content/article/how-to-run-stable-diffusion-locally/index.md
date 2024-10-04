@@ -50,6 +50,15 @@ Pros:
 Has a bit different features and UI. [Here](https://www.reddit.com/r/StableDiffusion/comments/1f1ksb9/comment/lk0ft46/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) is a comment from the author about the differences between them.
 Personally, I didn't have a chance to do large tests of LynxHub yet. 
 
+## Pinokio
+
+[Pinokio](https://pinokio.computer/) - is _"a browser that lets you install, run, and programmatically control ANY application, automatically"_.
+It's not focused on Stable Diffusion, but you can use it to run popular UIs.
+Community feedback is positive. However, due to the issues mentioned below, I have not tested it good enough yet.
+
+Cons:
+- Terrible App installer. You need to specify the path to install the app manually. And if that path already exists, you will need to delete it first. 
+- Has issues with App State Management. You can clearly see that when you change settings.
 
 ## Docker
 
