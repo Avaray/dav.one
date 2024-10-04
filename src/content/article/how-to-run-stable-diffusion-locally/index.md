@@ -14,11 +14,14 @@ The perfect scenario is to have a top-tier graphics card like [Nvidia RTX4090](h
 ## Installers
 
 Popular User Interfaces (UI) have their own installers. Let's list some of them:
-- [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
-- [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 - [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) and [reForge](https://github.com/Panchovix/stable-diffusion-webui-reForge)
-- [Fooocus](https://github.com/lllyasviel/Fooocus)
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+- [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 - [InvokeAI](https://github.com/invoke-ai/InvokeAI)
+- [Fooocus](https://github.com/lllyasviel/Fooocus)
+- [Kohya](https://github.com/bmaltais/kohya_ss)
+- [StableSwarmUI](https://github.com/Stability-AI/StableSwarmUI)
+- [SD.Next](https://github.com/vladmandic/automatic)
 
 You need to read the documentation of each installer to know how to use it.
 Some of them has significantly better performance than others. 
