@@ -7,6 +7,11 @@ created: 'Oct 05 2024'
 icon: 'i-game-icons:dodging'
 ---
 
+import { Image } from 'astro:assets';
+
+import img01 from './images/00086-1699287963.png';
+import img02 from './images/00087-1699287963.png';
+
 ## The Basics
 
 **The model** you choose has the most significant impact on the quality of the generated images.
@@ -37,7 +42,18 @@ Negative prompts are not just for specifying objects that should not appear in t
 worst quality, low quality, low resolution, painting, illustration, cartoon, sketch, 3d, 2d, blurry, grainy, pixelated, distorted, poorly drawn, bad anatomy, unrealistic proportions, text, watermark, signature, error, artifact
 ```
 
+Below you can see the difference between the image generated without negative prompt `left side` and the image generated with negative prompt `right side`.
+
 {/* Here I will put Diff from daisyUI */}
+<div className="border-rd-2 diff aspect-[16/9] w-100 not-prose">
+  <div className="diff-item-1">
+    <Image src={img01} alt="Image without negative prompt"/>
+  </div>
+  <div className="diff-item-2">
+    <Image src={img02} alt="Image with negative prompt"/>
+  </div>
+  <div className="diff-resizer w-50"></div>
+</div>
 
 ## Positive prompt - What we want to generate
 
