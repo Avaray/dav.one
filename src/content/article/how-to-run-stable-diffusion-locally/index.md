@@ -48,7 +48,7 @@ Pros:
 
 [LynxHub](https://github.com/KindaBrazy/LynxHub) is another Multi-Platform Package Manager for Stable Diffusion. Released in August 2024.
 Basically it does the same thing as [Stability Matrix](/how-to-run-stable-diffusion-locally#stability-matrix). 
-Has a bit different features and UI.
+Has a bit different features and UI. Personally, I didn't have a chance to do large tests with it yet.
 
 ## Docker
 
