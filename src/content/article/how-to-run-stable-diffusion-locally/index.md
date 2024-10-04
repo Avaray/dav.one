@@ -35,8 +35,7 @@ Cons:
 
 ## Stability Matrix
 
-The easiest way to run Stable Diffusion locally is to use [Stability Matrix](https://github.com/LykosAI/StabilityMatrix).
-It's a Multi-Platform Package Manager for Stable Diffusion. Supports Windows, Linux and MacOS.
+[Stability Matrix](https://github.com/LykosAI/StabilityMatrix) is a Multi-Platform Package Manager for Stable Diffusion. Supports Windows, Linux and MacOS.
 You can use it to download and run [UIs](/how-to-run-stable-diffusion-locally#installers) locally without unnecessary configuration.
 
 Pros:
@@ -44,6 +43,12 @@ Pros:
 - You don't need to install requirements manually.
 - You can have multiple UIs installed at the same time and share models between them.
 - Has model browser that allows you to download models directly.
+
+## LynxHub
+
+[LynxHub](https://github.com/KindaBrazy/LynxHub) is another Multi-Platform Package Manager for Stable Diffusion. Released in August 2024.
+Basically it does the same thing as [Stability Matrix](/how-to-run-stable-diffusion-locally#stability-matrix). 
+Has a bit different features and UI.
 
 ## Docker
 
