@@ -19,6 +19,7 @@ icon: 'i-game-icons:andromeda-chain'
 
 ## Tools
 - [Stability Matrix](https://github.com/LykosAI/StabilityMatrix) - a Multi-Platform Package Manager for Stable Diffusion. You can use it to download and run your favorite UI locally without unnecessary configuration.
+- [LynxHub](https://github.com/KindaBrazy/LynxHub) - another Multi-Platform Package Manager for Stable Diffusion. It's a newer tool than Stability Matrix. Released in August 2024.
 - [AI-Dock](https://github.com/ai-dock) - containerized AI tools like [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), [ComfyUI](https://github.com/comfyanonymous/ComfyUI), [InvokeAI](https://github.com/invoke-ai/InvokeAI), [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) and [Fooocus](https://github.com/lllyasviel/Fooocus). You can run them on your local machine or on a [rented server](http://localhost:4321/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
 
