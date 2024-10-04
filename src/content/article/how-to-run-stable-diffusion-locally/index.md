@@ -59,6 +59,7 @@ Community feedback is positive. However, due to the issues mentioned below, I ha
 Cons:
 - Terrible App installer. You need to specify the path to install the app manually. And if that path already exists, you will need to delete it first. 
 - Has issues with App State Management. You can clearly see that when you change settings.
+- Terrible UI/UX.
 
 ## Docker
 
