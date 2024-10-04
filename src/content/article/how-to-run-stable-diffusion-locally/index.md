@@ -19,9 +19,7 @@ Popular User Interfaces (UI) have their own installers. Let's list some of them:
 - [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 - [InvokeAI](https://github.com/invoke-ai/InvokeAI)
 - [Fooocus](https://github.com/lllyasviel/Fooocus)
-- [Kohya](https://github.com/bmaltais/kohya_ss)
 - [StableSwarmUI](https://github.com/Stability-AI/StableSwarmUI)
-- [SD.Next](https://github.com/vladmandic/automatic)
 
 You need to read the documentation of each installer to know how to use it.
 Some of them has significantly better performance than others. 
