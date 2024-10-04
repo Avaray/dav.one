@@ -46,6 +46,7 @@ I recommend checking out the [Spaces](https://huggingface.co/spaces?sort=trendin
 
 - [stable-diffusion-art.com](https://stable-diffusion-art.com/tutorials/) - a great website with many useful tutorials. Each tutorial is focused on a specific topic. You can find basics as well as more advanced tutorials there.
 - [Articles @ CivitAI.com](https://civitai.com/articles?ref_code=ADD-THI) - there are many guides created by the community. Some are great and some are useless. You need to find good ones by yourself. 
+- [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
 
 ## Communities
 
