@@ -9,8 +9,8 @@ icon: 'i-game-icons:dodging'
 
 import { Image } from 'astro:assets';
 
-import img01 from './images/00086-1699287963.png';
-import img02 from './images/00087-1699287963.png';
+import diff01 from './images/00086-1699287963.webp';
+import diff02 from './images/00087-1699287963.webp';
 
 ## The Basics
 
@@ -47,10 +47,10 @@ Below you can see the difference between the image generated without negative pr
 {/* Here I will put Diff from daisyUI */}
 <div className="border-rd-2 diff aspect-[16/9] w-100 not-prose">
   <div className="diff-item-1">
-    <Image src={img01} alt="Image without negative prompt"/>
+    <Image src={diff01} alt="Image without negative prompt"/>
   </div>
   <div className="diff-item-2">
-    <Image src={img02} alt="Image with negative prompt"/>
+    <Image src={diff02} alt="Image with negative prompt"/>
   </div>
   <div className="diff-resizer w-50"></div>
 </div>
