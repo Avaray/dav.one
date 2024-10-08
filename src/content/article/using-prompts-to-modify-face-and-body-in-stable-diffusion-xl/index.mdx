@@ -46,16 +46,12 @@ worst quality, low quality, low resolution, painting, illustration, cartoon, ske
 
 Below you can see the difference between the image generated without negative prompt `left side` and the image generated with negative prompt `right side`.
 
-{/* Here I will put Diff from daisyUI */}
-<div className="border-rd-2 diff aspect-[16/9] w-100 not-prose">
-  <div className="diff-item-1">
-    <Image src={diff01} alt="Image without negative prompt"/>
-  </div>
-  <div className="diff-item-2">
-    <Image src={diff02} alt="Image with negative prompt"/>
-  </div>
-  <div className="diff-resizer w-50"></div>
-</div>
+<ImageDiff
+  images={[
+    { src: diff01, alt: 'Image without negative prompt' },
+    { src: diff02, alt: 'Image with negative prompt' }
+  ]}
+/>
 
 ## Positive prompt - What we want to generate
 
