@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+
+type ImageType = {
+  src: { src: string };
+  alt?: string;
+};
+
+const { images = [] }: { images?: ImageType[] } = Astro.props;
+---
+
+<div class='grid grid-cols-2 sm:grid-cols-4 gap-1'>
+  {
+    images.map((image, index) => (
+      <img key={index} src={image.src.src} alt={image.alt} className='w-full h-full object-cover' />
+    ))
+  }
+</div>
