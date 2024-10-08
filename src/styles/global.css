@@ -41,6 +41,7 @@ code {
   @apply text-lg whitespace-normal break-words
 }
 
+/* Apply nowrap if not inside <pre> */
 code:not(pre code) {
-  @apply whitespace-nowrap /* Apply nowrap if not inside <pre> */
+  @apply md:whitespace-nowrap
 }
