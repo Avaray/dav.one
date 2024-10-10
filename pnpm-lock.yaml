@@ -87,6 +87,9 @@ importers:
       unocss:
         specifier: ^0.62.4
         version: 0.62.4(postcss@8.4.47)(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.5)(terser@5.34.1))
+      vite-plugin-pwa:
+        specifier: ^0.20.5
+        version: 0.20.5(vite@5.4.8(@types/node@22.7.5)(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0)
 
 packages:
 

@@ -1,14 +1,18 @@
 ---
-import { registerSW } from 'virtual:pwa-register';
-registerSW({ immediate: true });
+import { pwaInfo } from 'virtual:pwa-info';
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props as Props;
 ---
 
 <html>
   <head>
     <meta name='theme-color' content='#ffffff' />
-    <!-- Other meta tags -->
   </head>
   <body>
-    <h1>Your Page Content</h1>
+    <h1>PWA</h1>
   </body>
 </html>
