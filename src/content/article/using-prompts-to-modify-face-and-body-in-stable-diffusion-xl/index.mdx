@@ -14,6 +14,11 @@ import ImageDiff from '../../../components/ImageDiff.astro'
 import diff01 from './images/00086-1699287963.webp';
 import diff02 from './images/00087-1699287963.webp';
 
+import face01 from './images/face01.webp';
+import face02 from './images/face02.webp';
+import face03 from './images/face03.webp';
+import face04 from './images/face04.webp';
+
 ## The Basics
 
 **The model** you choose has the most significant impact on the quality of the generated images.
@@ -73,6 +78,15 @@ We have basic stuff covered. We can move on to the modifications.
 We can specify all the face features we want to modify. Starting from the face shape, through the eyes, nose, mouth, ears, chin, cheeks, forehead, eyebrows, freckles, moles, scares, wrinkles, facial hair and ending on expressions (hope I didn't forget anything). We can describe them in a way that we want them to be. 
 
 Examples: `oval face shape`, `bushy eyebrows`, `big eyes`, `wide nose`, `full lips`, `double chin`, `freckles on the cheeks`, `wrinkles around the eyes`.
+
+<ImageGrid
+  images={[
+    [face01, 'round face, low forehead, bushy eyebrows, downturned nose, full lips, weak chin, subtle cheekbones, protruding ears' ],
+    [face02, 'oval face, receding forehead, straight eyebrows, wide nose, full lips, weak chin, prominent cheekbones, small ears' ],
+    [face03, 'round face, prominent forehead, arched eyebrows, long nose, full lips, square chin, low cheekbones, protruding ears' ],
+    [face04, 'round face, receding forehead, arched eyebrows, downturned nose, heart-shaped lips, pointed chin, low cheekbones, small ears' ]
+  ]}
+/>
 
 ## Hair Style and Color
 
