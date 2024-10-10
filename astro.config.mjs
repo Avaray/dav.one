@@ -25,7 +25,7 @@ export default defineConfig({
     }),
   ],
   image: {
-    service: passthroughImageService(), // https://docs.astro.build/en/reference/errors/missing-sharp/
+    service: passthroughImageService(), // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
   },
   markdown: {
     syntaxHighlight: false,
