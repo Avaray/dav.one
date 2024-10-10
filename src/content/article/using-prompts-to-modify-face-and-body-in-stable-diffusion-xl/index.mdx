@@ -40,6 +40,11 @@ import age02 from './images/age02.webp';
 import age03 from './images/age03.webp';
 import age04 from './images/age04.webp';
 
+import scenery01 from './images/scenery01.webp';
+import scenery02 from './images/scenery02.webp';
+import scenery03 from './images/scenery03.webp';
+import scenery04 from './images/scenery04.webp';
+
 import camera01 from './images/camera01.webp';
 import camera02 from './images/camera02.webp';
 import camera03 from './images/camera03.webp';
@@ -253,6 +258,20 @@ If you generate `a woman in the gym`, she will most likely have muscles.
 Keep in mind that locations has light sources. Light sources are creating shadows and highlights.
 It might be window, lamp, sun, etc. 
 If the generated person will be inside the building, most likely there will be more shadows on the face.
+
+Below you can observe that woman on the `farm` has different shirt material than women on the other images. Her skin is pretty natural and she has delicate makeup. 
+Woman in the `cafe` has more makeup and her skin is less detailed. 
+Woman in `zen monastery` looks a little bit Asian because Zen Monasteries are mostly located in Asia. 
+And the last woman in the `nightclub` has more makeup. Clearly visible Eyeliners and Lipstick.
+
+<ImageGrid
+  images={[
+    [scenery01, 'farm'],
+    [scenery02, 'cafe'],
+    [scenery03, 'zen monastery'],
+    [scenery04, 'nightclub']
+  ]}
+/>
 
 ## Lighting
 
