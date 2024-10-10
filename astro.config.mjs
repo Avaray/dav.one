@@ -7,6 +7,7 @@ import tailwind from '@astrojs/tailwind';
 import UnoCSS from 'unocss/astro';
 import react from '@astrojs/react';
 import preact from '@astrojs/preact';
+import AstroPWA from '@vite-pwa/astro'
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +24,7 @@ export default defineConfig({
       include: ['**/preact/*'],
       compat: true,
     }),
+    AstroPWA(),
   ],
   image: {
     service: passthroughImageService(), // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
