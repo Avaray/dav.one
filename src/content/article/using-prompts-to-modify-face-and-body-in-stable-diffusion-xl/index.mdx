@@ -60,7 +60,7 @@ import name04 from './images/name04.webp';
 **The model** you choose has the most significant impact on the quality of the generated images.
 It's very important to choose the right model for the work you want to do.
 There are models trained to generate realistic images of people, general models that can generate anything, models targeted at generating anime or cartoon styles, and many more. You can find them on popular website [CivitAI.com](https://civitai.com/models?ref_code=ADD-THI).
-In case of Realistic Person Generation, I recommend using [RealVis](https://civitai.com/models/139562?modelVersionId=789646), [ZavyChroma](https://civitai.com/models/119229?modelVersionId=641087) and [CHINOOK](https://civitai.com/models/400589?modelVersionId=495482). The first one is my personal favorite in moment of writing this article. 
+In case of Realistic Person Generation, I recommend using [RealVis](https://civitai.com/models/139562?modelVersionId=789646), [ZavyChroma](https://civitai.com/models/119229?modelVersionId=641087) and [CHINOOK](https://civitai.com/models/400589?modelVersionId=495482). The first one is my personal favorite at moment of writing this article. 
 Every model has its own strengths and weaknesses. You need to find the one that suits your needs best.
 
 The second most important factor are **the prompts** you write. Positive and Negative.
@@ -68,12 +68,12 @@ They have impact on the appearance of the generated person and the overall quali
 If you don't specify exactly how the generated person should look, they will most likely resemble those on which the model was trained.
 I don't remember how many times I've seen people talking on [Reddit](https://www.reddit.com/r/StableDiffusion/) about seeing the same faces in generated images. 
 You have many possibilities to manipulate the appearance of the generated person using just prompts.
-Starting from the face shape, through the hair style, skin tone, body type, specific body parts, age, nationality and more.
-Fun fact, even prompting a name of the person can have an impact on the final image.
-And at the end, you can use specific keywords to make the generated person looks a bit different.
+Starting from the face shape, through the hair style, skin tone, body type, specific body parts, age, nationality, and more.
+{/* Fun fact, even prompting a name of the person can have an impact on the final image.
+And at the end, you can use specific keywords to make the generated person looks a bit different. */}
 
 The third factor is **configuration**. 
-[Image resolution](https://en.wikipedia.org/wiki/Image_resolution), [Sampler](https://stable-diffusion-art.com/samplers/), number of [Sampling Steps](https://getimg.ai/guides/interactive-guide-to-stable-diffusion-steps-parameter), [Guidance Scale](https://www.reddit.com/r/StableDiffusion/comments/xdvgyn/i_made_a_comparison_table_between_steps_and/) and [Variational Autoencoder (VAE)](https://wiki.civitai.com/wiki/Variational_Autoencoder) are the most important things. 
+[Image resolution](https://en.wikipedia.org/wiki/Image_resolution), [Sampler](https://stable-diffusion-art.com/samplers/), number of [Sampling Steps](https://getimg.ai/guides/interactive-guide-to-stable-diffusion-steps-parameter), [Guidance Scale](https://www.reddit.com/r/StableDiffusion/comments/xdvgyn/i_made_a_comparison_table_between_steps_and/) and [Variational Autoencoder (VAE)](https://wiki.civitai.com/wiki/Variational_Autoencoder) are the most important things in the configuration. 
 Each of them has a huge impact on the final image. Higher resolution means more details will be visible. 
 It's like giving artist a bigger canvas to paint on. 
 Sampler has control over image generation process and each sampler can produce different results.
@@ -83,24 +83,24 @@ So, with higher Guidance Scale, the prompts will have more impact on the final i
 VAE is responsible for the quality of the generated image. 
 In case of SDXL, [standard VAE](https://huggingface.co/stabilityai/sdxl-vae) should be fine.
 
-## Negative prompt
+## Negative Prompt
 
 Let's start with the negative prompt and then move on to the positive prompts.
-Negative prompt is not just for specifying objects that should not appear in the generated image, but also can have an impact on the quality of the generated image. 
-They are not required, but from my experience, they helps. In my own works I prefer to use [Negative Embeddings](https://wiki.civitai.com/wiki/Embedding) - because they are more convinient to use. 
+The Negative Prompt is not just for specifying objects that should not appear in the generated image, but it can also have an impact on the quality of the generated image.
+They are not required, but from my experience, they help. In my own works I prefer to use [Negative Embeddings](https://wiki.civitai.com/wiki/Embedding) - because they are more convinient to use. 
 I can recommend you to use [NDXL](https://civitai.com/models/454470/negative-dynamics-xl), [FiXL](https://civitai.com/models/385105/fixl?modelVersionId=429806) or [ACNeg1](https://civitai.com/models/148131?modelVersionId=166373) (you can mix them, but using only one should be enough). 
-Anyway, for the purpose of this article, let's create short negative prompt. We will specify what we don't want to see in the generated image. 
+Anyway, for the purpose of this article, let's create short Negative Prompt. We will specify what we don't want to see in the generated image. 
 
 ```
 worst quality, low quality, low resolution, painting, illustration, cartoon, sketch, 3d, 2d, blurry, grainy, pixelated, distorted, poorly drawn, bad anatomy, unrealistic proportions, text, watermark, signature, error, artifact
 ```
 
-Below you can see the difference between the image generated without negative prompt (left side) and the image generated with negative prompt (right side).
+Below you can see the difference between the image generated without Negative Prompt (left side) and the image generated with Negative Prompt (right side).
 
 <ImageDiff
   images={[
-    [diff01, 'Image without negative prompt'],
-    [diff02, 'Image with negative prompt']
+    [diff01, 'Image without Negative Prompt'],
+    [diff02, 'Image with Negative Prompt']
   ]}
 />
 
@@ -121,7 +121,7 @@ We have basic stuff covered. We can move on to the modifications.
 
 ## Face Features
 
-You can specify all the face features you want to modify. Starting from the face shape, through the eyes, nose, mouth, ears, chin, cheeks, forehead, eyebrows, freckles, moles, scares, wrinkles, facial hair and ending on expressions (hope I didn't forget anything). 
+You can specify all the face features you want to modify. Starting from the face shape, through the eyes, nose, mouth, ears, chin, cheeks, forehead, eyebrows, freckles, moles, scars, wrinkles, facial hair and ending on expressions (hope I didn't forget anything). 
 You can describe them in a way that you want them to be. 
 
 Examples: `oval face shape`, `bushy eyebrows`, `big eyes`, `wide nose`, `full lips`, `double chin`, `freckles on the cheeks`, `wrinkles around the eyes`.
@@ -135,12 +135,12 @@ Examples: `oval face shape`, `bushy eyebrows`, `big eyes`, `wide nose`, `full li
   ]}
 />
 
-## Mekeup
+## Makeup
 
 You can specify the makeup style you want to see on the generated person.
 Makeup can affect the face, hair, clothes and even the scenery. A lot depends on keywords you use.
 
-You can specify single things like `red lipstick`, `pink eyeliner`, `eyeshadow`, `lip gloss`, `eyebrow pencil`, `highlighter`, `contour`, `bronzer` and this should not affect the generated image too much.
+You can specify individual things like `red lipstick`, `pink eyeliner`, `eyeshadow`, `lip gloss`, `eyebrow pencil`, `highlighter`, `contour`, `bronzer` and this should not affect the generated image too much.
 
 Prompting makeup styles like `natural makeup`, `glam makeup`, `gothic makeup`, `retro makeup`, `shimmer makeup` might have impact on things not related to the face.
 
@@ -187,8 +187,8 @@ Examples: `dark skin`, `pale skin`, `detailed skin texture`, `freckles on the sk
 You can modify the body type in three ways. 
 
 1. By describing the person's profession like: `athlete`, `sumo wrestler`, `bodybuilder`.
-1. By specifying the body type like: `slim body type`, `chubby body type`, `muscular body type`. 
-2. By specifying individual body parts like: `long legs`, `big belly`, `muscular arms`.
+2. By specifying the body type like: `slim body type`, `chubby body type`, `muscular body type`. 
+3. By specifying individual body parts like: `long legs`, `big belly`, `muscular arms`.
 
 I believe that you never seen sumo wrestler without big body weight or bodybuilder without muscles. Things are related. So you can make the generated person looks muscular by specifying that he is a bodybuilder for example. But then you need to prompt the clothing that bodybuilder would wear and the place where he would be. Because with the bodybuilder profession, sport clothes and gym in the background are more likely to appear in the generated image.
 
@@ -310,7 +310,7 @@ You shouldn't combine keywords like `studio photo`, `raw photo` or `high quality
 
 To increase the chance that the generated photo will look old, you can add extra keywords like: `old photo`, `vintage photo`, `sepia photo`, `black and white photo`, `damaged photo`, `scratched photo`, `history`, `antique`, `retro`, `nostalgia`, etc.
 
-Also, from negative prompts you can remove keywords like: `low quality`, `bad quality`, `worst quality` or `low resolution`.
+Also, from Negative Prompts you can remove keywords like: `low quality`, `bad quality`, `worst quality` or `low resolution`.
 
 For extremely old photos, you use keywords like: `daguerreotype`, `tintype`, `ambrotype`, `calotype`, `wet plate collodion`, `albumen print`, `cyanotype`, `platinum print`, `gelatin silver print`, etc.
 
