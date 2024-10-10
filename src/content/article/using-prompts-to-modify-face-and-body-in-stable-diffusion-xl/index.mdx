@@ -67,9 +67,16 @@ Starting from the face shape, through the hair style, skin tone, body type, spec
 Fun fact, even prompting a name of the person can have an impact on the final image.
 And at the end, you can use specific keywords to make the generated person looks a bit different.
 
-The third factor is **configuration** in your UI. Image resolution, Sampler, number of Sampling Steps and Guidance Scale are the most important things. Each of them has a huge impact on the final image. Higher resolution means more details will be visible. It's like giving artist a bigger canvas to paint on. Sampler has control over image generation process and each sampler can produce different results.
-More Sampling Steps means more details will be rendered. Skin and clothes will have better textures. More objects will appear on generated image. Guidance Scale is a multiplier for the influence of the prompts on the final image. 
+The third factor is **configuration**. 
+[Image resolution](https://en.wikipedia.org/wiki/Image_resolution), [Sampler](https://stable-diffusion-art.com/samplers/), number of [Sampling Steps](https://getimg.ai/guides/interactive-guide-to-stable-diffusion-steps-parameter), [Guidance Scale](https://www.reddit.com/r/StableDiffusion/comments/xdvgyn/i_made_a_comparison_table_between_steps_and/) and [Variational Autoencoder (VAE)](https://wiki.civitai.com/wiki/Variational_Autoencoder) are the most important things. 
+Each of them has a huge impact on the final image. Higher resolution means more details will be visible. 
+It's like giving artist a bigger canvas to paint on. 
+Sampler has control over image generation process and each sampler can produce different results.
+More Sampling Steps means more details will be rendered. Skin and clothes will have better textures. 
+More objects will appear on generated image. Guidance Scale is a multiplier for the influence of the prompts on the final image. 
 So, with higher Guidance Scale, the prompts will have more impact on the final image.
+VAE is responsible for the quality of the generated image. 
+In case of SDXL, [standard VAE](https://huggingface.co/stabilityai/sdxl-vae) should be fine.
 
 ## Negative prompt
 
