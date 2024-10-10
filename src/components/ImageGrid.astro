@@ -1,18 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 
-type ImageType = {
-  src: { src: string };
-  alt?: string;
-};
+interface Props {
+  images: [ImageMetadata, string][];
+}
 
-const { images = [] }: { images?: ImageType[] } = Astro.props;
+const { images } = Astro.props;
 ---
 
-<div class='grid grid-cols-2 sm:grid-cols-4 gap-1'>
-  {
-    images.map((image, index) => (
-      <img key={index} src={image.src.src} alt={image.alt} className='w-full h-full object-cover' />
-    ))
-  }
+<!-- I wonder if I need key for mapping in this case -->
+<div class='grid grid-cols-2 sm:grid-cols-4 gap-1 not-prose'>
+  {images.map(([src, alt], index) => <Image src={src} alt={alt} />)}
 </div>

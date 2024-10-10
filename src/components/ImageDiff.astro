@@ -1,20 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 
-type ImageType = {
-  src: { src: string };
-  alt?: string;
-};
+interface Props {
+  images: [ImageMetadata, string][];
+}
 
-const { images = [] }: { images?: ImageType[] } = Astro.props;
+const { images } = Astro.props;
 ---
 
 <div class='border-rd-2 diff aspect-[16/9] w-100 not-prose'>
   <div class='diff-item-1'>
-    <img src={images[0].src.src} alt={images[0].alt} />
+    <Image src={images[0][0]} alt={images[0][1]} />
   </div>
   <div class='diff-item-2'>
-    <img src={images[1].src.src} alt={images[1].alt} />
+    <Image src={images[1][0]} alt={images[1][1]} />
   </div>
   <div class='diff-resizer w-50'></div>
 </div>
