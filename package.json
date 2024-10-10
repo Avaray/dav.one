@@ -25,18 +25,18 @@
     "preact": "^10.24.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.0",
-    "@iconify/json": "^2.2.257",
+    "@iconify/json": "^2.2.258",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/bun": "^1.1.10",
+    "@types/bun": "^1.1.11",
     "@types/node": "^22.7.5",
     "@unocss/preset-icons": "^0.62.4",
     "@unocss/preset-web-fonts": "^0.62.4",
     "astro": "^4.15.12",
-    "daisyui": "^4.12.12",
+    "daisyui": "^4.12.13",
     "tailwindcss": "^3.4.13",
     "unocss": "^0.62.4"
   }
