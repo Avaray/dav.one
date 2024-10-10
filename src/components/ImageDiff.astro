@@ -10,10 +10,10 @@ const { images } = Astro.props;
 
 <div class='border-rd-2 diff aspect-[16/9] w-100 not-prose'>
   <div class='diff-item-1'>
-    <Image src={images[0][0]} alt={images[0][1]} />
+    <Image src={images[0][0]} alt={images[0][1]} title={images[0][1]} />
   </div>
   <div class='diff-item-2'>
-    <Image src={images[1][0]} alt={images[1][1]} />
+    <Image src={images[1][0]} alt={images[1][1]} title={images[0][1]} />
   </div>
   <div class='diff-resizer w-50'></div>
 </div>

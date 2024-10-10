@@ -9,5 +9,5 @@ const { images } = Astro.props;
 ---
 
 <div class='grid grid-cols-2 sm:grid-cols-4 gap-0.5 not-prose'>
-  {images.map(([src, alt], index) => <Image src={src} alt={alt} />)}
+  {images.map(([src, alt], index) => <Image src={src} alt={alt} title={alt} />)}
 </div>
