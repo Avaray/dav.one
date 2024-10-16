@@ -9,9 +9,9 @@ const { images } = Astro.props;
 
 // In the future I need to re-think this function
 const gridCols = (imagesCount = images.length) => {
-  if (imagesCount === 2) return 'grid-cols-1 sm:grid-cols-2';
-  if (imagesCount === 3) return 'grid-cols-1 sm:grid-cols-3';
-  if (imagesCount >= 4) return 'grid-cols-2 sm:grid-cols-4';
+  if (imagesCount % 4 === 0) return 'grid-cols-2 sm:grid-cols-4';
+  if (imagesCount % 3 === 0) return 'grid-cols-1 sm:grid-cols-3';
+  if (imagesCount % 2 === 0) return 'grid-cols-1 sm:grid-cols-2';
   return 'grid-cols-1';
 };
 ---
