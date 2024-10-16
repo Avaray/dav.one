@@ -6,6 +6,7 @@ icon: 'i-game-icons:cryo-chamber'
 ---
 
 import { Image } from 'astro:assets';
+import ImageGrid from '../../../components/ImageGrid.astro'
 
 {/* age */}
 import img01 from './images/01-00343-3575497043.jpg';
@@ -78,31 +79,15 @@ Okay, we're ready. I believe we can begin.
 - photography of midlife woman, 40 years old
 - photography of very old woman, elderly woman
 
-
-<div className='flex flex-wrap justify-between'>
-  <Image
-    class='flex-1 max-w-33% h-auto'
-    src={img01}
-    alt='photography of girl, 20 years old'
-    title='photography of girl, 20 years old'
-  />
-  <Image
-    class='flex-1 max-w-33% h-auto'
-    src={img02}
-    alt=''
-    title='photography of midlife woman, 40 years old'
-  />
-  <Image
-    class='flex-1 max-w-33% h-auto'
-    src={img03}
-    alt=''
-    title='photography of very old woman, elderly woman'
-  />
-</div>
-
 <p className='op-half'>
   Do you know why the shoulders are covered in the last picture? No? Explanation at the end of the article.
 </p>
+<ImageGrid images={[
+    [img01, 'photography of girl, 20 years old'],
+    [img02, 'photography of midlife woman, 40 years old'],
+    [img03, 'photography of very old woman, elderly woman']
+  ]}
+/>
 
 ## Prompting nationality
 
@@ -119,14 +104,15 @@ Head coverings (scarves, straw hats) can also appear.
 
 On the pictures below, you can see results of prompt: **"photography of midlife X woman, 40 years old"**, where **X** you can replace with following nationalities: **Grenadian, Chinese, Bangladeshi, Sri Lankan, Israeli and Turkish.** Seed was set to random (if you're wondering why random seed, the explanation can be found at the end of the article).
 
-<div className='flex flex-wrap justify-between'>
-  <Image class='flex-1 max-w-33% h-auto' src={img04} alt='' title='Image of Grenadian woman' />
-  <Image class='flex-1 max-w-33% h-auto' src={img05} alt='' title='Image of Chinese woman' />
-  <Image class='flex-1 max-w-33% h-auto' src={img06} alt='' title='Image of Bangladeshi woman' />
-  <Image class='flex-1 max-w-33% h-auto' src={img07} alt='' title='Image of Sri Lankan woman' />
-  <Image class='flex-1 max-w-33% h-auto' src={img08} alt='' title='Image of Israeli woman' />
-  <Image class='flex-1 max-w-33% h-auto' src={img09} alt='' title='Image of Turkish woman' />
-</div>
+<ImageGrid images={[
+    [img04, 'Image of Grenadian woman'],
+    [img05, 'Image of Chinese woman'],
+    [img06, 'Image of Bangladeshi woman'],
+    [img07, 'Image of Sri Lankan woman'],
+    [img08, 'Image of Israeli woman'],
+    [img09, 'Image of Turkish woman']
+  ]}
+/>
 
 ## Mixing age and nationality
 
@@ -135,24 +121,14 @@ Of course, you can mix age and nationality together. I guess I don't need to exp
 Below, you can see some example mixes using random seeds (without using <a href="https://github.com/lllyasviel/ControlNet">ControlNet</a> this time).
 You can observe how the clothing and surroundings of the photographed person have changed. This is particularly evident in the case of the Dutch girl (last photo).
 
-<div className='flex flex-wrap justify-between'>
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img10} alt='' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img11} alt='' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img12} alt='' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img13} alt='' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img14} alt='' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img15} alt='' />
-</div>
-
-<p className='op50'>
-  To automate the generation you can use <a href='https://github.com/adieyal/sd-dynamic-prompts'>sd-dynamic-prompts</a>{' '}
-  and{' '}
-  <a href='https://gist.githubusercontent.com/AddictiveFuture/0129d5e4927ed54806c25e01e62f9032/raw/d089bfd6841930000fd066ff7fd382e21e8c8ab8/prompt.txt'>
-    this prompt
-  </a>{' '}
-  (remember to enable that extension before generating images).
-  {/* <p>XYZ plot soon...</p> */}
-</p>
+<ImageGrid images={[
+    [img10, ''],
+    [img11, ''],
+    [img12, ''],
+    [img13, ''],
+    [img14, ''],
+    [img15, '']
+]}/>
 
 ## Prompting body types
 
@@ -164,11 +140,11 @@ Actually, you only need a simple prompt describing body type. You can try prompt
   <li>Muscular body type</li>
 </ul>
 
-<div className='flex flex-wrap justify-between'>
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img16} alt='' title='Image of skinny body type' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img17} alt='' title='Image of fat body type' />
-  <Image class='flex-1 max-w-33% h-auto m-b-4px' src={img18} alt='' title='Image of muscular body type' />
-</div>
+<ImageGrid images={[
+    [img16, 'Image of skinny body type'],
+    [img17, 'Image of fat body type'],
+    [img18, 'Image of muscular body type']
+]}/>
 
 Of course, you can specify individual body parts precisely.
 Wide hips, narrow waist, big ass, large breast... whatever else you can come up with.
