@@ -33,6 +33,10 @@ main a:hover {
   @apply no-animation;
 }
 
+blockquote {
+  @apply not-italic;
+}
+
 pre {
   @apply bg-base-content bg-opacity-5 text-base-content text-opacity-85
 }

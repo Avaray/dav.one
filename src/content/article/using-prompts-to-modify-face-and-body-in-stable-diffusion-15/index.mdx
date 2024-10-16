@@ -34,21 +34,19 @@ import img16 from './images/00273-28104657.jpg'
 import img17 from './images/00281-28104649.jpg'
 import img18 from './images/00317-28104657.jpg'
 
+> There is new version of this article available [here](/using-prompts-to-modify-face-and-body-in-stable-diffusion-xl).
+It's based on SDXL, but it's still relevant for SD 1.5.
+It's more detailed and contains more examples.
+
 ## Preparations
 
-The key to success lies in three things: **the Model** (Checkpoint), **Negative Embeddings** (Textual Inversions) or **Good Negative Prompt**, and the **Positive Prompt** written by you.
+The key to success lies in three things: **the Model** (Checkpoint), **Positive Prompt**, and **Negative Prompt** (or **Negative Embedding**).
 
 There are many **models** created by the community.
 Currently, there are several popular, realistic models worth using. Just visit <a href="https://civitai.com/models?ref_code=ADD-THI">CivitAI.com </a> and find your favourite.
-For the purposes of this article, I will use <a href="https://civitai.com/models/94725/addictivefuturerealisticsemiasian?ref_code=ADD-THI">AddictiveFuture Realistic SemiAsian</a>.
-It's not a perfect model, but personally, I really like it.
+For the purposes of this article, I will use my own model <a href="https://civitai.com/models/94725/addictivefuturerealisticsemiasian?ref_code=ADD-THI">AddictiveFuture Realistic SemiAsian</a>.
 This model focuses on creating realistically looking semi-Asian females.
 However, you will soon see that it's possible to achieve slightly different end results.
-
-Using **Negative Embeddings** can be helpful, **but it's not required**.
-They can drastically improve the quality of our work, make the images look better (more realistic) and prevent the appearance of many unwanted things.
-You can find some useful embeddings [in this repository](https://huggingface.co/datasets/AddictiveFuture/sd-negative-embeddings/tree/main).
-Keep in mind they can slightly change the appearance of the generated person. It's best to observe what happens after their use.
 
 Using a good model and a well-chosen Negative Prompt is enough to achieve satisfactory results.
 Below you can see the prompt I've been using recently to generate realistically looking people. Thanks to it, I don't need to use Negative Embeddings.
@@ -62,7 +60,9 @@ mutilated, normal quality, out of frame, painting, paintings, poorly drawn face,
 sketches, text, too many fingers, ugly, username, watermark, worst quality
 ```
 
-Okay, we're ready. I believe we can begin.
+There are also **Negative Embeddings**. 
+They work similarly to Negative Prompts, but each of them may have a different impact on the final result. 
+You will need to find the right one for your needs.
 
 ## Prompting age
 
@@ -113,7 +113,7 @@ On the pictures below, you can see results of prompt: **"photography of midlife 
 
 ## Mixing age and nationality
 
-Of course, you can mix age and nationality together. I guess I don't need to explain how to do it.
+Of course, you can mix age and nationality together.
 
 Below, you can see some example mixes using random seeds (without using <a href="https://github.com/lllyasviel/ControlNet">ControlNet</a> this time).
 You can observe how the clothing and surroundings of the photographed person have changed. This is particularly evident in the case of the Dutch girl (last photo).
@@ -148,10 +148,10 @@ Wide hips, narrow waist, big ass, large breast... whatever else you can come up 
 
 ## If the results are not satisfactory
 
-- Expand the prompt by adding new keywords, for example: **extremely** muscular body type, **sixpack**, **muscles**
-- Increase the [attention](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#attentionemphasis) to the keyword, for example: **(**muscular body type:**1.3)**
-- Try increasing the **CFG Scale** (6+) and **Sampling Steps** (35+). Stick with **Clip Skip 1**
-- Enventually, try working with a <a href='https://civitai.com/models?ref_code=ADD-THI'>different model</a>
+- Expand the prompt by adding new keywords, for example: `extremely muscular body type`, `sixpack`, `muscles`.
+- Increase the [attention](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#attentionemphasis) to the keyword, for example: `(muscular body type:1.3)`.
+- Try increasing the **CFG Scale** and **Sampling Steps**. Stick with **Clip Skip 1**.
+- Try working with a <a href='https://civitai.com/models?ref_code=ADD-THI'>different model</a>.
 
 ## Problems you may encounter
 
@@ -173,7 +173,4 @@ If you previously generated a light-skinned person and now want to generate a da
 This could result in not being able to fully achieve a dark-skinned person.
 So, if you're unable to achieve the desired results, it may be due to the **wrong configuration**, **limitations of the model**, **your poorly constructed prompt** or **bad seed**.
 
-<p className='op50'>
-  All images were creted on{' '}
-  <a href='https://cloud.vast.ai/?ref_id=62878&creator_id=42512&name=null'>**Vast.ai** servers</a> (using RTX4090)
-</p>
+All images were created on [Vast.ai servers](https://cloud.vast.ai/?ref_id=62878) (using RTX4090).
