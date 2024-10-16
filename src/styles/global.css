@@ -38,11 +38,11 @@ blockquote {
 }
 
 pre {
-  @apply bg-base-content bg-opacity-5 text-base-content text-opacity-85
+  @apply bg-base-content bg-opacity-5 text-base-content text-opacity-85;
 }
 
 code {
-  @apply text-lg whitespace-normal break-words
+  @apply text-lg whitespace-normal break-words;
 }
 
 /* Apply nowrap if not inside <pre> */
