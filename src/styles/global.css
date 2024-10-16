@@ -35,6 +35,7 @@ main a:hover {
 
 blockquote {
   @apply not-italic;
+  quotes: none;
 }
 
 pre {
