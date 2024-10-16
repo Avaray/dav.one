@@ -32,7 +32,7 @@ I recommend checking out the [Spaces](https://huggingface.co/spaces?sort=trendin
 ## Server rentals
 
 - [Vast.ai](https://cloud.vast.ai/?ref_id=62878&creator_id=42512&name=null) - a great place to rent a server for your work. You can find there a lot of different configurations and prices. Servers are located around the world. This service has the best prices. 
-- [Runpod.io](https://runpod.io?ref=gzvzzzv9) - a bit more expensive than Vast and have worse server browser. But it's still a good place to rent a server.
+- [Runpod.io](https://runpod.io?ref=gzvzzzv9) - a bit more expensive than Vast and has a worse server browser, but it’s still a good place to rent a server.
 
 ## Styles and Studies
 
@@ -63,7 +63,7 @@ All of the following Discord servers are great places to ask for help, share you
 
 ## YouTube Channels
 
-All of the following YouTube channels have useful tutorials and interesting content.
+All of the following YouTube channels offer useful tutorials and interesting content.
 
 - [Olivio Sarikas](https://www.youtube.com/@OlivioSarikas/videos)
 - [Sebastian Kamph](https://www.youtube.com/@sebastiankamph/videos)
