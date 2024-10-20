@@ -69,7 +69,8 @@ If this is not done, all credits will be lost after 90 days (seriously, Google?)
 I think that Google Colab is a good place for training models, but not for generating graphics.
 If you wan't to pay for a service, I recommend [renting a server](/the-ways-and-costs-of-generating-graphics-using-stable-diffusion#renting-servers).
 
-Recently, I've found a way to use InvokeAI on Free Google Colab. You can find it [here](https://www.reddit.com/r/StableDiffusion/comments/1g7syo7/invokeai_v520_colab_notebook_tutorial/). 
+Recently, I've found a repository that allows you to use InvokeAI on Free Tier. You can find it [here](https://github.com/i-huzaifa-arshad/InvokeAi-Colab).
+I assume that with [tunneling](https://ngrok.com/our-product/secure-tunnels), it's possible to use other UIs. However, I don't intend to check it, as generating images on Colab is currently several times slower than on a single RTX 4090. For me, it's not worth it. 
 
 ## Dedicated Websites
 
@@ -78,7 +79,7 @@ You'll most likely need to register, and you'll receive virtual currency that yo
 You don't really require any technical knowledge or installing anything on your computer.
 You just write a prompt and wait for the image to be generated.
 Good websites will let you tweak the settings and choose a cool model.
-I will not promote any websites. You can find them by yourself.
+I will not promote any websites. You can find them [by yourself](https://www.perplexity.ai/search/list-of-online-ai-art-generato-yhjt_nEcR0qd4WlJdSfx8Q).
 
 However, they come with limitations.
 - You won't be able to use most of the models and add-ons created by the community. 
