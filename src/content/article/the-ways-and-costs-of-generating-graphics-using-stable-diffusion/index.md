@@ -70,7 +70,9 @@ I think that Google Colab is a good place for training models, but not for gener
 If you wan't to pay for a service, I recommend [renting a server](/the-ways-and-costs-of-generating-graphics-using-stable-diffusion#renting-servers).
 
 Recently, I've found a repository that allows you to use InvokeAI on Free Tier. You can find it [here](https://github.com/i-huzaifa-arshad/InvokeAi-Colab).
-I assume that with [tunneling](https://ngrok.com/our-product/secure-tunnels), it's possible to use other UIs. However, I don't intend to check it, as generating images on Colab is currently several times slower than on a single RTX 4090. For me, it's not worth it. 
+I assume that with [tunneling](https://ngrok.com/our-product/secure-tunnels), it's possible to use other UIs.
+However, I don't intend to check it, as generating images on Colab is currently several times slower than on a single RTX4090.
+For me, it's not worth it.
 
 ## Dedicated Websites
 
