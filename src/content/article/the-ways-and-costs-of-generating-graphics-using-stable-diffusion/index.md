@@ -63,18 +63,22 @@ The image generation was relatively fast. Sometimes, the speed of generating ima
 It's good that it consumes fewer credits (deposited funds) when you are not using [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit). You can take a break, ride to grocery store.
 But when you work it might consume your credits rapidly! You don't know what costs to expect.
 That's the very reason why I stopped using Google Colab.
-The second reason was that after a month, credits are blocked, and in order to use them, You need to reactivate Colab Pro. If this is not done, all credits will be lost after 90 days (seriously, Google?).
+The second reason was that after a month, credits are blocked, and in order to use them, You need to reactivate Colab Pro.
+If this is not done, all credits will be lost after 90 days (seriously, Google?).
 
-I think that Google Colab is a good place for training models, but not for generating graphics.  
+I think that Google Colab is a good place for training models, but not for generating graphics.
 If you wan't to pay for a service, I recommend [renting a server](/the-ways-and-costs-of-generating-graphics-using-stable-diffusion#renting-servers).
 
-## Dedicated Websites and Discord servers
+Recently, I've found a way to use InvokeAI on Free Google Colab. You can find it [here](https://www.reddit.com/r/StableDiffusion/comments/1g7syo7/invokeai_v520_colab_notebook_tutorial/). 
 
-Both ways are decent if you wan't to check "what is that AI art?".
-These methods are the simplest to start with, and they don't really require any technical knowledge or installing anything on your computer.
+## Dedicated Websites
+
+Dedicated Websites are the best place for people who have never generated anything before and want to see "what this AI-generated art is all about."
+You'll most likely need to register, and you'll receive virtual currency that you can use to generate a certain number of images.
+You don't really require any technical knowledge or installing anything on your computer.
 You just write a prompt and wait for the image to be generated.
-There are many of such services, Free and Paid, and it's easy to find them.
-I will not promote any of them, because that is not the proper way in my opinion. You can find them by yourself.
+Good websites will let you tweak the settings and choose a cool model.
+I will not promote any websites. You can find them by yourself.
 
 However, they come with limitations.
 - You won't be able to use most of the models and add-ons created by the community. 
