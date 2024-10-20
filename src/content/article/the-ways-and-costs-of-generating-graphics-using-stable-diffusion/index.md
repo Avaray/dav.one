@@ -76,7 +76,7 @@ For me, it's not worth it.
 
 ## Dedicated Websites
 
-Dedicated Websites (online generators) are the best place for people who have never generated anything before and want to see "what this AI-generated art is all about."
+Dedicated Websites (online generators) are the best place for people who have never generated anything before and want to see "what this AI-generated art is all about?".
 You'll most likely need to register, and you'll receive virtual currency that you can use to generate a certain number of images.
 You don't really require any technical knowledge or installing anything on your computer.
 You just write a prompt and wait for the image to be generated.
