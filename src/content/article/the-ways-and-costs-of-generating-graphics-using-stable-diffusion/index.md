@@ -76,12 +76,12 @@ For me, it's not worth it.
 
 ## Dedicated Websites
 
-Dedicated Websites are the best place for people who have never generated anything before and want to see "what this AI-generated art is all about."
+Dedicated Websites (online generators) are the best place for people who have never generated anything before and want to see "what this AI-generated art is all about."
 You'll most likely need to register, and you'll receive virtual currency that you can use to generate a certain number of images.
 You don't really require any technical knowledge or installing anything on your computer.
 You just write a prompt and wait for the image to be generated.
 Good websites will let you tweak the settings and choose a cool model.
-I will not promote any websites. You can find them [by yourself](https://www.perplexity.ai/search/list-of-online-ai-art-generato-yhjt_nEcR0qd4WlJdSfx8Q).
+I will not promote any of them. You can search for them [by yourself](https://www.perplexity.ai/search/list-of-online-ai-art-generato-yhjt_nEcR0qd4WlJdSfx8Q).
 
 However, they come with limitations.
 - You won't be able to use most of the models and add-ons created by the community. 
