@@ -18,15 +18,22 @@ const { title, description, created, updated } = Astro.props;
     <Header />
     <main>
       <article>
-          <h1 class="">
-            {title}
-          </h1>
-            <span class="text-normal bg-primary text-base-100 font-bold p-2 border-rd-1">
-              <span>Created on</span><span ><FormattedDate date={created} />
-                {updated && <>and updated on <FormattedDate date={updated} /></>}
-              </span>
-            </span>
-          
+        <h1>
+          {title}
+        </h1>
+        <span class='text-normal bg-primary text-base-100 font-bold p-2 border-rd-1'>
+          <span>Created on</span><span
+            ><FormattedDate date={created} />
+            {
+              updated && (
+                <>
+                  and updated on <FormattedDate date={updated} />
+                </>
+              )
+            }
+          </span>
+        </span>
+
         <slot />
       </article>
     </main>
