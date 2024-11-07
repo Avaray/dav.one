@@ -4,12 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
-const { title, description, frontmatter } = Astro.props;
-const data = { ...frontmatter, title, description };
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
 ---
 
 <ThemeWrapper>
-  <Head title={data.title} description={data.description} />
+  <Head title={title} description={description} />
   <body>
     <Header />
     <main>
