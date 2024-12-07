@@ -1,8 +1,4 @@
----
-import { customThemesList } from '../themes';
----
-
-<aside class='fixed top-4 right-4 z-10 flex flex-col w-auto '>
+<aside class='fixed top-4 right-4 z-10 flex flex-col w-auto'>
   <!-- <div class="bg-base-100">
   <ul id='themeList' tabindex='0' class='menu dropdown-content p-4 rounded-box gap-3'>
     {
@@ -27,7 +23,7 @@ import { customThemesList } from '../themes';
   import { customThemesList } from '../themes';
 
   // Function to set theme and save it to localStorage
-  function setTheme(theme?: string | null) {
+  function setTheme(theme?: string) {
     const htmlElement = document.documentElement;
     // This will set the theme to a random one if no theme is provided
     theme ??= customThemesList[Math.floor(Math.random() * customThemesList.length)];
@@ -42,14 +38,14 @@ import { customThemesList } from '../themes';
   themeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const theme: string | null = button.getAttribute('data-value');
-      theme ? setTheme(theme) : setTheme(null);
+      theme ? setTheme(theme) : setTheme('');
     });
   });
 
   // Change themes with CTRL + Arrow keys
   document.addEventListener('keydown', (event) => {
     if (event.ctrlKey) {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const currentTheme = document.documentElement.getAttribute('data-theme') || '';
       const currentIndex = customThemesList.indexOf(currentTheme);
       if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
         const previousTheme = customThemesList[currentIndex - 1] ?? customThemesList[customThemesList.length - 1];
