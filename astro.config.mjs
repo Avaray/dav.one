@@ -24,6 +24,7 @@ export default defineConfig({
       compat: true,
     }),
   ],
+  prefetch: true,
   image: {
     service: passthroughImageService(), // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
   },
