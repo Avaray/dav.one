@@ -1,7 +1,8 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
-const defaultCollection = defineCollection({
-  type: 'content',
+const articles = defineCollection({
+  loader: glob({ base: './src/content/articles', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -13,7 +14,4 @@ const defaultCollection = defineCollection({
   }),
 });
 
-// klucz to nazwa kolekcji musi odpowiadać nazwie folderu w content
-export const collections = {
-  article: defaultCollection,
-};
+export const collections = { articles };
