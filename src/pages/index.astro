@@ -8,11 +8,11 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
-const articles = await getCollection('article', ({ data }) => {  
+const articles = await getCollection('articles', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-const everything = [...articles].sort((a, b) => {
+const sortedArticles = [...articles].sort((a, b) => {
   const dateA = a.data.updated ? a.data.updated.valueOf() : a.data.created.valueOf();
   const dateB = b.data.updated ? b.data.updated.valueOf() : b.data.created.valueOf();
   return dateB - dateA;
@@ -25,25 +25,21 @@ const everything = [...articles].sort((a, b) => {
     <Header />
     <main>
       {
-        everything.map((page) => (
-        <a href={`${page.slug}`}>
-          <div class="flex flex-row p-2 border-base-100">
-            
-          <div class="max-md:hidden flex flex-col items-center min-w-148px min-h-148px text-center border-rd-10px aspect-square">
-            <div class={`text-sm text-nowrap text-primary w-128px h-128px ${page.data.icon}`} />
-            <span class='text-sm text-nowrap text-base-content '>
-               <FormattedDate date={page.data.updated || page.data.created} />
-            </span>
-          </div>
+        sortedArticles.map((article) => (
+          <a href={`${article.id}`}>
+            <div class='flex flex-row p-2 border-base-100'>
+              <div class='max-md:hidden flex flex-col items-center min-w-148px min-h-148px text-center border-rd-10px aspect-square'>
+                <div class={`text-sm text-nowrap text-primary w-128px h-128px ${article.data.icon}`} />
+                <span class='text-sm text-nowrap text-base-content '>
+                  <FormattedDate date={article.data.updated || article.data.created} />
+                </span>
+              </div>
 
-          
-            <article>
-              <h1 class='mb-0 text-primary'>
-                {page.data.title}
-              </h1>
-              <p class='mt-1 text-base-content font-400 font-light tracking-normal'>{page.data.description}</p>
-            </article>
-          </div>
+              <article>
+                <h1 class='mb-0 text-primary'>{article.data.title}</h1>
+                <p class='mt-1 text-base-content font-400 font-light tracking-normal'>{article.data.description}</p>
+              </article>
+            </div>
           </a>
         ))
       }
