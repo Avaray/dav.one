@@ -17,5 +17,5 @@ const gridCols = (imagesCount = images.length) => {
 ---
 
 <div class={`grid ${gridCols()} gap-0.5 not-prose`}>
-  {images.map(([src, alt], index) => <Image src={src} alt={alt} title={alt} />)}
+  {images.map(([src, alt]) => <Image src={src} alt={alt} title={alt} />)}
 </div>
