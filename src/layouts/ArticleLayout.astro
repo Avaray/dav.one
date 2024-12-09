@@ -9,7 +9,7 @@ import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
 type Props = CollectionEntry<'articles'>['data'];
 
-const { title, description, created, updated } = Astro.props;
+const { title, description, created, updated, icon } = Astro.props;
 ---
 
 <ThemeWrapper>
@@ -21,6 +21,7 @@ const { title, description, created, updated } = Astro.props;
         <h1>
           {title}
         </h1>
+        <div class={`${icon} h-128px w-128px mx-auto`}></div>
         <span class='text-normal bg-primary text-base-100 font-bold p-2 border-rd-1'>
           <span>Created on</span><span
             ><FormattedDate date={created} />
