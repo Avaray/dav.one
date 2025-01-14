@@ -9,7 +9,7 @@ Previously I was using [React](https://react.dev/) SPA (Single Page Application)
 Currently theme switch component is disabled.  
 You can switch themes with `CTRL` + `Arrow Keys` combination.
 
-## ©️ Copyrigth
+## ©️ Copyright
 
 All articles and documents are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).  
 License is located in `LICENSE.md` file.
