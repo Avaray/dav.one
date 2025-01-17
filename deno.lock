@@ -14,8 +14,6 @@
     "npm:daisyui@^5.0.0-beta.1": "5.0.0-beta.1",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
     "npm:react@19": "19.0.0",
-    "npm:rehype-autolink-headings@^7.1.0": "7.1.0",
-    "npm:rehype-slug@6": "6.0.0",
     "npm:tailwindcss@^4.0.0-beta.9": "4.0.0-beta.9",
     "npm:vite@^6.0.7": "6.0.7_lightningcss@1.29.1_@types+node@22.10.5"
   },
@@ -1446,12 +1444,6 @@
         "web-namespaces"
       ]
     },
-    "hast-util-heading-rank@3.0.0": {
-      "integrity": "sha512-EJKb8oMUXVHcWZTDepnr+WNbfnXKFNf9duMesmr4S8SXTJBJ9M4Yok08pu9vxdJwdlGRhVumk9mEhkEvKGifwA==",
-      "dependencies": [
-        "@types/hast"
-      ]
-    },
     "hast-util-is-element@3.0.0": {
       "integrity": "sha512-Val9mnv2IWpLbNPqc/pUem+a7Ipj2aHacCwgNfTiK0vJKl0LF+4Ba4+v1oPHFpf3bLYmreq0/l3Gud9S5OH42g==",
       "dependencies": [
@@ -1549,12 +1541,6 @@
         "space-separated-tokens",
         "web-namespaces",
         "zwitch"
-      ]
-    },
-    "hast-util-to-string@3.0.1": {
-      "integrity": "sha512-XelQVTDWvqcl3axRfI0xSeoVKzyIFPwsAGSLIsKdJKQMXDYJS4WYrBNF/8J7RdhIcFI2BOHgAifggsvsxp/3+A==",
-      "dependencies": [
-        "@types/hast"
       ]
     },
     "hast-util-to-text@4.0.2": {
@@ -2560,17 +2546,6 @@
         "regex-utilities"
       ]
     },
-    "rehype-autolink-headings@7.1.0": {
-      "integrity": "sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==",
-      "dependencies": [
-        "@types/hast",
-        "@ungap/structured-clone",
-        "hast-util-heading-rank",
-        "hast-util-is-element",
-        "unified",
-        "unist-util-visit"
-      ]
-    },
     "rehype-parse@9.0.1": {
       "integrity": "sha512-ksCzCD0Fgfh7trPDxr2rSylbwq9iYDkSn8TCDmEJ49ljEUBxDVCzCHv7QNzZOfODanX4+bWQ4WZqLCRWYLfhag==",
       "dependencies": [
@@ -2593,16 +2568,6 @@
         "@types/estree",
         "@types/hast",
         "hast-util-to-estree"
-      ]
-    },
-    "rehype-slug@6.0.0": {
-      "integrity": "sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==",
-      "dependencies": [
-        "@types/hast",
-        "github-slugger",
-        "hast-util-heading-rank",
-        "hast-util-to-string",
-        "unist-util-visit"
       ]
     },
     "rehype-stringify@10.0.1": {
@@ -3176,8 +3141,6 @@
         "npm:daisyui@^5.0.0-beta.1",
         "npm:react-dom@19",
         "npm:react@19",
-        "npm:rehype-autolink-headings@^7.1.0",
-        "npm:rehype-slug@6",
         "npm:tailwindcss@^4.0.0-beta.9",
         "npm:vite@^6.0.7"
       ]
