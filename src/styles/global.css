@@ -1,44 +1,5 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: dark --default, light, forest, cupcake;
+  themes: all;
 };
 
-:root {}
-
-::selection {
-  @apply text-base-100 bg-primary;
-}
-
-main {
-  @apply prose prose-sm md:prose-base lg:prose-lg max-w-none;
-}
-
-main a {
-  @apply text-primary font-bold tracking-wider no-underline;
-}
-
-main a:hover {
-  @apply underline decoration-2 underline-offset-4;
-}
-
-.btn {
-  @apply no-animation;
-}
-
-blockquote {
-  @apply not-italic;
-  quotes: none;
-}
-
-pre {
-  @apply bg-base-content bg-opacity-5 text-base-content text-opacity-85;
-}
-
-code {
-  @apply text-lg whitespace-normal break-words;
-}
-
-/* Apply nowrap if not inside <pre> */
-code:not(pre code) {
-  @apply md:whitespace-nowrap
-}

@@ -1,29 +1,25 @@
-import { defineConfig, passthroughImageService } from 'astro/config';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import UnoCSS from 'unocss/astro';
-import react from '@astrojs/react';
-import preact from '@astrojs/preact';
+import { defineConfig, passthroughImageService } from "astro/config";
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://dav.one',
+  site: "https://dav.one",
   integrations: [
     mdx(),
     sitemap(),
-    tailwind(),
-    UnoCSS(),
     react({
-      include: ['**/react/*'],
-    }),
-    preact({
-      include: ['**/preact/*'],
-      compat: true,
+      include: ["**/react/*"],
     }),
   ],
+  vite: {
+    // @ts-ignore Shows error because of Beta (?)
+    plugins: [tailwindcss()],
+  },
   prefetch: true,
   image: {
     service: passthroughImageService(), // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
@@ -35,10 +31,10 @@ export default defineConfig({
       [
         rehypeAutolinkHeadings,
         {
-          behavior: 'append',
+          behavior: "append",
           headingProperties: {},
           properties: {
-            className: 'mx-2 my-10',
+            className: "mx-2 my-10",
           },
           content: [
             // {
@@ -53,14 +49,18 @@ export default defineConfig({
             //   },
             // },
             {
-              type: 'element',
-              tagName: 'span',
+              type: "element",
+              tagName: "span",
               properties: {
-                id: 'share-url',
-                className: ['i-ic:round-share', 'text-base-content/10', 'hover:text-primary'],
+                id: "share-url",
+                className: [
+                  "i-ic:round-share",
+                  "text-base-content/10",
+                  "hover:text-primary",
+                ],
                 onClick:
-                  'shareHeadingUrl(window.location.href, this.parentElement.parentElement.id, this.parentElement.parentElement.textContent)',
-                title: 'Share link to this heading',
+                  "shareHeadingUrl(window.location.href, this.parentElement.parentElement.id, this.parentElement.parentElement.textContent)",
+                title: "Share link to this heading",
               },
             },
           ],
