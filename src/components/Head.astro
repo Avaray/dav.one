@@ -29,14 +29,4 @@ const { title, description } = Astro.props;
 <!-- If I will find a better way to keep all CSS in one place, I will remove this -->
 <style is:global>
   @import '../style.css';
-  @import 'tailwindcss';
-  @plugin '@tailwindcss/typography';
-  @plugin "daisyui" {
-    themes:
-      dark,
-      light,
-      forest --default,
-      cupcake,
-      synthwave;
-  }
 </style>
