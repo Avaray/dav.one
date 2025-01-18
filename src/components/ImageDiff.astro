@@ -8,12 +8,12 @@ interface Props {
 const { images } = Astro.props;
 ---
 
-<div class='border-rd-2 diff aspect-[16/9] w-100 not-prose'>
-  <div class='diff-item-1'>
+<figure class='diff rounded-xl aspect-16/9 w-full not-prose'>
+  <div class='diff-item-1' role='img'>
     <Image src={images[0][0]} alt={images[0][1]} />
   </div>
-  <div class='diff-item-2'>
+  <div class='diff-item-2' role='img'>
     <Image src={images[1][0]} alt={images[1][1]} />
   </div>
-  <div class='diff-resizer w-50'></div>
-</div>
+  <div class='diff-resizer'></div>
+</figure>
