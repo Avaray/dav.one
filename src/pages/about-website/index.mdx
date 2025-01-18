@@ -9,9 +9,6 @@ export const articles = await getCollection('articles', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-import { customThemesList } from '../../themes.ts';
-
-import { fontList } from '/uno.config.ts';
 export const fontBaseUrl = 'https://fonts.google.com/specimen/';
 
 The website you're looking at is the result of my desire to share knowledge on topics that interest me, 
@@ -26,7 +23,8 @@ To be able to share an impressive total of {Object.keys(articles).length} articl
 - [daisyUI](https://daisyui.com/) - awesome library of components for TailwindCSS.
 - [Iconify](https://iconify.design/) - a huge library of icons.
 
-Fonts used: 
+{/* TODO: Find a new way to get the list of themes/fonts */}
+{/* Fonts used: 
 <ul>
 <li>[Another Danger](https://thebrandedquotes.sellfy.store/p/lez5/) - for the logo.</li>
 { Object.values(fontList).map((font, index) => {
@@ -37,7 +35,7 @@ Fonts used:
   </li>
   )
 })}
-</ul>
+</ul> */}
 
 Hosting & Deployments:
 - [Cloudflare Pages](https://pages.cloudflare.com/) - because of clear pricing and their awesome CDN.
