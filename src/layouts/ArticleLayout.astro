@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+// import FormattedDate from '../components/FormattedDate.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
@@ -21,7 +21,7 @@ const { title, description, created, updated } = Astro.props;
         <h1>
           {title}
         </h1>
-        <span class='text-normal bg-primary text-base-100 font-bold p-2 border-rd-1'>
+        <!-- <span class='text-normal bg-primary text-base-100 font-bold p-2 border-rd-1'>
           <span>Created on</span><span
             ><FormattedDate date={created} />
             {
@@ -32,7 +32,7 @@ const { title, description, created, updated } = Astro.props;
               )
             }
           </span>
-        </span>
+        </span> -->
 
         <slot />
       </article>
