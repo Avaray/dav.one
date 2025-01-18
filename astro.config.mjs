@@ -7,6 +7,10 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://dav.one",
+  legacy: {
+    // Need to keep this for legacy collections
+    collections: true,
+  },
   integrations: [
     mdx(),
     sitemap(),
