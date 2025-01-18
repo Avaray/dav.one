@@ -1,5 +1,5 @@
-<aside class='fixed top-4 right-4 z-10 flex flex-col w-auto'>
-  <!-- <div class="bg-base-100">
+<!-- <aside class='fixed top-4 right-4 z-10 flex flex-col w-auto'>
+  <div class="bg-base-100">
   <ul id='themeList' tabindex='0' class='menu dropdown-content p-4 rounded-box gap-3'>
     {
       customThemesList.map((theme) => {
@@ -16,11 +16,18 @@
       })
     }
   </ul>
-</div> -->
-</aside>
-
+</div>
+</aside> -->
 <script>
   const customThemesList = ['dark', 'light', 'forest', 'cupcake', 'synthwave'];
+
+  function loadTheme() {
+    const url = new URL(window.location.href);
+    const theme = url.searchParams.get('theme');
+    theme && setTheme(theme);
+  }
+
+  document.addEventListener('DOMContentLoaded', loadTheme);
 
   // Function to set theme and save it to localStorage
   function setTheme(theme?: string) {
@@ -34,13 +41,23 @@
   }
 
   // Change themes with buttons
-  const themeButtons = document.querySelectorAll('#themeButton');
-  themeButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const theme: string | null = button.getAttribute('data-value');
-      theme ? setTheme(theme) : setTheme('');
-    });
-  });
+  // const themeButtons = document.querySelectorAll('#themeButton');
+  // themeButtons.forEach((button) => {
+  //   button.addEventListener('click', () => {
+  //     const theme: string | null = button.getAttribute('data-value');
+  //     theme ? setTheme(theme) : setTheme('');
+  //   });
+  // });
+
+  // Update URL with theme if parameter is present
+  // I don't want to use theme param in URL
+  function updateURLWithTheme(theme: string) {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('theme')) {
+      url.searchParams.set('theme', theme);
+      window.history.replaceState({}, '', url.href);
+    }
+  }
 
   // Change themes with CTRL + Arrow keys
   document.addEventListener('keydown', (event) => {
@@ -50,9 +67,11 @@
       if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
         const previousTheme = customThemesList[currentIndex - 1] ?? customThemesList[customThemesList.length - 1];
         setTheme(previousTheme);
+        updateURLWithTheme(previousTheme);
       } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
         const nextTheme = customThemesList[currentIndex + 1] ?? customThemesList[0];
         setTheme(nextTheme);
+        updateURLWithTheme(nextTheme);
       }
     }
   });
