@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "taze": "deno -A npm:taze latest"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.6",
