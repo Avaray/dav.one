@@ -26,8 +26,9 @@ const { title, description } = Astro.props;
   <meta name='description' content={description} />
 </head>
 
-<!-- Currently my styles are here, because TW4 won't work there. I'm not sure if this is related to PostCSS or not -->
+<!-- If I will find a better way to keep all CSS in one place, I will remove this -->
 <style is:global>
+  @import '../style.css';
   @import 'tailwindcss';
   @plugin '@tailwindcss/typography';
   @plugin "daisyui" {
@@ -37,42 +38,5 @@ const { title, description } = Astro.props;
       forest --default,
       cupcake,
       synthwave;
-  }
-
-  :root {
-  }
-
-  ::selection {
-    @apply text-base-100 bg-primary;
-  }
-
-  main {
-    @apply prose prose-sm md:prose-base lg:prose-lg max-w-none;
-  }
-
-  main a {
-    @apply text-primary font-bold tracking-wider no-underline;
-  }
-
-  main a:hover {
-    @apply underline decoration-2 underline-offset-4;
-  }
-
-  blockquote {
-    @apply not-italic;
-    quotes: none;
-  }
-
-  code {
-    @apply text-lg whitespace-normal break-words;
-  }
-
-  /* Apply nowrap if not inside <pre> */
-  code:not(pre code) {
-    @apply md:whitespace-nowrap;
-  }
-
-  pre {
-    @apply bg-base-content/5 text-base-content/85;
   }
 </style>
