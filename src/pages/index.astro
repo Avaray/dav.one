@@ -30,7 +30,7 @@ const sortedArticles = [...articles].sort((a, b) => {
       const targetTop = targetRect.top;
 
       // Add class when element is NOT between 5% and 75%
-      if (targetTop < viewportHeight * 0.05 || targetTop > viewportHeight * 0.75) {
+      if (targetTop < viewportHeight * 0.05 || targetTop > viewportHeight * 0.8) {
         target.classList.add('out-range');
       } else {
         target.classList.remove('out-range');

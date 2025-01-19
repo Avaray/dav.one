@@ -5,8 +5,13 @@
   themes: all;
 }
 
+
+#target {
+  @apply transition-all duration-500;
+}
+
 .out-range {
-  @apply grayscale transition-all duration-100 opacity-20;  
+  @apply grayscale opacity-20;  
 }
 
 :root {
@@ -38,9 +43,9 @@ code, pre {
 }
 
 /* Apply nowrap if not inside <pre> */
-code:not(pre code) {
+/* code:not(pre code) {
   @apply md:whitespace-nowrap;
-}
+} */
 
 /* remove margins from code blocks if they are inside Tab component */
 pre:not(.tab-content code) {
