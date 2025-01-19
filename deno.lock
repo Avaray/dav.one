@@ -9,7 +9,6 @@
     "npm:@tailwindcss/vite@^4.0.0-beta.9": "4.0.0-beta.9_vite@6.0.7__lightningcss@1.29.1__@types+node@22.10.5_lightningcss@1.29.1",
     "npm:@types/react-dom@^19.0.3": "19.0.3_@types+react@19.0.7",
     "npm:@types/react@^19.0.7": "19.0.7",
-    "npm:@xtreat/astro-iconify@^1.1.5": "1.1.5_typescript@5.7.3_@types+node@22.10.5",
     "npm:astro@^5.1.7": "5.1.7_vite@6.0.7__@types+node@22.10.5_zod@3.24.1",
     "npm:daisyui@^5.0.0-beta.1": "5.0.0-beta.1",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
@@ -61,7 +60,7 @@
         "@astrojs/markdown-remark",
         "@mdx-js/mdx",
         "acorn",
-        "astro@5.1.7_vite@6.0.7__@types+node@22.10.5_zod@3.24.1",
+        "astro",
         "es-module-lexer",
         "estree-util-visit",
         "hast-util-to-html",
@@ -810,14 +809,6 @@
         "vite@6.0.7_@types+node@22.10.5"
       ]
     },
-    "@xtreat/astro-iconify@1.1.5_typescript@5.7.3_@types+node@22.10.5": {
-      "integrity": "sha512-IYT6eo0rBWA3lmdVRtOyPMwaluaYw+U811qON8c1+0EMg78ztd+4H/NgdDpdWLytPgdfmbg9yTyNZK9GOwHwMw==",
-      "dependencies": [
-        "@types/node@22.10.5",
-        "astro@5.1.7_typescript@5.7.3_@types+node@22.10.5_vite@6.0.7__@types+node@22.10.5_zod@3.24.1",
-        "typescript"
-      ]
-    },
     "acorn-jsx@5.3.2_acorn@8.14.0": {
       "integrity": "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==",
       "dependencies": [
@@ -869,71 +860,6 @@
     },
     "astring@1.9.0": {
       "integrity": "sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg=="
-    },
-    "astro@5.1.7_typescript@5.7.3_@types+node@22.10.5_vite@6.0.7__@types+node@22.10.5_zod@3.24.1": {
-      "integrity": "sha512-hGYHtO+67ZWDl0TY9ysh2iBv2KOgcgvpFJaMGZvknqBjh6TGqrwtWldCsJr1CK57rK8ycpPwC3Bi5bPaBELMuw==",
-      "dependencies": [
-        "@astrojs/compiler",
-        "@astrojs/internal-helpers",
-        "@astrojs/markdown-remark",
-        "@astrojs/telemetry",
-        "@oslojs/encoding",
-        "@rollup/pluginutils",
-        "@types/cookie",
-        "acorn",
-        "aria-query",
-        "axobject-query",
-        "boxen",
-        "ci-info",
-        "clsx",
-        "common-ancestor-path",
-        "cookie",
-        "cssesc",
-        "debug",
-        "deterministic-object-hash",
-        "devalue",
-        "diff",
-        "dlv",
-        "dset",
-        "es-module-lexer",
-        "esbuild",
-        "estree-walker@3.0.3",
-        "fast-glob",
-        "flattie",
-        "github-slugger",
-        "html-escaper",
-        "http-cache-semantics",
-        "js-yaml@4.1.0",
-        "kleur@4.1.5",
-        "magic-string",
-        "magicast",
-        "micromatch",
-        "mrmime",
-        "neotraverse",
-        "p-limit@6.2.0",
-        "p-queue",
-        "preferred-pm",
-        "prompts",
-        "rehype",
-        "semver@7.6.3",
-        "sharp",
-        "shiki",
-        "tinyexec",
-        "tsconfck",
-        "ultrahtml",
-        "unist-util-visit",
-        "unstorage",
-        "vfile",
-        "vite@6.0.7_@types+node@22.10.5",
-        "vitefu@1.0.5_vite@6.0.7__@types+node@22.10.5_@types+node@22.10.5",
-        "which-pm",
-        "xxhash-wasm",
-        "yargs-parser",
-        "yocto-spinner",
-        "zod",
-        "zod-to-json-schema",
-        "zod-to-ts"
-      ]
     },
     "astro@5.1.7_vite@6.0.7__@types+node@22.10.5_zod@3.24.1": {
       "integrity": "sha512-hGYHtO+67ZWDl0TY9ysh2iBv2KOgcgvpFJaMGZvknqBjh6TGqrwtWldCsJr1CK57rK8ycpPwC3Bi5bPaBELMuw==",
@@ -990,7 +916,7 @@
         "unstorage",
         "vfile",
         "vite@6.0.7_@types+node@22.10.5",
-        "vitefu@1.0.5_vite@6.0.7__@types+node@22.10.5",
+        "vitefu",
         "which-pm",
         "xxhash-wasm",
         "yargs-parser",
@@ -3052,12 +2978,6 @@
         "vite@6.0.7_@types+node@22.10.5"
       ]
     },
-    "vitefu@1.0.5_vite@6.0.7__@types+node@22.10.5_@types+node@22.10.5": {
-      "integrity": "sha512-h4Vflt9gxODPFNGPwp4zAMZRpZR7eslzwH2c5hn5kNZ5rhnKyRJ50U+yGCdc2IRaBs8O4haIgLNGrV5CrpMsCA==",
-      "dependencies": [
-        "vite@6.0.7_@types+node@22.10.5"
-      ]
-    },
     "web-namespaces@2.0.1": {
       "integrity": "sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ=="
     },
@@ -3136,7 +3056,7 @@
         "npm:@tailwindcss/vite@^4.0.0-beta.9",
         "npm:@types/react-dom@^19.0.3",
         "npm:@types/react@^19.0.7",
-        "npm:@xtreat/astro-iconify@^1.1.5",
+        "npm:@xtreat/astro-iconify@^1.2.6",
         "npm:astro@^5.1.7",
         "npm:daisyui@^5.0.0-beta.1",
         "npm:react-dom@19",
