@@ -5,6 +5,10 @@
   themes: all;
 }
 
+.out-range {
+  @apply grayscale transition-all duration-100 opacity-20;  
+}
+
 :root {
 }
 

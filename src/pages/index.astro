@@ -20,6 +20,25 @@ const sortedArticles = [...articles].sort((a, b) => {
 });
 ---
 
+<script>
+  window.addEventListener('scroll', function () {
+    const targets = document.querySelectorAll('#target');
+    const viewportHeight = window.innerHeight;
+
+    targets.forEach((target) => {
+      const targetRect = target.getBoundingClientRect();
+      const targetTop = targetRect.top;
+
+      // Add class when element is NOT between 5% and 75%
+      if (targetTop < viewportHeight * 0.05 || targetTop > viewportHeight * 0.75) {
+        target.classList.add('out-range');
+      } else {
+        target.classList.remove('out-range');
+      }
+    });
+  });
+</script>
+
 <ThemeWrapper>
   <Head title={siteTitle} description={siteDescription} />
   <body>
@@ -28,7 +47,7 @@ const sortedArticles = [...articles].sort((a, b) => {
       {
         sortedArticles.map((article) => (
           <a href={article.id}>
-            <div class='flex flex-row p-2'>
+            <div id='target' class='flex flex-row p-2'>
               <div class='max-md:hidden flex flex-col items-center min-w-[148px] min-h-[148px] text-center rounded-lg aspect-square'>
                 {/* Using [&>*]:fill-current to replace colors in icons */}
                 <Icon icon={article.data.icon} class='text-primary mx-6 h-32 w-32 [&>*]:fill-current' />
