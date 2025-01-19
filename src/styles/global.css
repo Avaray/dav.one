@@ -29,7 +29,7 @@ blockquote {
   quotes: none;
 }
 
-code {
+code, pre {
   @apply text-lg whitespace-normal break-words;
 }
 
