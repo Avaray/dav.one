@@ -38,6 +38,11 @@ code:not(pre code) {
   @apply md:whitespace-nowrap;
 }
 
+/* remove margins from code blocks if they are inside Tab component */
+pre:not(.tab-content code) {
+  @apply my-0;
+}
+
 pre {
   @apply bg-base-content/5 text-base-content/85;
 }
