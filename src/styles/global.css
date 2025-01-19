@@ -2,12 +2,7 @@
 /* @plugin '@tailwindcss/utilities'; */
 @plugin '@tailwindcss/typography';
 @plugin "daisyui" {
-  themes:
-    dark,
-    light,
-    forest --default,
-    cupcake,
-    synthwave;
+  themes: all;
 }
 
 :root {
