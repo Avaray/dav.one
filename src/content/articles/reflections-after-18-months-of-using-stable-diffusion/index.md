@@ -1,7 +1,7 @@
 ---
 title: 'Reflections after 18 months of using Stable Diffusion'
 description: "For about a year and a half, I've been observing the Stable Diffusion scene. I've generated tens of thousands of images in various ways. Most of them unnecessarily. In this article, I want to share my brief thoughts on a few topics related to Stable Diffusion."
-created: 'Sep 16 2024'
+created: '1726437600'
 icon: 'game-icons:anatomy'
 draft: true
 ---
