@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang='en' class='max-w-screen-lg mx-auto transition-colors duration-500'>
   <script is:inline>
-    const currentTheme = localStorage.getItem('theme') || 'default';
+    const currentTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
 
-    function copyHeadingUrl(url, heading) {
-      url = url.split('#')[0];
-      navigator.clipboard.writeText(`${url}#${heading}`);
-    }
+    // function copyHeadingUrl(url, heading) {
+    //   url = url.split('#')[0];
+    //   navigator.clipboard.writeText(`${url}#${heading}`);
+    // }
 
     // I will use this only for the articles
     // https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API#example
