@@ -21,22 +21,22 @@ const sortedArticles = [...articles].sort((a, b) => {
 ---
 
 <script>
-  window.addEventListener('scroll', function () {
+  function checkElements() {
     const targets = document.querySelectorAll('#target');
     const viewportHeight = window.innerHeight;
-
     targets.forEach((target) => {
       const targetRect = target.getBoundingClientRect();
       const targetTop = targetRect.top;
-
-      // Add class when element is NOT between 5% and 75%
+      // Add class when element is NOT between 5% and 80%
       if (targetTop < viewportHeight * 0.05 || targetTop > viewportHeight * 0.8) {
         target.classList.add('out-range');
       } else {
         target.classList.remove('out-range');
       }
     });
-  });
+  }
+  document.addEventListener('DOMContentLoaded', checkElements);
+  window.addEventListener('scroll', checkElements);
 </script>
 
 <ThemeWrapper>
