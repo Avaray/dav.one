@@ -2,11 +2,11 @@
   "version": "4",
   "specifiers": {
     "npm:@astrojs/mdx@^4.0.6": "4.0.6_astro@5.1.7__vite@6.0.7__zod@3.24.1_acorn@8.14.0",
-    "npm:@astrojs/react@^4.1.5": "4.1.5_@types+react@19.0.7_@types+react-dom@19.0.3__@types+react@19.0.7_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.7__lightningcss@1.29.1",
+    "npm:@astrojs/react@^4.1.5": "4.1.5_@types+react@19.0.7_@types+react-dom@19.0.3__@types+react@19.0.7_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.9__lightningcss@1.29.1",
     "npm:@astrojs/rss@^4.0.11": "4.0.11",
     "npm:@astrojs/sitemap@^3.2.1": "3.2.1",
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.0.0-beta.9",
-    "npm:@tailwindcss/vite@^4.0.0-beta.9": "4.0.0-beta.9_vite@6.0.7__lightningcss@1.29.1_lightningcss@1.29.1",
+    "npm:@tailwindcss/vite@^4.0.0-beta.9": "4.0.0-beta.9_vite@6.0.9__lightningcss@1.29.1_lightningcss@1.29.1",
     "npm:@types/react-dom@^19.0.3": "19.0.3_@types+react@19.0.7",
     "npm:@types/react@^19.0.7": "19.0.7",
     "npm:@xtreat/astro-iconify@^1.2.6": "1.2.6",
@@ -15,7 +15,7 @@
     "npm:react-dom@19": "19.0.0_react@19.0.0",
     "npm:react@19": "19.0.0",
     "npm:tailwindcss@^4.0.0-beta.9": "4.0.0-beta.9",
-    "npm:vite@^6.0.7": "6.0.7_lightningcss@1.29.1"
+    "npm:vite@^6.0.9": "6.0.9_lightningcss@1.29.1"
   },
   "npm": {
     "@ampproject/remapping@2.3.0": {
@@ -80,7 +80,7 @@
         "prismjs"
       ]
     },
-    "@astrojs/react@4.1.5_@types+react@19.0.7_@types+react-dom@19.0.3__@types+react@19.0.7_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.7__lightningcss@1.29.1": {
+    "@astrojs/react@4.1.5_@types+react@19.0.7_@types+react-dom@19.0.3__@types+react@19.0.7_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.9__lightningcss@1.29.1": {
       "integrity": "sha512-2o07NEJzB3WvRyV77SSkd6B7XQ10pXa0MkX8uhNtEeuOdwbxHP4xXhNVRrXAC7qe+Q8WfnijYRjRP2oz5scsOQ==",
       "dependencies": [
         "@types/react",
@@ -89,7 +89,7 @@
         "react",
         "react-dom",
         "ultrahtml",
-        "vite@6.0.7_lightningcss@1.29.1"
+        "vite@6.0.9_lightningcss@1.29.1"
       ]
     },
     "@astrojs/rss@4.0.11": {
@@ -670,14 +670,14 @@
         "tailwindcss"
       ]
     },
-    "@tailwindcss/vite@4.0.0-beta.9_vite@6.0.7__lightningcss@1.29.1_lightningcss@1.29.1": {
+    "@tailwindcss/vite@4.0.0-beta.9_vite@6.0.9__lightningcss@1.29.1_lightningcss@1.29.1": {
       "integrity": "sha512-Hf28QkwSLM6bbOkcTQk1iEEOB37v+9vfqdpHUaLSluZpEGCVAFc0i+p2Gvp6MlK840tyixQu5L39VjL2lAZFFQ==",
       "dependencies": [
         "@tailwindcss/node",
         "@tailwindcss/oxide",
         "lightningcss",
         "tailwindcss",
-        "vite@6.0.7_lightningcss@1.29.1"
+        "vite@6.0.9_lightningcss@1.29.1"
       ]
     },
     "@types/acorn@4.0.6": {
@@ -793,7 +793,7 @@
     "@ungap/structured-clone@1.2.1": {
       "integrity": "sha512-fEzPV3hSkSMltkw152tJKNARhOupqbH96MZWyRjNaYZOMIzbrTeQDG+MTc6Mr2pgzFQzFxAfmhGDNP5QK++2ZA=="
     },
-    "@vitejs/plugin-react@4.3.4_vite@6.0.7__lightningcss@1.29.1_@babel+core@7.26.0": {
+    "@vitejs/plugin-react@4.3.4_vite@6.0.9__lightningcss@1.29.1_@babel+core@7.26.0": {
       "integrity": "sha512-SCCPBJtYLdE8PX/7ZQAs1QAZ8Jqwih+0VBLum1EGqmCCQal+MIUqLCzj3ZUy8ufbC0cAM4LRlSTm7IQJwWT4ug==",
       "dependencies": [
         "@babel/core",
@@ -801,7 +801,7 @@
         "@babel/plugin-transform-react-jsx-source",
         "@types/babel__core",
         "react-refresh",
-        "vite@6.0.7"
+        "vite@6.0.9"
       ]
     },
     "@xtreat/astro-iconify@1.2.6": {
@@ -2955,8 +2955,17 @@
         "rollup"
       ]
     },
-    "vite@6.0.7_lightningcss@1.29.1": {
-      "integrity": "sha512-RDt8r/7qx9940f8FcOIAH9PTViRrghKaK2K1jY3RaAURrEUbm9Du1mJ72G+jlhtG3WwodnfzY8ORQZbBavZEAQ==",
+    "vite@6.0.9": {
+      "integrity": "sha512-MSgUxHcaXLtnBPktkbUSoQUANApKYuxZ6DrbVENlIorbhL2dZydTLaZ01tjUoE3szeFzlFk9ANOKk0xurh4MKA==",
+      "dependencies": [
+        "esbuild",
+        "fsevents",
+        "postcss",
+        "rollup"
+      ]
+    },
+    "vite@6.0.9_lightningcss@1.29.1": {
+      "integrity": "sha512-MSgUxHcaXLtnBPktkbUSoQUANApKYuxZ6DrbVENlIorbhL2dZydTLaZ01tjUoE3szeFzlFk9ANOKk0xurh4MKA==",
       "dependencies": [
         "esbuild",
         "fsevents",
@@ -3055,7 +3064,7 @@
         "npm:react-dom@19",
         "npm:react@19",
         "npm:tailwindcss@^4.0.0-beta.9",
-        "npm:vite@^6.0.7"
+        "npm:vite@^6.0.9"
       ]
     }
   }
