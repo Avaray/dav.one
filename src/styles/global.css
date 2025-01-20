@@ -24,6 +24,10 @@ main {
   @apply prose prose-sm md:prose-base lg:prose-lg max-w-none;
 }
 
+h1 {
+  @apply md:text-[2.25em] md:leading-[1.2] lg:text-[2.3em] lg:leading-[1.3] xl:text-[2.4em] xl:leading-[1.35];
+}
+
 main a {
   @apply text-primary font-bold tracking-wider no-underline;
 }
