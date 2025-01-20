@@ -30,12 +30,40 @@ import Icon from '@xtreat/astro-iconify';
   </div>
 </div>
 
+export const badgesList = (list) => {
+  return (
+    <div class="inline-flex gap-2 ">
+      {list.map((tool) => {
+        return <a href={tool.link} class="!font-normal"><div class="badge badge-outline badge-primary">{tool.name}</div></a>
+      })}
+    </div>
+  )
+}
+
+export const technologies = {
+  frontend: [
+    { name: "React", link: "https://react.dev/" },
+    { name: "TypeScript", link: "https://www.typescriptlang.org/" },
+    { name: "TailwindCSS", link: "https://tailwindcss.com/" },
+    { name: "Astro", link: "https://astro.build/" }
+  ],
+  backend: [
+    { name: "Bun", link: "https://bun.sh/" },
+    { name: "Deno", link: "https://deno.com/" },
+    { name: "Node", link: "https://nodejs.org/en/" }
+  ],
+  mobile: [
+    { name: "React Native", link: "https://reactnative.dev/" },
+    { name: "Expo", link: "https://docs.expo.dev/" }
+  ]
+}
+
 ## Currently, I'm looking for a full-time job as a:
 - Generative AI Engineer / Content Creator (graphics related)
-- <span className='opacity-50'>Junior</span> Frontend Developer ([React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [TailwindCSS](https://tailwindcss.com/), [Astro](https://astro.build/))
-- <span className='opacity-50'>Junior</span> Backend Developer ([Bun](https://bun.sh/), [Deno](https://deno.com/), [Node](https://nodejs.org/en))
+- <span className='opacity-50'>Junior</span> Frontend Developer {badgesList(technologies.frontend)}
+- <span className='opacity-50'>Junior</span> Backend Developer {badgesList(technologies.backend)}
 - <span className='opacity-50'>Junior</span> Fullstack Developer
-- <span className='opacity-50'>Junior</span> Mobile Developer ([Expo](https://docs.expo.dev/), [React Native](https://reactnative.dev/))
+- <span className='opacity-50'>Junior</span> Mobile Developer {badgesList(technologies.mobile)}
 - <span className='opacity-50'>Junior</span> IT Support / Helpdesk
 - <span className='opacity-50'>Junior</span> Manual Tester
 - <span className='opacity-50'>Junior</span> Automation Tester
