@@ -13,7 +13,7 @@
 }
 
 :root {
-  /* scrollbar-color: var(--color-primary) var(--color-base-100); */
+  @apply p-2
 }
 
 ::selection {
