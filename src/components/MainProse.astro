@@ -1,3 +1,11 @@
-<main class='prose prose-sm md:prose-base lg:prose-lg max-w-none'>
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<main class:list={['prose prose-sm md:prose-base lg:prose-lg max-w-none ', className]}>
   <slot />
 </main>
