@@ -1,8 +1,8 @@
 ---
 title: 'The ways and costs of generating graphics using Stable Diffusion'
 description: 'An in-depth comparison of generation methods, helping you choose between investing in hardware, renting cloud services, or using web platforms. Includes practical insights on costs, performance, and limitations.'
-created: '1690063200'
-updated: '1724709600'
+created: '1690119420000'
+updated: '1724765820000'
 icon: 'game-icons:take-my-money'
 ---
 
