@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import MainProse from '../components/MainProse.astro';
 const { frontmatter } = Astro.props;
 const { title, description } = frontmatter;
 ---
@@ -12,11 +13,11 @@ const { title, description } = frontmatter;
   <Head title={title} description={description} />
   <body>
     <Header />
-    <main>
+    <MainProse>
       <article>
         <slot />
       </article>
-    </main>
+    </MainProse>
     <ThemeSwitcher />
     <Footer />
   </body>

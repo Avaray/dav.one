@@ -8,6 +8,7 @@ import ThemeWrapper from '../components/ThemeWrapper.astro';
 import { getCollection } from 'astro:content';
 // import FormattedDate from '../components/FormattedDate.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import MainProse from '../components/MainProse.astro';
 
 const articles = await getCollection('articles', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
@@ -43,7 +44,7 @@ const sortedArticles = [...articles].sort((a, b) => {
   <Head title={siteTitle} description={siteDescription} />
   <body>
     <Header />
-    <main>
+    <MainProse>
       {
         sortedArticles.map((article) => (
           <a href={article.id}>
@@ -64,7 +65,7 @@ const sortedArticles = [...articles].sort((a, b) => {
           </a>
         ))
       }
-    </main>
+    </MainProse>
     <ThemeSwitcher />
     <Footer />
   </body>

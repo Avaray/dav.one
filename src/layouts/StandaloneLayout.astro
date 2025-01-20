@@ -1,5 +1,6 @@
 ---
 import Head from '../components/Head.astro';
+import MainProse from '../components/MainProse.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
 const { frontmatter } = Astro.props;
 const { title, description } = frontmatter;
@@ -8,10 +9,10 @@ const { title, description } = frontmatter;
 <ThemeWrapper>
   <Head title={title} description={description} />
   <body>
-    <main>
+    <MainProse>
       <article>
         <slot />
       </article>
-    </main>
+    </MainProse>
   </body>
 </ThemeWrapper>
