@@ -1,6 +1,6 @@
 ---
-title: 'Reflections after 18 months of using Stable Diffusion'
-description: "For about a year and a half, I've been observing the Stable Diffusion scene. I've generated tens of thousands of images in various ways. Most of them unnecessarily. In this article, I want to share my brief thoughts on a few topics related to Stable Diffusion."
+title: 'Reflections after two years of using Stable Diffusion'
+description: "For over two years, I've been observing the Stable Diffusion scene. I've generated tens of thousands of images in various ways. Most of them unnecessarily. In this article, I want to share my brief thoughts on a few topics related to Stable Diffusion."
 created: '1726437600'
 icon: 'game-icons:anatomy'
 draft: true
@@ -16,11 +16,12 @@ on their own computer, as long as the hardware specifications allowed it.
 
 ## Competition
 
-jest wieksza, duzy spam, ciezko sie wybic, kiedys latwiej bylo sie docenionym
+Competition is higher nowadays, difficult to get on top with graphics, a lot of
+spam with low quality images, bots, etc.
 
 ## Never solved problems
 
-fingers, hands, arms, legs, etc
+Fingers, hands, arms, legs, etc. Flux is better in those, but worse in others.
 
 ## Models
 
