@@ -44,13 +44,8 @@ blockquote {
 }
 
 code, pre {
-  @apply text-lg whitespace-normal break-words;
+  @apply text-lg font-mono;
 }
-
-/* Apply nowrap if not inside <pre> */
-/* code:not(pre code) {
-  @apply md:whitespace-nowrap;
-} */
 
 /* remove margins from code blocks if they are inside Tab component */
 pre:not(.tab-content code) {
