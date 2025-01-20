@@ -47,7 +47,7 @@ const sortedArticles = [...articles].sort((a, b) => {
     <MainProse>
       {
         sortedArticles.map((article) => (
-          <a href={article.id}>
+          <a href={article.slug}>
             <div id='target' class='flex flex-row p-2'>
               <div class='max-md:hidden flex flex-col items-center min-w-[148px] min-h-[148px] text-center rounded-lg aspect-square'>
                 {/* Using [&>*]:fill-current to replace colors in icons */}
