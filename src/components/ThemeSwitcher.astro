@@ -50,7 +50,7 @@
   // });
 
   // Update URL with theme if parameter is present
-  // I don't want to use theme param in URL
+  // I don't want to use theme param in URL by default
   function updateURLWithTheme(theme: string) {
     const url = new URL(window.location.href);
     if (url.searchParams.has('theme')) {
