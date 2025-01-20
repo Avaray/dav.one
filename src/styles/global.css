@@ -1,10 +1,8 @@
 @import 'tailwindcss';
-/* @plugin '@tailwindcss/utilities'; */
 @plugin '@tailwindcss/typography';
 @plugin "daisyui" {
   themes: all;
 }
-
 
 #target {
   @apply transition-all duration-500;
