@@ -1,0 +1,218 @@
+---
+title: 'Setting up Astro project with TailwindCSS V4 and daisyUI V5'
+description: 'Setting up a project with TailwindCSS and daisyUI'
+created: '1737241200'
+icon: 'logos:astro-icon'
+draft: true
+---
+
+import Tabs from 'Tabs.astro';
+import TabsSync from 'TabsSync.astro';
+
+<TabsSync />
+
+## 1. Initialize your new [Astro](https://docs.astro.build/en/getting-started/) project
+
+Initialize new project by running the following command in your terminal.  
+Command will launch a [CLI wizard](https://docs.astro.build/en/install-and-setup/#install-from-the-cli-wizard) to setup your project.  
+Setup a project as you like. **Just don't install dependencies in setup process.** You will do that later.
+
+export const initialization = [
+  { label: "Deno", content: "deno -A npm:create-astro@latest" },
+  { label: "Bun", content: "bunx create astro@latest" },
+  { label: "NPM", content: "npm create astro@latest" },
+  { label: "PNPM", content: "pnpm create astro@latest" },
+  { label: "Yarn", content: "yarn create astro@latest" },
+];
+
+<Tabs tabs={initialization} name="initialization" />
+
+## 2. Install Dependencies
+
+export const dependencies = [
+  { label: "Deno", content: "deno i --allow-scripts npm:vite@latest npm:tailwindcss@next npm:@tailwindcss/vite@next\ndeno i -D npm:daisyui@beta" },
+  { label: "Bun", content: "bun i vite@latest tailwindcss@next @tailwindcss/vite@next\nbun i -D daisyui@beta" },
+  { label: "NPM", content: "npm i vite@latest tailwindcss@next @tailwindcss/vite@next\nnpm i -D daisyui@beta" },
+  { label: "PNPM", content: "pnpm add vite@latest tailwindcss@next @tailwindcss/vite@next\npnpm add -D daisyui@beta" },
+  { label: "Yarn", content: "yarn add vite@latest tailwindcss@next @tailwindcss/vite@next\nyarn add -D daisyui@beta" },
+];
+
+<Tabs tabs={dependencies} name="dependencies" />
+
+## 3. Configure Astro
+
+Open project in your favorite editor. If it's [VSCode](https://code.visualstudio.com/), you can also install official [Astro extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode).
+
+Edit **astro.config.mjs** file located in the root of your project. You need to add [TailwindCSS](https://tailwindcss.com/) as a [Vite plugin](https://docs.astro.build/en/recipes/add-yaml-support/).
+
+```ts
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
+```
+
+## 4. Add TailwindCSS and daisyUI to your CSS
+
+To make [TailwindCSS](https://tailwindcss.com/) and [daisyUI](daisyui.com) available in your project, you need to add them to your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) file.
+You can make it available globally or locally. Everything depends on your needs.
+In following examples, we will make them available globally.
+
+src/styles/**global.css**
+```css
+@import "tailwindcss";
+@plugin "daisyui";
+```
+
+Then import CSS file in **.astro** component like:
+```yaml
+---
+import '../proper/path/to/styles/global.css';
+---
+```
+
+Another way to import CSS file in **.astro** component:
+
+```ts
+<style is:global>
+  @import '../proper/path/to/styles/global.css';
+</style>
+```
+
+If you are not planning to use CSS files at all, you can import them in **.astro** component like this:
+
+```html
+<style is:global>
+  @import "tailwindcss";
+  @plugin "daisyui";
+</style>
+```
+
+## 5. Configure daisyUI
+
+By default [daisyUI](daisyui.com) has two themes: **light** and **dark** and you don't need to configure anything to make it work.  
+However, you can customize it as you like by editing your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) file.
+Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.daisyui.com/docs/themes/) pages for more information.
+
+```css
+@plugin "daisyui" {
+  themes: dark --default, light, forest, dracula;
+};
+```
+
+## 6. Add Typography (optional)
+
+To make [TailwindCSS Typography](https://tailwindcss-typography.vercel.app/) available in your project, first you need to install package.
+
+export const typography = [
+  { label: "Deno", content: "deno i -D npm:@tailwindcss/typography" },
+  { label: "Bun", content: "bun i -D @tailwindcss/typography" },
+  { label: "NPM", content: "npm i -D @tailwindcss/typography" },
+  { label: "PNPM", content: "pnpm add -D @tailwindcss/typography" },
+  { label: "Yarn", content: "yarn add -D @tailwindcss/typography" },
+]
+
+<Tabs tabs={typography} name="typography" />
+
+Add plugin in your CSS file.
+
+```css
+@plugin "@tailwindcss/typography";
+```
+
+Finally add the **prose** class somewhere in your project. For example, to your **body** tag.
+
+```html
+<body class="prose">
+```
+
+I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#applying-a-type-scale) and [this page of daisyUI](https://v5.daisyui.com/docs/layout-and-typography/) to learn more.  
+Also be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply) with class **prose** may cause issues.
+
+## 7. Add SVG Icons (optional)
+
+Recently [Xander Treat](xtreat.dev) created [@xtreat/astro-iconify](https://www.npmjs.com/package/@xtreat/astro-iconify) package to make it easy to use [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) icons in your [Astro](https://astro.build/) projects.  
+Comparing to other SVG icon libraries, this one lets you use any icons from [Iconify](https://iconify.design/) without hassles.  
+To search for icons, I recommend [Icones](https://icones.js.org/) website, created by [Anthony Fu](https://antfu.me/).  
+
+To install icons in your project, run the following command in your terminal.
+
+{/* Need to fix those commands, because they were generated by AI */}
+export const icons = [
+  { label: "Deno", content: "deno i npm:@xtreat/astro-iconify" },
+  { label: "Bun", content: "bun i @xtreat/astro-iconify" },
+  { label: "NPM", content: "npm i @xtreat/astro-iconify" },
+  { label: "PNPM", content: "pnpm add @xtreat/astro-iconify" },
+  { label: "Yarn", content: "yarn add @xtreat/astro-iconify" },
+];
+
+<Tabs tabs={icons} name="icons" />
+
+Then you will be able to use icons in **.astro** files like:
+
+```html
+---
+import Icon from "@xtreat/astro-iconify";
+---
+
+<Icon class="h-20 w-20" icon="game-icons:balloon-dog" />
+```
+
+Or in [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files like:
+
+```mdx
+import Icon from '@xtreat/astro-iconify';
+
+<Icon class="h-20 w-20" icon="game-icons:balloon-dog" />
+```
+
+## 8. Add React (optional)
+
+[Astro](https://astro.build/) lets you use popular frameworks such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same project!).  
+To add them, you should follow guides available [here](https://docs.astro.build/en/guides/integrations-guide/) and daisyUI guides available [here](https://v5.daisyui.com/docs/install/#framework-install-tutorials).
+
+In case of this tutorial, we will add [React](https://react.dev/) framework manually.  
+To install it in your project, run the following command in your terminal.
+
+export const react = [
+  { label: "Deno", content: "deno i --allow-scripts npm:@astrojs/react npm:react npm:react-dom npm:@types/react npm:@types/react-dom" },
+  { label: "Bun", content: "bun i @astrojs/react react react-dom @types/react @types/react-dom" },
+  { label: "NPM", content: "npm i @astrojs/react react react-dom @types/react @types/react-dom" },
+  { label: "PNPM", content: "pnpm add @astrojs/react react react-dom @types/react @types/react-dom" },
+  { label: "Yarn", content: "yarn add @astrojs/react react react-dom @types/react @types/react-dom" },
+]
+
+<Tabs tabs={react} name="react" />
+
+Edit **astro.config.mjs** configuration file again. Add [React](https://react.dev/) to [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
+
+```ts
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+
+export default defineConfig({
+  integrations: [react()],
+});
+```
+
+Configure [TypeScript](https://www.typescriptlang.org/docs/) by editing **tsconfig.json** file located in the root of your project.  
+Add following lines to **compilerOptions** section.
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}
+```
+
+## 9. Finish (required)
+
+Are you having fun writing code in your new project, and is everything working as expected?  
+Do you have any issues or need some help? Perhaps you want to showcase your project or ask for feedback?  
+Visit the [daisyUI Discord server](https://discord.gg/c5ZZ5Pr9Gc) and say hello! 
