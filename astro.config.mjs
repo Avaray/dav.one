@@ -20,7 +20,6 @@ export default defineConfig({
     }),
   ],
   vite: {
-    // @ts-ignore Shows error because of Beta (?)
     plugins: [tailwindcss()],
     resolve: {
       alias: {
