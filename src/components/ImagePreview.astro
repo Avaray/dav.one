@@ -1,0 +1,13 @@
+---
+const { image } = Astro.props as { image: string };
+---
+
+<button class='btn' onclick='my_modal_2.showModal()'>open image</button>
+<dialog id='my_modal_2' class='modal'>
+  <div class='modal-box p-0 mx-auto max-w-fit'>
+    <img src={image} alt='Your Image' class='h-auto max-h-[80vh] w-auto max-w-[90vw] object-contain' />
+  </div>
+  <form method='dialog' class='modal-backdrop'>
+    <button></button>
+  </form>
+</dialog>
