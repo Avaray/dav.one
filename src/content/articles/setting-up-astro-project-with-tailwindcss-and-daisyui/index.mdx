@@ -5,8 +5,14 @@ created: '1737380220000'
 icon: 'logos:astro-icon'
 ---
 
+<div role="alert" class="alert alert-warning alert-soft text-lg">
+  <span>Warning: This article is based on Beta versions. It will be updated once the stable versions are officially released.</span>
+</div>
+
+import Icon from '@xtreat/astro-iconify';
 import Tabs from 'Tabs.astro';
 import TabsSync from 'TabsSync.astro';
+import PseudoCard from '@/components/CardPseudo.astro';
 
 <TabsSync />
 
@@ -91,7 +97,9 @@ If you are not planning to use CSS files at all, you can import them in **.astro
 </style>
 ```
 
-## 5. Configure daisyUI
+<PseudoCard icon="game-icons:coronation" title="YOU DID IT!" description="At this moment you should be able to see TailwindCSS and daisyUI in your project.\nIf you want, you can take a few additional steps that might be useful to you." />
+
+## 5. Configure daisyUI (optional)
 
 By default [daisyUI](daisyui.com) has two themes: **light** and **dark** and you don't need to configure anything to make it work.  
 However, you can customize it as you like by editing your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) file.
