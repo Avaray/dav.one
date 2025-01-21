@@ -7,7 +7,16 @@
     // Create a button element
     const button = document.createElement('button');
     button.textContent = 'Copy';
-    button.classList.add('btn', 'btn-ghost', 'absolute', 'top-0', 'right-0', 'transition-colors', 'duration-500');
+    button.classList.add(
+      'btn',
+      'btn-ghost',
+      'absolute',
+      'top-0',
+      'right-0',
+      'transition-colors',
+      'duration-500',
+      '[--depth:0]',
+    );
 
     // Wrap the <pre> element in a relative container to position the button
     const container = document.createElement('div');
