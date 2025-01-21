@@ -11,12 +11,12 @@
 }
 
 pre, .astro-code {
-  @apply !bg-base-content/5;
+  @apply !bg-base-content/5 !text-base-content/85;
 }
 
-.astro-code code .line {
+/* .astro-code code .line {
   @apply !text-base-content/85;
-}
+} */
 
 .astro-code code .line [style*="color:#A6E22E"] {
   @apply !text-base-content !font-bold; /* Keywords */
@@ -75,4 +75,8 @@ code, pre {
 /* remove margins from code blocks if they are inside Tab component */
 pre:not(.tab-content code) {
   @apply my-0;
+}
+
+.flip-x {
+  @apply scale-x-[-1];
 }
