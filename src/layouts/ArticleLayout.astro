@@ -7,7 +7,7 @@ import Footer from '../components/Footer.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import MainProse from '../components/MainProse.astro';
-import CopyCode from '../components/CopyCode.astro';
+// import CopyCode from '../components/CopyCode.astro';
 
 type Props = CollectionEntry<'articles'>['data'];
 
@@ -19,7 +19,7 @@ const { title, description, created, updated } = Astro.props;
   <body>
     <Header />
     <MainProse>
-      <CopyCode />
+      <!-- <CopyCode /> -->
       <article>
         <h1 class='text-base-content/80'>
           {title}
