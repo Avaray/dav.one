@@ -10,6 +10,22 @@
   --color-primary-content: oklch(93% 0.034 272.788);
 }
 
+pre, .astro-code {
+  @apply !bg-base-content/5;
+}
+
+.astro-code code .line {
+  @apply !text-base-content/85;
+}
+
+.astro-code code .line [style*="color:#A6E22E"] {
+  @apply !text-base-content !font-bold; /* Keywords */
+}
+
+.astro-code code .line [style*="color:#F92672"] {
+  @apply !text-base-content; /* Functions */
+}
+
 :root {
   @apply p-2;
 }
