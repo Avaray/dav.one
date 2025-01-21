@@ -24,7 +24,7 @@ Setup a project as you like. **Just don't install dependencies in setup process.
 
 export const initialization = [
   { label: "Deno", content: "deno -A npm:create-astro@latest" },
-  { label: "Bun", content: "bunx create astro@latest" },
+  { label: "Bun", content: "bunx create-astro@latest" },
   { label: "NPM", content: "npm create astro@latest" },
   { label: "PNPM", content: "pnpm create astro@latest" },
   { label: "Yarn", content: "yarn create astro" },
@@ -99,8 +99,21 @@ If you are not planning to use CSS files at all, you can import them in **.astro
 
 <PseudoCard icon="game-icons:coronation" title="YOU DID IT!">
   At this moment you should be able to use **TailwindCSS** and **daisyUI** in your project.  
-  If you want, you can take a few additional steps that might be useful to you.
+  Run the following command in your terminal to start Development Mode.
+  {/* If you want, you can take a few additional steps that might be useful to you. */}
 </PseudoCard>
+
+{/* To run your project in Development Mode, run the following command in your terminal. */}
+
+export const run = [
+  { label: 'Deno', content: 'deno task dev' },
+  { label: 'Bun', content: 'bun run dev' },
+  { label: 'NPM', content: 'npm run dev' },
+  { label: 'PNPM', content: 'pnpm dev' },
+  { label: 'Yarn', content: 'yarn dev' },
+]
+
+<Tabs tabs={run} name="run" />
 
 ## 5. Configure daisyUI (optional)
 
@@ -171,7 +184,7 @@ Then you will be able to use icons in **.astro** files like:
 import Icon from "@xtreat/astro-iconify";
 ---
 
-<Icon class="h-20 w-20" icon="game-icons:balloon-dog" />
+<Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
 ```
 
 Or in [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files like:
@@ -179,7 +192,7 @@ Or in [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files li
 ```tsx
 import Icon from '@xtreat/astro-iconify';
 
-<Icon class="h-20 w-20" icon="game-icons:balloon-dog" />
+<Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
 ```
 
 ## 8. Add React (optional)
