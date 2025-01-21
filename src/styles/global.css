@@ -10,6 +10,14 @@
   --color-primary-content: oklch(93% 0.034 272.788);
 }
 
+:root {
+  @apply p-2;
+}
+
+::selection {
+  @apply text-base-100 bg-primary;
+}
+
 pre, .astro-code {
   @apply !bg-base-content/5 !text-base-content/85;
 }
@@ -27,14 +35,6 @@ pre, .astro-code {
   [style*="color:#F8F8F2"]
   ) {
   @apply !text-base-content; /* Functions */
-}
-
-:root {
-  @apply p-2;
-}
-
-::selection {
-  @apply text-base-100 bg-primary;
 }
 
 .prose {
