@@ -28,7 +28,8 @@ export default defineConfig({
     },
   },
   markdown: {
-    syntaxHighlight: false,
+    // "shiki" | "prism" | false
+    syntaxHighlight: "shiki",
   },
   prefetch: true,
   image: {
