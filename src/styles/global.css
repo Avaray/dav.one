@@ -22,7 +22,10 @@ pre, .astro-code {
   @apply !text-base-content !font-bold; /* Keywords */
 }
 
-.astro-code code .line [style*="color:#F92672"] {
+.astro-code code .line :is(
+  [style*="color:#F92672"],
+  [style*="color:#F8F8F2"]
+  ) {
   @apply !text-base-content; /* Functions */
 }
 
