@@ -30,6 +30,10 @@ export default defineConfig({
   markdown: {
     // "shiki" | "prism" | false
     syntaxHighlight: "shiki",
+    shikiConfig: {
+      // Need to pass any existing theme here to be able to overwrite colors in CSS
+      theme: "monokai",
+    },
   },
   prefetch: true,
   image: {
