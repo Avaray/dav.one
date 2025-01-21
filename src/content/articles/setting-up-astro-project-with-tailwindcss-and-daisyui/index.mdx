@@ -12,7 +12,7 @@ icon: 'logos:astro-icon'
 import Icon from '@xtreat/astro-iconify';
 import Tabs from 'Tabs.astro';
 import TabsSync from 'TabsSync.astro';
-import PseudoCard from '@/components/PseudoCard.astro';
+// import PseudoCard from '@/components/PseudoCard.astro';
 
 <TabsSync />
 
@@ -97,10 +97,21 @@ If you are not planning to use CSS files at all, you can import them in **.astro
 </style>
 ```
 
-<PseudoCard icon="game-icons:coronation" title="YOU DID IT!">
-  At this moment you should be able to use **TailwindCSS** and **daisyUI** in your project.  
-  Run the following command in your terminal to start **Development Mode**.
-</PseudoCard>
+<div class='flex items-center my-12 gap-4' {...props}>
+  {/* IKONA */}
+  <div><Icon icon="game-icons:coronation" class='h-40 w-40 text-primary' /></div>
+  {/* KOLUMNA */}
+  <div class='flex flex-col'>
+    <div class='flex gap-6 text-5xl mt-6 font-bold text-primary animate-[bounce_1s_linear_infinite] transform -translate-x-[52px]'>
+      <Icon icon="game-icons:arrow-dunk" class="flip-x" />
+      <span class="">YOU DID IT!</span>
+    </div>
+    <div>
+        At this moment you should be able to use **TailwindCSS** and **daisyUI** in your project.  
+        Run the following command in your terminal to start **Development Mode**.
+  </div>
+  </div>
+</div>
 
 export const run = [
   { label: 'Deno', content: 'deno task dev' },
