@@ -73,4 +73,3 @@ code, pre {
 pre:not(.tab-content code) {
   @apply my-0;
 }
-  @apply bg-base-content/5 text-base-content/85;
