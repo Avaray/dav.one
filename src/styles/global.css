@@ -43,9 +43,8 @@ pre, .astro-code {
   [style*="color:#F8F8F2"],
   [style*="color:#E6DB74"]
   ) {
-  @apply !text-primary; /* Strings */
+  @apply !text-primary;
 }
-
 
 .prose {
   h1 {
