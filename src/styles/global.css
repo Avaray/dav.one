@@ -1,7 +1,13 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/typography';
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @plugin "daisyui" {
   themes: all;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-primary: oklch(68% 0.169 237.323);
+  --color-primary-content: oklch(93% 0.034 272.788);
 }
 
 #out-range {
