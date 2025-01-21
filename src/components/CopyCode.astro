@@ -22,7 +22,7 @@
     // Wrap the <pre> element in a relative container to position the button
     const container = document.createElement('div');
     container.classList.add('relative');
-    pre.parentNode.insertBefore(container, pre);
+    pre.parentNode!.insertBefore(container, pre);
     container.appendChild(pre);
     container.appendChild(button);
 
