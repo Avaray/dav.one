@@ -26,7 +26,7 @@ const { tabs, name } = Astro.props;
           data-tab-index={index}
           id={`${name}-tab-${index}`}
         />
-        <div class='tab-content border-primary p-6' aria-labelledby={`${name}-tab-${index}`}>
+        <div class='tab-content border-primary p-4' aria-labelledby={`${name}-tab-${index}`}>
           <pre>{tab.content}</pre>
         </div>
       </>
