@@ -32,6 +32,7 @@ export default defineConfig({
     syntaxHighlight: "shiki",
     shikiConfig: {
       // Need to pass any existing theme here to be able to overwrite colors in CSS
+      // My custom theme is based on "monokai" theme. This value should
       theme: "monokai",
     },
   },
