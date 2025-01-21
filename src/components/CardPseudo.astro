@@ -1,0 +1,17 @@
+---
+import Icon from '@xtreat/astro-iconify';
+
+type Props = {
+  icon: string;
+  title: string;
+};
+const { icon, title, content, ...props } = Astro.props as Props;
+---
+
+<div class='flex items-center my-14 gap-4' {...props}>
+  <div id='icon-div'><Icon icon={icon} class='h-40 w-40 text-primary' /></div>
+  <div id='content' class='flex flex-col'>
+    <div class='text-5xl my-2 font-bold text-primary'>{title}</div>
+    <slot />
+  </div>
+</div>
