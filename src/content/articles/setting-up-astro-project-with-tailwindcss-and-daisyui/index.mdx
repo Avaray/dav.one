@@ -97,12 +97,15 @@ If you are not planning to use CSS files at all, you can import them in **.astro
 </style>
 ```
 
-<PseudoCard icon="game-icons:coronation" title="YOU DID IT!" description="At this moment you should be able to see TailwindCSS and daisyUI in your project.\nIf you want, you can take a few additional steps that might be useful to you." />
+<PseudoCard icon="game-icons:coronation" title="YOU DID IT!">
+  At this moment you should be able to use **TailwindCSS** and **daisyUI** in your project.  
+  If you want, you can take a few additional steps that might be useful to you.
+</PseudoCard>
 
 ## 5. Configure daisyUI (optional)
 
 By default [daisyUI](daisyui.com) has two themes: **light** and **dark** and you don't need to configure anything to make it work.  
-However, you can customize it as you like by editing your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) file.
+However, you can customize it as you like by editing your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS).
 Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.daisyui.com/docs/themes/) pages for more information.
 
 ```css
@@ -207,7 +210,7 @@ export default defineConfig({
 });
 ```
 
-Configure [TypeScript](https://www.typescriptlang.org/docs/) by editing **tsconfig.json** file located in the root of your project.  
+If you are using [TypeScript](https://www.typescriptlang.org/docs/) in your project, then you need to edit **tsconfig.json** file located in the root of your project.  
 Add following lines to **compilerOptions** section.
 
 ```json
