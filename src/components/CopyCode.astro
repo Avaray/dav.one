@@ -1,0 +1,29 @@
+<script>
+  const preElements = document.querySelectorAll('pre');
+
+  // Add a click event listener to each <pre> element
+  preElements.forEach((pre) => {
+    pre.addEventListener('click', async () => {
+      // Get the text content of the clicked <pre> element
+      const codeText = pre.textContent;
+
+      try {
+        // Copy the text to the clipboard
+        await navigator.clipboard.writeText(codeText);
+
+        // Add the border-secondary class to apply the border color
+        pre.classList.add('!bg-primary', 'animate-pulse');
+
+        // Remove the border-secondary class after 1 second
+        setTimeout(() => {
+          pre.classList.remove('!bg-primary', 'animate-pulse');
+        }, 500);
+
+        console.log('Code copied to clipboard!');
+      } catch (err) {
+        console.error('Failed to copy code: ', err);
+        alert('Failed to copy code.');
+      }
+    });
+  });
+</script>
