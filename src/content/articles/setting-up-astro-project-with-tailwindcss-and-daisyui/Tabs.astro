@@ -20,13 +20,13 @@ const { tabs, name } = Astro.props;
           type='radio'
           name={name}
           role='tab'
-          class='tab [--tab-border-color:var(--color-primary)]'
+          class='tab [--tab-border-color:var(--color-primary)] checked:[--tab-bg:var(--color-base-content)]/5'
           aria-label={tab.label}
           checked={index === 0}
           data-tab-index={index}
           id={`${name}-tab-${index}`}
         />
-        <div class='tab-content border-primary p-4' aria-labelledby={`${name}-tab-${index}`}>
+        <div class='tab-content border-primary p-0' aria-labelledby={`${name}-tab-${index}`}>
           <pre>{tab.content}</pre>
         </div>
       </>
