@@ -1,23 +1,39 @@
 <script>
+  // Select all <pre> elements on the page
   const preElements = document.querySelectorAll('pre');
 
-  // Add a click event listener to each <pre> element
+  // Add a button to each <pre> element
   preElements.forEach((pre) => {
-    pre.addEventListener('click', async () => {
-      // Get the text content of the clicked <pre> element
-      const codeText = pre.textContent;
+    // Create a button element
+    const button = document.createElement('button');
+    button.textContent = 'Copy';
+    button.classList.add('btn', 'btn-ghost', 'absolute', 'top-0', 'right-0', 'transition-colors', 'duration-500');
+
+    // Wrap the <pre> element in a relative container to position the button
+    const container = document.createElement('div');
+    container.classList.add('relative');
+    pre.parentNode!.insertBefore(container, pre);
+    container.appendChild(pre);
+    container.appendChild(button);
+
+    // Add a click event listener to the button
+    button.addEventListener('click', async () => {
+      // Get the text content of the <pre> element
+      const codeText = pre.textContent || '';
 
       try {
         // Copy the text to the clipboard
         await navigator.clipboard.writeText(codeText);
 
-        // Add the border-secondary class to apply the border color
-        pre.classList.add('!bg-primary', 'animate-pulse');
+        // Change the button style to success
+        button.classList.remove('btn-primary', 'btn-ghost');
+        button.classList.add('btn-success');
 
-        // Remove the border-secondary class after 1 second
+        // Revert the button style to primary after 3 seconds
         setTimeout(() => {
-          pre.classList.remove('!bg-primary', 'animate-pulse');
-        }, 500);
+          button.classList.remove('btn-success');
+          button.classList.add('btn-primary', 'btn-ghost');
+        }, 2000);
 
         console.log('Code copied to clipboard!');
       } catch (err) {
