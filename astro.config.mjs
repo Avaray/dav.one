@@ -27,17 +27,9 @@ export default defineConfig({
       },
     },
   },
-  markdown: {
-    // "shiki" | "prism" | false
-    syntaxHighlight: "shiki",
-    shikiConfig: {
-      // Need to pass any existing theme here to be able to overwrite colors in CSS
-      // My custom theme is based on "monokai" theme. This value should
-      theme: "monokai",
-    },
-  },
   prefetch: true,
   image: {
-    service: passthroughImageService(), // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
+    // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
+    service: passthroughImageService(),
   },
 });

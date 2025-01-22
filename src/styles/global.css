@@ -18,34 +18,6 @@
   @apply text-base-100 bg-primary;
 }
 
-pre, .astro-code {
-  @apply !bg-base-content/5 !text-base-content/85;
-  /* @apply !bg-[color:var(--begie)]; */
-}
-
-.astro-code code .line {
-  @apply !text-base-content/85;
-}
-
-.astro-code code .line :is(
-  [style*="color:#66D9EF"],
-  [style*="color:#9ECBFF"],
-  [style*="color:#A6E22E"],
-  [style*="color:#CFCFC2"],
-  [style*="color:#E1E4E8"],
-  [style*="color:#F44747"],
-  [style*="color:#F92672"]
-  ) {
-  @apply !text-base-content;
-}
-
-.astro-code code .line :is(
-  [style*="color:#F8F8F2"],
-  [style*="color:#E6DB74"]
-  ) {
-  @apply !text-primary;
-}
-
 .prose {
   h1 {
     @apply md:text-[2.25em] md:leading-[1.2] lg:text-[2.3em] lg:leading-[1.3] xl:text-[2.4em] xl:leading-[1.35];
@@ -58,10 +30,6 @@ pre, .astro-code {
 
 .out-range {
   @apply grayscale opacity-20;  
-}
-
-main {
-  @apply max-w-none;
 }
 
 main a {
@@ -78,14 +46,18 @@ blockquote {
 }
 
 code, pre {
-  @apply text-lg font-mono;
+  @apply font-mono;
 }
 
-/* remove margins from code blocks if they are inside Tab component */
+/* Remove margins from code blocks if they are inside Tab component */
 pre:not(.tab-content code) {
   @apply my-0;
 }
 
 .flip-x {
   @apply scale-x-[-1];
+}
+
+.flip-y {
+  @apply scale-y-[-1];
 }
