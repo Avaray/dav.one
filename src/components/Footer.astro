@@ -78,7 +78,8 @@ const links = [
 
 <style>
   .animate-rotate {
-    animation: rotate 0.5s linear forwards; /* Run once and stay at the final state */
+    animation: rotate 0.5s linear forwards;
+    animation: rotate 0.3s linear forwards; /* Run once and stay at the final state */
   }
 
   @keyframes rotate {
@@ -86,7 +87,11 @@ const links = [
       transform: rotate(45deg); /* Start from 45 degrees */
     }
     100% {
-      transform: rotate(405deg); /* Rotate to 405 degrees (45 + 360) */
+      /* transform: rotate(405deg); */
+      transform: rotate(225deg); /* Rotate to 405 degrees (45 + 360) */
+    }
+  }
+
     }
   }
 </style>
