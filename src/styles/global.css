@@ -45,6 +45,10 @@ blockquote {
   quotes: none;
 }
 
+pre {
+  @apply !bg-base-content/5 !text-base-content/85;
+}
+
 code, pre {
   @apply font-mono;
 }
