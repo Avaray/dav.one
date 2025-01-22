@@ -15,14 +15,14 @@
     "@astrojs/react": "^4.1.6",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
-    "@tailwindcss/vite": "^4.0.0-beta.9",
+    "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "@xtreat/astro-iconify": "^1.2.6",
     "astro": "^5.1.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.0-beta.9",
+    "tailwindcss": "^4.0.0",
     "vite": "^6.0.11"
   },
   "devDependencies": {
