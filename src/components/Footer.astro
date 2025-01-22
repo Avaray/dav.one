@@ -13,7 +13,12 @@ const links = [
 
 <footer id='out-range' class='mb-10vh'>
   <span class='divider py-14'>
-    <Icon icon='game-icons:abstract-050' class='text-primary mx-6 h-32 w-32 rotate-45' />
+    <Icon
+      id='rotating-icon'
+      icon='game-icons:abstract-050'
+      class='text-primary mx-6 h-32 w-32'
+      style='transform: rotate(45deg);'
+    />
   </span>
   <div class='flex flex-col lg:flex-row justify-between items-center select-none gap-10px mb-40'>
     <nav class='flex flex-wrap gap-x-8 p-4'>
@@ -41,3 +46,49 @@ const links = [
     </div>
   </div>
 </footer>
+
+<script>
+  // Ensure the DOM is fully loaded before running the script
+  document.addEventListener('DOMContentLoaded', () => {
+    const icon = document.getElementById('rotating-icon');
+    console.log(icon); // Debugging line
+
+    // Simple isVisible function
+    function isVisible(element) {
+      if (!element) return false;
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    // Scroll event listener
+    window.addEventListener('scroll', () => {
+      console.log('Scroll event fired'); // Debugging line
+      if (isVisible(icon)) {
+        icon.classList.add('animate-rotate'); // Add the animation class
+      } else {
+        icon.classList.remove('animate-rotate'); // Remove the animation class
+        icon.style.transform = 'rotate(45deg)'; // Reset to initial rotation
+      }
+    });
+  });
+</script>
+
+<style>
+  .animate-rotate {
+    animation: rotate 0.5s linear forwards; /* Run once and stay at the final state */
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(45deg); /* Start from 45 degrees */
+    }
+    100% {
+      transform: rotate(405deg); /* Rotate to 405 degrees (45 + 360) */
+    }
+  }
+</style>
