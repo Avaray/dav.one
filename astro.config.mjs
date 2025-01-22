@@ -32,4 +32,7 @@ export default defineConfig({
     // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
     service: passthroughImageService(),
   },
+  markdown: {
+    syntaxHighlight: false,
+  },
 });
