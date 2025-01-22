@@ -50,11 +50,10 @@ const links = [
 <script>
   // Ensure the DOM is fully loaded before running the script
   document.addEventListener('DOMContentLoaded', () => {
-    const icon = document.getElementById('rotating-icon');
-    console.log(icon); // Debugging line
+    const icon = document.getElementById('rotating-icon') as HTMLElement;
 
     // Simple isVisible function
-    function isVisible(element) {
+    function isVisible(element: HTMLElement) {
       if (!element) return false;
       const rect = element.getBoundingClientRect();
       return (
@@ -67,7 +66,6 @@ const links = [
 
     // Scroll event listener
     window.addEventListener('scroll', () => {
-      console.log('Scroll event fired'); // Debugging line
       if (isVisible(icon)) {
         icon.classList.add('animate-rotate'); // Add the animation class
       } else {
