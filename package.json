@@ -3,6 +3,7 @@
   "type": "module",
   "version": "2.0.0",
   "scripts": {
+    "install": "npm i --legacy-peer-deps",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
