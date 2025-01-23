@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/* https://tailwindcss-animations.vercel.app/ */
+@plugin "@midudev/tailwind-animations";
+
 @plugin "daisyui" {
   themes: all;
 }
