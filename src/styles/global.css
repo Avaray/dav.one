@@ -10,6 +10,10 @@
   --color-primary-content: oklch(93% 0.034 272.788);
 }
 
+@theme {
+  --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100))
+}
+
 :root {
   @apply p-2;
 }
@@ -46,11 +50,11 @@ blockquote {
 }
 
 pre {
-  @apply !bg-base-content/5 !text-base-content/85;
+  @apply !bg-code-bg !text-base-content/85;
 }
 
 code, pre {
-  @apply font-mono;
+  @apply font-mono !rounded-[inherit];
 }
 
 /* Remove margins from code blocks if they are inside Tab component */
