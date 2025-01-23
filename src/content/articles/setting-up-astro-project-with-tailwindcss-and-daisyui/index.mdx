@@ -6,7 +6,7 @@ icon: 'logos:astro-icon'
 ---
 
 <div role="alert" class="alert alert-warning alert-soft text-lg w-fit">
-  <span>Warning: This article is based on beta version of daisyUI. It will be updated once the stable version is released.</span>
+  <span>Warning: This article is based on beta version of daisyUI. It will be updated once the stable version is released</span>
 </div>
 
 import Icon from '@xtreat/astro-iconify';
@@ -35,11 +35,11 @@ export const initialization = [
 ## 2. Install Dependencies
 
 export const dependencies = [
-  { label: "Deno", content: "deno i --allow-scripts npm:vite@latest npm:tailwindcss@next npm:@tailwindcss/vite@next\ndeno i -D npm:daisyui@beta" },
-  { label: "Bun", content: "bun i vite@latest tailwindcss@next @tailwindcss/vite@next\nbun i -D daisyui@beta" },
-  { label: "NPM", content: "npm i vite@latest tailwindcss@next @tailwindcss/vite@next\nnpm i -D daisyui@beta" },
-  { label: "PNPM", content: "pnpm add vite@latest tailwindcss@next @tailwindcss/vite@next\npnpm add -D daisyui@beta" },
-  { label: "Yarn", content: "yarn add vite@latest tailwindcss@next @tailwindcss/vite@next\nyarn add -D daisyui@beta" },
+  { label: "Deno", content: "deno i --allow-scripts npm:vite@latest npm:tailwindcss npm:@tailwindcss/vite\ndeno i -D npm:daisyui@beta" },
+  { label: "Bun", content: "bun i vite@latest tailwindcss @tailwindcss/vite\nbun i -D daisyui@beta" },
+  { label: "NPM", content: "npm i vite@latest tailwindcss @tailwindcss/vite\nnpm i -D daisyui@beta" },
+  { label: "PNPM", content: "pnpm add vite@latest tailwindcss @tailwindcss/vite\npnpm add -D daisyui@beta" },
+  { label: "Yarn", content: "yarn add vite@latest tailwindcss @tailwindcss/vite\nyarn add -D daisyui@beta" },
 ];
 
 <Tabs tabs={dependencies} name="dependencies" />
