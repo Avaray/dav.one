@@ -13,7 +13,7 @@
     "npm:@types/react@^19.0.8": "19.0.8",
     "npm:@xtreat/astro-iconify@^1.2.6": "1.2.6",
     "npm:astro@^5.1.7": "5.1.7_vite@6.0.7_zod@3.24.1",
-    "npm:astro@^5.1.8": "5.1.8_vite@6.0.11_zod@3.24.1",
+    "npm:astro@^5.1.9": "5.1.9_vite@6.0.11_zod@3.24.1",
     "npm:daisyui@^5.0.0-beta.2": "5.0.0-beta.2",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
     "npm:react@19": "19.0.0",
@@ -616,7 +616,7 @@
       "dependencies": [
         "@shikijs/types@1.29.1",
         "@shikijs/vscode-textmate",
-        "oniguruma-to-es@2.2.0"
+        "oniguruma-to-es@2.3.0"
       ]
     },
     "@shikijs/engine-oniguruma@1.27.2": {
@@ -1013,8 +1013,8 @@
         "zod-to-ts"
       ]
     },
-    "astro@5.1.8_vite@6.0.11_zod@3.24.1": {
-      "integrity": "sha512-7fNNceI/dXqGIkkZQjxhH31alAfgf33cDv34cPLCGFVSHHOpYG0NSrofnxdYf0BvWRlddqkq393UqDM5cJlv1w==",
+    "astro@5.1.9_vite@6.0.11_zod@3.24.1": {
+      "integrity": "sha512-QB3MH7Ul3gEvmHXEfvPkGpTZyyB/TBKQbm0kTHpo0BTEB7BvaY+wrcWiGEJBVDpVdEAKY9fM3zrJ0c7hZSXVlw==",
       "dependencies": [
         "@astrojs/compiler",
         "@astrojs/internal-helpers",
@@ -2540,8 +2540,8 @@
         "regex-recursion"
       ]
     },
-    "oniguruma-to-es@2.2.0": {
-      "integrity": "sha512-EEsso27ri0sf+t4uRFEj5C5gvXQj0d0w1Y2qq06b+hDLBnvzO1rWTwEW4C7ytan6nhg4WPwE26eLoiPhHUbvKg==",
+    "oniguruma-to-es@2.3.0": {
+      "integrity": "sha512-bwALDxriqfKGfUufKGGepCzu9x7nJQuoRoAFp4AnwehhC2crqrDIAP/uN2qdlsAvSMpeRC3+Yzhqc7hLmle5+g==",
       "dependencies": [
         "emoji-regex-xs",
         "regex",
@@ -3530,7 +3530,7 @@
         "npm:@types/react-dom@^19.0.3",
         "npm:@types/react@^19.0.8",
         "npm:@xtreat/astro-iconify@^1.2.6",
-        "npm:astro@^5.1.8",
+        "npm:astro@^5.1.9",
         "npm:daisyui@^5.0.0-beta.2",
         "npm:react-dom@19",
         "npm:react@19",
