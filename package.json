@@ -6,7 +6,6 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
     "taze": "deno -A npm:taze latest"
   },
   "dependencies": {
