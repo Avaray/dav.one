@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.0.0",
   "scripts": {
-    "install": "deno i --allow-scripts",
+    "i": "deno i --allow-scripts",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
