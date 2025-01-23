@@ -20,7 +20,7 @@ const { tabs, name } = Astro.props;
           type='radio'
           name={name}
           role='tab'
-          class='tab [--tab-border-color:var(--color-primary)] checked:[--tab-bg:color-mix(in_oklab,var(--color-base-content)_5%,var(--color-base-100))]'
+          class='tab [--tab-border-color:var(--color-primary)] checked:[--tab-bg:var(--color-code-bg)]'
           aria-label={tab.label}
           checked={index === 0}
           data-tab-index={index}
