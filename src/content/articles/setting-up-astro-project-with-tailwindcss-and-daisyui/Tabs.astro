@@ -27,7 +27,6 @@ const { tabs, name } = Astro.props;
           id={`${name}-tab-${index}`}
         />
         <div class='tab-content border-primary p-0' aria-labelledby={`${name}-tab-${index}`}>
-          {/* Need to add corners style based on theme */}
           <pre class=''>{tab.content}</pre>
         </div>
       </>
