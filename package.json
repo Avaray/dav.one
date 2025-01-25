@@ -5,6 +5,7 @@
   "scripts": {
     "i": "deno i --allow-scripts",
     "dev": "astro dev",
+    "clear": "astro dev --clear-cache",
     "serve": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview",
