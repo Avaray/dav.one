@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Footer from '../components/Footer.astro';
-// import FormattedDate from '../components/FormattedDate.astro';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import MainProse from '../components/MainProse.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
+import { readableDate } from '../scripts/utils.ts';
 
 type Props = CollectionEntry<'articles'>['data'];
 
@@ -18,28 +18,24 @@ const { title, description, created, updated } = Astro.props;
   <body>
     <Header />
     <MainProse>
-      <!-- <CopyCode /> -->
       <article>
         <h1>
           {title}
         </h1>
-        <!-- <span class='text-normal bg-primary text-base-100 font-bold p-2 border-rd-1'>
-          <span>Created on</span><span
-            ><FormattedDate date={created} />
-            {
-              updated && (
-                <>
-                  and updated on <FormattedDate date={updated} />
-                </>
-              )
-            }
-          </span>
-        </span> -->
-
-        <slot />
+        <p class='rounded text-normal bg-primary text-base-100 font-bold p-2 border-rd-1 w-fit'>
+          <span>Created on {readableDate(created)}</span>
+          {
+            updated && (
+              <>
+                <span>and updated on {readableDate(updated)}</span>
+              </>
+            )
+          }
+        </p>
       </article>
+      <slot />
     </MainProse>
-    <ThemeSwitcher />
-    <Footer />
   </body>
+  <ThemeSwitcher />
+  <Footer />
 </ThemeWrapper>
