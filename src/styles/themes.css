@@ -35,7 +35,7 @@
   --color-primary: oklch(26.45% 0 0);
 }
 
-[data-theme="futura"], [data-theme="colorless"] {
+[data-theme="futura"] {
   font-family: 'Quando';
 }
 
