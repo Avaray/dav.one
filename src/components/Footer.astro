@@ -13,12 +13,13 @@ const links = [
 
 <footer id='out-range' class='mb-10vh'>
   <span class='divider py-14'>
-    <Icon
-      id='rotating-icon'
-      icon='game-icons:abstract-050'
-      class='text-primary mx-6 h-32 w-32'
-      style='transform: rotate(45deg);'
-    />
+    <div style='transform: rotate(45deg)'>
+      <Icon
+        id='rotating-icon'
+        icon='game-icons:abstract-050'
+        class='text-primary mx-6 h-16 w-16 animate-once animate-fill-forwards'
+      />
+    </div>
   </span>
   <div class='flex flex-col lg:flex-row justify-between items-center select-none gap-10px mb-40'>
     <nav class='flex flex-wrap gap-x-8 p-4'>
@@ -57,27 +58,10 @@ const links = [
     // Scroll event listener
     window.addEventListener('scroll', () => {
       if (isVisible(icon)) {
-        icon.classList.add('animate-rotate'); // Add the animation class
+        icon.classList.add('animate-impulse-rotation-right');
       } else {
-        icon.classList.remove('animate-rotate'); // Remove the animation class
-        icon.style.transform = 'rotate(45deg)'; // Reset to initial rotation
+        icon.classList.remove('animate-impulse-rotation-right');
       }
     });
   });
 </script>
-
-<style>
-  .animate-rotate {
-    animation: rotate 0.3s linear forwards; /* Run once and stay at the final state */
-  }
-
-  @keyframes rotate {
-    0% {
-      transform: rotate(45deg); /* Start from 45 degrees */
-    }
-    100% {
-      /* transform: rotate(405deg); */
-      transform: rotate(225deg); /* Rotate to 405 degrees (45 + 360) */
-    }
-  }
-</style>
