@@ -137,7 +137,7 @@ Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.dais
 };
 ```
 
-## 6. Add Typography (optional)
+## 6. Add Typography Plugin (optional)
 
 By default, [TailwindCSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding this package.
 To make [Typography](https://tailwindcss-typography.vercel.app/) available in your project, first you need to install package.
@@ -168,7 +168,62 @@ Everything inside the **body** tag will be affected by [TailwindCSS Typography](
 I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#applying-a-type-scale) and [this page of daisyUI](https://v5.daisyui.com/docs/layout-and-typography/) to learn more.  
 Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply) with class **prose** may cause issues.
 
-## 7. Add SVG Icons (optional)
+## 7. Add custom fonts (optional)
+
+You can use [UnoCSS](https://unocss.dev/) and its [web-fonts](https://unocss.dev/presets/web-fonts) preset to add custom fonts to your project.  
+This will let you use web fonts from [Google Fonts](https://fonts.google.com/), [Bunny](https://fonts.bunny.net/), and [FontShare](https://www.fontshare.com/) by simply providing the font names.
+
+export const fonts = [
+  { label: "Deno", content: "deno i -D npm:unocss" },
+  { label: "Bun", content: "bun i -D unocss" },
+  { label: "NPM", content: "npm i -D unocss" },
+  { label: "PNPM", content: "pnpm add -D unocss" },
+  { label: "Yarn", content: "yarn add -D unocss" },
+]
+
+<Tabs tabs={fonts} name="fonts" />
+
+Add **UnoCSS** to **integrations list** in your **astro.config.mjs** config file and [configure it](https://unocss.dev/presets/web-fonts#options).  
+You can also keep your UnoCSS configuration [in a dedicated file](https://unocss.dev/integrations/astro) to keep Astro config file cleaner.
+
+
+```ts
+import { defineConfig } from 'astro/config';
+import UnoCSS from 'unocss/astro'
+
+export default defineConfig({
+  integrations: [UnoCSS({
+    presets: [
+      presetWebFonts({
+        provider: 'google',
+        fonts: {
+          firamono: 'Fira Mono:400',
+          roboto: 'Roboto:200,400,700',
+        },
+      })
+    ]
+  })],
+});
+```
+
+Now you can use fonts in **CSS** for specific [Themes](https://v5.daisyui.com/docs/themes/).  
+Fonts will be loaded in moments when you switch between themes.
+
+```css
+[data-theme="dark"] {
+  font-family: 'Fira Mono';
+}
+```
+
+Or you can use them in classic way.
+
+```css
+body {
+  font-family: 'Roboto';
+}
+```
+
+## 8. Add SVG Icons (optional)
 
 Recently [Xander Treat](xtreat.dev) created [@xtreat/astro-iconify](https://www.npmjs.com/package/@xtreat/astro-iconify) package to make it easy to use [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) icons in your [Astro](https://astro.build/) projects.  
 Comparing to other SVG icon [integrations](https://astro.build/integrations/?search=icon), this one lets you use any icons from [Iconify](https://iconify.design/) without hassles.  
@@ -205,9 +260,9 @@ import Icon from '@xtreat/astro-iconify';
 <Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
 ```
 
-## 8. Add React (optional)
+## 9. Add React (optional)
 
-[Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same project!).  
+[Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same time!).  
 To add them, you should follow guides available [here](https://docs.astro.build/en/guides/integrations-guide/), and daisyUI guides available [here](https://v5.daisyui.com/docs/install/#framework-install-tutorials).
 
 For this tutorial, we will add [React](https://react.dev/) framework manually.  
@@ -246,7 +301,7 @@ Add the following lines to **compilerOptions** section.
 }
 ```
 
-## 9. Recommended Integrations (optional)
+## 10. Recommended Integrations (optional)
 
 If you chose **Basic, minimal starter** at the beginning of this tutorial, then you may also consider the following integrations.  
 I will not cover them in this tutorial, but I believe you will be able to add them yourself.
@@ -254,7 +309,7 @@ I will not cover them in this tutorial, but I believe you will be able to add th
 - [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/)  
 - [Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 
-## 10. Finish (required)
+## 11. Finish (required)
 
 Are you having fun writing code in your new project, and is everything working as expected?  
 Do you have any issues or need some help? Perhaps you want to showcase your project or ask for feedback?  
