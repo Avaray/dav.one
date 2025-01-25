@@ -1,11 +1,5 @@
 @plugin "daisyui" {
-  themes: all;
-}
-
-@plugin "daisyui/theme" {
-  name: "light";
-  --color-primary: oklch(68% 0.169 237.323);
-  --color-primary-content: oklch(93% 0.034 272.788);
+  themes: dark, forest;
 }
 
 @plugin "daisyui/theme" {
@@ -27,13 +21,15 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "colorless";
+  name: "enlightenment";
   default: true;
   color-scheme: "light";
   --color-base-100: oklch(99.7% 0 0);
   --color-base-content: oklch(26.45% 0 0);
   --color-primary: oklch(26.45% 0 0);
 }
+
+[data-theme="dark"] {}
 
 [data-theme="futura"] {
   font-family: 'Quando';
@@ -43,10 +39,11 @@
   font-family: 'Fira Mono';
 }
 
-/* This is just a test */
-[data-theme="colorless"] {
-  * {
-    filter: grayscale(1);
-    -webkit-filter: grayscale(1);
-  }
+[data-theme="enlightenment"] {
+  font-family: "Quando";
 }
+.article-icon {
+  text-box-edge: text !important;
+  text-box-trim: both !important;
+}
+
