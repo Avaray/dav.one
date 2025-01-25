@@ -1,0 +1,52 @@
+@plugin "daisyui" {
+  themes: all;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-primary: oklch(68% 0.169 237.323);
+  --color-primary-content: oklch(93% 0.034 272.788);
+}
+
+@plugin "daisyui/theme" {
+  name: "forest";
+  default: true;
+  prefersdark: false; 
+}
+
+@plugin "daisyui/theme" {
+  name: "futura";
+  color-scheme: "dark";
+  --color-base-100: oklch(28.06% 0.1278 304.55);
+  --color-base-content: oklch(62.97% 0.1593 305.14);
+  --color-primary: oklch(62.97% 0.1593 305.14);
+  --color-neutral: oklch(37.83% 0.1593 305.14);
+  --radius-selector: 0.5rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+}
+
+@plugin "daisyui/theme" {
+  name: "colorless";
+  default: true;
+  color-scheme: "light";
+  --color-base-100: oklch(99.7% 0 0);
+  --color-base-content: oklch(26.45% 0 0);
+  --color-primary: oklch(26.45% 0 0);
+}
+
+[data-theme="futura"], [data-theme="colorless"] {
+  font-family: 'Quando';
+}
+
+[data-theme="forest"] {
+  font-family: 'Fira Mono';
+}
+
+/* This is just a test */
+[data-theme="colorless"] {
+  * {
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+  }
+}
