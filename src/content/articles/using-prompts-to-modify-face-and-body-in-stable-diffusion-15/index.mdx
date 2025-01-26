@@ -7,33 +7,7 @@ author: 'Dawid Wasowski'
 ---
 
 import { Image } from 'astro:assets';
-import ImageGrid from '../../../components/ImageGrid.astro'
-
-{/* age */}
-import img01 from './images/01-00343-3575497043.jpg';
-import img02 from './images/02-01071-3575497043.jpg';
-import img03 from './images/03-01049-3575497043.jpg';
-
-{/* nationalities */}
-import img04 from './images/04-01075-2930817551.jpg'
-import img05 from './images/04-01080-935636450.jpg'
-import img06 from './images/04-01099-2695428000.jpg'
-import img07 from './images/04-01121-2694652527.jpg'
-import img08 from './images/04-01105-2694652511.jpg'
-import img09 from './images/04-01128-1627721923.jpg'
-
-{/* random examples */}
-import img10 from './images/05-01136-2135588213.jpg'
-import img11 from './images/05-01142-2135588219.jpg'
-import img12 from './images/05-01152-3106824169.jpg'
-import img13 from './images/05-01200-3218471724.jpg'
-import img14 from './images/05-01229-2714470423.jpg'
-import img15 from './images/05-01503-2612520002.jpg'
-
-{/* body types */}
-import img16 from './images/00273-28104657.jpg'
-import img17 from './images/00281-28104649.jpg'
-import img18 from './images/00317-28104657.jpg'
+import ImageGrid from '@/components/ImageGrid.astro'
 
 > There is new version of this article available [here](/using-prompts-to-modify-face-and-body-in-stable-diffusion-xl).
 It's based on SDXL, but it's still relevant for SD 1.5.
@@ -68,25 +42,22 @@ You will need to find the right one for your needs.
 
 ## Prompting age
 
-<p>
-  Just specify whether you want to see a young or old person. These prompts affect the entire body. The older the
-  person, the more the body shape changes, the skin ages with wrinkles and sagging. If you want your prompt to have the
-  most impact on the final result, you should set **Clip Skip** to **1** (it's default value), and **CFG Scale** to
-  around **6**. Keep in mind that a lot depends on the model you are using. The values I provided should work in most
-  cases. Ok, let's use these three prompts and fixed seed (3575497043):
-</p>
+Just specify whether you want to see a young or old person. These prompts affect the entire body. The older the
+person, the more the body shape changes, the skin ages with wrinkles and sagging. If you want your prompt to have the
+most impact on the final result, you should set **Clip Skip** to **1** (it's default value), and **CFG Scale** to
+around **6**. Keep in mind that a lot depends on the model you are using. The values I provided should work in most
+cases. Ok, let's use these three prompts and fixed seed (3575497043):
 
 
 - photography of girl, 20 years old
 - photography of midlife woman, 40 years old
 - photography of very old woman, elderly woman
 
-<ImageGrid images={[
-    [img01, 'photography of girl, 20 years old'],
-    [img02, 'photography of midlife woman, 40 years old'],
-    [img03, 'photography of very old woman, elderly woman']
-  ]}
-/>
+<ImageGrid>
+  ![photography of girl, 20 years old](./images/age01.jpg)
+  ![photography of midlife woman, 40 years old](./images/age02.jpg)
+  ![photography of very old woman, elderly woman](./images/age03.jpg)
+</ImageGrid>
 
 ## Prompting nationality
 
@@ -103,15 +74,14 @@ Head coverings (scarves, straw hats) can also appear.
 
 On the pictures below, you can see results of prompt: **"photography of midlife X woman, 40 years old"**, where **X** you can replace with following nationalities: **Grenadian, Chinese, Bangladeshi, Sri Lankan, Israeli and Turkish.** Seed was set to random (if you're wondering why random seed, the explanation can be found at the end of the article).
 
-<ImageGrid images={[
-    [img04, 'Image of Grenadian woman'],
-    [img05, 'Image of Chinese woman'],
-    [img06, 'Image of Bangladeshi woman'],
-    [img07, 'Image of Sri Lankan woman'],
-    [img08, 'Image of Israeli woman'],
-    [img09, 'Image of Turkish woman']
-  ]}
-/>
+<ImageGrid>
+  ![Image of Grenadian woman](./images/nationality01.jpg)
+  ![Image of Chinese woman](./images/nationality02.jpg)
+  ![Image of Bangladeshi woman](./images/nationality03.jpg)
+  ![Image of Sri Lankan woman](./images/nationality04.jpg)
+  ![Image of Israeli woman](./images/nationality05.jpg)
+  ![Image of Turkish woman](./images/nationality06.jpg)
+</ImageGrid>
 
 ## Mixing age and nationality
 
@@ -120,14 +90,14 @@ Of course, you can mix age and nationality together.
 Below, you can see some example mixes using random seeds (without using <a href="https://github.com/lllyasviel/ControlNet">ControlNet</a> this time).
 You can observe how the clothing and surroundings of the photographed person have changed. This is particularly evident in the case of the Dutch girl (last photo).
 
-<ImageGrid images={[
-    [img10, ''],
-    [img11, ''],
-    [img12, ''],
-    [img13, ''],
-    [img14, ''],
-    [img15, '']
-]}/>
+<ImageGrid>
+  ![Random image](./images/random01.jpg)
+  ![Random image](./images/random02.jpg)
+  ![Random image](./images/random03.jpg)
+  ![Random image](./images/random04.jpg)
+  ![Random image](./images/random05.jpg)
+  ![Random image](./images/random06.jpg)
+</ImageGrid>
 
 ## Prompting body types
 
@@ -139,11 +109,11 @@ Actually, you only need a simple prompt describing body type. You can try prompt
   <li>Muscular body type</li>
 </ul>
 
-<ImageGrid images={[
-    [img16, 'Image of skinny body type'],
-    [img17, 'Image of fat body type'],
-    [img18, 'Image of muscular body type']
-]}/>
+<ImageGrid>
+  ![Image of skinny body type](./images/body01.jpg)
+  ![Image of fat body type](./images/body02.jpg)
+  ![Image of muscular body type](./images/body03.jpg)
+</ImageGrid>
 
 Of course, you can specify individual body parts precisely.
 Wide hips, narrow waist, big ass, large breast... whatever else you can come up with.
