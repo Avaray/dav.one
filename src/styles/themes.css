@@ -6,6 +6,7 @@
   name: "forest";
   default: true;
   prefersdark: false; 
+  --radius-box: 0.5rem;
 }
 
 @plugin "daisyui/theme" {
@@ -17,7 +18,7 @@
   --color-neutral: oklch(37.83% 0.1593 305.14);
   --radius-selector: 0.5rem;
   --radius-field: 1rem;
-  --radius-box: 1rem;
+  --radius-box: 0.5rem;
 }
 
 @plugin "daisyui/theme" {
