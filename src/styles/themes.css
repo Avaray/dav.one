@@ -42,8 +42,9 @@
 [data-theme="enlightenment"] {
   font-family: "Quando";
 }
-.article-icon {
+
+/* .article-icon {
   text-box-edge: text !important;
   text-box-trim: both !important;
-}
+} */
 
