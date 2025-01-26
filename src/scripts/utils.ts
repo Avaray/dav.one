@@ -1,7 +1,7 @@
-export const readableDate = (date: string) => {
+export const readableDate = (date: string, full = false) => {
   return new Date(Number(date)).toLocaleDateString('en-us', {
     year: 'numeric',
-    month: 'short',
+    month: full ? 'long' : 'short',
     day: 'numeric',
   });
 }
