@@ -4,6 +4,7 @@ description: "If you want to run Stable Diffusion locally on your computer and d
 created: '1724765820000'
 updated: '1728049020000'
 icon: 'cbi:desktop-computer'
+author: 'Dawid Wasowski'
 ---
 
 ## Hardware requirements

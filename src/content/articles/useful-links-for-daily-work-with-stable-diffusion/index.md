@@ -4,6 +4,7 @@ description: 'A simple list of useful websites, places and tools that will help 
 created: '1696599420000'
 updated: '1728049020000'
 icon: 'game-icons:andromeda-chain'
+author: 'Dawid Wasowski'
 ---
 
 ## User Interfaces
