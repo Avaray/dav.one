@@ -5,7 +5,8 @@
 @plugin "@midudev/tailwind-animations";
 
 @theme {
-  --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100))
+  --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100));
+  --color-code-highlight: color-mix(in oklab, var(--color-base-content) 20%, var(--color-base-100));
 }
 
 @import "./themes.css";
