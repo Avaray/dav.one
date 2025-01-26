@@ -1,5 +1,6 @@
 @plugin "daisyui" {
   themes: dark, forest;
+  /* exclude: rootscrollgutter; */
 }
 
 @plugin "daisyui/theme" {
