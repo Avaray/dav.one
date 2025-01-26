@@ -4,6 +4,7 @@ description: 'An in-depth comparison of generation methods, helping you choose b
 created: '1690119420000'
 updated: '1724765820000'
 icon: 'game-icons:take-my-money'
+author: 'Dawid Wasowski'
 ---
 
 ## Generating images on your own computer
