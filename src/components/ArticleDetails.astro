@@ -7,13 +7,15 @@ const { title, created, updated, author } = Astro.props;
 <div id='article-details' class='mb-8'>
   <h1>{title}</h1>
   <div class='flex items-center gap-4 flex-wrap'>
-    <span class='rounded bg-primary text-base-100 font-bold p-2 px-4 whitespace-normal md:whitespace-nowrap'>
+    <span
+      class='rounded-[var(--radius-box)] bg-primary text-base-100 font-bold p-2 px-4 whitespace-normal md:whitespace-nowrap'
+    >
       <span>Created on {readableDate(created, true)}</span>
       {author && <span> by {author}</span>}
     </span>
     {
       updated && (
-        <span class='rounded bg-primary text-base-100 font-bold p-2 px-4 whitespace-normal md:whitespace-nowrap'>
+        <span class='rounded-[var(--radius-box)] bg-primary text-base-100 font-bold p-2 px-4 whitespace-normal md:whitespace-nowrap'>
           <span>Updated on {readableDate(updated)}</span>
         </span>
       )
