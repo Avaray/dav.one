@@ -1,16 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import ArticleDetails from '../components/ArticleDetails.astro';
 import Footer from '../components/Footer.astro';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import MainProse from '../components/MainProse.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
-import { readableDate } from '../scripts/utils.ts';
 
 type Props = CollectionEntry<'articles'>['data'];
 
-const { title, description, created, updated, author } = Astro.props;
+const { title, description, created, updated, author }: Props = Astro.props;
 ---
 
 <ThemeWrapper>
@@ -19,16 +19,9 @@ const { title, description, created, updated, author } = Astro.props;
     <Header />
     <MainProse>
       <article>
-        <h1>
-          {title}
-        </h1>
-        <p class='rounded text-normal bg-primary text-base-100 font-bold p-2 border-rd-1 w-fit'>
-          <span>Created on {readableDate(created)}</span>
-          {updated && <></>}
-        </p>
-        <!-- {author && <span>by {author}</span>} -->
+        <ArticleDetails {title} {description} {created} {updated} {author} />
+        <slot />
       </article>
-      <slot />
     </MainProse>
   </body>
   <ThemeSwitcher />
