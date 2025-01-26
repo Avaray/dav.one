@@ -68,3 +68,7 @@ pre:not(.tab-content code) {
 .flip-y {
   @apply scale-y-[-1];
 }
+
+.highlighted {
+  @apply bg-code-highlight text-base-content;
+}
