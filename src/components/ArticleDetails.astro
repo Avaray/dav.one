@@ -1,6 +1,6 @@
 ---
 import { readableDate } from '../scripts/utils.ts';
-import Icon from '@xtreat/astro-iconify';
+const articleUrl = new URL(Astro.request.url).toString();
 const { title, created, updated, author } = Astro.props;
 ---
 
@@ -20,5 +20,8 @@ const { title, created, updated, author } = Astro.props;
         </span>
       )
     }
+    <span class='hidden print:block rounded-[var(--radius-box)] bg-primary text-base-100 font-bold p-2 px-4 w-fit'>
+      {articleUrl}
+    </span>
   </div>
 </div>
