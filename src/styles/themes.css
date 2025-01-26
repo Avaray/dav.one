@@ -30,6 +30,15 @@
   --color-primary: oklch(26.45% 0 0);
 }
 
+@plugin "daisyui/theme" {
+  name: "print";
+  default: true;
+  color-scheme: "light";
+  --color-base-100: oklch(99.7% 0 0);
+  --color-base-content: oklch(26.45% 0 0);
+  --color-primary: oklch(26.45% 0 0);
+}
+
 [data-theme="dark"] {}
 
 [data-theme="futura"] {
