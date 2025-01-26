@@ -72,3 +72,12 @@ pre:not(.tab-content code) {
 .highlighted {
   @apply bg-code-highlight text-base-content;
 }
+
+@media print {
+  header, footer {
+    display: none;
+  }
+  .article-details > span {
+    @apply px-0;
+  }
+}
