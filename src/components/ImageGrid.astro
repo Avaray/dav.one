@@ -1,11 +1,8 @@
 ---
-import { Image } from 'astro:assets';
-
-interface Props {
-  images: [ImageMetadata, string][];
-}
-
-const { images } = Astro.props;
+// You are looking at freaking stupid hacks her, because cant use <slot /> in easy way
+const html = await Astro.slots.render('default');
+// This one matches all elements inside first paragraph
+const images = html.match(/<img.*?>/gm) || [];
 
 // In the future I need to re-think this function
 const gridCols = (imagesCount = images.length) => {
@@ -16,6 +13,9 @@ const gridCols = (imagesCount = images.length) => {
 };
 ---
 
-<div class={`grid ${gridCols()} gap-0.5 not-prose`}>
-  {images.map(([src, alt], index) => <Image src={src} alt={alt} title={alt} />)}
+<div class={`grid ${gridCols()} not-prose rounded-lg`}>
+  {
+    // check if there is at least one image without throwing errors
+    images.length > 1 ? <Fragment set:html={images} /> : <div class='skeleton w-full h-100 opacity-10' />
+  }
 </div>

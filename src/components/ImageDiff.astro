@@ -1,19 +1,22 @@
 ---
-import { Image } from 'astro:assets';
-
-interface Props {
-  images: [ImageMetadata, string][];
-}
-
-const { images } = Astro.props;
+// You are looking at freaking stupid hacks her, because cant use <slot /> in easy way
+const html = await Astro.slots.render('default');
+// This one matches all elements inside first paragraph
+const images = html.match(/<img.*?>/gm) || [];
 ---
 
-<figure class='diff rounded-xl aspect-16/9 w-full not-prose'>
-  <div class='diff-item-1' role='img'>
-    <Image src={images[0][0]} alt={images[0][1]} />
-  </div>
-  <div class='diff-item-2' role='img'>
-    <Image src={images[1][0]} alt={images[1][1]} />
-  </div>
-  <div class='diff-resizer'></div>
-</figure>
+{
+  images.length != 2 ? (
+    <div class='skeleton w-full h-100 opacity-10' />
+  ) : (
+    <figure class='diff rounded-xl aspect-16/9 w-full not-prose'>
+      <div class='diff-item-1' role='img'>
+        <Fragment set:html={images[0]} />
+      </div>
+      <div class='diff-item-2' role='img'>
+        <Fragment set:html={images[1]} />
+      </div>
+      <div class='diff-resizer' />
+    </figure>
+  )
+}

@@ -8,62 +8,8 @@ updated: '1728567420000'
 icon: 'game-icons:dodging'
 ---
 
-import { Image } from 'astro:assets';
-import ImageGrid from '../../../components/ImageGrid.astro'
-import ImageDiff from '../../../components/ImageDiff.astro'
-
-import diff01 from './images/diff1.webp';
-import diff02 from './images/diff2.webp';
-
-import face01 from './images/face01.webp';
-import face02 from './images/face02.webp';
-import face03 from './images/face03.webp';
-import face04 from './images/face04.webp';
-
-import makeup01 from './images/makeup01.webp';
-import makeup02 from './images/makeup02.webp';
-import makeup03 from './images/makeup03.webp';
-import makeup04 from './images/makeup04.webp';
-
-import hair01 from './images/hair01.webp';
-import hair02 from './images/hair02.webp';
-import hair03 from './images/hair03.webp';
-import hair04 from './images/hair04.webp';
-
-import body01 from './images/body01.webp';
-import body02 from './images/body02.webp';
-import body03 from './images/body03.webp';
-import body04 from './images/body04.webp';
-
-import nationality01 from './images/nationality01.webp';
-import nationality02 from './images/nationality02.webp';
-import nationality03 from './images/nationality03.webp';
-import nationality04 from './images/nationality04.webp';
-
-import age01 from './images/age01.webp';
-import age02 from './images/age02.webp';
-import age03 from './images/age03.webp';
-import age04 from './images/age04.webp';
-
-import scenery01 from './images/scenery01.webp';
-import scenery02 from './images/scenery02.webp';
-import scenery03 from './images/scenery03.webp';
-import scenery04 from './images/scenery04.webp';
-
-import camera01 from './images/camera01.webp';
-import camera02 from './images/camera02.webp';
-import camera03 from './images/camera03.webp';
-import camera04 from './images/camera04.webp';
-
-import year01 from './images/year01.webp';
-import year02 from './images/year02.webp';
-import year03 from './images/year03.webp';
-import year04 from './images/year04.webp';
-
-import name01 from './images/name01.webp';
-import name02 from './images/name02.webp';
-import name03 from './images/name03.webp';
-import name04 from './images/name04.webp';
+import ImageGrid from '@/components/ImageGrid.astro'
+import ImageDiff from '@/components/ImageDiff.astro'
 
 ## The Basics
 
@@ -79,8 +25,6 @@ If you don't specify exactly how the generated person should look, they will mos
 I don't remember how many times I've seen people talking on [Reddit](https://www.reddit.com/r/StableDiffusion/) about seeing the same faces in generated images. 
 You have many possibilities to manipulate the appearance of the generated person using just prompts.
 Starting from the face shape, through the hair style, skin tone, body type, specific body parts, age, nationality, and more.
-{/* Fun fact, even prompting a name of the person can have an impact on the final image.
-And at the end, you can use specific keywords to make the generated person looks a bit different. */}
 
 The third factor is **configuration**. 
 [Image resolution](https://en.wikipedia.org/wiki/Image_resolution), [Sampler](https://stable-diffusion-art.com/samplers/), number of [Sampling Steps](https://getimg.ai/guides/interactive-guide-to-stable-diffusion-steps-parameter), [Guidance Scale](https://www.reddit.com/r/StableDiffusion/comments/xdvgyn/i_made_a_comparison_table_between_steps_and/) and [Variational Autoencoder (VAE)](https://wiki.civitai.com/wiki/Variational_Autoencoder) are the most important things in the configuration. 
@@ -107,12 +51,10 @@ worst quality, low quality, low resolution, painting, illustration, cartoon, ske
 
 Below you can see the difference between the image generated without Negative Prompt (left side) and the image generated with Negative Prompt (right side).
 
-<ImageDiff
-  images={[
-    [diff01, 'Image without Negative Prompt'],
-    [diff02, 'Image with Negative Prompt']
-  ]}
-/>
+<ImageDiff>
+  ![Image without Negative Prompt](./images/diff01.webp)
+  ![Image with Negative Prompt](./images/diff02.webp)
+</ImageDiff>
 
 ## Positive prompt - What we want to generate
 
@@ -136,14 +78,12 @@ You can describe them in a way that you want them to be.
 
 Examples: `oval face shape`, `bushy eyebrows`, `big eyes`, `wide nose`, `full lips`, `double chin`, `freckles on the cheeks`, `wrinkles around the eyes`.
 
-<ImageGrid
-  images={[
-    [face01, 'round face, low forehead, bushy eyebrows, downturned nose, full lips, weak chin, subtle cheekbones, protruding ears' ],
-    [face02, 'oval face, receding forehead, straight eyebrows, wide nose, full lips, weak chin, prominent cheekbones, small ears' ],
-    [face03, 'round face, prominent forehead, arched eyebrows, long nose, full lips, square chin, low cheekbones, protruding ears' ],
-    [face04, 'round face, receding forehead, arched eyebrows, downturned nose, heart-shaped lips, pointed chin, low cheekbones, small ears' ]
-  ]}
-/>
+<ImageGrid>
+  ![round face, low forehead, bushy eyebrows, downturned nose, full lips, weak chin, subtle cheekbones, protruding ears](./images/face01.webp)
+  ![oval face, receding forehead, straight eyebrows, wide nose, full lips, weak chin, prominent cheekbones, small ears](./images/face02.webp)
+  ![round face, prominent forehead, arched eyebrows, long nose, full lips, square chin, low cheekbones, protruding ears](./images/face03.webp)
+  ![round face, receding forehead, arched eyebrows, downturned nose, heart-shaped lips, pointed chin, low cheekbones, small ears](./images/face04.webp)
+</ImageGrid>
 
 ## Makeup
 
@@ -157,14 +97,12 @@ Prompting makeup styles like `natural makeup`, `glam makeup`, `gothic makeup`, `
 Below you can see how prompting makeup can affect the generated image. `Anti-aging Makeup` automatically generated older woman. 
 `Shimmer Makeup` affected clothes. `Prom Makeup` made the woman look younger. `Retro Makeup` affected the hairstyle and colors of the image.
 
-<ImageGrid
-  images={[
-    [makeup01, 'Anti-aging Makeup' ],
-    [makeup02, 'Shimmer Makeup' ],
-    [makeup03, 'Prom Makeup' ],
-    [makeup04, 'Retro Makeup' ]
-  ]}
-/>
+<ImageGrid>
+  ![Anti-aging Makeup](./images/makeup01.webp)
+  ![Shimmer Makeup](./images/makeup02.webp)
+  ![Prom Makeup](./images/makeup03.webp)
+  ![Retro Makeup](./images/makeup04.webp)
+</ImageGrid>
 
 ## Hair Style and Color
 
@@ -177,14 +115,12 @@ Keep in mind that:
 - Unnatural hair colors (like blue, yellow, green, etc.) are harder to generate. You can read [this section](/using-prompts-to-modify-face-and-body-in-stable-diffusion-xl#results-are-not-satisfying) to find out how to get better results.
 - Prompts containing specific words like `pearl`, `orange` or `pineapple` might generate these objects instead of affecting the hair. Don't be surprised if you see woman holding oranges instead of having orange hair.
 
-<ImageGrid
-  images={[
-    [hair01, 'blonde shaved designs hair'],
-    [hair02, 'ecru messy pixie hair'],
-    [hair03, 'textured bob hair'],
-    [hair04, 'dark chignon hair']
-  ]}
-/>
+<ImageGrid>
+  ![blonde shaved designs hair](./images/hair01.webp)
+  ![ecru messy pixie hair](./images/hair02.webp)
+  ![textured bob hair](./images/hair03.webp)
+  ![dark chignon hair](./images/hair04.webp)
+</ImageGrid>
 
 ## Skin
 
@@ -205,14 +141,12 @@ I believe that you never seen sumo wrestler without big body weight or bodybuild
 Specyfying the body type or individual body parts is a bit better than specyfying the profession. Because it does not affect clothing and background.
 Stable Diffusion understands the body types and body parts. Just open your imagination and describe that as you want.
 
-<ImageGrid
-  images={[
-    [body01, 'slim body type, very skinny body'],
-    [body02, 'muscular body type, abs sixpack, muscles'],
-    [body03, '...'],
-    [body04, 'very thick body type, very fat, chubby']
-  ]}
-/>
+<ImageGrid>
+  ![slim body type, very skinny body](./images/body01.webp)
+  ![muscular body type, abs sixpack, muscles](./images/body02.webp)
+  ![...](./images/body03.webp)
+  ![very thick body type, very fat, chubby](./images/body04.webp)
+</ImageGrid>
 
 ## Nationality and Ethnicity
 
@@ -227,14 +161,12 @@ And ethnicity like: `Asian`, `European`, `African`.
 
 You can get large list of nationalities [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/nationalities.txt). That list was inspired by [this Reddit post](https://www.reddit.com/r/StableDiffusion/comments/13oea0i/photorealistic_portraits_of_200_ethinicities/).
 
-<ImageGrid
-  images={[
-    [nationality01, 'Kazakhstani woman'],
-    [nationality02, 'Filipino woman'],
-    [nationality03, 'Emirati woman'],
-    [nationality04, 'Cameroonian woman']
-  ]}
-/>
+<ImageGrid>
+  ![Kazakhstani woman](./images/nationality01.webp)
+  ![Filipino woman](./images/nationality02.webp)
+  ![Emirati woman](./images/nationality03.webp)
+  ![Cameroonian woman](./images/nationality04.webp)
+</ImageGrid>
 
 ## Age
 
@@ -250,14 +182,12 @@ Also being young is connected with height and body type. Young people are usuall
 
 Prompting specific age with the number might not work well, but you can try it like: `a girl, 20 years old`, `40 years old woman`, `woman, 80 years old`, etc. 
 
-<ImageGrid
-  images={[
-    [age01, 'young girl'],
-    [age02, 'girl'],
-    [age03, 'midlife woman'],
-    [age04, 'old lady']
-  ]}
-/>
+<ImageGrid>
+  ![young girl](./images/age01.webp)
+  ![girl](./images/age02.webp)
+  ![midlife woman](./images/age03.webp)
+  ![old lady](./images/age04.webp)
+</ImageGrid>
 
 ## Scenery
 
@@ -278,14 +208,12 @@ Woman in the `cafe` has more makeup and because of that her skin is less detaile
 Woman in `zen monastery` looks slightly Asian because Zen Monasteries are mostly located in Asia. 
 And the last woman in the `nightclub` has more makeup. Clearly visible Eyeliners and Lipstick.
 
-<ImageGrid
-  images={[
-    [scenery01, 'farm'],
-    [scenery02, 'cafe'],
-    [scenery03, 'zen monastery'],
-    [scenery04, 'nightclub']
-  ]}
-/>
+<ImageGrid>
+  ![farm](./images/scenery01.webp)
+  ![cafe](./images/scenery02.webp)
+  ![zen monastery](./images/scenery03.webp)
+  ![nightclub](./images/scenery04.webp)
+</ImageGrid>
 
 ## Lighting
 
@@ -318,14 +246,12 @@ Some of them, like `Rollei Retro 80s` might not just have an impact on the color
 
 List of Camera Models is available [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/cameras.txt) and list of Camera Films is available [here](https://github.com/Avaray/stable-diffusion-simple-wildcards/blob/sdxl/wildcards/camera_films.txt). Both lists were inspired by [SDXL 1.0 Artistic Studies](https://rikkar69.github.io/SDXL-artist-study/cameras/).
 
-<ImageGrid
-  images={[
-    [camera01, 'Kodak T-Max 100'],
-    [camera02, 'Polaroid 600'],
-    [camera03, 'Foma Fomapan 200 Creative'],
-    [camera04, 'Lomography Redscale XR 50-200']
-  ]}
-/>
+<ImageGrid>
+  ![Kodak T-Max 100](./images/camera01.webp)
+  ![Polaroid 600](./images/camera02.webp)
+  ![Foma Fomapan 200 Creative](./images/camera03.webp)
+  ![Lomography Redscale XR 50-200](./images/camera04.webp)
+</ImageGrid>
 
 ## Year
 
@@ -352,28 +278,24 @@ Also, from Negative Prompts you can remove keywords like: `low quality`, `bad qu
 
 For extremely old photos, you use keywords like: `daguerreotype`, `tintype`, `ambrotype`, `calotype`, `wet plate collodion`, `albumen print`, `cyanotype`, `platinum print`, `gelatin silver print`, etc.
 
-<ImageGrid
-  images={[
-    [year01, ''],
-    [year02, ''],
-    [year03, ''],
-    [year04, '']
-  ]}
-/>
+<ImageGrid>
+  ![](./images/year01.webp)
+  ![](./images/year02.webp)
+  ![](./images/year03.webp)
+  ![](./images/year04.webp)
+</ImageGrid>
 
 ## Name
 
 Names are connected with famous people. Prompting names like `Scarlet` or `Angelina` may affect the appearance of the generated person.
 If you also specify the surname, the effect will be much stronger. Most likely the generated person will have similar hairstyle, facial features, skin tone, etc. to the person you specified. 
 
-<ImageGrid
-  images={[
-    [name01, 'Scarlett Johansson' ],
-    [name02, 'Gal Gadot' ],
-    [name03, '50:50 mix of Beyoncé Knowles & Angelina Jolie' ],
-    [name04, '50:50  mix of Naomi Campbell & Cara Delevingne' ],
-  ]}
-/>
+<ImageGrid>
+  ![Scarlett Johansson](./images/name01.webp)
+  ![Gal Gadot](./images/name02.webp)
+  ![50:50 mix of Beyoncé Knowles & Angelina Jolie](./images/name03.webp)
+  ![50:50 mix of Naomi Campbell & Cara Delevingne](./images/name04.webp)
+</ImageGrid>
 
 ## Mixing
 
