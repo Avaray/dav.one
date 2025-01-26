@@ -1,29 +1,23 @@
 <!doctype html>
 <html lang='en' class='max-w-screen-lg mx-auto transition-colors duration-500'>
+  <!-- Set the initial theme -->
   <script is:inline>
     const currentTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
-
-    // function copyHeadingUrl(url, heading) {
-    //   url = url.split('#')[0];
-    //   navigator.clipboard.writeText(`${url}#${heading}`);
-    // }
-
-    // I will use this only for the articles
-    // https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API#example
-    // async function shareHeadingUrl(url, heading, title) {
-    //   url = url.split('#')[0];
-    //   try {
-    //     await navigator.share({
-    //       title: title,
-    //       text: `Check out this section of ${title}`,
-    //       url: heading ? `${url}#${heading}` : url,
-    //     });
-    //     console.log(`Successfully shared ${url}#${heading}`);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
   </script>
+
+  <!-- Set the theme for printing -->
+  <script is:inline>
+    let originalTheme;
+    window.addEventListener('beforeprint', () => {
+      originalTheme = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', 'print');
+    });
+    window.addEventListener('afterprint', () => {
+      if (originalTheme) document.documentElement.setAttribute('data-theme', originalTheme);
+    });
+  </script>
+
+  <!-- Render the content -->
   <slot />
 </html>
