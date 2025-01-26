@@ -10,7 +10,7 @@ import { readableDate } from '../scripts/utils.ts';
 
 type Props = CollectionEntry<'articles'>['data'];
 
-const { title, description, created, updated } = Astro.props;
+const { title, description, created, updated, author } = Astro.props;
 ---
 
 <ThemeWrapper>
@@ -24,14 +24,9 @@ const { title, description, created, updated } = Astro.props;
         </h1>
         <p class='rounded text-normal bg-primary text-base-100 font-bold p-2 border-rd-1 w-fit'>
           <span>Created on {readableDate(created)}</span>
-          {
-            updated && (
-              <>
-                <span>and updated on {readableDate(updated)}</span>
-              </>
-            )
-          }
+          {updated && <></>}
         </p>
+        <!-- {author && <span>by {author}</span>} -->
       </article>
       <slot />
     </MainProse>
