@@ -1,6 +1,6 @@
 ## 🧻 My Blog
 
-It is a blog about Stable Diffusion, Generative AI, Web Development, Frontend
+Blog about Stable Diffusion, Generative AI, Web Development, Frontend
 Frameworks and Programming in general.
 
 Built using [Astro](https://astro.build/). Made pretty with
