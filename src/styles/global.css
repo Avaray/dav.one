@@ -52,7 +52,7 @@ pre {
 }
 
 code, pre {
-  @apply !rounded-[inherit] text-lg;
+  @apply !rounded-[inherit];
   font-family: 'Fira Code' ;
 }
 
@@ -87,7 +87,7 @@ pre:not(.tab-content code) {
 }
 
 .prose :not(pre) > code {
-  @apply bg-code-bg font-normal p-1 px-4 align-middle;
+  @apply bg-code-bg font-[inherit] p-1 px-4 align-middle ;
 }
 
 .prose code::before,
