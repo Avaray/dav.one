@@ -1,21 +1,24 @@
 ---
 import { readableDate } from '../scripts/utils.ts';
+import Detail from './ArticleDetail.astro';
 const articleUrl = new URL(Astro.request.url).toString();
 const { title, created, updated, author } = Astro.props;
+
+const details = {};
 ---
 
 <div id='article-details' class='mb-8'>
   <h1>{title}</h1>
   <div class='flex items-center gap-2 flex-wrap'>
-    <span class='rounded-[var(--radius-box)] border-solid border p-2 px-4 whitespace-normal md:whitespace-nowrap'>
+    <Detail>
       <span>Created on {readableDate(created, true)}</span>
       {author && <span> by {author}</span>}
-    </span>
+    </Detail>
     {
       updated && (
-        <span class='rounded-[var(--radius-box)] border-solid border p-2 px-4 whitespace-normal md:whitespace-nowrap'>
+        <Detail>
           <span>Updated on {readableDate(updated)}</span>
-        </span>
+        </Detail>
       )
     }
     <span class='hidden print:block rounded-[var(--radius-box)] border-solid border p-2 px-4 w-fit'>
