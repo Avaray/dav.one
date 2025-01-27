@@ -37,4 +37,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
   },
+  redirects: {
+    "/rss": "/rss.xml",
+  },
 });
