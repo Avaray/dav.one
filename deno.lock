@@ -2,7 +2,7 @@
   "version": "4",
   "specifiers": {
     "npm:@astrojs/mdx@^4.0.7": "4.0.7_astro@5.1.9__vite@6.0.11__zod@3.24.1_acorn@8.14.0",
-    "npm:@astrojs/react@^4.1.6": "4.1.6_@types+react@19.0.8_@types+react-dom@19.0.3__@types+react@19.0.8_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.11__lightningcss@1.29.1",
+    "npm:@astrojs/react@^4.2.0": "4.2.0_@types+react@19.0.8_@types+react-dom@19.0.3__@types+react@19.0.8_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.11",
     "npm:@astrojs/rss@^4.0.11": "4.0.11",
     "npm:@astrojs/sitemap@^3.2.1": "3.2.1",
     "npm:@midudev/tailwind-animations@0.1": "0.1.0_tailwindcss@3.4.17__postcss@8.5.1",
@@ -11,6 +11,7 @@
     "npm:@types/react-dom@^19.0.3": "19.0.3_@types+react@19.0.8",
     "npm:@types/react@^19.0.8": "19.0.8",
     "npm:@xtreat/astro-iconify@^1.2.6": "1.2.6",
+    "npm:astro@^5.1.10": "5.1.10_vite@6.0.11_zod@3.24.1",
     "npm:astro@^5.1.9": "5.1.9_vite@6.0.11_zod@3.24.1",
     "npm:daisyui@^5.0.0-beta.2": "5.0.0-beta.2",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
@@ -79,7 +80,7 @@
         "@astrojs/markdown-remark",
         "@mdx-js/mdx",
         "acorn",
-        "astro",
+        "astro@5.1.9_vite@6.0.11_zod@3.24.1",
         "es-module-lexer",
         "estree-util-visit",
         "hast-util-to-html",
@@ -98,8 +99,8 @@
         "prismjs"
       ]
     },
-    "@astrojs/react@4.1.6_@types+react@19.0.8_@types+react-dom@19.0.3__@types+react@19.0.8_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.11__lightningcss@1.29.1": {
-      "integrity": "sha512-lMBO+Va4JbLsXviagT9/ZmliwfQGmsiw4rvI4yusPZijQek3q5yfEnQor5XWNcErrkazjjNxY9BFO5f/eSfqmw==",
+    "@astrojs/react@4.2.0_@types+react@19.0.8_@types+react-dom@19.0.3__@types+react@19.0.8_react@19.0.0_react-dom@19.0.0__react@19.0.0_vite@6.0.11": {
+      "integrity": "sha512-2OccnYFK+mLuy9GpJqPM3BQGvvemnXNeww+nBVYFuiH04L7YIdfg4Gq0LT7v/BraiuADV5uTl9VhTDL/ZQPAhw==",
       "dependencies": [
         "@types/react",
         "@types/react-dom",
@@ -107,7 +108,7 @@
         "react",
         "react-dom",
         "ultrahtml",
-        "vite@6.0.11_lightningcss@1.29.1"
+        "vite@6.0.11"
       ]
     },
     "@astrojs/rss@4.0.11": {
@@ -1096,7 +1097,7 @@
         "vite@6.0.11"
       ]
     },
-    "@vitejs/plugin-react@4.3.4_vite@6.0.11__lightningcss@1.29.1_@babel+core@7.26.7": {
+    "@vitejs/plugin-react@4.3.4_vite@6.0.11_@babel+core@7.26.7": {
       "integrity": "sha512-SCCPBJtYLdE8PX/7ZQAs1QAZ8Jqwih+0VBLum1EGqmCCQal+MIUqLCzj3ZUy8ufbC0cAM4LRlSTm7IQJwWT4ug==",
       "dependencies": [
         "@babel/core",
@@ -1181,7 +1182,7 @@
     "@xtreat/astro-iconify@1.2.6": {
       "integrity": "sha512-8OZkeu68r6X6qAIP88zAZnRwbFfVe13Lep65B2xoSITYR9D9GTZeDlB7hI//6pBl7KnxNxVE/ZzGegBT9qxK5Q==",
       "dependencies": [
-        "astro"
+        "astro@5.1.9_vite@6.0.11_zod@3.24.1"
       ]
     },
     "acorn-jsx@5.3.2_acorn@8.14.0": {
@@ -1244,6 +1245,71 @@
     },
     "astring@1.9.0": {
       "integrity": "sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg=="
+    },
+    "astro@5.1.10_vite@6.0.11_zod@3.24.1": {
+      "integrity": "sha512-qFu4jC7BRlhwHgk9Pa1sTQWw60zYWlriNTt6bMGMKkPxCd4Dd84fGn+NjbrJ/JeKwF7YXX0gY1saDF/RS6TMVA==",
+      "dependencies": [
+        "@astrojs/compiler",
+        "@astrojs/internal-helpers",
+        "@astrojs/markdown-remark",
+        "@astrojs/telemetry",
+        "@oslojs/encoding",
+        "@rollup/pluginutils",
+        "@types/cookie",
+        "acorn",
+        "aria-query",
+        "axobject-query",
+        "boxen",
+        "ci-info",
+        "clsx",
+        "common-ancestor-path",
+        "cookie",
+        "cssesc",
+        "debug",
+        "deterministic-object-hash",
+        "devalue",
+        "diff",
+        "dlv",
+        "dset",
+        "es-module-lexer",
+        "esbuild@0.24.2",
+        "estree-walker@3.0.3",
+        "fast-glob",
+        "flattie",
+        "github-slugger",
+        "html-escaper",
+        "http-cache-semantics",
+        "js-yaml@4.1.0",
+        "kleur@4.1.5",
+        "magic-string",
+        "magicast",
+        "micromatch",
+        "mrmime",
+        "neotraverse",
+        "p-limit@6.2.0",
+        "p-queue",
+        "preferred-pm",
+        "prompts",
+        "rehype",
+        "semver@7.6.3",
+        "sharp",
+        "shiki",
+        "tinyexec",
+        "tsconfck",
+        "ultrahtml",
+        "unist-util-visit",
+        "unstorage",
+        "vfile",
+        "vite@6.0.11",
+        "vitefu",
+        "which-pm",
+        "xxhash-wasm",
+        "yargs-parser",
+        "yocto-spinner",
+        "zod",
+        "zod-to-json-schema",
+        "zod-to-ts"
+      ]
     },
     "astro@5.1.9_vite@6.0.11_zod@3.24.1": {
       "integrity": "sha512-QB3MH7Ul3gEvmHXEfvPkGpTZyyB/TBKQbm0kTHpo0BTEB7BvaY+wrcWiGEJBVDpVdEAKY9fM3zrJ0c7hZSXVlw==",
@@ -1561,8 +1627,8 @@
     "eastasianwidth@0.2.0": {
       "integrity": "sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA=="
     },
-    "electron-to-chromium@1.5.87": {
-      "integrity": "sha512-mPFwmEWmRivw2F8x3w3l2m6htAUN97Gy0kwpO++2m9iT1Gt8RCFVUfv9U/sIbHJ6rY4P6/ooqFL/eL7ock+pPg=="
+    "electron-to-chromium@1.5.88": {
+      "integrity": "sha512-K3C2qf1o+bGzbilTDCTBhTQcMS9KW60yTAaTeeXsfvQuTDDwlokLam/AdqlqcSy9u4UainDgsHV23ksXAOgamw=="
     },
     "emoji-regex-xs@1.0.0": {
       "integrity": "sha512-LRlerrMYoIDrT6jgpeZ2YYl/L8EulRTt5hQcYjy5AInh7HWXKimpqx68aknBFpGL2+/IcogTcaydJEgaTmOpDg=="
@@ -3922,7 +3988,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@astrojs/mdx@^4.0.7",
-        "npm:@astrojs/react@^4.1.6",
+        "npm:@astrojs/react@^4.2.0",
         "npm:@astrojs/rss@^4.0.11",
         "npm:@astrojs/sitemap@^3.2.1",
         "npm:@midudev/tailwind-animations@0.1",
@@ -3931,7 +3997,7 @@
         "npm:@types/react-dom@^19.0.3",
         "npm:@types/react@^19.0.8",
         "npm:@xtreat/astro-iconify@^1.2.6",
-        "npm:astro@^5.1.9",
+        "npm:astro@^5.1.10",
         "npm:daisyui@^5.0.0-beta.2",
         "npm:react-dom@19",
         "npm:react@19",
