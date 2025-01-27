@@ -86,9 +86,10 @@ pre:not(.tab-content code) {
   }
 }
 
-.prose code {
+.prose :not(pre) > code {
   @apply bg-code-bg font-normal p-1 px-4 align-middle;
 }
+
 .prose code::before,
 .prose code::after {
   content: none;
