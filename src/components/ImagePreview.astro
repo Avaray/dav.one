@@ -1,4 +1,4 @@
-<dialog id='preview' class='modal' onclick='preview.close()'>
+<dialog id='preview' class='modal bg-base-100/80' onclick='preview.close()'>
   <div class='modal-box p-0 mx-auto max-w-fit'>
     <img id='modal-image' src='' alt='Your Image' class='!m-0 h-auto max-h-[95vh] w-auto max-w-[95vw] object-contain' />
   </div>
@@ -7,7 +7,6 @@
   </form>
 
   <script type='module'>
-    // Function to open the modal and set the clicked image as the modal content
     function openModal(imageSrc) {
       console.log(JSON.stringify(imageSrc));
       const modal = document.getElementById('preview');
