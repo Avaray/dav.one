@@ -39,5 +39,6 @@ export default defineConfig({
   },
   redirects: {
     "/rss": "/rss.xml",
+    "/sitemap": "/sitemap-0.xml",
   },
 });
