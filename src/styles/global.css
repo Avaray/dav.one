@@ -85,3 +85,11 @@ pre:not(.tab-content code) {
     @apply px-0;
   }
 }
+
+.prose code {
+  @apply bg-code-bg font-normal p-1 px-4 align-middle;
+}
+.prose code::before,
+.prose code::after {
+  content: none;
+}
