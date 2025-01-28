@@ -6,7 +6,7 @@
 @plugin "daisyui/theme" {
   name: "forest";
   default: true;
-  prefersdark: false; 
+  prefersdark: false;
   --radius-box: 0.5rem;
 }
 
@@ -43,19 +43,18 @@
 [data-theme="dark"] {}
 
 [data-theme="futura"] {
-  font-family: 'Quando';
+  font-family: "Quando";
 }
 
 [data-theme="forest"] {
-  font-family: 'Fira Mono';
+  font-family: "Fira Mono";
 }
 
 [data-theme="enlightment"] {
-  font-family: 'Quando';
+  font-family: "Quando";
 }
 
 /* .article-icon {
   text-box-edge: text !important;
   text-box-trim: both !important;
 } */
-
