@@ -126,7 +126,18 @@ export const run = [
 
 If you want, you can take a few additional steps that might be useful to you.
 
-## 5. Configure daisyUI (optional)
+## 5. Configure TailwindCSS (optional)
+
+If you are not planning to use [default color palette](https://tailwindcss.com/docs/colors#default-color-palette-reference), [you can disable it](https://tailwindcss.com/docs/colors#disabling-default-colors).  
+This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wikipedia.org/wiki/Gzip)). 
+
+```
+@theme {
+  --color-*: initial;
+}
+```
+
+## 6. Configure daisyUI (optional)
 
 By default, [daisyUI](daisyui.com) has two themes: **light** and **dark** and you don't need to configure anything to make it work.  
 However, you can customize it as you like by editing your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS).
@@ -138,7 +149,7 @@ Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.dais
 };
 ```
 
-## 6. Add Typography plugin (optional)
+## 7. Add Typography plugin (optional)
 
 By default, [TailwindCSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding this package.
 To make [Typography](https://tailwindcss-typography.vercel.app/) available in your project, first you need to install package.
@@ -169,7 +180,7 @@ Everything inside the **body** tag will be affected by [TailwindCSS Typography](
 I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#applying-a-type-scale) and [this page of daisyUI](https://v5.daisyui.com/docs/layout-and-typography/) to learn more.  
 Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply) with class **prose** may cause issues.
 
-## 7. Add custom fonts (optional)
+## 8. Add custom fonts (optional)
 
 You can use [UnoCSS](https://unocss.dev/) and its [web-fonts](https://unocss.dev/presets/web-fonts) preset to add custom fonts to your project.  
 This will let you use web fonts from [Google Fonts](https://fonts.google.com/), [Bunny](https://fonts.bunny.net/), and [FontShare](https://www.fontshare.com/) by simply providing the font names.
@@ -224,7 +235,7 @@ body {
 }
 ```
 
-## 8. Add SVG Icons (optional)
+## 9. Add SVG Icons (optional)
 
 Recently [Xander Treat](xtreat.dev) created [@xtreat/astro-iconify](https://www.npmjs.com/package/@xtreat/astro-iconify) package to make it easy to use [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) icons in your [Astro](https://astro.build/) projects.  
 Comparing to other SVG icon [integrations](https://astro.build/integrations/?search=icon), this one lets you use any icons from [Iconify](https://iconify.design/) without hassles.  
@@ -261,7 +272,7 @@ import Icon from '@xtreat/astro-iconify';
 <Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
 ```
 
-## 9. Add React (optional)
+## 10. Add React (optional)
 
 [Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same time!).  
 To add them, you should follow guides available [here](https://docs.astro.build/en/guides/integrations-guide/), and daisyUI guides available [here](https://v5.daisyui.com/docs/install/#framework-install-tutorials).
@@ -302,7 +313,7 @@ Add the following lines to **compilerOptions** section.
 }
 ```
 
-## 10. Recommended Integrations (optional)
+## 11. Recommended Integrations (optional)
 
 If you chose **Basic, minimal starter** at the beginning of this tutorial, then you may also consider the following integrations.  
 I will not cover them in this tutorial, but I believe you will be able to add them yourself.
@@ -310,7 +321,7 @@ I will not cover them in this tutorial, but I believe you will be able to add th
 - [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/)  
 - [Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 
-## 11. Finish (required)
+## 12. Finish (required)
 
 Are you having fun writing code in your new project, and is everything working as expected?  
 Do you have any issues or need some help? Perhaps you want to showcase your project or ask for feedback?  
