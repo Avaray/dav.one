@@ -8,7 +8,6 @@ import UnoCSS from "unocss/astro";
 // https://astro.build/config
 export default defineConfig({
   site: "https://dav.one",
-  trailingSlash: "never",
   legacy: {
     // Need to keep this for legacy collections
     collections: true,
@@ -37,8 +36,8 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
   },
-  redirects: {
-    "/rss": "/rss.xml",
-    "/sitemap": "/sitemap-0.xml",
-  },
+  // redirects: {
+  //   "/rss": "/rss.xml",
+  //   "/sitemap": "/sitemap-0.xml",
+  // },
 });
