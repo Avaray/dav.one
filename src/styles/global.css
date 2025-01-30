@@ -56,6 +56,9 @@ code, pre {
   @apply !rounded-[inherit];
   font-family: 'Fira Code' ;
 }
+pre:has(> code) {
+  @apply text-lg
+}
 
 /* Remove margins from code blocks if they are inside Tab component */
 pre:not(.tab-content code) {
