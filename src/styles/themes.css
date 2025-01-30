@@ -44,6 +44,11 @@
 
 [data-theme="futura"] {
   font-family: "Quando";
+  .prose {
+    a {
+      @apply underline decoration-2 underline-offset-4 hover:no-underline
+    }
+  }
 }
 
 [data-theme="forest"] {
