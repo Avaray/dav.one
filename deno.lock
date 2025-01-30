@@ -12,7 +12,7 @@
     "npm:@types/react@^19.0.8": "19.0.8",
     "npm:@xtreat/astro-iconify@^1.2.6": "1.2.6",
     "npm:astro@^5.1.10": "5.1.10_vite@6.0.11_zod@3.24.1",
-    "npm:astro@^5.2.0": "5.2.0_vite@6.0.11_zod@3.24.1",
+    "npm:astro@^5.2.1": "5.2.1_vite@6.0.11_zod@3.24.1",
     "npm:daisyui@^5.0.0-beta.5": "5.0.0-beta.5",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
     "npm:react@19": "19.0.0",
@@ -1339,8 +1339,8 @@
         "zod-to-ts"
       ]
     },
-    "astro@5.2.0_vite@6.0.11_zod@3.24.1": {
-      "integrity": "sha512-6Y7Ph4aTeIifrJiD/b6JY4IoVTlWRVcA2pN1l7ioYSd+W8NsZL6LRZWWGeGHX7xlOD9ovsoG9duiSaydJ1Ua1Q==",
+    "astro@5.2.1_vite@6.0.11_zod@3.24.1": {
+      "integrity": "sha512-OYR2kUo9EqX6OYZ1OmM14xP8mjFwgrk1FzIr+3K3tS0gCCKJsXtfboCUhX3lODZFIsmY/on7NPZd+2PURA0R2Q==",
       "dependencies": [
         "@astrojs/compiler",
         "@astrojs/internal-helpers@0.5.0",
@@ -4028,7 +4028,7 @@
         "npm:@types/react-dom@^19.0.3",
         "npm:@types/react@^19.0.8",
         "npm:@xtreat/astro-iconify@^1.2.6",
-        "npm:astro@^5.2.0",
+        "npm:astro@^5.2.1",
         "npm:daisyui@^5.0.0-beta.5",
         "npm:react-dom@19",
         "npm:react@19",
