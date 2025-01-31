@@ -32,7 +32,7 @@ const sortedArticles = [...articles].sort((a, b) => {
             <div class='flex flex-row p-2'>
               <div class='max-md:hidden flex flex-col items-center min-w-[148px] min-h-[148px] text-center rounded-lg aspect-square'>
                 {/* Using [&>*]:fill-current to replace colors in icons */}
-                <Icon icon={article.data.icon} class='text-primary mx-6 h-32 w-32 [&>*]:fill-current' />
+                <Icon icon={article.data.icon} class='text-primary mx-6 h-32 w-32 [&>*]:fill-current mt-[1rem]' />
                 <span class='text-sm whitespace-nowrap text-gray-900'>
                   {/* <FormattedDate date={article.data.updated || article.data.created} /> */}
                 </span>
@@ -40,7 +40,7 @@ const sortedArticles = [...articles].sort((a, b) => {
 
               <article>
                 <h1 class='!mb-2 text-primary'>{article.data.title}</h1>
-                <p class='!mt-2 text-base-content font-light tracking-normal'>{article.data.description}</p>
+                <p class='!mt-0 text-base-content font-light tracking-normal'>{article.data.description}</p>
               </article>
             </div>
           </a>

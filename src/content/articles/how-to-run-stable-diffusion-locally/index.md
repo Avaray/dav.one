@@ -70,9 +70,9 @@ Package Manager for Stable Diffusion. Released for public in August 2024.
 Basically it does the same thing as
 [Stability Matrix](/how-to-run-stable-diffusion-locally#stability-matrix). Has a
 bit different features and UI.
-[Here](https://www.reddit.com/r/StableDiffusion/comments/1f1ksb9/comment/lk0ft46/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
-is a comment from the author about the differences between them. Personally, I
-didn't have a chance to do large tests of LynxHub yet.
+[Comment from the author](https://www.reddit.com/r/StableDiffusion/comments/1f1ksb9/comment/lk0ft46/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+about the differences between them. Personally, I didn't have a chance to do
+large tests of LynxHub yet.
 
 Pros:
 
