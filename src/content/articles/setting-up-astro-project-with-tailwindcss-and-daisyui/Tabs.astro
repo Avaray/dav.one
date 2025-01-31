@@ -19,7 +19,6 @@ const { tabs, name } = Astro.props;
         <input
           type='radio'
           name={name}
-          role='tab'
           class='tab [--tab-border-color:var(--color-primary)] checked:[--tab-bg:var(--color-code-bg)]'
           aria-label={tab.label}
           checked={index === 0}
