@@ -51,7 +51,7 @@ Open project in your favorite editor. If it's [VSCode](https://code.visualstudio
 
 Edit the **astro.config.mjs** file, located in the root of your project. You need to add [TailwindCSS](https://tailwindcss.com/docs/installation/using-vite) as a [Vite plugin](https://docs.astro.build/en/recipes/add-yaml-support/).
 
-```ts
+```
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -69,13 +69,13 @@ You can make it available globally or locally. Everything depends on your needs.
 In following examples, we will make them available globally.
 
 src/styles/**global.css**
-```css
+```
 @import "tailwindcss";
 @plugin "daisyui";
 ```
 
 Then, import CSS file in the **.astro** component like this:
-```yaml
+```
 ---
 import '../proper/path/to/styles/global.css';
 ---
@@ -83,7 +83,7 @@ import '../proper/path/to/styles/global.css';
 
 Another way to import the CSS file in the **.astro** component:
 
-```html
+```
 <style is:global>
   @import '../proper/path/to/styles/global.css';
 </style>
@@ -91,7 +91,7 @@ Another way to import the CSS file in the **.astro** component:
 
 If you are not planning to use CSS files at all, you can import them in **.astro** component like this:
 
-```html
+```
 <style is:global>
   @import "tailwindcss";
   @plugin "daisyui";
@@ -99,9 +99,7 @@ If you are not planning to use CSS files at all, you can import them in **.astro
 ```
 
 <div class='flex items-center my-12 gap-4' {...props}>
-  {/* IKONA */}
   <div><Icon icon="game-icons:coronation" class='h-40 w-40 text-primary' /></div>
-  {/* KOLUMNA */}
   <div class='flex flex-col'>
     <div class='flex gap-6 text-5xl mt-6 font-bold text-primary animate-[bouncing_1.5s_linear_infinite] transform -translate-x-[52px]'>
       <Icon icon="game-icons:arrow-dunk" class="flip-x" />
@@ -142,7 +140,7 @@ This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wi
 By default, [daisyUI](daisyui.com) has two themes: **light** and **dark** and you don't need to configure anything to make it work.  
 However, you can customize it as you like. Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.daisyui.com/docs/themes/) pages for more information.
 
-```css
+```
 @plugin "daisyui" {
   themes: dark --default, light, forest, dracula;
 };
@@ -165,14 +163,14 @@ export const typography = [
 
 Add plugin in your CSS file.
 
-```css
+```
 @plugin "@tailwindcss/typography";
 ```
 
 Finally add the **prose** class somewhere in your project, for example, to your **body** tag.  
 Everything inside the **body** tag will be affected by [TailwindCSS Typography](https://tailwindcss-typography.vercel.app/).
 
-```html
+```
 <body class="prose">
 ```
 
@@ -198,7 +196,7 @@ Add **UnoCSS** to **integrations list** in your **astro.config.mjs** config file
 You can also keep your UnoCSS configuration [in a dedicated file](https://unocss.dev/integrations/astro) to keep Astro config file cleaner.
 
 
-```ts
+```
 import { defineConfig } from 'astro/config';
 import UnoCSS from 'unocss/astro'
 
@@ -220,7 +218,7 @@ export default defineConfig({
 Now you can use fonts in **CSS** for specific [Themes](https://v5.daisyui.com/docs/themes/).  
 Fonts will be loaded in moments when you switch between themes.
 
-```css
+```
 [data-theme="dark"] {
   font-family: 'Fira Mono';
 }
@@ -228,7 +226,7 @@ Fonts will be loaded in moments when you switch between themes.
 
 Or you can use them in classic way.
 
-```css
+```
 body {
   font-family: 'Roboto';
 }
@@ -255,7 +253,7 @@ export const icons = [
 
 Then you will be able to use icons in **.astro** files like:
 
-```html
+```
 ---
 import Icon from "@xtreat/astro-iconify";
 ---
@@ -265,7 +263,7 @@ import Icon from "@xtreat/astro-iconify";
 
 Or in [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files like:
 
-```tsx
+```
 import Icon from '@xtreat/astro-iconify';
 
 <Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
@@ -291,7 +289,7 @@ export const react = [
 
 Edit the **astro.config.mjs** configuration file again. Add [React](https://react.dev/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
 
-```ts
+```
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 
@@ -303,7 +301,7 @@ export default defineConfig({
 If you are using [TypeScript](https://www.typescriptlang.org/docs/) in your project, then you need to edit the **tsconfig.json** file located in the root of your project.  
 Add the following lines to **compilerOptions** section.
 
-```json
+```
 {
   "compilerOptions": {
     "jsx": "react-jsx",
