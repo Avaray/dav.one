@@ -1,22 +1,37 @@
 <dialog id='preview' class='modal bg-stone-900/80' onclick='preview.close()'>
   <div class='modal-box p-0 mx-auto max-w-fit'>
-    <img id='modal-image' src='' alt='Your Image' class='!m-0 h-auto max-h-[95vh] w-auto max-w-[95vw] object-contain' />
+    <img
+      id='modal-image'
+      src=''
+      alt='Your Image'
+      width='768'
+      height='1344'
+      class='!m-0 h-auto max-h-[95vh] w-auto max-w-[95vw] object-contain'
+      loading='lazy'
+    />
   </div>
   <form method='dialog' class='modal-backdrop'>
     <button> </button>
   </form>
 
   <script type='module'>
-    function openModal(imageSrc) {
-      console.log(JSON.stringify(imageSrc));
+    function openModal({ src, width, height }) {
       const modal = document.getElementById('preview');
       const modalImg = document.getElementById('modal-image');
-      modalImg.src = imageSrc;
+      modalImg.src = src;
+      modalImg.width = width; // Set intrinsic width
+      modalImg.height = height; // Set intrinsic height
       modal.showModal();
     }
 
     document.querySelectorAll('img').forEach((img) => {
-      img.addEventListener('click', () => openModal(img.src));
+      img.addEventListener('click', () => {
+        openModal({
+          src: img.src,
+          width: img.naturalWidth, // Get natural dimensions
+          height: img.naturalHeight,
+        });
+      });
     });
   </script>
 </dialog>
