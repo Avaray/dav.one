@@ -7,7 +7,6 @@ import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Icon from '@xtreat/astro-iconify';
 import MainProse from '../components/MainProse.astro';
-import OutRange from '../components/OutRange.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import ThemeWrapper from '../components/ThemeWrapper.astro';
 
@@ -21,8 +20,6 @@ const sortedArticles = [...articles].sort((a, b) => {
   return dateB - dateA;
 });
 ---
-
-<OutRange />
 
 <ThemeWrapper>
   <Head title={siteTitle} description={siteDescription} />
