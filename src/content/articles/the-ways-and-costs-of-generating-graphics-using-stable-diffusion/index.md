@@ -74,8 +74,8 @@ Before choosing a Docker image, familiarize yourself with its documentation.
 Personally, I recommend [AI-Dock](https://github.com/ai-dock) based images. They
 give you ability to quick start with
 [Provisioning Script](https://github.com/ai-dock/base-image/wiki/4.0-Running-the-Image#provisioning-script).
-I even created a repository containing templates with awesome models, you can
-find it [here](https://github.com/Avaray/stable-diffusion-templates).
+I even created a repository containing templates with awesome models,
+[you can find it here](https://github.com/Avaray/stable-diffusion-templates).
 
 I recommend only these two services, which confirmed to me that you won't lose
 the money you've deposited. The first one is my personal favorite.
@@ -117,12 +117,13 @@ I think that Google Colab is a good place for training models, but not for
 generating graphics. If you wan't to pay for a service, I recommend
 [renting a server](/the-ways-and-costs-of-generating-graphics-using-stable-diffusion#renting-servers).
 
-Recently, I've found a repository that allows you to use InvokeAI on Free Tier.
-You can find it [here](https://github.com/i-huzaifa-arshad/InvokeAi-Colab). I
-assume that with [tunneling](https://ngrok.com/our-product/secure-tunnels), it's
-possible to use other UIs. However, I don't intend to check it, as generating
-images on Colab is currently several times slower than on a single RTX4090. For
-me, it's not worth it.
+Recently,
+[I've found a repository](https://github.com/i-huzaifa-arshad/InvokeAi-Colab)
+that allows you to use InvokeAI on Free Tier. I assume that with
+[tunneling](https://ngrok.com/our-product/secure-tunnels), it's possible to use
+other UIs. However, I don't intend to check it, as generating images on Colab is
+currently several times slower than on a single RTX4090. For me, it's not worth
+it.
 
 ## Dedicated Websites
 
