@@ -27,14 +27,6 @@
   }
 }
 
-#out-range {
-  @apply transition-all duration-500;
-}
-
-.out-range {
-  @apply grayscale opacity-20;  
-}
-
 main a {
   @apply text-primary font-bold tracking-wider no-underline;
 }
