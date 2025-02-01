@@ -7,9 +7,9 @@ const currentBranch = getCurrentBranch();
 
 let scores = {
   performance: 0,
-  accessibility: 94,
-  bestPractices: 80,
-  seo: 35,
+  accessibility: 0,
+  bestPractices: 0,
+  seo: 0,
 };
 
 currentBranch === 'main' && (scores = await getPageSpeedScores());
