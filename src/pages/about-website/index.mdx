@@ -4,7 +4,7 @@ title: 'About this website'
 description: 'The story of the creation of this website'
 ---
 
-import PageSpeedStats from "../../components/PageSpeedStats.astro";
+import StatsLighthouse from "../../components/StatsLighthouse.astro";
 
 import { getCollection } from 'astro:content';
 export const articles = await getCollection('articles', ({ data }) => {
@@ -42,4 +42,4 @@ To be able to share an impressive total of <span class="font-bold">{Object.keys(
 Hosting & Deployments:
 - [Cloudflare Pages](https://pages.cloudflare.com/) - because of clear pricing and their awesome CDN.
 
-<PageSpeedStats />
+<StatsLighthouse />

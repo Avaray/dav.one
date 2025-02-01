@@ -23,7 +23,8 @@ export function getCurrentBranch() {
 
 // TODO
 export async function getPageSpeedScores(url: string = "https://dav.one") {
-  const apiKey = process.env.GOOGLE_PAGESPEED_KEY || "";
+  url ? url : `https://${import.meta.env.SITE_URL}`;
+  const apiKey = import.meta.env.GOOGLE_PAGESPEED_KEY || "";
   apiKey || console.error("Missing Google PageSpeed API key");
   const apiUrl = new URL(
     "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
@@ -49,6 +50,11 @@ export async function getPageSpeedScores(url: string = "https://dav.one") {
     };
   } catch (error) {
     console.error("Error:", error);
-    return null;
+    return {
+      performance: 0,
+      accessibility: 0,
+      bestPractices: 0,
+      seo: 0,
+    };
   }
 }

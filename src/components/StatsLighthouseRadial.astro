@@ -1,0 +1,25 @@
+---
+const { category, score } = Astro.props as { category: string; score: number };
+const background =
+  score >= 100
+    ? 'bg-success'
+    : score >= 90
+      ? 'bg-info'
+      : score >= 80
+        ? 'bg-warning'
+        : score >= 1
+          ? 'bg-error'
+          : 'bg-base-content';
+---
+
+<div class='flex flex-col gap-2 p-4 items-center'>
+  <div
+    class={`radial-progress text-base-content ${background} border-0`}
+    style=`--value:${score};`
+    aria-valuenow={score}
+    role='progressbar'
+  >
+    <span class='text-base-100 drop-shadow-md'>{score ? score : 'N/A'}</span>
+  </div>
+  <div class=''>{category}</div>
+</div>

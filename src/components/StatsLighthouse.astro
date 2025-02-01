@@ -1,0 +1,29 @@
+---
+import PageSpeedRadial from './StatsLighthouseRadial.astro';
+import { getCurrentBranch, getPageSpeedScores } from '../scripts/utils.ts';
+import Icon from '@xtreat/astro-iconify';
+
+const currentBranch = getCurrentBranch();
+
+let scores = {
+  performance: 0,
+  accessibility: 94,
+  bestPractices: 80,
+  seo: 35,
+};
+
+currentBranch === 'main' && (scores = await getPageSpeedScores());
+---
+
+<!-- ### [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-dav-one/k8mmkyikue?form_factor=desktop) -->
+<div class='border-1 rounded-2xl w-fit p-4 select-none'>
+  <h2 class='flex items-center !mt-1'>
+    <Icon icon='simple-icons:lighthouse' class='inline-block w-14 h-14 p-2' />Google PageSpeed Insights
+  </h2>
+  <div class='flex gap-4'>
+    <PageSpeedRadial category='Performance' score={scores.performance} />
+    <PageSpeedRadial category='Accessibility' score={scores.accessibility} />
+    <PageSpeedRadial category='Best Practices' score={scores.bestPractices} />
+    <PageSpeedRadial category='SEO' score={scores.seo} />
+  </div>
+</div>
