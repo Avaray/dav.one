@@ -3,8 +3,6 @@ import PageSpeedRadial from './StatsLighthouseRadial.astro';
 import { getCurrentBranch, getPageSpeedScores } from '../scripts/utils.ts';
 import Icon from '@xtreat/astro-iconify';
 
-const currentBranch = getCurrentBranch();
-
 let scores = {
   performance: 0,
   accessibility: 0,
@@ -12,13 +10,13 @@ let scores = {
   seo: 0,
 };
 
-currentBranch === 'main' && (scores = await getPageSpeedScores());
+import.meta.env.BRANCH === 'main' && (scores = await getPageSpeedScores());
 ---
 
 <!-- ### [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-dav-one/k8mmkyikue?form_factor=desktop) -->
 <div class='border-1 rounded-2xl w-fit p-4 select-none'>
   <h2 class='flex items-center !mt-1'>
-    <Icon icon='simple-icons:lighthouse' class='inline-block w-14 h-14 p-2' />Google PageSpeed Insights
+    <Icon icon='simple-icons:lighthouse' class='inline-block w-14 h-14 m-2' />Google PageSpeed Insights
   </h2>
   <div class='flex gap-4'>
     <PageSpeedRadial category='Performance' score={scores.performance} />
@@ -26,4 +24,14 @@ currentBranch === 'main' && (scores = await getPageSpeedScores());
     <PageSpeedRadial category='Best Practices' score={scores.bestPractices} />
     <PageSpeedRadial category='SEO' score={scores.seo} />
   </div>
+  {
+    import.meta.env.BRANCH !== 'main' && (
+      <div role='alert' class='alert alert-warning alert-soft'>
+        <span>
+          Stats are generated only for <b class='uppercase'>main</b> branch. Your current branch is{' '}
+          <b class='uppercase'>{getCurrentBranch()}</b>.
+        </span>
+      </div>
+    )
+  }
 </div>
