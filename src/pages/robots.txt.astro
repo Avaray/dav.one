@@ -1,5 +1,6 @@
-{
-  import.meta.env.BRANCH !== 'main' &&
-    `User-agent: *
-Disallow: /`
-}
+---
+const isProduction = import.meta.env.PROD;
+const robotsContent = ['User-agent: *', 'Disallow: /'].join('\n');
+---
+
+{isProduction && robotsContent}
