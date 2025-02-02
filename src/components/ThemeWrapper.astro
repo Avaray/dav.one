@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang='en' class='max-w-screen-lg mx-auto transition-colors duration-500'>
-  <!-- Set the initial theme -->
+  {/* Set the initial theme */}
   <script is:inline>
     const currentTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
   </script>
 
-  <!-- Set the theme for printing -->
+  {/* Set the theme for printing */}
   <script is:inline>
     let originalTheme;
     window.addEventListener('beforeprint', () => {
