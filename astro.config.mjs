@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import UnoCSS from "unocss/astro";
+import { getCurrentBranch } from "./src/scripts/utils.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +27,9 @@ export default defineConfig({
       alias: {
         "@": "/src",
       },
+    },
+    define: {
+      "import.meta.env.BRANCH": JSON.stringify(getCurrentBranch()),
     },
   },
   prefetch: true,
