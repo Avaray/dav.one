@@ -1,7 +1,0 @@
----
-const isProduction = import.meta.env.PROD;
-const robotsContent = ['User-agent: *', 'Disallow: /'].join('\n');
-Astro.response.headers.set('Content-Type', 'text/plain');
----
-
-{isProduction && robotsContent}
