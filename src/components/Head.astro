@@ -6,6 +6,7 @@ interface Props {
   image?: string;
 }
 
+const isProduction = import.meta.env.PRODUCTION;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description } = Astro.props;
@@ -19,7 +20,7 @@ const { title, description } = Astro.props;
   <meta name='generator' content={Astro.generator} />
 
   {/*  Prevent indexing on non-main branches */}
-  {import.meta.env.BRANCH !== 'main' && <meta name='robots' content='noindex, nofollow' />}
+  {!isProduction && <meta name='robots' content='noindex, nofollow' />}
 
   {/*  Canonical URL */}
   <link rel='canonical' href={canonicalURL} />

@@ -24,7 +24,7 @@ isProduction && (scores = await getPageSpeedScores());
     <PageSpeedRadial category='Performance' score={scores.performance} />
     <PageSpeedRadial category='Accessibility' score={scores.accessibility} />
     <PageSpeedRadial category='Best Practices' score={scores.bestPractices} />
-    <PageSpeedRadial category='SEO' score={scores.seo} />
+    <PageSpeedRadial category='SEO' score={scores.seo.toFixed(1)} />
   </div>
   {
     !isProduction && (
