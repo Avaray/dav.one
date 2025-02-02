@@ -12,6 +12,8 @@ const background =
         : score >= 1
           ? 'bg-error'
           : 'bg-base-content';
+
+const normalizeNumber = (num: number) => (num % 1 === 0 ? num : parseFloat(num.toFixed(1)));
 ---
 
 <div class='flex flex-col gap-2 p-4 items-center'>
@@ -21,7 +23,9 @@ const background =
     aria-valuenow={score}
     role='progressbar'
   >
-    <span class='text-base-100 drop-shadow-md'>{score && isProduction ? score.toFixed(1) : 'N/A'}</span>
+    <span class='text-base-100 drop-shadow-md'>
+      {score && isProduction ? normalizeNumber(score) : 'N/A'}
+    </span>
   </div>
   <div class=''>{category}</div>
 </div>
