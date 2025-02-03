@@ -5,6 +5,7 @@ description: 'The story of the creation of this website'
 ---
 
 import StatsLighthouse from "../../components/StatsLighthouse.astro";
+import StatsCloudflare from "../../components/StatsCloudflare.astro";
 
 import { getCollection } from 'astro:content';
 export const articles = await getCollection('articles', ({ data }) => {
@@ -43,3 +44,5 @@ Hosting & Deployments:
 - [Cloudflare Pages](https://pages.cloudflare.com/) - because of clear pricing and their awesome CDN.
 
 <StatsLighthouse />
+
+<StatsCloudflare />
