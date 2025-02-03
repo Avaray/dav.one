@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* https://tailwindcss-animations.vercel.app/ */
-@plugin "@midudev/tailwind-animations";
-
 @theme {
   --color-*: initial; /* This prevents including the entire color palette in the CSS file */
   --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100));

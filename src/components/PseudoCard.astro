@@ -11,7 +11,7 @@ const { icon, title, ...props } = Astro.props as Props;
 <div class='flex items-center my-12 gap-4' {...props}>
   <div><Icon icon={icon} class='h-40 w-40 text-primary' /></div>
   <div class='flex flex-col'>
-    <div class='text-5xl mt-6 font-bold text-primary animate-bounce'>{title}</div>
+    <div class='text-5xl mt-6 font-bold text-primary'>{title}</div>
     <slot />
   </div>
 </div>
