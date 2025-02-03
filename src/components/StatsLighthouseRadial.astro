@@ -1,7 +1,7 @@
 ---
 const isProduction = import.meta.env.PRODUCTION;
 
-const { category, score } = Astro.props as { category: string; score: number };
+const { category, score, ariaLabel } = Astro.props as { category: string; score: number; ariaLabel?: string };
 const background =
   score >= 100
     ? 'bg-success'
@@ -21,6 +21,7 @@ const normalizeNumber = (num: number) => (num % 1 === 0 ? num : parseFloat(num.t
     class={`radial-progress text-base-content ${background} border-0`}
     style=`--value:${score};`
     aria-valuenow={score}
+    aria-label={ariaLabel}
     role='progressbar'
   >
     <span class='text-base-100 drop-shadow-md'>
