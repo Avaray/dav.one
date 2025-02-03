@@ -16,7 +16,7 @@ const API_TOKEN = import.meta.env.CF_RADAR_TOKEN;
 const fetchCloudflareStats = async () => {
   const currentDate = new Date();
   const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setDate(currentDate.getDate() - 30);
+  thirtyDaysAgo.setDate(currentDate.getDate() - 31);
 
   const formattedCurrentDate = currentDate.toISOString().split('T')[0];
   const formattedThirtyDaysAgo = thirtyDaysAgo.toISOString().split('T')[0];
@@ -89,6 +89,12 @@ const statsProcessed = stats.data.viewer.zones[0].httpRequests1dGroups.map((day)
 const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
   return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
 });
+
+const getHighestNumber = (data: any, key: string) => {
+  return data.reduce((maxObj, currentObj) => {
+    return currentObj[key] > maxObj[key] ? currentObj : maxObj;
+  });
+};
 ---
 
 <div class='border-1 rounded-2xl w-full p-4 select-none my-8'>
@@ -102,7 +108,7 @@ const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
       <span class='btn'>Month</span><span class='btn'>Year</span>
     </div> -->
   </div>
-  <div id='chart' class='w-full h-24 flex gap-1 my-4 items-end'>
+  <div id='chart-container' class='w-full h-24 flex gap-1 mb-1 mt-4 items-end'>
     {
       statsProcessed.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
@@ -110,20 +116,30 @@ const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
 
         return (
           <div
-            class={`flex flex-1 p-1 ${
+            class={`flex flex-1 gap-1 ${
               isDrop(
-                previousDays.map((d) => d.uniques),
+                previousDays.map((d: any) => d.uniques),
                 day.uniques,
               )
                 ? 'bg-error'
                 : 'bg-success'
             }`}
             style={`height: ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%`}
+            title={`${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`}
           />
         );
       })
     }
   </div>
+
+  <!-- <div id='chart-container' class='w-full h-24 flex gap-1 mt-1 mb-4 items-start'>
+    {
+      statsProcessed.map((day: any) => {
+        const maxRequests = getHighestNumber(statsProcessed, 'requests');
+        return <div class='flex flex-1 gap-1 bg-base-content/20' style={`height: ${day.percent}%`} />;
+      })
+    }
+  </div> -->
 
   <div class='flex gap-4'></div>
   {
@@ -137,4 +153,4 @@ const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
 
 <!-- <code>{JSON.stringify(stats.data.viewer.zones[0].httpRequests1dGroups[0], null, 2)}</code> -->
 
-<code>{JSON.stringify(statsProcessed[0], null, 2)}</code>
+<!-- <code>{JSON.stringify(statsProcessed[0], null, 2)}</code> -->
