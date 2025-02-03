@@ -68,3 +68,8 @@ export const calculateAverageNumber = (set: number[]) => {
   const sum = numbers.reduce((acc, curr) => acc + curr, 0);
   return numbers.length === 0 ? 0 : sum / numbers.length;
 };
+
+export const getHighestNumber = (set: number[]) => {
+  const numbers = set.filter((value) => typeof value === "number" && !isNaN(value));
+  return Math.max(...numbers);
+};
