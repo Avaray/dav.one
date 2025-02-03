@@ -1,0 +1,125 @@
+---
+import Icon from '@xtreat/astro-iconify';
+import { calculateAverageNumber, calculatePercentageOf, calculateBytesToMegabytes } from '../scripts/utils.ts';
+
+export const isDrop = (previous: number[], current: number) => {
+  const previousAverage = calculateAverageNumber(previous);
+  return current < previousAverage;
+};
+
+const isProduction = import.meta.env.PRODUCTION;
+
+const CLOUDFLARE_GRAPHQL_URL = 'https://api.cloudflare.com/client/v4/graphql';
+const ZONE_ID = import.meta.env.CF_ZONE_ID;
+const API_TOKEN = import.meta.env.CF_RADAR_TOKEN;
+
+const fetchCloudflareStats = async () => {
+  const currentDate = new Date();
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(currentDate.getDate() - 30);
+
+  const formattedCurrentDate = currentDate.toISOString().split('T')[0];
+  const formattedThirtyDaysAgo = thirtyDaysAgo.toISOString().split('T')[0];
+
+  // https://pages.johnspurlock.com/graphql-schema-docs/cloudflare.html#AccountHttpRequests1dGroupsSum
+  const response = await fetch(CLOUDFLARE_GRAPHQL_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+    body: JSON.stringify({
+      query: `
+        query GetUniqueVisitors($zoneId: string!, $since: ISO8601DateTime!) {
+          viewer {
+            zones(filter: { zoneTag: $zoneId }) {
+              httpRequests1dGroups(
+                filter: { date_gt: $since },
+                limit: 30,
+                orderBy: [date_ASC]
+              ) {
+                dimensions {
+                  date
+                }
+                uniq {
+                  uniques
+                }
+                sum {
+                  bytes
+                  cachedBytes
+                  cachedRequests
+                  pageViews
+                  requests
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        zoneId: ZONE_ID,
+        since: formattedThirtyDaysAgo,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+const stats = await fetchCloudflareStats();
+
+const statsProcessed = stats.data.viewer.zones[0].httpRequests1dGroups.map((day) => {
+  let obj = {
+    dataCachedPercent: calculatePercentageOf(day.sum.cachedBytes, day.sum.bytes),
+    dataMegabytes: calculateBytesToMegabytes(day.sum.bytes).toFixed(2),
+    date: day.dimensions.date,
+    pageViews: day.sum.pageViews,
+    requests: day.sum.requests,
+    requestsCached: day.sum.cachedRequests,
+    uniques: day.uniq.uniques,
+  };
+  return obj;
+});
+
+const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
+  return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
+});
+
+const visitorsToHeight = (visitors: number) => {
+  return `h-[${calculatePercentageOf(visitors, highestVisitorsCount.uniques)}%]`;
+};
+---
+
+<div class='border-1 rounded-2xl w-full p-4 select-none my-8'>
+  <h2 class='flex items-center !mt-1'>
+    <Icon icon='simple-icons:cloudflarepages' class='inline-block w-14 h-14 m-2' />Cloudflare Pages
+  </h2>
+
+  <div>Unique Visitors</div>
+  <div id='chart' class='w-full h-24 flex gap-1 my-4'>
+    {statsProcessed.map((day) => <div class={`flex flex-1 p-1 bg-success`} />)}
+  </div>
+
+  <div>Requests</div>
+  <div id='chart' class='w-full h-24 flex gap-1 my-4'>
+    {statsProcessed.map((day) => <div class={`flex flex-1 p-1 bg-primary`} />)}
+  </div>
+
+  <div class='flex gap-4'></div>
+  {
+    !isProduction && (
+      <div role='alert' class='alert alert-warning alert-soft'>
+        <span>Stats will be generated only in production builds.</span>
+      </div>
+    )
+  }
+</div>
+
+<code>{JSON.stringify(stats.data.viewer.zones[0].httpRequests1dGroups[0], null, 2)}</code>
+
+<!-- <code>{JSON.stringify(statsProcessed, null, 2)}</code> -->
