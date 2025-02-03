@@ -4,7 +4,7 @@ import { calculateAverageNumber, calculatePercentageOf, calculateBytesToMegabyte
 
 export const isDrop = (previous: number[], current: number) => {
   const previousAverage = calculateAverageNumber(previous);
-  return current < previousAverage;
+  return calculatePercentageOf(current, previousAverage, true) < 90;
 };
 
 const isProduction = import.meta.env.PRODUCTION;
