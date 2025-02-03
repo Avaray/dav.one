@@ -89,25 +89,40 @@ const statsProcessed = stats.data.viewer.zones[0].httpRequests1dGroups.map((day)
 const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
   return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
 });
-
-const visitorsToHeight = (visitors: number) => {
-  return `h-[${calculatePercentageOf(visitors, highestVisitorsCount.uniques)}%]`;
-};
 ---
 
 <div class='border-1 rounded-2xl w-full p-4 select-none my-8'>
-  <h2 class='flex items-center !mt-1'>
+  <h2 class='flex items-center !mt-1 !mb-0'>
     <Icon icon='simple-icons:cloudflarepages' class='inline-block w-14 h-14 m-2' />Cloudflare Pages
   </h2>
 
-  <div>Unique Visitors</div>
-  <div id='chart' class='w-full h-24 flex gap-1 my-4'>
-    {statsProcessed.map((day) => <div class={`flex flex-1 p-1 bg-success`} />)}
+  <div class='flex items-center justify-between'>
+    <!-- <div><Icon icon='fluent:people-team-24-filled' class='inline-block w-10 h-10' /> Unique Visitors</div> -->
+    <!-- <div class='flex items-center justify-between'>
+      <span class='btn'>Month</span><span class='btn'>Year</span>
+    </div> -->
   </div>
+  <div id='chart' class='w-full h-24 flex gap-1 my-4 items-end'>
+    {
+      statsProcessed.map((day: any, index: number) => {
+        // Get the previous three days, ensuring we do not go out of bounds
+        const previousDays = statsProcessed.slice(Math.max(index - 3, 0), index);
 
-  <div>Requests</div>
-  <div id='chart' class='w-full h-24 flex gap-1 my-4'>
-    {statsProcessed.map((day) => <div class={`flex flex-1 p-1 bg-primary`} />)}
+        return (
+          <div
+            class={`flex flex-1 p-1 ${
+              isDrop(
+                previousDays.map((d) => d.uniques),
+                day.uniques,
+              )
+                ? 'bg-error'
+                : 'bg-success'
+            }`}
+            style={`height: ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%`}
+          />
+        );
+      })
+    }
   </div>
 
   <div class='flex gap-4'></div>
@@ -120,6 +135,6 @@ const visitorsToHeight = (visitors: number) => {
   }
 </div>
 
-<code>{JSON.stringify(stats.data.viewer.zones[0].httpRequests1dGroups[0], null, 2)}</code>
+<!-- <code>{JSON.stringify(stats.data.viewer.zones[0].httpRequests1dGroups[0], null, 2)}</code> -->
 
-<!-- <code>{JSON.stringify(statsProcessed, null, 2)}</code> -->
+<code>{JSON.stringify(statsProcessed[0], null, 2)}</code>
