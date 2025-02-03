@@ -58,3 +58,19 @@ export async function getPageSpeedScores(url: string = "https://dav.one") {
     };
   }
 }
+
+export const calculatePercentageOf = (part: number, whole: number, round = false) =>
+  round ? Math.round((part / whole) * 100) : (part / whole) * 100;
+
+export const calculateBytesToMegabytes = (bytes: number) => bytes / 1024 / 1024;
+
+export const calculateAverageNumber = (set: number[]) => {
+  const numbers = set.filter((value) => typeof value === "number" && !isNaN(value));
+  const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+  return numbers.length === 0 ? 0 : sum / numbers.length;
+};
+
+export const getHighestNumber = (set: number[]) => {
+  const numbers = set.filter((value) => typeof value === "number" && !isNaN(value));
+  return Math.max(...numbers);
+};
