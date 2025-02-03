@@ -63,7 +63,7 @@ export const calculatePercentageOf = (part: number, whole: number) => Math.round
 
 export const calculateBytesToMegabytes = (bytes: number) => bytes / 1024 / 1024;
 
-const calculateAverageNumber = (set: number[]) => {
+export const calculateAverageNumber = (set: number[]) => {
   const numbers = set.filter((value) => typeof value === "number" && !isNaN(value));
   const sum = numbers.reduce((acc, curr) => acc + curr, 0);
   return numbers.length === 0 ? 0 : sum / numbers.length;
