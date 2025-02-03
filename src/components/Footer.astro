@@ -14,11 +14,7 @@ const links = [
 <footer class='mb-10vh'>
   <span class='divider mt-16 mb-6 py-14'>
     <div style='transform: rotate(45deg)'>
-      <Icon
-        id='rotating-icon'
-        icon='game-icons:abstract-050'
-        class='text-primary mx-6 h-16 w-16 animate-once animate-fill-forwards'
-      />
+      <Icon id='rotating-icon' icon='game-icons:abstract-050' class='text-primary mx-6 h-16 w-16' />
     </div>
   </span>
   <div class='flex flex-col lg:flex-row justify-between items-center select-none gap-10px mb-40'>
@@ -37,31 +33,3 @@ const links = [
     </div>
   </div>
 </footer>
-
-<script>
-  // Ensure the DOM is fully loaded before running the script
-  document.addEventListener('DOMContentLoaded', () => {
-    const icon = document.getElementById('rotating-icon') as HTMLElement;
-
-    // Simple isVisible function
-    function isVisible(element: HTMLElement) {
-      if (!element) return false;
-      const rect = element.getBoundingClientRect();
-      return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-    }
-
-    // Scroll event listener
-    window.addEventListener('scroll', () => {
-      if (isVisible(icon)) {
-        icon.classList.add('animate-impulse-rotation-right');
-      } else {
-        icon.classList.remove('animate-impulse-rotation-right');
-      }
-    });
-  });
-</script>
