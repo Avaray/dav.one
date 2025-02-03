@@ -59,7 +59,8 @@ export async function getPageSpeedScores(url: string = "https://dav.one") {
   }
 }
 
-export const calculatePercentageOf = (part: number, whole: number) => Math.round((part / whole) * 100);
+export const calculatePercentageOf = (part: number, whole: number, round = false) =>
+  round ? Math.round((part / whole) * 100) : (part / whole) * 100;
 
 export const calculateBytesToMegabytes = (bytes: number) => bytes / 1024 / 1024;
 
