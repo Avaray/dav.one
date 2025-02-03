@@ -58,3 +58,8 @@ export async function getPageSpeedScores(url: string = "https://dav.one") {
     };
   }
 }
+const calculateAverageNumber = (set: number[]) => {
+  const numbers = set.filter((value) => typeof value === "number" && !isNaN(value));
+  const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+  return numbers.length === 0 ? 0 : sum / numbers.length;
+};
