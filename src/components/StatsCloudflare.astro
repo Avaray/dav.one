@@ -116,7 +116,7 @@ const getHighestNumber = (data: any, key: string) => {
 
         return (
           <div
-            class={`flex flex-1 gap-1 ${
+            class={`flex flex-1 gap-1 hover:bg-base-content sm:rounded-tl-2xl sm:rounded-tr-2xl ${
               isDrop(
                 previousDays.map((d: any) => d.uniques),
                 day.uniques,
@@ -144,7 +144,7 @@ const getHighestNumber = (data: any, key: string) => {
   <div class='flex gap-4'></div>
   {
     !isProduction && (
-      <div role='alert' class='alert alert-warning alert-soft'>
+      <div role='alert' class='alert alert-warning alert-soft mt-4'>
         <span>Stats will be generated only in production builds.</span>
       </div>
     )

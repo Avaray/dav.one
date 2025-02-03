@@ -16,3 +16,4 @@ You can do that by visiting my profiles on:
 - [GitHub Sponsors](https://github.com/sponsors/Avaray/)
 - [BuyMeACoffee.com](https://buymeacoffee.com/avaray)
 - [Patreon.com](https://patreon.com/Avaray_)
+- [Open Collective](https://opencollective.com/avaray)

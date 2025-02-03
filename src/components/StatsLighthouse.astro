@@ -28,10 +28,26 @@ isProduction && (scores = await getPageSpeedScores());
     >
   </h2>
   <div class='flex gap-4'>
-    <PageSpeedRadial category='Performance' score={scores.performance} />
-    <PageSpeedRadial category='Accessibility' score={scores.accessibility} />
-    <PageSpeedRadial category='Best Practices' score={scores.bestPractices} />
-    <PageSpeedRadial category='SEO' score={scores.seo} />
+    <PageSpeedRadial
+      category='Performance'
+      score={scores.performance}
+      ariaLabel=`Radial progress bar showing ${scores.performance} score of Performance `
+    />
+    <PageSpeedRadial
+      category='Accessibility'
+      score={scores.accessibility}
+      ariaLabel=`Radial progress bar showing ${scores.accessibility} score of Accessibility`
+    />
+    <PageSpeedRadial
+      category='Best Practices'
+      score={scores.bestPractices}
+      ariaLabel=`Radial progress bar showing ${scores.bestPractices} score of Best Practices`
+    />
+    <PageSpeedRadial
+      category='SEO'
+      score={scores.seo}
+      ariaLabel=`Radial progress bar showing ${scores.bestPractices} score of SEO`
+    />
   </div>
   {
     !isProduction && (
