@@ -21,9 +21,9 @@ const background =
 const normalizeNumber = (num: number) => (num % 1 === 0 ? num : parseFloat(num.toFixed(1)));
 ---
 
-<div class='flex flex-col gap-2 items-center justify-center'>
+<div class='flex flex-col items-center @container sm:aspect-square'>
   <div
-    class={`radial-progress text-base-content ${background} border-0 [--size:30cqi] sm:[--size:6rem] after:transition-none`}
+    class={`radial-progress text-base-content ${background} border-0 m-4 [--size:80cqi] after:transition-none`}
     style=`--value:${score};`
     title={tooltip}
     aria-valuenow={score}
