@@ -49,11 +49,11 @@ isProduction && (scores = await getPageSpeedScores());
       ariaLabel=`Radial progress bar showing ${scores.bestPractices} score of SEO`
     />
   </div>
-  {
+  <!-- {
     !isProduction && (
       <div role='alert' class='alert alert-warning alert-soft'>
         <span>Stats will be generated only in production builds.</span>
       </div>
     )
-  }
+  } -->
 </div>
