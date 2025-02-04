@@ -7,7 +7,7 @@
   name: "dark";
   default: true;
   --color-base-100: oklch(16.77% 0.01 252.43);
-  --color-primary: oklch(64.84% 0.233 277.117);
+  --color-primary: var(--color-success);
 }
 
 @plugin "daisyui/theme" {
