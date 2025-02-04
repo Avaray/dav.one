@@ -12,14 +12,24 @@ let scores = {
   seo: 0,
 };
 
+const descriptions = {
+  performance:
+    'This score reflects how well webpage performs in terms of speed and optimization. It is calculated based on key metrics like First Contentful Paint (FCP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS) among others, which measure loading times and responsiveness.',
+  accessibility:
+    'This metric evaluates how accessible web content is for users with disabilities. It considers factors such as text readability, color contrast, and the presence of alternative text for images, ensuring that all users can navigate and understand your site effectively.',
+  bestPractices:
+    'This score indicates adherence to web development best practices. It assesses the use of modern technologies, secure connections, optimized code, and proper use of meta tags. Higher scores suggest better compliance with industry standards.',
+  seo: 'Search Engine Optimization. This category measures how well webpage is optimized for search engines. It includes aspects like metadata usage, structured data implementation, and mobile-friendliness. A high SEO score indicates effective strategies to enhance visibility in search engine results',
+};
+
 isProduction && (scores = await getPageSpeedScores());
 ---
 
 <!-- ### [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-dav-one/k8mmkyikue?form_factor=desktop) -->
-<div class='border-1 rounded-2xl w-fit p-4 select-none'>
+<div class='border-1 rounded-2xl w-full sm:w-fit p-4 select-none'>
   <h2 class='flex items-center !mt-1'>
     <Icon icon='simple-icons:lighthouse' class='inline-block w-14 h-14 m-2' />
-    Google PageSpeed Insights
+    PageSpeed Insights
     <a
       href='https://pagespeed.web.dev/analysis/https-dav-one/dws94wzlet?form_factor=desktop'
       target='_blank'
@@ -27,26 +37,30 @@ isProduction && (scores = await getPageSpeedScores());
       ><Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' /></a
     >
   </h2>
-  <div class='flex gap-4'>
+  <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
     <PageSpeedRadial
       category='Performance'
       score={scores.performance}
-      ariaLabel=`Radial progress bar showing ${scores.performance} score of Performance `
+      tooltip={descriptions.performance}
+      ariaLabel={`Radial progress bar showing ${scores.performance} score of Performance`}
     />
     <PageSpeedRadial
       category='Accessibility'
       score={scores.accessibility}
-      ariaLabel=`Radial progress bar showing ${scores.accessibility} score of Accessibility`
+      tooltip={descriptions.accessibility}
+      ariaLabel={`Radial progress bar showing ${scores.accessibility} score of Accessibility`}
     />
     <PageSpeedRadial
       category='Best Practices'
       score={scores.bestPractices}
-      ariaLabel=`Radial progress bar showing ${scores.bestPractices} score of Best Practices`
+      tooltip={descriptions.bestPractices}
+      ariaLabel={`Radial progress bar showing ${scores.bestPractices} score of Best Practices`}
     />
     <PageSpeedRadial
       category='SEO'
       score={scores.seo}
-      ariaLabel=`Radial progress bar showing ${scores.bestPractices} score of SEO`
+      tooltip={descriptions.seo}
+      ariaLabel={`Radial progress bar showing ${scores.seo} score of SEO`}
     />
   </div>
   <!-- {
