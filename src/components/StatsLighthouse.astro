@@ -5,11 +5,13 @@ import Icon from '@xtreat/astro-iconify';
 
 const isProduction = import.meta.env.PRODUCTION;
 
+const randomScore = () => Math.floor(Math.random() * (100 - 70 + 1)) + 70;
+
 let scores = {
-  performance: 0,
-  accessibility: 0,
-  bestPractices: 0,
-  seo: 0,
+  performance: randomScore(),
+  accessibility: randomScore(),
+  bestPractices: randomScore(),
+  seo: randomScore(),
 };
 
 const descriptions = {
