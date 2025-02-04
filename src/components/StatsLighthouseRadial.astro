@@ -23,8 +23,8 @@ const normalizeNumber = (num: number) => (num % 1 === 0 ? num : parseFloat(num.t
 
 <div class='flex flex-col gap-2 items-center justify-center aspect-square'>
   <div
-    class={`radial-progress text-base-content ${background} border-0`}
-    style=`--value:${score}; --size:6rem`
+    class={`radial-progress text-base-content ${background} border-0 [--size:30cqi] sm:[--size:6rem] `}
+    style=`--value:${score};`
     title={tooltip}
     aria-valuenow={score}
     aria-label={ariaLabel}
