@@ -73,7 +73,7 @@ const fetchCloudflareStats = async () => {
 
 const stats = await fetchCloudflareStats();
 
-const statsProcessed = stats.data.viewer.zones[0].httpRequests1dGroups.map((day) => {
+const statsProcessed = stats.data.viewer.zones[0].httpRequests1dGroups.map((day: any) => {
   let obj = {
     dataCachedPercent: calculatePercentageOf(day.sum.cachedBytes, day.sum.bytes),
     dataMegabytes: calculateBytesToMegabytes(day.sum.bytes).toFixed(2),
@@ -86,12 +86,12 @@ const statsProcessed = stats.data.viewer.zones[0].httpRequests1dGroups.map((day)
   return obj;
 });
 
-const highestVisitorsCount = statsProcessed.reduce((maxObj, currentObj) => {
+const highestVisitorsCount = statsProcessed.reduce((maxObj: any, currentObj: any) => {
   return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
 });
 
 const getHighestNumber = (data: any, key: string) => {
-  return data.reduce((maxObj, currentObj) => {
+  return data.reduce((maxObj: any, currentObj: any) => {
     return currentObj[key] > maxObj[key] ? currentObj : maxObj;
   });
 };
