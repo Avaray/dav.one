@@ -72,6 +72,9 @@ author: 'Dawid Wasowski'
 
 ## Tools
 
+- [CLIP Interrogator](https://huggingface.co/spaces/pharmapsychotic/CLIP-Interrogator) - analyzes images and generates
+  descriptive text prompts for SD1 & SDXL. [This one](https://huggingface.co/spaces/fffiloni/CLIP-Interrogator-2) is for
+  SD2 and [this one](https://huggingface.co/spaces/deepghs/wd14_tagging_online) is for Pony Diffusion.
 - [Diffusion Tokenizer](https://sd-tokenizer.rocker.boo/) - converts text prompts into numerical tokens used by
   diffusion models.
 
