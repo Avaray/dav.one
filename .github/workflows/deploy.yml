@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - next
+  schedule:
+    - cron: "20 4 * * *"
   workflow_dispatch:
 
 jobs:
