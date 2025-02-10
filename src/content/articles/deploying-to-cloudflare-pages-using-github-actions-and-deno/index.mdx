@@ -31,14 +31,10 @@ I assume you already have a GitHub repository connected to [Cloudflare Workers &
 
 ## Get your Account ID
 
-<div role="alert" class="alert alert-warning alert-soft w-fit font-bold">
-  <span>Only if you don't know it</span>
-</div>
-
 - Navigate to your project in [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).
 - Copy your Account ID from Account details (should be visible on the right side).
 
-## Get your API Token
+## Generate API Token
 
 <div role="alert" class="alert alert-warning alert-soft w-fit font-bold">
   <span>Only if you don't have one</span>
@@ -47,11 +43,11 @@ I assume you already have a GitHub repository connected to [Cloudflare Workers &
 - Right below the Account ID (in account details), click [Manage API tokens](https://dash.cloudflare.com/profile/api-tokens).
 - Click "Create Token".
 - Find "Create Custom Token" and click button "Get started" located next to it.
-- Fill "Token name" field.
-- In Permissions set "Account" > "Cloudflare Pages" > "Edit"
-- In Account Resources set your Account (optional)
+- Fill "Token name" field as you like.
+- In Permissions set "Account" > "Cloudflare Pages" > "Edit".
+- In Account Resources set your Account (optional).
 - Click "Continue to summary" button. Then click "Create Token" button.
-- Copy your API Token.
+- Copy your new API Token.
 
 ## Set Account ID and API Token as Secrets in repository
 
