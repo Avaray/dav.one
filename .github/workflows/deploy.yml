@@ -25,8 +25,6 @@ jobs:
 
       - name: Build Website
         env: 
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_DEPLOY_TOKEN: ${{ secrets.CF_DEPLOY_TOKEN }}
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
