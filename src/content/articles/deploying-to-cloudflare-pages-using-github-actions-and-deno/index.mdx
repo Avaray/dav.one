@@ -1,0 +1,23 @@
+---
+title: 'Deploying to Cloudflare Pages using GitHub Actions and Deno'
+description: "Wrangler does not natively support Deno, complicating Cloudflare Pages deployments. This article shows how to use GitHub Actions and Deno for automatic deployments, eliminating the need for other package managers."
+created: '1739168113527'
+icon: 'simple-icons:cloudflarepages'
+author: 'Dawid Wasowski'
+---
+
+## Intro
+
+[Cloudflare Pages](https://pages.cloudflare.com) is one of the best options for hosting [static websites](https://en.wikipedia.org/wiki/Static_web_page), 
+primarily due to its robust [Content Delivery Network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) and [cost-effective pricing](https://www.cloudflare.com/plans/), 
+including a generous free tier. The platform delivers excellent performance and global reach. 
+For many projects, integrating Cloudflare Pages with a [GitHub](https://github.com/) repository allows for straightforward automated deployments: 
+[changes pushed to the repository](https://en.wikipedia.org/wiki/Commit_(version_control)) trigger automatic builds and deployments.
+
+However, [Wrangler](https://developers.cloudflare.com/workers/wrangler/), 
+Cloudflare's official [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) (CLI), 
+currently supports only [NPM](https://www.npmjs.com/package/npm), [PNPM](https://pnpm.io/motivation), 
+[Yarn](https://yarnpkg.com/), and [Bun](https://bun.sh/). Making it harder to deploy [Deno](https://deno.com/) projects to Cloudflare Pages.
+
+The solution might involve using [Node's package.json](https://docs.deno.com/runtime/fundamentals/configuration/#package.json-support) to enable Wrangler to build your project. However, if you prefer a pure Deno project, you can use [GitHub Actions](https://github.com/features/actions) for automated deployments. This article demonstrates how to accomplish that.
+
