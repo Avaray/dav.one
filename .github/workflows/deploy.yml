@@ -24,6 +24,11 @@ jobs:
         run: deno task install
 
       - name: Build Website
+        env: 
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
+          GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
+          PRODUCTION: true
         run: deno task build
 
       - name: Install Wrangler
