@@ -21,3 +21,99 @@ currently supports only [NPM](https://www.npmjs.com/package/npm), [PNPM](https:/
 
 The solution might involve using [Node's package.json](https://docs.deno.com/runtime/fundamentals/configuration/#package.json-support) to enable Wrangler to build your project. However, if you prefer a pure Deno project, you can use [GitHub Actions](https://github.com/features/actions) for automated deployments. This article demonstrates how to accomplish that.
 
+## Disable automatic deployments
+
+I assume you already have a GitHub repository connected to [Cloudflare Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).
+
+- Navigate to your project in [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).
+- Open the project settings.
+- In "Branch Control" uncheck "Automatic Deployments" and set "Preview Branch" to "None". Then click "Save".
+
+## Get your Account ID
+
+<div role="alert" class="alert alert-warning alert-soft w-fit font-bold">
+  <span>Only if you don't know it</span>
+</div>
+
+- Navigate to your project in [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).
+- Copy your Account ID from Account details (should be visible on the right side).
+
+## Get your API Token
+
+<div role="alert" class="alert alert-warning alert-soft w-fit font-bold">
+  <span>Only if you don't have one</span>
+</div>
+
+- Right below the Account ID (in account details), click [Manage API tokens](https://dash.cloudflare.com/profile/api-tokens).
+- Click "Create Token".
+- Find "Create Custom Token" and click button "Get started" located next to it.
+- Fill "Token name" field.
+- In Permissions set "Account" > "Cloudflare Pages" > "Edit"
+- In Account Resources set your Account (optional)
+- Click "Continue to summary" button. Then click "Create Token" button.
+- Copy your API Token.
+
+## Set Account ID and API Token as Secrets in repository
+
+- Navigate to your repository in [GitHub](https://github.com/).
+- Open the repository settings.
+- Open "Secrets and variables" > "Actions"
+- Click "New repository secret" button.
+- Set name to `CLOUDFLARE_ACCOUNT_ID`, value to your Account ID, and click "Add secret" button.
+- Click "New repository secret" button.
+- Set name to `CLOUDFLARE_API_TOKEN`, value to your API Token, and click "Add secret" button.
+- Done.
+
+## GitHub Actions Workflow file
+
+You need to create a [workflow file](https://docs.github.com/en/actions/writing-workflows/quickstart#creating-your-first-workflow) in your repository. 
+The following code will install Deno, install dependencies, build your project, and deploy it to Cloudflare Pages.
+
+```
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install Dependencies
+        run: deno install --allow-scripts
+
+      - name: Build Website
+        run: deno task build
+
+      - name: Install Wrangler
+        run: deno install --global --allow-scripts npm:wrangler@latest
+
+      - name: Deploy Website to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ./dist --project-name=awesome --branch=main --commit-dirty=true 
+```
+
+## Final notes
+
+- The workflow file is just an example. You need to adapt it to your needs.
+- This workflow will be launched only if you push changes to the **main** branch. 
+  If your branch name is different, change it in the workflow file.
+- Change `--project-name=awesome` to your project name (the one you set in Cloudflare Pages).
+- You can change [the event that triggers the workflow](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#about-events-that-trigger-workflows).
+- **Install Dependencies** step might be unecessary. It depends on your project setup.
+- Your build output directory might be different. In this example it is **dist**.
+- `--commit-dirty=true` prevents Wrangler from building your project.
