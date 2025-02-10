@@ -9,6 +9,11 @@ const links = [
   { href: '/about-website', text: 'About website', icon: 'game-icons:computing' },
   { href: '/support-me', text: 'Support me', icon: 'game-icons:cherish' },
 ];
+
+const linksRight = [
+  { href: '/rss.xml', text: 'RSS', icon: 'bx:rss' },
+  { href: '/sitemap-0.xml', text: 'Sitemap', icon: 'solar:documents-minimalistic-bold-duotone' },
+];
 ---
 
 <footer class='mb-10vh'>
@@ -17,7 +22,7 @@ const links = [
       <Icon id='rotating-icon' icon='game-icons:abstract-050' class='text-primary mx-6 h-16 w-16' />
     </div>
   </span>
-  <div class='flex flex-col lg:flex-row justify-between items-center select-none gap-10px mb-40'>
+  <div class='flex flex-col lg:flex-row justify-between items-center select-none gap-10px mb-20'>
     <nav class='flex flex-wrap gap-8 p-4 item justify-center'>
       {
         links.map(({ href, text, icon }) => (
@@ -28,8 +33,19 @@ const links = [
         ))
       }
     </nav>
-    <div>
-      <div class='p-4 self-center lg:self-end'>Copyright © {currentYear} - All rights reserved</div>
-    </div>
+
+    <nav class='flex flex-wrap gap-8 p-4 item justify-center'>
+      {
+        linksRight.map(({ href, text, icon }) => (
+          <FooterButton href={href} class=''>
+            <Icon icon={icon} class='h-10 w-10 mx-auto' />
+            <>{text}</>
+          </FooterButton>
+        ))
+      }
+    </nav>
+  </div>
+  <div class='flex justify-center lg:justify-end mb-20'>
+    <div class='p-4 self-center lg:self-end'>Copyright © {currentYear} - All rights reserved</div>
   </div>
 </footer>
