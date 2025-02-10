@@ -1,12 +1,12 @@
 ## 🧻 My Blog
 
-Blog about Stable Diffusion, Generative AI, Web Development, Frontend
-Frameworks and Programming in general.
+[![Cloudflare Pages Deployment](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml/badge.svg)](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml)
 
-Built using [Astro](https://astro.build/). Made pretty with
-[TailwindCSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/).\
-Developed with [Vite](https://vitejs.dev/) and
-[TypeScript](https://www.typescriptlang.org/).
+Blog about Stable Diffusion, Generative AI, Web Development, Frontend Frameworks and Programming in general.
+
+Built using [Astro](https://astro.build/). Made pretty with [TailwindCSS](https://tailwindcss.com/) and
+[daisyUI](https://daisyui.com/).\
+Developed with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).
 
 ## 📑 Changelog (V1 -> V2)
 
@@ -30,13 +30,37 @@ Removed:
 - Nanostores
 - Rehype plugins
 
+## 📆 Upcoming plans
+
+- [ ] Make this project 100% Deno based. Currently package for SVG icons is not compatible with Deno and it is blocking
+      me.
+
+## 🐣 How to run this project
+
+Clone this repository
+
+```
+git clone https://github.com/Avaray/dav.one.git
+```
+
+Install dependencies
+
+```
+deno task install
+```
+
+Start development server
+
+```
+deno task dev
+```
+
 ## ✨ Themes
 
-Currently theme switch component is disabled.\
-You can switch themes with `CTRL` + `Arrow Keys` combination.
+Currently theme switch component is disabled because I have just one theme. Rest of themes are experimental (not ready
+for production). However, you can switch themes with `CTRL` + `Arrow Keys` combination.
 
 ## ©️ Copyright
 
-All articles and documents are licensed under
-[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).\
+All articles and documents are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).\
 License is located in `LICENSE.md` file.
