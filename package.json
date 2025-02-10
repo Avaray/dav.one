@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "clear": "astro dev --clear-cache",
     "serve": "astro dev --host 0.0.0.0",
-    "build": "astro build",
+    "build": "deno -A npm:astro build",
     "preview": "astro preview",
     "taze": "deno -A npm:taze latest"
   },
