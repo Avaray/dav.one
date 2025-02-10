@@ -1,5 +1,42 @@
 {
   "fmt": {
     "lineWidth": 120
+  },
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "install": "deno install --allow-scripts",
+    "dev": "deno run -A npm:astro dev",
+    "build": "deno run -A npm:astro build",
+    "preview": "deno run -A npm:astro preview",
+    "update": "deno -A jsr:@molt/cli"
+  },
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "lib": ["Nodenext", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "jsxImportSourceTypes": "@types/react"
+  },
+  "imports": {
+    "@astrojs/mdx": "npm:@astrojs/mdx@^4.0.8",
+    "@astrojs/react": "npm:@astrojs/react@^4.2.0",
+    "@astrojs/rss": "npm:@astrojs/rss@^4.0.11",
+    "@astrojs/sitemap": "npm:@astrojs/sitemap@^3.2.1",
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.0",
+    "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.16",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.0.6",
+    "@types/react-dom": "npm:@types/react-dom@^19.0.3",
+    "@types/react": "npm:@types/react@^19.0.8",
+    "@vitejs/plugin-react-swc": "npm:@vitejs/plugin-react-swc@^3.7.1",
+    "@xtreat/astro-iconify": "npm:@xtreat/astro-iconify@^1.2.6",
+    "astro": "npm:astro@^5.2.5",
+    "daisyui": "npm:daisyui@^5.0.0-beta.7",
+    "react-dom": "npm:react-dom@^19.0.0",
+    "react": "npm:react@^19.0.0",
+    "tailwindcss": "npm:tailwindcss@^4.0.6",
+    "unocss": "npm:unocss@^65.4.3",
+    "vite": "npm:vite@^6.1.0"
   }
 }

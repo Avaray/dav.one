@@ -1,10 +1,12 @@
 import { defineConfig, passthroughImageService } from "astro/config";
+import type { PluginOption } from "vite";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import UnoCSS from "unocss/astro";
-// import { getCurrentBranch } from "./src/scripts/utils.ts";
+import deno from "@deno/vite-plugin";
+// import react from "@vitejs/plugin-react-swc";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,23 +16,20 @@ export default defineConfig({
     collections: true,
   },
   integrations: [
+    deno(),
     UnoCSS(),
+    tailwindcss(),
     mdx(),
     sitemap(),
-    react({
-      include: ["**/react/*"],
-    }),
+    react(),
   ],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [],
     resolve: {
       alias: {
         "@": "/src",
       },
     },
-    // define: {
-    //   "import.meta.env.BRANCH": JSON.stringify(getCurrentBranch()),
-    // },
   },
   prefetch: true,
   image: {
@@ -40,8 +39,4 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
   },
-  // redirects: {
-  //   "/rss": "/rss.xml",
-  //   "/sitemap": "/sitemap-0.xml",
-  // },
 });
