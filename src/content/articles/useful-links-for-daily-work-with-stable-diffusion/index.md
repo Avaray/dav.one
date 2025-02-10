@@ -2,7 +2,7 @@
 title: 'Useful links for daily work with Stable Diffusion'
 description: 'A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion.'
 created: '1696599420000'
-updated: '1728049020000'
+updated: '1739128059200'
 icon: 'game-icons:andromeda-chain'
 author: 'Dawid Wasowski'
 ---
@@ -77,6 +77,7 @@ author: 'Dawid Wasowski'
   SD2 and [this one](https://huggingface.co/spaces/deepghs/wd14_tagging_online) is for Pony Diffusion.
 - [Diffusion Tokenizer](https://sd-tokenizer.rocker.boo/) - converts text prompts into numerical tokens used by
   diffusion models.
+- [SDXL Artists Browser](https://huggingface.co/spaces/terrariyum/SDXL-artists-browser) - browser for SDXL artists.
 
 ## Tutorials
 
@@ -84,7 +85,8 @@ author: 'Dawid Wasowski'
   Each tutorial is focused on a specific topic. You can find basics as well as more advanced tutorials there.
 - [Articles @ CivitAI.com](https://civitai.com/articles?ref_code=ADD-THI) - there are many guides created by the
   community. Some are great and some are useless. You need to find good ones by yourself.
-- [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
+- [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/) - some examples of how to use
+  [Nodes](https://comfyui-wiki.com/en/interface/node-options) in ComfyUI.
 
 ## Communities
 
