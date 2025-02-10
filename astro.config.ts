@@ -18,13 +18,14 @@ export default defineConfig({
   integrations: [
     deno(),
     UnoCSS(),
-    tailwindcss(),
     mdx(),
     sitemap(),
     react(),
   ],
   vite: {
-    plugins: [],
+    plugins: [
+      tailwindcss(),
+    ],
     resolve: {
       alias: {
         "@": "/src",
