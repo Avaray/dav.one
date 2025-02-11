@@ -2,7 +2,7 @@
 title: 'Useful links for daily work with Stable Diffusion'
 description: 'A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion.'
 created: '1696599420000'
-updated: '1739128059200'
+updated: '1739259808261'
 icon: 'game-icons:andromeda-chain'
 author: 'Dawid Wasowski'
 ---
@@ -32,15 +32,16 @@ author: 'Dawid Wasowski'
   on your local machine or on a [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks
   easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
+- [TagGUI](https://github.com/jhc13/taggui) - cross-platform desktop app for adding and editing image tags and captions.
 
 ## Models
 
-- [CivitAI.com](https://civitai.com/?ref_code=ADD-THI) - the best place to find great Checkpoints, Lora's, Embeddings
-  and more. Almost every model has some images generated using it. So you can easily find out if it's worth downloading.
+- [CivitAI](https://civitai.com/?ref_code=ADD-THI) - the best place to find great Checkpoints, Lora's, Embeddings and
+  more. Almost every model has some images generated using it. So you can easily find out if it's worth downloading.
   Also it's a great place for inspiration.
-- [HuggingFace.co](https://huggingface.co/) - a platform for sharing and deploying AI models.\
+- [HuggingFace](https://huggingface.co/) - a platform for sharing and deploying AI models.\
   I recommend checking out the [Spaces](https://huggingface.co/spaces?sort=trending&search=sdxl) section and especially
-  [Diffusers Gallery](https://huggingface.co/spaces/huggingface-projects/diffusers-gallery).
+  [LoRA Studio](https://huggingface.co/spaces/enzostvs/lora-studio).
 - [OpenModelDB](https://openmodeldb.info/) - a community driven database of AI Upscaling models.
 
 ## Server rentals
@@ -61,7 +62,7 @@ author: 'Dawid Wasowski'
   [Camera Films](https://rikkar69.github.io/SDXL-artist-study/film/). I highly recommend last two, because they are very
   useful in realistic photography generation.
 - [SDXL Artist Style Studies](https://sdxl.parrotzone.art/) - probably the biggest collection of artist styles for SDXL.
-  Unfortunately, images seems to be broken currently.
+- [SDXL Artists Browser](https://huggingface.co/spaces/terrariyum/SDXL-artists-browser) - browser for SDXL artists.
 - [Stable Diffusion 1.5 Artists Cheat Sheet](https://supagruen.github.io/StableDiffusion-CheatSheet/) - a cheat sheet
   for Stable Diffusion 1.5. Might not work with newer models like SDXL.
 - [Lighting Types in SDXL](https://www.reddit.com/r/StableDiffusion/comments/1cjwi04/made_this_lighting_guide_for_myself_thought_id/) -
@@ -76,14 +77,13 @@ author: 'Dawid Wasowski'
   SD2 and [this one](https://huggingface.co/spaces/deepghs/wd14_tagging_online) is for Pony Diffusion.
 - [Diffusion Tokenizer](https://sd-tokenizer.rocker.boo/) - converts text prompts into numerical tokens used by
   diffusion models.
-- [SDXL Artists Browser](https://huggingface.co/spaces/terrariyum/SDXL-artists-browser) - browser for SDXL artists.
 
 ## Tutorials
 
 - [stable-diffusion-art.com](https://stable-diffusion-art.com/tutorials/) - a great website with many useful tutorials.
   Each tutorial is focused on a specific topic. You can find basics as well as more advanced tutorials there.
-- [Articles @ CivitAI.com](https://civitai.com/articles?ref_code=ADD-THI) - there are many guides created by the
-  community. Some are great and some are useless. You need to find good ones by yourself.
+- [Articles @ CivitAI](https://civitai.com/articles?ref_code=ADD-THI) - there are many guides created by the community.
+  Some are great and some are useless. You need to find good ones by yourself.
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/) - some examples of how to use
   [Nodes](https://comfyui-wiki.com/en/interface/node-options) in ComfyUI.
 
