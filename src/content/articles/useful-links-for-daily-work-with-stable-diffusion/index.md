@@ -35,10 +35,10 @@ author: 'Dawid Wasowski'
 
 ## Models
 
-- [CivitAI.com](https://civitai.com/?ref_code=ADD-THI) - the best place to find great Checkpoints, Lora's, Embeddings
-  and more. Almost every model has some images generated using it. So you can easily find out if it's worth downloading.
+- [CivitAI](https://civitai.com/?ref_code=ADD-THI) - the best place to find great Checkpoints, Lora's, Embeddings and
+  more. Almost every model has some images generated using it. So you can easily find out if it's worth downloading.
   Also it's a great place for inspiration.
-- [HuggingFace.co](https://huggingface.co/) - a platform for sharing and deploying AI models.\
+- [HuggingFace](https://huggingface.co/) - a platform for sharing and deploying AI models.\
   I recommend checking out the [Spaces](https://huggingface.co/spaces?sort=trending&search=sdxl) section and especially
   [LoRA Studio](https://huggingface.co/spaces/enzostvs/lora-studio).
 - [OpenModelDB](https://openmodeldb.info/) - a community driven database of AI Upscaling models.
@@ -61,7 +61,6 @@ author: 'Dawid Wasowski'
   [Camera Films](https://rikkar69.github.io/SDXL-artist-study/film/). I highly recommend last two, because they are very
   useful in realistic photography generation.
 - [SDXL Artist Style Studies](https://sdxl.parrotzone.art/) - probably the biggest collection of artist styles for SDXL.
-  Unfortunately, images seems to be broken currently.
 - [Stable Diffusion 1.5 Artists Cheat Sheet](https://supagruen.github.io/StableDiffusion-CheatSheet/) - a cheat sheet
   for Stable Diffusion 1.5. Might not work with newer models like SDXL.
 - [Lighting Types in SDXL](https://www.reddit.com/r/StableDiffusion/comments/1cjwi04/made_this_lighting_guide_for_myself_thought_id/) -
