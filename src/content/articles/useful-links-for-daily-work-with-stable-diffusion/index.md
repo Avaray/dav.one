@@ -29,8 +29,7 @@ author: 'Dawid Wasowski'
   [Forge](https://github.com/ai-dock/stable-diffusion-webui-forge)
   [Automatic1111](https://github.com/ai-dock/stable-diffusion-webui), [ComfyUI](https://github.com/ai-dock/comfyui),
   [InvokeAI](https://github.com/ai-dock/invokeai), and [Fooocus](https://github.com/ai-dock/fooocus). You can run them
-  on your local machine or on a
-  [rented server](http://localhost:4321/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
+  on your local machine or on a [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks
   easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
 
