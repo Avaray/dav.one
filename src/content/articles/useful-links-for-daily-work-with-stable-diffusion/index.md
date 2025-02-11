@@ -32,6 +32,7 @@ author: 'Dawid Wasowski'
   on your local machine or on a [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks
   easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
+- [TagGUI](https://github.com/jhc13/taggui) - cross-platform desktop app for adding and editing image tags and captions.
 
 ## Models
 
@@ -81,8 +82,8 @@ author: 'Dawid Wasowski'
 
 - [stable-diffusion-art.com](https://stable-diffusion-art.com/tutorials/) - a great website with many useful tutorials.
   Each tutorial is focused on a specific topic. You can find basics as well as more advanced tutorials there.
-- [Articles @ CivitAI.com](https://civitai.com/articles?ref_code=ADD-THI) - there are many guides created by the
-  community. Some are great and some are useless. You need to find good ones by yourself.
+- [Articles @ CivitAI](https://civitai.com/articles?ref_code=ADD-THI) - there are many guides created by the community.
+  Some are great and some are useless. You need to find good ones by yourself.
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/) - some examples of how to use
   [Nodes](https://comfyui-wiki.com/en/interface/node-options) in ComfyUI.
 
