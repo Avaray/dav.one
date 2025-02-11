@@ -40,7 +40,7 @@ author: 'Dawid Wasowski'
   Also it's a great place for inspiration.
 - [HuggingFace.co](https://huggingface.co/) - a platform for sharing and deploying AI models.\
   I recommend checking out the [Spaces](https://huggingface.co/spaces?sort=trending&search=sdxl) section and especially
-  [Diffusers Gallery](https://huggingface.co/spaces/huggingface-projects/diffusers-gallery).
+  [LoRA Studio](https://huggingface.co/spaces/enzostvs/lora-studio).
 - [OpenModelDB](https://openmodeldb.info/) - a community driven database of AI Upscaling models.
 
 ## Server rentals
