@@ -9,9 +9,9 @@
     "npm:@tailwindcss/vite@^4.0.6": "4.0.6_vite@6.1.0__lightningcss@1.29.1_lightningcss@1.29.1",
     "npm:@types/react-dom@^19.0.3": "19.0.3_@types+react@19.0.8",
     "npm:@types/react@^19.0.8": "19.0.8",
-    "npm:@xtreat/astro-iconify@^1.2.6": "1.2.6",
+    "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
     "npm:astro@^5.2.3": "5.2.3_vite@6.0.11_zod@3.24.1",
-    "npm:astro@^5.2.5": "5.2.5_vite@6.1.0_zod@3.24.1",
+    "npm:astro@^5.2.6": "5.2.6_vite@6.1.0_zod@3.24.1",
     "npm:daisyui@^5.0.0-beta.7": "5.0.0-beta.7",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
     "npm:react@19": "19.0.0",
@@ -1159,10 +1159,10 @@
     "@vue/shared@3.5.13": {
       "integrity": "sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ=="
     },
-    "@xtreat/astro-iconify@1.2.6": {
-      "integrity": "sha512-8OZkeu68r6X6qAIP88zAZnRwbFfVe13Lep65B2xoSITYR9D9GTZeDlB7hI//6pBl7KnxNxVE/ZzGegBT9qxK5Q==",
+    "@xtreat/astro-iconify@1.2.7": {
+      "integrity": "sha512-RhGLdUDPMhoMUmQEHwTXqigRcCblNAUMess+v+Xe3EgkEXGhGDNS20Yx6zyl/xygc4GKjcPOzSei3WDB0VLbxQ==",
       "dependencies": [
-        "astro@5.2.3_vite@6.0.11_zod@3.24.1"
+        "astro@5.2.6_vite@6.1.0_zod@3.24.1"
       ]
     },
     "acorn-jsx@5.3.2_acorn@8.14.0": {
@@ -1282,8 +1282,8 @@
         "zod-to-ts"
       ]
     },
-    "astro@5.2.5_vite@6.1.0_zod@3.24.1": {
-      "integrity": "sha512-AYXyYkc+c5xbKTm48FyQA91y81nXyNPAaoyafR0LUugE4lAwuvIUcXDBfMzmbuP1lGRvsE33G2oypv6gbGaPFg==",
+    "astro@5.2.6_vite@6.1.0_zod@3.24.1": {
+      "integrity": "sha512-CrTuJMwpWF9kmOhX+cl6uPqNbTRrHO7eXggFP9SK7+Bsen/7FpJtA6k1p/ALleuV5ndJLqn/9tpmP3qACHPjYA==",
       "dependencies": [
         "@astrojs/compiler",
         "@astrojs/internal-helpers@0.5.1",
@@ -3695,8 +3695,8 @@
         "npm:@tailwindcss/vite@^4.0.6",
         "npm:@types/react-dom@^19.0.3",
         "npm:@types/react@^19.0.8",
-        "npm:@xtreat/astro-iconify@^1.2.6",
-        "npm:astro@^5.2.5",
+        "npm:@xtreat/astro-iconify@^1.2.7",
+        "npm:astro@^5.2.6",
         "npm:daisyui@^5.0.0-beta.7",
         "npm:react-dom@19",
         "npm:react@19",
