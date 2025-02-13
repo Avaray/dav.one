@@ -10,8 +10,7 @@ It's enough that you help me solve a coding problem or make the code in my
 [public projects](https://github.com/Avaray?tab=repositories) better.\
 I would gladly accept that kind of assistance.
 
-However, I am also open to financial support.\
-You can do that by visiting my profiles on:
+If, for any reason, you want to support me financially, you can do so at the following places:
 
 - [GitHub Sponsors](https://github.com/sponsors/Avaray/)
 - [BuyMeACoffee.com](https://buymeacoffee.com/avaray)
