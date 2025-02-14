@@ -42,6 +42,10 @@ export const badgesList = (list) => {
 }
 
 export const technologies = {
+  genAi: [
+    { name: "Stable Diffusion", link: "https://stability.ai/stable-image" },
+    // { name: "Flux", link: "https://blackforestlabs.ai/" },
+  ],
   frontend: [
     { name: "Astro", link: "https://astro.build/" },
     { name: "React", link: "https://react.dev/" },
@@ -60,7 +64,7 @@ export const technologies = {
 }
 
 ## Currently, I'm looking for a full-time job as a:
-- Generative AI Engineer / Content Creator (graphics related)
+- Generative AI Engineer / Content Creator {badgesList(technologies.genAi)}
 - <span className='opacity-50'>Junior</span> Frontend Developer {badgesList(technologies.frontend)}
 - <span className='opacity-50'>Junior</span> Backend Developer {badgesList(technologies.backend)}
 - <span className='opacity-50'>Junior</span> Software Engineer
