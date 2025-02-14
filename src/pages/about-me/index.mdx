@@ -43,26 +43,28 @@ export const badgesList = (list) => {
 
 export const technologies = {
   genAi: [
-    { name: "Stable Diffusion", link: "https://stability.ai/stable-image" },
-    // { name: "Flux", link: "https://blackforestlabs.ai/" },
+    { name: "Stable Diffusion", link: "https://stability.ai/stable-image", description: "" },
+    // { name: "Flux", link: "https://blackforestlabs.ai/", description: "" },
   ],
   frontend: [
-    { name: "Astro", link: "https://astro.build/" },
-    { name: "React", link: "https://react.dev/" },
-    { name: "TypeScript", link: "https://www.typescriptlang.org/" },
-    { name: "TailwindCSS", link: "https://tailwindcss.com/" },
-    { name: "daisyUI", link: "https://daisyui.com/" },
+    { name: "Astro", link: "https://astro.build/", description: "" },
+    { name: "React", link: "https://react.dev/", description: "" },
+    { name: "TypeScript", link: "https://www.typescriptlang.org/", description: "" },
+    { name: "TailwindCSS", link: "https://tailwindcss.com/", description: "" },
+    { name: "daisyUI", link: "https://daisyui.com/", description: "" },
   ],
   backend: [
-    { name: "Deno", link: "https://deno.com/" },
-    { name: "Bun", link: "https://bun.sh/" },
-    { name: "Node", link: "https://nodejs.org/en/" },
+    { name: "Deno", link: "https://deno.com/", description: "" },
+    { name: "Bun", link: "https://bun.sh/", description: "" },
+    { name: "Node", link: "https://nodejs.org/en/", description: "" },
   ],
   mobile: [
-    { name: "React Native", link: "https://reactnative.dev/" },
-    { name: "Expo", link: "https://docs.expo.dev/" },
+    { name: "React Native", link: "https://reactnative.dev/", description: "" },
+    { name: "Expo", link: "https://docs.expo.dev/", description: "" },
   ]
 }
+
+{/* I am thinking abous using Collapses for this https://v5.daisyui.com/components/collapse/ */}
 
 ## Currently, I'm looking for a full-time job as a:
 - Generative AI Engineer / Content Creator {badgesList(technologies.genAi)}
