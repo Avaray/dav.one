@@ -15,12 +15,20 @@ export default defineConfig({
     // Need to keep this for legacy collections
     collections: true,
   },
-  integrations: [deno(), UnoCSS(), mdx(), sitemap(), react()],
+  integrations: [
+    deno(),
+    UnoCSS(),
+    mdx(),
+    sitemap(),
+    react(),
+  ],
   vite: {
     ssr: {
       noExternal: ["@xtreat/astro-iconify"],
     },
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+    ],
     resolve: {
       alias: {
         "@": "/src",
