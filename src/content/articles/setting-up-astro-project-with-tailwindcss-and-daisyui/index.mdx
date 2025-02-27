@@ -137,12 +137,14 @@ This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wi
 
 ## 6. Configure daisyUI (optional)
 
-By default, [daisyUI](https://daisyui.com/) has two themes: **light** and **dark** and you don't need to configure anything to make it work.  
-However, you can customize it as you like. Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.daisyui.com/docs/themes/) pages for more information.
+By default, [daisyUI](https://daisyui.com/) has two themes: **light** and **dark** and you don't need to configure anything to make it work. 
+They adjust according to the user's settings (browser/system). 
+However, you can customize it as you like. Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.daisyui.com/docs/themes/) pages for more information. 
+In this example, four themes are specified. Cupcake is the default theme. Forest will be used if the user has dark mode enabled.
 
 ```
 @plugin "daisyui" {
-  themes: dark --default, light, forest, dracula;
+  themes: light, dark, cupcake --default, forest --prefersdark;
 };
 ```
 
