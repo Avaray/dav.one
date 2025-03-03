@@ -6,35 +6,6 @@ import ThemeWrapper from '../components/ThemeWrapper.astro';
 import { siteTitle, siteDescription } from '../consts';
 ---
 
-<script is:inline>
-  const messages = [
-    [`This page doesn't exist.`, ''],
-    ['Page not found in the Matrix.', ''],
-    ['Page swallowed by a black hole.', 'arcticons:flutterhole'],
-    ['The unicorns ate this page.\nMagical but hungry creatures.', 'game-icons:unicorn'],
-    [`Sorry, the page couldn't handle the pressure of being funny.\nIt crumbled.`, ''],
-    [`The page is playing hide-and-seek.\nYou're getting warmer, keep looking.`, ''],
-    [`This page is having an existential crisis.\nIt's searching for its purpose in life.`, ''],
-    [
-      `This page doesn't exist because aliens beamed it up to their spaceship for a cosmic data collection project.`,
-      'game-icons:ufo',
-    ],
-    [
-      `This page doesn't exist because a time traveler from the future deleted it to prevent a catastrophic event but forgot to leave a note.`,
-      'i-game-icons:time-trap',
-    ],
-    [
-      `This page doesn't exist because author got distracted by a never-ending loop of adorable cat videos and forgot to create it.`,
-      'game-icons:cat',
-    ],
-  ];
-  const msg = () => {
-    const selected = Math.floor(Math.random() * messages.length);
-    return messages[selected][0];
-  };
-  document.getElementById('message').innerHTML = msg();
-</script>
-
 <ThemeWrapper>
   <Head title={siteTitle} description={siteDescription} />
   <body>
@@ -45,7 +16,7 @@ import { siteTitle, siteDescription } from '../consts';
         class='text-5xl no-underline'
         title='This error means that the page does not exist. Click to return to the main page.'>ERROR 404</a
       >
-      <span id='message' class='text-28px' style='white-space: pre-wrap'></span>
+      <p class='text-2xl'>This error means that the page does not exist.</p>
     </main>
     <Footer />
   </body>
