@@ -16,7 +16,7 @@ author: 'Dawid Wasowski'
 - [InvokeAI](https://github.com/invoke-ai/InvokeAI)
 - [Fooocus](https://github.com/lllyasviel/Fooocus)
 - [Kohya](https://github.com/bmaltais/kohya_ss)
-- [StableSwarmUI](https://github.com/Stability-AI/StableSwarmUI)
+- [SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)
 - [SD.Next](https://github.com/vladmandic/automatic)
 
 ## Applications
