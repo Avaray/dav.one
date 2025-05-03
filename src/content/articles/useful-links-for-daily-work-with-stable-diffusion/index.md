@@ -2,7 +2,7 @@
 title: 'Useful links for daily work with Stable Diffusion'
 description: 'A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion.'
 created: '1696599420000'
-updated: '1739259808261'
+updated: '1746261688894'
 icon: 'game-icons:andromeda-chain'
 author: 'Dawid Wasowski'
 ---
@@ -25,14 +25,14 @@ author: 'Dawid Wasowski'
   Diffusion. You can use it to download and run your favorite UI locally without unnecessary configuration.
 - [LynxHub](https://github.com/KindaBrazy/LynxHub) - another Multi-Platform Package Manager for Stable Diffusion. It's a
   newer tool than Stability Matrix. Released in August 2024.
-- [AI-Dock](https://github.com/ai-dock) - containerized UIs like
-  [Forge](https://github.com/ai-dock/stable-diffusion-webui-forge)
-  [Automatic1111](https://github.com/ai-dock/stable-diffusion-webui), [ComfyUI](https://github.com/ai-dock/comfyui),
-  [InvokeAI](https://github.com/ai-dock/invokeai), and [Fooocus](https://github.com/ai-dock/fooocus). You can run them
-  on your local machine or on a [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks
   easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
 - [TagGUI](https://github.com/jhc13/taggui) - cross-platform desktop app for adding and editing image tags and captions.
+- [VastAI Docker Images](https://github.com/ai-dock) - containerized UIs such as
+  [Forge](https://hub.docker.com/r/vastai/sd-forge), [ComfyUI](https://hub.docker.com/r/vastai/comfy), and
+  [Fooocus](https://hub.docker.com/r/vastai/fooocus), built on their
+  [base image](https://github.com/vast-ai/base-image), which can be run on either a local machine or a
+  [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 
 ## Models
 
