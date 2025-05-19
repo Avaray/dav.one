@@ -25,25 +25,29 @@ jobs:
       - name: Install Dependencies
         run: deno task install
 
+      - name: Get branch name
+        run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+      
+      - name: Set environment variables
+        run: |
+          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
+            echo "PRODUCTION_BUILD=true" >> $GITHUB_ENV
+          fi
+
       - name: Build Website
         env: 
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
-          PRODUCTION: true
+          PRODUCTION_BUILD: ${{ env.PRODUCTION_BUILD }}
         run: deno task build
 
       - name: Install Wrangler
         run: deno install --global --allow-scripts npm:wrangler@latest
 
-      - name: Get branch name
-        run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
-
       - name: Deploy Website to Cloudflare
-        env:
-          BRANCH_NAME: ${{ env.BRANCH_NAME }}
         uses: cloudflare/wrangler-action@v3
         with:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           apiToken: ${{ secrets.CF_DEPLOY_TOKEN }}
-          command: pages deploy ./dist --project-name=stupid --branch=${{ env.BRANCH_NAME }} --commit-dirty=true 
+          command: pages deploy ./dist --project-name=stupid --branch=${{ env.BRANCH_NAME }} --commit-dirty=true

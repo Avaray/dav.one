@@ -3,7 +3,7 @@ import PageSpeedRadial from './StatsLighthouseRadial.astro';
 import { getPageSpeedScores } from '../scripts/utils.ts';
 import Icon from '@xtreat/astro-iconify';
 
-const isProduction = import.meta.env.PRODUCTION;
+const isProduction = import.meta.env.PRODUCTION_BUILD;
 
 const randomScore = () => Math.floor(Math.random() * (100 - 70 + 1)) + 70;
 

@@ -7,7 +7,7 @@ export const isDrop = (previous: number[], current: number) => {
   return calculatePercentageOf(current, previousAverage, true) < 90;
 };
 
-const isProduction = import.meta.env.PRODUCTION;
+const isProduction = import.meta.env.PRODUCTION_BUILD;
 
 const CLOUDFLARE_GRAPHQL_URL = 'https://api.cloudflare.com/client/v4/graphql';
 const ZONE_ID = import.meta.env.CF_ZONE_ID;
