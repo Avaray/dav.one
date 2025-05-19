@@ -42,6 +42,13 @@ jobs:
           PRODUCTION_BUILD: ${{ env.PRODUCTION_BUILD }}
         run: deno task build
 
+      - name: Create robots.txt for non-production builds
+        if: env.BRANCH_NAME != 'main'
+        run: |
+          echo "User-agent: *" > ./dist/robots.txt
+          echo "Disallow: /" >> ./dist/robots.txt
+          echo "robots.txt created successfully for non-production branch."
+
       - name: Install Wrangler
         run: deno install --global --allow-scripts npm:wrangler@latest
 
