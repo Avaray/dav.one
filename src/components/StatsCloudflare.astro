@@ -16,6 +16,7 @@ const API_TOKEN = import.meta.env.CF_RADAR_TOKEN;
 const fetchCloudflareStats = async () => {
   const currentDate = new Date();
   const thirtyDaysAgo = new Date();
+  // Using 31 days because I don't want to count the current day
   thirtyDaysAgo.setDate(currentDate.getDate() - 31);
 
   const formattedCurrentDate = currentDate.toISOString().split('T')[0];
