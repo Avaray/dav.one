@@ -9,6 +9,9 @@ import UnoCSS from "unocss/astro";
 // https://astro.build/config
 export default defineConfig({
   site: "https://dav.one",
+  build: {
+    format: "directory",
+  },
   legacy: {
     // Need to keep this for legacy collections
     collections: true,
