@@ -12,15 +12,15 @@
     "taze": "deno -A npm:taze latest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.2.6",
-    "@astrojs/react": "^4.2.7",
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
     "@tailwindcss/vite": "^4.1.7",
-    "@types/react": "^19.1.4",
+    "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^5.7.13",
+    "astro": "^5.8.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.7",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^5.0.35",
+    "daisyui": "^5.0.37",
     "unocss": "^66.1.2"
   }
 }
