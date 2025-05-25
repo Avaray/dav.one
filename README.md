@@ -4,7 +4,7 @@
 
 Blog about Stable Diffusion, Generative AI, Web Development, Frontend Frameworks and Programming in general.
 
-Built using [Astro](https://astro.build/). Made pretty with [TailwindCSS](https://tailwindcss.com/) and
+Built using [Astro](https://astro.build/). Made pretty with [Tailwind CSS](https://tailwindcss.com/) and
 [daisyUI](https://daisyui.com/).\
 Developed with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).
 
@@ -12,7 +12,7 @@ Developed with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescri
 
 Key changes worth to mention
 
-- updated to TailwindCSS V4
+- updated to Tailwind CSS V4
 - updated daisyUI to V5
 - did many changes in layout and design
 - created new components (mostly related to images)

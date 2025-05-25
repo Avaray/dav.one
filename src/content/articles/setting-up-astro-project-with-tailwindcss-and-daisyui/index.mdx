@@ -1,6 +1,6 @@
 ---
-title: 'Setting up Astro project with TailwindCSS V4 and daisyUI V5'
-description: 'Astro is a fantastic tool for building static sites. TailwindCSS is a utility-first CSS framework that simplifies styling. daisyUI is a collection of ready-to-use components specifically designed for Tailwind CSS. The combination of these three popular tools provides an efficient and effective way to create beautiful websites. This article will guide you through the process of setting everything up.'
+title: 'Setting up Astro project with Tailwind CSS V4 and daisyUI V5'
+description: 'Astro is a fantastic tool for building static sites. Tailwind CSS is a utility-first CSS framework that simplifies styling. daisyUI is a collection of ready-to-use components specifically designed for Tailwind CSS. The combination of these three popular tools provides an efficient and effective way to create beautiful websites. This article will guide you through the process of setting everything up.'
 created: '1737380220000'
 icon: 'logos:astro-icon'
 author: 'Dawid Wasowski'
@@ -45,7 +45,7 @@ export const dependencies = [
 
 Open project in your favorite editor. If it's [VSCode](https://code.visualstudio.com/), you can also install official [Astro extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode).
 
-Edit the **astro.config.mjs** file, located in the root of your project. You need to add [TailwindCSS](https://tailwindcss.com/docs/installation/using-vite) as a [Vite plugin](https://docs.astro.build/en/recipes/add-yaml-support/).
+Edit the **astro.config.mjs** file, located in the root of your project. You need to add [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) as a [Vite plugin](https://docs.astro.build/en/recipes/add-yaml-support/).
 
 ```
 import { defineConfig } from "astro/config";
@@ -58,9 +58,9 @@ export default defineConfig({
 });
 ```
 
-## 4. Add TailwindCSS and daisyUI to your CSS
+## 4. Add Tailwind CSS and daisyUI to your CSS
 
-To make [TailwindCSS](https://tailwindcss.com/) and [daisyUI](daisyui.com) available in your project, you need to add them to your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) file.
+To make [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](daisyui.com) available in your project, you need to add them to your [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) file.
 You can make it available globally or locally. Everything depends on your needs.
 In following examples, we will make them available globally.
 
@@ -102,7 +102,7 @@ If you are not planning to use CSS files at all, you can import them in **.astro
       <span class="select-none">YOU DID IT!</span>
     </div>
     <div>
-        At this point, you should be able to use **TailwindCSS** and **daisyUI** in your project.  
+        At this point, you should be able to use **Tailwind CSS** and **daisyUI** in your project.  
         Run the following command in your terminal to start **Development Mode**.
   </div>
   </div>
@@ -120,7 +120,7 @@ export const run = [
 
 If you want, you can take a few additional steps that might be useful to you.
 
-## 5. Configure TailwindCSS (optional)
+## 5. Configure Tailwind CSS (optional)
 
 If you are not planning to use [default color palette](https://tailwindcss.com/docs/colors#default-color-palette-reference), [you can disable it](https://tailwindcss.com/docs/colors#disabling-default-colors).  
 This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wikipedia.org/wiki/Gzip)). 
@@ -146,7 +146,7 @@ In this example, four themes are specified. Cupcake is the default theme. Forest
 
 ## 7. Add Typography plugin (optional)
 
-By default, [TailwindCSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
+By default, [Tailwind CSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
 To make [Typography](https://tailwindcss-typography.vercel.app/) available in your project, first you need to install package.
 
 export const typography = [
@@ -166,7 +166,7 @@ Add plugin in your CSS file.
 ```
 
 Finally add the **prose** class somewhere in your project, for example, to your **body** tag.  
-Everything inside the **body** tag will be affected by [TailwindCSS Typography](https://tailwindcss-typography.vercel.app/).
+Everything inside the **body** tag will be affected by [Tailwind CSS Typography](https://tailwindcss-typography.vercel.app/).
 
 ```
 <body class="prose">
