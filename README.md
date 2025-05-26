@@ -66,8 +66,8 @@ deno task dev
 
 ## ✨ Themes
 
-Currently theme switch component is disabled because I have just one theme. Rest of themes are experimental (not ready
-for production). However, you can switch themes with `CTRL` + `Arrow Keys` combination.
+Currently theme switch component is hidden because I have just one theme for now. Rest of themes are experimental (not
+ready for production). However, you can switch themes with `CTRL` + `Arrow Keys` combination.
 
 ## ©️ Copyright
 
