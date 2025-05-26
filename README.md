@@ -1,6 +1,7 @@
 ## 🧻 My Blog
 
 [![Cloudflare Pages Deployment](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml/badge.svg)](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml)
+[![Cloudflare Pages Deployment](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml/badge.svg?branch=next)](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml)
 
 Blog about Stable Diffusion, Generative AI, Web Development, Frontend Frameworks and Programming in general.
 
@@ -14,15 +15,15 @@ Hosted with [Cloudflare Pages](https://pages.cloudflare.com/).
 
 Key changes worth to mention
 
-- updated to Tailwind CSS V4
-- updated daisyUI to V5
-- did many changes in layout and design
-- created new components (mostly related to images)
-- updated standalone pages (about me, about website, etc)
-- created one new article
+- Updated to Tailwind CSS V4
+- Updated daisyUI to V5
+- Did many changes in layout and design
+- Created new components (mostly related to images)
+- Updated standalone pages (about me, about website, etc)
+- Created one new article
 - Switched to Deno (from Node+PNPM)
-- updated Vite to v6
-- added prefetching for most of pages
+- Updated Vite to v6
+- Added prefetching for most of pages
 
 Removed:
 
@@ -36,6 +37,7 @@ Removed:
 
 - [ ] Make this project 100% Deno based. Currently package for SVG icons is not compatible with Deno and it is blocking
       me.
+- [ ] Do something cool with code blocks and Syntax Highlighting. I really want to avoid remark/rehype plugins.
 
 ## 🐣 How to run this project
 
