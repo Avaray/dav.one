@@ -4,9 +4,11 @@
 
 Blog about Stable Diffusion, Generative AI, Web Development, Frontend Frameworks and Programming in general.
 
-Built using [Astro](https://astro.build/). Made pretty with [Tailwind CSS](https://tailwindcss.com/) and
-[daisyUI](https://daisyui.com/).\
-Developed with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).
+Developed with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).\
+Built using [Astro](https://astro.build/) framework.\
+Styled with [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/).\
+Deployed with [GitHub Actions](https://github.com/features/actions).\
+Hosted with [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ## 📑 Changelog (V1 -> V2)
 
@@ -41,6 +43,12 @@ Clone this repository
 
 ```
 git clone https://github.com/Avaray/dav.one.git
+```
+
+Navigate to the project directory
+
+```
+cd dav.one
 ```
 
 Install dependencies
