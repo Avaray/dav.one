@@ -17,7 +17,7 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
     "@tailwindcss/vite": "^4.1.7",
-    "@types/react": "^19.1.5",
+    "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@xtreat/astro-iconify": "^1.2.7",
     "astro": "^5.8.0",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^5.0.37",
+    "daisyui": "^5.0.38",
     "unocss": "^66.1.2"
   }
 }
