@@ -4,6 +4,8 @@ title: 'About this website'
 description: 'The story of the creation of this website'
 ---
 
+import Icon from '@xtreat/astro-iconify';
+
 import StatsLighthouse from "../../components/StatsLighthouse.astro";
 import StatsCloudflare from "../../components/StatsCloudflare.astro";
 
@@ -14,21 +16,50 @@ export const articles = await getCollection('articles', ({ data }) => {
 
 export const fontBaseUrl = 'https://fonts.google.com/specimen/';
 
-The website you're looking at is the result of my desire to share knowledge on topics that interest me, 
+export const technologies = {
+  libraries: [
+    { name: "Astro", link: "https://astro.build/", icon: "simple-icons:astro", description: "a modern website builder that creates extremely fast-loading websites by sending minimal code to users' browsers, resulting in better user experience and search engine rankings." },
+    { name: "TypeScript", link: "https://www.typescriptlang.org/", icon: "akar-icons:typescript-fill", description: "an enhanced version of JavaScript that catches coding errors before the website goes live, preventing bugs and making the code more reliable and easier to maintain over time." },
+    { name: "Tailwind CSS", link: "https://tailwindcss.com/", icon: "file-icons:tailwind", description: "a CSS framework that speeds up website styling by providing pre-built design utilities, allowing developers to create consistent, responsive designs without writing custom CSS from scratch." },
+    { name: "daisyUI", link: "https://daisyui.com/", icon: "simple-icons:daisyui", description: "a component library that provides ready-made website elements built on top of Tailwind CSS, significantly reducing development time and ensuring design consistency." },
+    { name: "Iconify", link: "https://iconify.design/", icon: "line-md:iconify2", description: "a massive icon library containing thousands of high-quality vector icons that can be easily integrated into websites, providing visual elements that enhance user interface and user experience." },
+  ],
+  services: [
+    { name: "Cloudflare Pages", link: "https://pages.cloudflare.com/", icon: "simple-icons:cloudflarepages", description: "website hosting with an awesome global CDN that makes pages load super fast across the world, resulting in excellent user experience and better search rankings. Plus they offer clear and transparent pricing." },
+    { name: "GitHub Actions", link: "https://github.com/features/actions", icon: "simple-icons:githubactions", description: "a continuous integration and deployment service that monitors code changes and automatically handles the entire process of building and deploying websites without any manual work required." }
+  ]
+}
+
+export const List = (list) => {
+  return (
+    <div class="flex flex-col gap-4 my-8">
+      {list.map((item) => {
+        return (
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 aspect-square min-w-8 min-h-8 flex items-center justify-center">
+              <Icon icon={item.icon} class='w-8 h-8 md:w-12 md:h-12 text-primary' />
+            </div>
+            <div class="flex-1">
+              <a href={item.link}>{item.name}</a> - {item.description}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+**The website** you're looking at is the result of my desire to share knowledge on topics that interest me, 
 as well as my passion for exploring libraries for creating modern web applications. 
 The repository of this website is available on [GitHub](https://github.com/Avaray/dav.one).
 
 To be able to share an impressive 😅 total of <span class="font-bold">{Object.keys(articles).length} articles</span> with the world, I used awesome tools and libraries such as:  
 
-- [Astro](https://astro.build/) - a modern website builder that creates extremely fast-loading websites by sending minimal code to users' browsers, resulting in better user experience and search engine rankings.
-- [TypeScript](https://www.typescriptlang.org/) - an enhanced version of [JavaScript](https://en.wikipedia.org/wiki/JavaScript) that catches coding errors before the website goes live, preventing bugs and making the code more reliable and easier to maintain over time.
-- [Tailwind CSS](https://tailwindcss.com/) - a CSS framework that speeds up website styling by providing pre-built design utilities, allowing developers to create consistent, responsive designs without writing custom CSS from scratch.
-- [daisyUI](https://daisyui.com/) - a component library that provides ready-made website elements built on top of Tailwind CSS, significantly reducing development time and ensuring design consistency.
-- [Iconify](https://iconify.design/) - a massive icon library containing thousands of high-quality vector icons that can be easily integrated into websites, providing visual elements that enhance user interface and user experience.
+{List(technologies.libraries)}
 
-Hosting & Deployments:
-- [Cloudflare Pages](https://pages.cloudflare.com/) - website hosting with an awesome global [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) that makes pages load super fast across the world, resulting in excellent user experience and better search rankings. Plus they offer clear and transparent pricing.
-- [GitHub Actions](https://github.com/features/actions) - a continuous integration and deployment service that monitors code changes and automatically handles the entire process of building and deploying websites without any manual work required.
+**Hosting & Deployments:**
+
+{List(technologies.services)}
 
 <StatsLighthouse />
 
