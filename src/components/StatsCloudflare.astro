@@ -1,13 +1,11 @@
 ---
 import Icon from '@xtreat/astro-iconify';
-import { calculateAverageNumber, calculatePercentageOf, calculateBytesToMegabytes } from '../scripts/utils.ts';
+import { calculateAverageNumber, calculatePercentageOf } from '../scripts/utils.ts';
 
 export const isDrop = (previous: number[], current: number) => {
   const previousAverage = calculateAverageNumber(previous);
   return calculatePercentageOf(current, previousAverage, true) < 90;
 };
-
-const isProduction = import.meta.env.PRODUCTION_BUILD;
 
 const CLOUDFLARE_GRAPHQL_URL = 'https://api.cloudflare.com/client/v4/graphql';
 const ZONE_ID = import.meta.env.CF_ZONE_ID;
@@ -16,7 +14,7 @@ const API_TOKEN = import.meta.env.CF_RADAR_TOKEN;
 const fetchCloudflareStats = async () => {
   const currentDate = new Date();
   const thirtyDaysAgo = new Date();
-  // Using 31 days because I don't want to count the current day
+  // Using 31 days because I don't want current day
   thirtyDaysAgo.setDate(currentDate.getDate() - 31);
 
   // const formattedCurrentDate = currentDate.toISOString().split('T')[0];
@@ -28,13 +26,11 @@ const fetchCloudflareStats = async () => {
   };
 
   // https://pages.johnspurlock.com/graphql-schema-docs/cloudflare.html#AccountHttpRequests1dGroupsSum
-
-  const [dailyResponse, overviewResponse] = await Promise.all([
-    fetch(CLOUDFLARE_GRAPHQL_URL, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({
-        query: `
+  const dailyResponse = await fetch(CLOUDFLARE_GRAPHQL_URL, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      query: `
           query GetDailyStats($zoneId: String!, $since: ISO8601DateTime!) {
             viewer {
               zones(filter: { zoneTag: $zoneId }) {
@@ -45,130 +41,44 @@ const fetchCloudflareStats = async () => {
                 ) {
                   dimensions { date }
                   uniq { uniques }
-                  sum { bytes cachedBytes cachedRequests pageViews requests }
+                  sum { pageViews requests }
                 }
               }
             }
           }
         `,
-        variables: {
-          zoneId: ZONE_ID,
-          since: formattedThirtyDaysAgo,
-        },
-      }),
+      variables: {
+        zoneId: ZONE_ID,
+        since: formattedThirtyDaysAgo,
+      },
     }),
+  });
 
-    fetch(CLOUDFLARE_GRAPHQL_URL, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({
-        query: `
-          query GetOverviewStats($zoneId: String!, $since: ISO8601DateTime!) {
-            viewer {
-              zones(filter: { zoneTag: $zoneId }) {
-                httpRequestsOverviewAdaptiveGroups(
-                  filter: { date_gt: $since },
-                  limit: 1
-                ) {
-                  dimensions { date }
-                  sum { bytes cachedBytes cachedRequests pageViews requests }
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          zoneId: ZONE_ID,
-          since: formattedThirtyDaysAgo,
-        },
-      }),
-    }),
-  ]);
-
-  // const response = await fetch(CLOUDFLARE_GRAPHQL_URL, {
-  //   method: 'POST',
-  //   headers: headers,
-  //   body: JSON.stringify({
-  //     query: `
-  //       query GetUniqueVisitors($zoneId: string!, $since: ISO8601DateTime!) {
-  //         viewer {
-  //           zones(filter: { zoneTag: $zoneId }) {
-  //             httpRequests1dGroups(
-  //               filter: { date_gt: $since },
-  //               limit: 30,
-  //               orderBy: [date_ASC]
-  //             ) {
-  //               dimensions {
-  //                 date
-  //               }
-  //               uniq {
-  //                 uniques
-  //               }
-  //               sum {
-  //                 bytes
-  //                 cachedBytes
-  //                 cachedRequests
-  //                 pageViews
-  //                 requests
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `,
-  //     variables: {
-  //       zoneId: ZONE_ID,
-  //       since: formattedThirtyDaysAgo,
-  //     },
-  //   }),
-  // });
-
-  if (!dailyResponse.ok || !overviewResponse.ok) {
-    throw new Error(`HTTP error! Daily: ${dailyResponse.status}, Overview: ${overviewResponse.status}`);
+  if (!dailyResponse.ok) {
+    throw new Error(`HTTP error! Daily: ${dailyResponse.status}`);
   }
 
-  const [dailyData, overviewData] = await Promise.all([dailyResponse.json(), overviewResponse.json()]);
+  const data = await dailyResponse.json();
 
-  return {
-    daily: dailyData,
-    overview: overviewData,
-  };
+  try {
+    return data.data.viewer.zones[0].httpRequests1dGroups.map((day: any) => {
+      return {
+        date: day.dimensions.date,
+        pageViews: day.sum.pageViews,
+        requests: day.sum.requests,
+        uniques: day.uniq.uniques,
+      };
+    });
+  } catch (error) {
+    console.log(`Can't fetch Cloudflare stats: ${error}`);
+  }
 };
 
-const stats = await fetchCloudflareStats();
+const data30Days = await fetchCloudflareStats();
 
-// const statsDaily = stats.daily.data.viewer.zones[0].httpRequests1dGroups.map((day: any) => {
-//   let obj = {
-//     dataCachedPercent: calculatePercentageOf(day.sum.cachedBytes, day.sum.bytes),
-//     dataMegabytes: calculateBytesToMegabytes(day.sum.bytes).toFixed(2),
-//     date: day.dimensions.date,
-//     pageViews: day.sum.pageViews,
-//     requests: day.sum.requests,
-//     requestsCached: day.sum.cachedRequests,
-//     uniques: day.uniq.uniques,
-//   };
-//   return obj;
-// })
-
-// const statsMonthly = stats.overview.data.viewer.zones[0].httpRequestsOverviewAdaptiveGroups.map((day: any) => {
-//   let obj = {
-//     dataCachedPercent: calculatePercentageOf(day.sum.cachedBytes, day.sum.bytes),
-//     dataMegabytes: calculateBytesToMegabytes(day.sum.bytes).toFixed(2),
-//     date: day.dimensions.date,
-//     pageViews: day.sum.pageViews,
-//     requests: day.sum.requests,
-//     requestsCached: day.sum.cachedRequests,
-//     uniques: day.uniq.uniques,
-//   };
-//   return obj;
-// })
-
-// const highestVisitorsCount = statsProcessed.reduce((maxObj: any, currentObj: any) => {
-//   return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
-// });
-
-// temporary
-const highestVisitorsCount = 2984;
+const highestVisitorsCount = data30Days.reduce((maxObj: any, currentObj: any) => {
+  return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
+});
 
 const getHighestNumber = (data: any, key: string) => {
   return data.reduce((maxObj: any, currentObj: any) => {
@@ -178,22 +88,15 @@ const getHighestNumber = (data: any, key: string) => {
 ---
 
 <div class='border-1 rounded-2xl w-full p-4 select-none my-8'>
-  <h2 class='flex items-center !mt-1 !mb-0'>
-    <Icon icon='simple-icons:cloudflarepages' class='inline-block w-14 h-14 m-2' />Cloudflare Pages
+  <h2 class='flex items-center !mt-1 !mb-0 gap-2'>
+    <Icon icon='icon-park-outline:analysis' class='inline-block w-14 h-14 m-2' />Cloudflare Analytics
   </h2>
 
-  <div class='flex items-center justify-between'>
-    <!-- <div><Icon icon='fluent:people-team-24-filled' class='inline-block w-10 h-10' /> Unique Visitors</div> -->
-    <!-- <div class='flex items-center justify-between'>
-      <span class='btn'>Month</span><span class='btn'>Year</span>
-    </div> -->
-  </div>
-
-  <!-- <div id='chart-container' class='w-full h-24 flex gap-1 mb-1 mt-4 items-end'>
+  <div id='chart-container' class='w-full h-24 flex gap-1 mb-1 mt-4 items-end'>
     {
-      statsProcessed.map((day: any, index: number) => {
+      data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
-        const previousDays = statsProcessed.slice(Math.max(index - 3, 0), index);
+        const previousDays = data30Days.slice(Math.max(index - 3, 0), index);
 
         return (
           <div
@@ -211,20 +114,5 @@ const getHighestNumber = (data: any, key: string) => {
         );
       })
     }
-  </div> -->
-
-  <!-- <div id='chart-container' class='w-full h-24 flex gap-1 mt-1 mb-4 items-start'>
-    {
-      statsProcessed.map((day: any) => {
-        const maxRequests = getHighestNumber(statsProcessed, 'requests');
-        return <div class='flex flex-1 gap-1 bg-base-content/20' style={`height: ${day.percent}%`} />;
-      })
-    }
-  </div> -->
+  </div>
 </div>
-
-<code>{JSON.stringify(stats.overview, null, 2)}</code>
-
-<!-- <code>{JSON.stringify(totals, null, 2)}</code> -->
-
-<!-- <code>{JSON.stringify(statsProcessed[0], null, 2)}</code> -->
