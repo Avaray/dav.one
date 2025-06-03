@@ -16,19 +16,19 @@
     "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
-    "@tailwindcss/vite": "^4.1.7",
+    "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^5.8.0",
+    "astro": "^5.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "tailwindcss": "^4.1.7",
+    "tailwindcss": "^4.1.8",
     "vite": "^6.3.5"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^5.0.38",
-    "unocss": "^66.1.2"
+    "daisyui": "^5.0.43",
+    "unocss": "^66.1.3"
   }
 }
