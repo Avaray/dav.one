@@ -33,13 +33,13 @@ function parseLineRanges(meta) {
 }
 
 function createLineSpan(content, lineNumber, excludedLines) {
-  const isBlurred = !excludedLines.includes(lineNumber);
+  const isDarkened = !excludedLines.includes(lineNumber);
 
   return {
     type: "element",
     tagName: "span",
     properties: {
-      className: isBlurred ? ["code-line", "blurred"] : ["code-line"],
+      className: isDarkened ? ["code-line", "darkened"] : ["code-line"],
       "data-line": lineNumber,
     },
     children: [{ type: "text", value: content }],

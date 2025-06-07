@@ -4,7 +4,7 @@
 @theme {
   --color-*: initial; /* This prevents including the entire color palette in the CSS file */
   --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100));
-  --color-code-highlight: color-mix(in oklab, var(--color-base-content) 20%, var(--color-base-100));
+  --color-code-highlight: color-mix(in oklab, var(--color-base-content) 15%, var(--color-base-100));
 }
 
 @import "./themes.css";
@@ -62,10 +62,6 @@ pre:not(.tab-content code) {
   @apply scale-y-[-1];
 }
 
-.highlighted {
-  @apply bg-code-highlight text-base-content;
-}
-
 @media print {
   /* Removes margins, hiding headers/footers in some browsers */
   @page {
@@ -88,15 +84,16 @@ pre:not(.tab-content code) {
   content: none;
 }
 
-.code-line.blurred {
+.code-line.darkened {
   opacity: 0.6;
   transition: filter 0.3s, opacity 0.3s;
 }
 
-.code-line:not(.blurred) {
+.code-line:not(.darkened) {
+  /* @apply text-base-content bg-code-highlight; */
   @apply text-base-content;
 }
 
-pre:hover .code-line.blurred {
+pre:hover .code-line.darkened {
   opacity: 1;
 }
