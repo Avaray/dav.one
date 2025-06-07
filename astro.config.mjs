@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import UnoCSS from "unocss/astro";
+import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +18,9 @@ export default defineConfig({
   },
   integrations: [
     UnoCSS(),
-    mdx(),
+    mdx({
+      rehypePlugins: [rehypeCodeBlur],
+    }),
     sitemap(),
     react({
       include: ["**/react/*"],

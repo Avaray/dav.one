@@ -87,3 +87,16 @@ pre:not(.tab-content code) {
 .prose code::after {
   content: none;
 }
+
+.code-line.blurred {
+  opacity: 0.4;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.code-line:not(.blurred) {
+  @apply text-primary;
+}
+
+pre:hover .code-line.blurred {
+  opacity: 1;
+}
