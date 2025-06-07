@@ -194,22 +194,24 @@ Add **UnoCSS** to **integrations list** in your **astro.config.mjs** config file
 You can also keep your UnoCSS configuration [in a dedicated file](https://unocss.dev/integrations/astro) to keep Astro config file cleaner.
 
 
-```
+```js [6-16]
 import { defineConfig } from 'astro/config';
 import UnoCSS from 'unocss/astro'
 
 export default defineConfig({
-  integrations: [UnoCSS({
-    presets: [
-      presetWebFonts({
-        provider: 'google',
-        fonts: {
-          firamono: 'Fira Mono:400',
-          roboto: 'Roboto:200,400,700',
-        },
-      })
-    ]
-  })],
+  integrations: [
+    UnoCSS({
+      presets: [
+        presetWebFonts({
+          provider: 'google',
+          fonts: {
+            firamono: 'Fira Mono:400',
+            roboto: 'Roboto:200,400,700',
+          },
+        })
+      ]
+    })
+  ],
 });
 ```
 
@@ -287,19 +289,21 @@ export const react = [
 
 Edit the **astro.config.mjs** configuration file again. Add [React](https://react.dev/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
 
-```
+```js [6]
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  integrations: [react()],
+  integrations: [
+    react()
+  ],
 });
 ```
 
 If you are using [TypeScript](https://www.typescriptlang.org/docs/) in your project, then you need to edit the **tsconfig.json** file located in the root of your project.  
 Add the following lines to **compilerOptions** section.
 
-```
+```js [3-4]
 {
   "compilerOptions": {
     "jsx": "react-jsx",
