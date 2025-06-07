@@ -43,7 +43,7 @@ function createLineSpan(content, lineNumber, excludedLines) {
   };
 }
 
-export function rehypeCodeBlur() {
+export function rehypeCodeHighlightLines() {
   return function transformer(tree) {
     visit(tree, "element", (node) => {
       if (node.tagName === "pre") {
