@@ -1,3 +1,6 @@
+// This plugin requires specifying the code block language.
+// Otherwise it will not work.
+
 import { visit } from "unist-util-visit";
 
 function parseLineRanges(meta) {
