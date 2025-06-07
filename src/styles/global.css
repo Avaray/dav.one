@@ -38,7 +38,7 @@ blockquote {
 }
 
 pre {
-  @apply !bg-code-bg !text-base-content/85;
+  @apply !bg-code-bg !text-base-content/90;
 }
 
 code, pre {
@@ -84,16 +84,18 @@ pre:not(.tab-content code) {
   content: none;
 }
 
-.code-line.darkened {
-  opacity: 0.6;
-  transition: filter 0.3s, opacity 0.3s;
+.code-line {
+  transition: color 0.3s, background-color 0.3s, filter 0.3s, opacity 0.3s;
 }
 
-.code-line:not(.darkened) {
-  /* @apply text-base-content bg-code-highlight; */
-  @apply text-base-content;
+.code-line.darkened {
+  opacity: 0.5;
 }
 
 pre:hover .code-line.darkened {
   opacity: 1;
+}
+
+pre:hover .code-line:not(.darkened) {
+  @apply text-primary;
 }
