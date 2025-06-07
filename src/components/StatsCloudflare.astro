@@ -105,6 +105,8 @@ const getHighestNumber = (data: any, key: string) => {
         return (
           <div
             class={`flex flex-1 gap-1 hover:bg-base-content sm:rounded-tl-2xl sm:rounded-tr-2xl ${
+              index === 0 ? 'sm:rounded-bl-xl' : ''
+            } ${index === data30Days.length - 1 ? 'sm:rounded-br-xl' : ''} ${
               isDrop(
                 previousDays.map((d: any) => d.uniques),
                 day.uniques,
