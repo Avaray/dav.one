@@ -33,9 +33,6 @@ export default defineConfig({
         "@": "/src",
       },
     },
-    // define: {
-    //   "import.meta.env.BRANCH": JSON.stringify(getCurrentBranch()),
-    // },
   },
   prefetch: true,
   image: {
