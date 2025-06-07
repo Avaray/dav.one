@@ -92,6 +92,10 @@ const getHighestNumber = (data: any, key: string) => {
     <Icon icon='icon-park-outline:analysis' class='inline-block w-14 h-14 m-2' />
     Cloudflare Analytics
   </div>
+  <!-- Charts will be hidden on mobile and small screens in the future. 
+   First I need to figure out how to get deduplicated data from Cloudflare. 
+   Currently they are not providing any way for that. 
+   I think the only way is to base on requests that are done in dashboard. -->
   <div id='chart-container' class='w-full h-24 flex gap-1 mb-1 mt-4 items-end'>
     {
       data30Days.map((day: any, index: number) => {
