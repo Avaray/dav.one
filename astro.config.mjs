@@ -19,7 +19,9 @@ export default defineConfig({
   integrations: [
     UnoCSS(),
     mdx({
-      rehypePlugins: [rehypeCodeHighlightLines],
+      rehypePlugins: [
+        rehypeCodeHighlightLines,
+      ],
     }),
     sitemap(),
     react({
