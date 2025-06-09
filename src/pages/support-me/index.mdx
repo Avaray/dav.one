@@ -8,15 +8,15 @@ import Icon from '@xtreat/astro-iconify';
 
 export const Card = ({ icon, title, link }) => {
   return (
-    <a href={link} target='_blank' rel='noopener noreferrer' class='w-full'>
+    <a href={link} target='_blank' rel='noopener noreferrer' class='w-full !no-underline'>
       <div
         class='w-full aspect-square flex flex-col items-center border rounded-2xl group hover:border-primary hover:bg-primary'
       >
         <div class='flex-1 p-2 mx-8 mt-8 text-primary group-hover:text-base-content'>
-          <Icon icon={icon} class='h-full w-full group-hover:drop-shadow-lg' />
+          <Icon icon={icon} class='h-full w-full group-hover:drop-shadow-sm' />
         </div>
         <div
-          class='my-4 mx-2 text-center tracking-wider group-hover:text-base-content group-hover:drop-shadow-lg group-hover:animate-shake'
+          class='my-4 mx-2 text-center tracking-wider group-hover:text-base-content group-hover:text-shadow-sm'
         >
           {title}
         </div>
