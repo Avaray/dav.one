@@ -11,6 +11,7 @@
     "npm:@types/react@^19.1.6": "19.1.6",
     "npm:@types/react@^19.1.7": "19.1.7",
     "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
+    "npm:astro@*": "5.9.2_vite@6.3.5__picomatch@4.0.2_zod@3.25.57",
     "npm:astro@5.9.2": "5.9.2_vite@6.3.5__picomatch@4.0.2_zod@3.25.57",
     "npm:astro@^5.9.1": "5.9.2_vite@6.3.5__picomatch@4.0.2_zod@3.25.57",
     "npm:astro@^5.9.2": "5.9.2_vite@6.3.5__picomatch@4.0.2_zod@3.25.57",
