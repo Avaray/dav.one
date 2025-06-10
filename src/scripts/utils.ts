@@ -1,5 +1,4 @@
 import { execSync } from "node:child_process";
-import process from "node:process";
 
 export const readableDate = (date: string, full = false) => {
   return new Date(Number(date)).toLocaleDateString("en-us", {
