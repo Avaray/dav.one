@@ -2,6 +2,7 @@
 title: 'Deploying Deno project to Cloudflare Pages using GitHub Actions'
 description: "Wrangler does not natively support Deno, complicating Cloudflare Pages deployments. This article shows how to use GitHub Actions and Deno for automatic deployments, eliminating the need for other package managers."
 created: '1739168113527'
+updated: '1749581617451'
 icon: 'simple-icons:cloudflarepages'
 author: 'Dawid Wasowski'
 ---
@@ -24,6 +25,10 @@ However, if you prefer a pure Deno project, you can use [GitHub Actions](https:/
 This article demonstrates how to do that.
 
 ## Disable automatic deployments
+
+<div role="alert" class="alert alert-warning alert-soft w-fit font-bold">
+  <span>I’ve just discovered that in new projects, this option is no longer there. The new settings are more confusing than the old ones. I’ll update these instructions as soon as I find out where this setting is located.</span>
+</div>
 
 I assume you already have a GitHub repository connected to [Cloudflare Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).  
 If not, you can follow [this guide](https://developers.cloudflare.com/pages/get-started/git-integration/).
