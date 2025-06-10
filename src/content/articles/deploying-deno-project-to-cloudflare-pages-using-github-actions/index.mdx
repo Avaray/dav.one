@@ -119,7 +119,7 @@ jobs:
 - Change `--project-name=awesome` to your project name (the one you set in Cloudflare Pages).
 - **Install Dependencies** step might be unnecessary. It depends on your project setup.
 - Deno is used to install Wrangler globally and then `cloudflare/wrangler-action` will use it.
-- Your build output directory might be different. In this example it is `./dist`.
+- Your build output directory might be different. In this example it is `./dist` directory.
 - `--commit-dirty=true` prevents Wrangler from building your project second time.
 {/* - Every commit pushed to different branch will deploy a preview. For example, if you push a commit to **next** branch, your production branch is **main**, and domain is `awesome.pages.dev`, the preview will be available at `next.awesome.pages.dev`. */}
 
