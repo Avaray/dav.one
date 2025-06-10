@@ -66,16 +66,16 @@ To make [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](daisyui.com) avai
 You can make it available globally or locally. Everything depends on your needs.
 In following examples, we will make them available globally.
 
-src/styles/**global.css**
+Assume your global CSS file is in src/styles/**global.css**
 ```
 @import "tailwindcss";
 @plugin "daisyui";
 ```
 
-Then, import CSS file in the **.astro** component like this:
+Then, import CSS file in the **.astro** [component](https://docs.astro.build/en/basics/astro-components/) or [layout](https://docs.astro.build/en/basics/layouts/). Remember to set the proper path to your CSS file.
 ```
 ---
-import '../proper/path/to/styles/global.css';
+import '../src/styles/global.css';
 ---
 ```
 
@@ -83,7 +83,7 @@ Another way to import the CSS file in the **.astro** component:
 
 ```
 <style is:global>
-  @import '../proper/path/to/styles/global.css';
+  @import '../src/styles/global.css';
 </style>
 ```
 
@@ -137,7 +137,7 @@ This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wi
 
 By default, [daisyUI](https://daisyui.com/) has two themes: **light** and **dark** and you don't need to configure anything to make it work. 
 They adjust according to the user's settings (browser/system). 
-However, you can customize it as you like. Check [Config](https://v5.daisyui.com/docs/config/) and [Themes](https://v5.daisyui.com/docs/themes/) pages for more information. 
+However, you can customize it as you like. Check [Config](https://daisyui.com/docs/config/) and [Themes](https://daisyui.com/docs/themes/) pages for more information. 
 In this example, four themes are specified. **Cupcake** is the default theme. **Forest** will be used if the user has dark mode enabled.
 
 ```
@@ -217,7 +217,7 @@ export default defineConfig({
 });
 ```
 
-Now you can use fonts in **CSS** for specific [Themes](https://v5.daisyui.com/docs/themes/).  
+Now you can use fonts in **CSS** for specific [Themes](https://daisyui.com/docs/themes/).  
 Fonts will be loaded in moments when you switch between themes.
 
 ```
@@ -274,7 +274,7 @@ import Icon from '@xtreat/astro-iconify';
 ## 10. Add React (optional)
 
 [Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same time!).  
-To add them, you should follow [integration guides](https://docs.astro.build/en/guides/integrations-guide/) and [daisyUI guides](https://v5.daisyui.com/docs/install/#framework-install-tutorials).
+To add them, you should follow [integration guides](https://docs.astro.build/en/guides/integrations-guide/) and [daisyUI guides](https://daisyui.com/docs/install/#framework-install-tutorials).
 
 For this tutorial, we will add [React](https://react.dev/) framework manually.  
 To install it in your project, run the following command in your terminal.
