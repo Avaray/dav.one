@@ -30,28 +30,26 @@ I assume you already have a GitHub repository connected to [Cloudflare Workers &
 If not, you can follow [this guide](https://developers.cloudflare.com/pages/get-started/git-integration/).
 
 - Navigate to your project in [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).
-- Open the project **Settings**.
-- In "Branch Control" uncheck "Automatic Deployments" and set "Preview Branch" to "None". Then click "Save".
+- Open the project "Settings".
+- In "Build" section edit "Branch Control". 
+- Disable "Automatic production branch deployments" and set "Preview Branch" to "None". Then click "Save".
+- Done. Now you have full control over the deployment process.
 
 ## Get your Account ID
 
 - Navigate to your projects in [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages).
-- Copy your **Account ID** from Account details panel (should be visible on the right side).
+- Your **Account ID** will be visible in Account details panel.
 
 ## Generate API Token
 
-<div role="alert" class="alert alert-warning alert-soft w-fit font-bold">
-  <span>Only if you do not already have one</span>
-</div>
-
-- In the Account details panel, directly below the Account ID, click [Manage API tokens](https://dash.cloudflare.com/profile/api-tokens).
+- In the Account details panel, directly below the **Account ID**, click [Manage API tokens](https://dash.cloudflare.com/profile/api-tokens).
 - Click "Create Token".
 - Find "Create Custom Token" and click button "Get started" located next to it.
 - Fill "Token name" field as you like.
 - In the Permissions section, set "Account" to "Cloudflare Pages" and select "Edit" permissions.
 - In Account Resources set your Account (optional).
 - Click "Continue to summary" button. Then click "Create Token" button.
-- Copy your new **API Token**.
+- Now you should see your new **API Token**.
 
 ## Set Account ID and API Token as Secrets in repository
 
