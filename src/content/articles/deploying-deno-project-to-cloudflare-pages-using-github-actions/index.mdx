@@ -113,16 +113,14 @@ jobs:
 ## About the workflow file
 
 - The workflow file is just an example. You need to adapt it to your needs.
-- This workflow will be launched only if you push changes to the **main** branch. 
-  If your branch name is different, change it in the workflow file. 
+- This workflow will be launched only if you push changes to the **main** branch. Add other branches if you need.
+  If your production branch name is different, change it in the workflow file. 
   You can also change [the event that triggers the workflow](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#about-events-that-trigger-workflows).
 - Change `--project-name=awesome` to your project name (the one you set in Cloudflare Pages).
 - **Install Dependencies** step might be unnecessary. It depends on your project setup.
 - Deno is used to install Wrangler globally and then `cloudflare/wrangler-action` will use it.
 - Your build output directory might be different. In this example it is `./dist` directory.
 - Argument `--commit-dirty=true` prevents Wrangler from building your project second time.
-{/* - Every commit pushed to different branch will deploy a preview. For example, if you push a commit to **next** branch, your production branch is **main**, and domain is `awesome.pages.dev`, the preview will be available at `next.awesome.pages.dev`. */}
-
 
 <div class='flex items-center my-12 gap-4' {...props}>
   <div><Icon icon="game-icons:thumb-up" class='h-40 w-40 text-primary hover:-mt-8' /></div>
