@@ -9,6 +9,20 @@
 
 @import "./themes.css";
 
+@utility alert {
+  font-size: var(--font-size-inherit);
+  line-height: var(--line-height-inherit);
+}
+
+@layer utilities {
+  main .alert a {
+    color: currentColor !important;
+  }
+  main .alert p {
+    margin: 0;
+  }
+}
+
 :root {
   @apply p-2.5;
 }
