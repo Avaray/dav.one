@@ -2,6 +2,7 @@
 title: 'Setting up Astro project with Tailwind CSS V4 and daisyUI V5'
 description: 'Astro is a fantastic tool for building static sites. Tailwind CSS is a utility-first CSS framework that simplifies styling. daisyUI is a collection of ready-to-use components specifically designed for Tailwind CSS. The combination of these three popular tools provides an efficient and effective way to create beautiful websites. This article will guide you through the process of setting everything up.'
 created: '1737380220000'
+updated: '1750147977504'
 icon: 'logos:astro-icon'
 author: 'Dawid Wasowski'
 ---
@@ -178,6 +179,13 @@ I recommend reading [official documentation](https://github.com/tailwindlabs/tai
 Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply) with class **prose** in your CSS may cause issues.
 
 ## 8. Add custom fonts (optional)
+
+<div role="alert" class="alert alert-warning alert-soft">
+  <Icon icon="mdi:information-variant-circle" />
+  <span>
+    Starting from Astro version 5.7.0, <a href="https://docs.astro.build/en/reference/experimental-flags/fonts/" target='_blank'>Experimental fonts API</a> is available.
+  </span>
+</div>
 
 You can use [UnoCSS](https://unocss.dev/) and its [web-fonts](https://unocss.dev/presets/web-fonts) preset to add custom fonts to your project.  
 This will let you use web fonts from [Google Fonts](https://fonts.google.com/), [Bunny](https://fonts.bunny.net/), and [FontShare](https://www.fontshare.com/) by simply providing the font names.
