@@ -21,6 +21,10 @@
   main .alert p {
     margin: 0;
   }
+  .alert svg {
+    width: 2em;
+    height: 2em;
+  }
 }
 
 :root {
