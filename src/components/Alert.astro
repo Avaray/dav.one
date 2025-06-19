@@ -1,0 +1,47 @@
+---
+import Icon from '@xtreat/astro-iconify';
+
+interface Props {
+  type?: 'success' | 'info' | 'warning' | 'error';
+  style?: 'soft' | 'outline' | 'dash';
+  icon?: 'success' | 'info' | 'warning' | 'error';
+  noicon?: boolean;
+}
+
+const { type = 'info', style = 'soft', icon: iconOverride, noicon = false } = Astro.props;
+
+const typeMap = {
+  success: {
+    base: 'alert-success',
+    icon: 'mdi:check-circle',
+  },
+  info: {
+    base: 'alert-info',
+    icon: 'mdi:information-variant-circle',
+  },
+  warning: {
+    base: 'alert-warning',
+    icon: 'mdi:alert',
+  },
+  error: {
+    base: 'alert-error',
+    icon: 'mdi:close-circle',
+  },
+};
+
+const styleMap = {
+  soft: 'alert-soft',
+  outline: 'alert-outline',
+  dash: 'alert-dash',
+};
+
+const alertClass = `alert ${typeMap[type].base} ${styleMap[style]}`;
+const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
+---
+
+<div role='alert' class={alertClass}>
+  {!noicon && <Icon icon={icon} />}
+  <span>
+    <slot />
+  </span>
+</div>
