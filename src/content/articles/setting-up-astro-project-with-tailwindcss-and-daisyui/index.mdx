@@ -10,6 +10,7 @@ author: 'Dawid Wasowski'
 import Icon from '@xtreat/astro-iconify';
 import Tabs from 'Tabs.astro';
 import TabsSync from 'TabsSync.astro';
+import Alert from '@/components/reusables/Alert.astro'
 
 <TabsSync />
 
@@ -180,12 +181,9 @@ Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#e
 
 ## 8. Add custom fonts (optional)
 
-<div role="alert" class="alert alert-warning alert-soft">
-  <Icon icon="mdi:information-variant-circle" />
-  <span>
-    Starting from Astro version 5.7.0, <a href="https://docs.astro.build/en/reference/experimental-flags/fonts/" target='_blank'>Experimental fonts API</a> is available.
-  </span>
-</div>
+<Alert>
+  Starting from Astro version 5.7.0, [Experimental fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/) is available.
+</Alert>
 
 You can use [UnoCSS](https://unocss.dev/) and its [web-fonts](https://unocss.dev/presets/web-fonts) preset to add custom fonts to your project.  
 This will let you use web fonts from [Google Fonts](https://fonts.google.com/), [Bunny](https://fonts.bunny.net/), and [FontShare](https://www.fontshare.com/) by simply providing the font names.
