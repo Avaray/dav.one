@@ -2,6 +2,7 @@
 import PageSpeedRadial from './StatsLighthouseRadial.astro';
 import { getPageSpeedScores } from '../scripts/utils.ts';
 import Icon from '@xtreat/astro-iconify';
+import Alert from './reusables/Alert.astro';
 
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 
@@ -70,9 +71,9 @@ isProduction && (scores = await getPageSpeedScores());
   </div>
   {
     isProduction !== true && (
-      <div role='alert' class='alert alert-warning alert-soft mt-8'>
-        <span>Real stats will be generated only in production builds.</span>
-      </div>
+      <Alert type='warning' noicon>
+        Real stats will be generated only in production builds.
+      </Alert>
     )
   }
 </div>
