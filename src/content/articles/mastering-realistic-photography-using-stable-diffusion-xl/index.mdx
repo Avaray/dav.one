@@ -7,6 +7,18 @@ author: 'Dawid Wasowski'
 draft: true
 ---
 
+## What are Prompts in Stable Diffusion?
+
+Prompts are text descriptions that tell [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion) what image to generate. 
+They act as instructions that guide the AI model to create visual content matching your vision. 
+When you type a prompt, the system converts your words into numerical data that controls the image generation process.
+
+## How Prompts work
+
+Stable Diffusion transforms your [text into tokens](https://sd-tokenizer.rocker.boo/) through a process called tokenization. 
+The model starts with random noise and gradually refines it over multiple steps, with each step guided by your prompt's encoded information. 
+This continues until a coherent image emerges that matches your description.
+
 ## Common misconception: Using "Realism" for Realistic images
 
 Many people believe that adding the word "realism" or "photorealistic" to their prompts will produce more realistic-looking images. 
@@ -22,7 +34,6 @@ To generate images that look like actual photographs in Stable Diffusion, you sh
 - Use photography-specific terminology. Use the keywords like "photo", "photograph" or "photography". You should place these keywords at the beginning of your prompt. 
 - Add keywords like "studio lighting", "rim lighting", or "golden hour". These keywords help create more realistic lighting conditions typical of professional photography. 
 - Specify camera equipment and film. You can specify camera brands like "Kodak", "Fujifilm", or "Nikon". Equipment like "85mm lens" or "f/2.8 aperture". Film types like "Kodak Portra 160" or "Rollei Infrared 400". 
-{/* You can find more informations about camera and film types [in this article](https://dav.one/using-prompts-to-modify-face-and-body-in-stable-diffusion-xl/#camera-type-and-film). */}
 
 ## Negative Prompt
 
