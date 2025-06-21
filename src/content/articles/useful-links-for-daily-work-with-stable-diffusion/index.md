@@ -2,7 +2,7 @@
 title: 'Useful links for daily work with Stable Diffusion'
 description: 'A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion.'
 created: '1696599420000'
-updated: '1746261688894'
+updated: '1750524123377'
 icon: 'game-icons:andromeda-chain'
 author: 'Dawid Wasowski'
 ---
@@ -28,6 +28,10 @@ author: 'Dawid Wasowski'
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks
   easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
 - [TagGUI](https://github.com/jhc13/taggui) - cross-platform desktop app for adding and editing image tags and captions.
+- [DatasetEditor](https://github.com/Jelosus2/DatasetEditor) - Windows app for editing datasets. Currently at early
+  stages of development. Includes "autotagger" tool that lets you tag images automatically. Autotagger currently
+  supports only [Pony Diffusion](https://civitai.com/models/257749/pony-diffusion-v6-xl) models, but
+  [author](https://github.com/Jelosus2) said it will be extended to other models.
 - [VastAI Docker Images](https://github.com/ai-dock) - containerized UIs such as
   [Forge](https://hub.docker.com/r/vastai/sd-forge), [ComfyUI](https://hub.docker.com/r/vastai/comfy), and
   [Fooocus](https://hub.docker.com/r/vastai/fooocus), built on their
