@@ -41,7 +41,11 @@ export default defineConfig({
   prefetch: true,
   image: {
     // https://docs.astro.build/en/guides/images/#configure-no-op-passthrough-service
-    service: passthroughImageService(),
+    // service: passthroughImageService(),
+    // https://docs.astro.build/en/reference/configuration-reference/#image-options
+    breakpoints: [640, 768, 1024, 1280, 1536], // Tailwind default breakpoints
+    responsiveStyles: false,
+    layout: "constrained",
   },
   markdown: {
     syntaxHighlight: false,
