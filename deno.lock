@@ -10,6 +10,7 @@
     "npm:@types/react-dom@^19.1.6": "19.1.6_@types+react@19.1.8",
     "npm:@types/react@^19.1.8": "19.1.8",
     "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
+    "npm:astro@*": "5.10.0_vite@6.3.5__picomatch@4.0.2_zod@3.25.67",
     "npm:astro@5.10.0": "5.10.0_vite@6.3.5__picomatch@4.0.2_zod@3.25.67",
     "npm:astro@^5.10.0": "5.10.0_vite@6.3.5__picomatch@4.0.2_zod@3.25.67",
     "npm:daisyui@^5.0.43": "5.0.43",
