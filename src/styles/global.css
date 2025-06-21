@@ -92,6 +92,14 @@ pre:not(.tab-content code) {
   }
 }
 
+.prose p > code,
+.prose li > code,
+.prose td > code,
+.prose th > code {
+  font-size: inherit !important;
+  color: inherit !important;
+}
+
 .prose :not(pre) > code {
   @apply bg-code-bg font-[inherit] p-1 px-4 align-middle ;
 }
