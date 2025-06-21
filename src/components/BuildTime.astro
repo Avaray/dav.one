@@ -1,0 +1,33 @@
+---
+const buildTimeISO = new Date().toISOString();
+---
+
+<div id='build-hours'>Built just now</div>
+
+<script type='module' is:inline define:vars={{ buildTimeISO }}>
+  const buildDate = new Date(buildTimeISO);
+  const buildHoursElement = document.getElementById('build-hours');
+
+  function updateHours() {
+    const now = new Date();
+    const diffMs = now - buildDate;
+
+    // Calculate total hours and round to the nearest whole number
+    const hours = Math.round(diffMs / (1000 * 60 * 60));
+
+    if (hours < 1) {
+      // If build was less than 30 minutes ago, it rounds to 0.
+      buildHoursElement.textContent = 'Built just now';
+    } else {
+      // Handle singular 'hour' vs plural 'hours'
+      const unit = hours === 1 ? 'hour' : 'hours';
+      buildHoursElement.textContent = `Built ${hours} ${unit} ago`;
+    }
+  }
+
+  // Run once on load
+  updateHours();
+
+  // And then update every minute to keep it current
+  setInterval(updateHours, 60_000);
+</script>
