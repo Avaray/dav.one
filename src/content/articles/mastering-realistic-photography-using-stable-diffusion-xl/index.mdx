@@ -9,13 +9,13 @@ draft: true
 
 import ImageDiff from '@/components/ImageDiff.astro'
 
-## Introduction
+{/* ## Introduction
 
 I began using [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion) in 2022 when AI image tools became very popular. 
 I was excited to make pictures but did not learn enough about how Stable Diffusion works. 
 Instead, I copied prompts and settings from others. This mistake slowed me down. 
-I believe Stable Diffusion in moment of writing this article is still one of the most popular image generation tools, 
-so here are tips I wish I had.
+I believe [Stable Diffusion XL](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) in moment of writing this article is still one of the most popular models, 
+so here are tips for XL version that will help you create high-quality images. */}
 
 ## What are Prompts in Stable Diffusion?
 
@@ -32,10 +32,7 @@ This continues until a coherent image emerges that matches your description.
 Prompt structure plays a crucial role in determining the final output. 
 Word order significantly impacts the generation process, with terms placed at the beginning of prompts receiving greater emphasis from the model. 
 Specificity in your descriptions leads to more predictable and refined results, as detailed prompts provide clearer guidance to the AI. 
-
-## Prompt Structure Components
-
-Effective prompts typically include **medium**, **subject**, **style**, **technical details**, and **additional modifiers**.
+Effective prompts typically include **medium**, **medium boosters**, **subject**, **subject details**, **environment**, and **additional modifiers**. 
 
 ## Common misconception: Using "Realism" for Realistic images
 
@@ -43,15 +40,19 @@ Many people believe that adding the word "realism" or "photorealistic" to their 
 However, this is actually a significant misunderstanding that can lead to unexpected results.
 
 The terms "realism" and "photorealistic" are primarily associated with [art styles](https://rikkar69.github.io/SDXL-artist-study/art-movements/) rather than actual photography. 
-When you use these words in your prompts, you're essentially asking the AI to create an artistic interpretation that mimics reality, not to create something that looks like an actual photograph.
+When you use these words in your prompts, you're essentially asking the AI to create an artistic interpretation that mimics reality, not to create something that looks like an actual photograph. 
+Avoid these keywords in your prompts if you want to generate realistic photographs.
 
-## Better alternatives for true Photographic results
+## How to achieve Photographic results
 
 To generate images that look like actual photographs in Stable Diffusion, you should:
 
-- Use photography-specific terminology. Use the keywords like "photo", "photograph" or "photography". You should place these keywords at the beginning of your prompt. 
-- Add keywords like "studio lighting", "rim lighting", or "golden hour". These keywords help create more realistic lighting conditions typical of professional photography. 
-- Specify camera equipment and film. You can specify camera brands like "Kodak", "Fujifilm", or "Nikon". Equipment like "85mm lens" or "f/2.8 aperture". Film types like "Kodak Portra 160" or "Rollei Infrared 400". 
+- Use photography-specific terminology. Use the keywords like "photo", "photograph" or "photography".
+- Use keywords related to photography types like "photoshoot", "editorial", "stock" or "studio".
+- Add keywords like "studio lighting, "rim lighting", "short lighting" or "golden hour". 
+These keywords help create more realistic lighting conditions typical of professional photography. 
+- Specify camera equipment and film. You can specify camera brands like "Kodak", "Fujifilm" or "Nikon". 
+Equipment like "85mm lens" or "f/2.8 aperture". Film types like "Kodak Portra 160" or "Rollei Infrared 400". 
 
 ## Negative Prompt
 
@@ -69,5 +70,5 @@ You have several options for changing emphasis.
 I recommend using the following format: `(keyword:1.2)` that increases emphasis to 1.2 or `(keyword:0.5)` that decreases emphasis to 0.5.
 You can apply emphasis in both, positive and negative prompts.
 
-## Complete Example
+## Complete Prompt Example
 
