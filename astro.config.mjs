@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import UnoCSS from "unocss/astro";
+import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
 
 // https://astro.build/config
@@ -27,6 +28,7 @@ export default defineConfig({
     react({
       include: ["**/react/*"],
     }),
+    minify(),
   ],
   vite: {
     plugins: [
