@@ -3,7 +3,9 @@
 
 import { chromium } from "playwright";
 
-async function scrapePageSpeedResults() {
+async function scrapePageSpeedResults(url = "https://dav.one") {
+  const encodedUrl = encodeURIComponent(url);
+
   const browser = await chromium.launch({
     headless: true,
   });
