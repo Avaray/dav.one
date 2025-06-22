@@ -15,8 +15,8 @@ const articles = await getCollection('articles', ({ data }) => {
 });
 
 const sortedArticles = [...articles].sort((a, b) => {
-  const dateA = a.data.updated || a.data.created;
-  const dateB = b.data.updated || b.data.created;
+  const dateA = new Date(a.data.updated || a.data.created).getTime();
+  const dateB = new Date(b.data.updated || b.data.created).getTime();
   return dateB - dateA;
 });
 ---
