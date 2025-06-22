@@ -12,10 +12,6 @@ export default defineConfig({
   build: {
     format: "directory",
   },
-  legacy: {
-    // Need to keep this for legacy collections
-    collections: true,
-  },
   integrations: [
     UnoCSS(),
     mdx({
