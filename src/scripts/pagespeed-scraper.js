@@ -1,4 +1,5 @@
-// I need to use Playwright to get shareable PageSpeed Insights results
+// I need to use Playwright to get shareable PageSpeed Insights reports
+// Reports gotten with CURL are not shareable
 
 import { chromium } from "npm:playwright";
 
