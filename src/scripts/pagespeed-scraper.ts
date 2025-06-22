@@ -1,7 +1,8 @@
 // I need to use Playwright to get shareable PageSpeed Insights reports
 // Reports gotten with CURL are not shareable
 
-import { Browser, chromium, Page } from "playwright";
+import { chromium } from "playwright";
+import type { Browser, Page } from "playwright";
 
 interface Targets {
   performance: string;
