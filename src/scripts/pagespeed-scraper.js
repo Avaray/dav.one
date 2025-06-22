@@ -133,8 +133,8 @@ function extractTestId(url) {
   const regex = /[^/?]+(?=\?|$)/;
   const match = url.match(regex);
 
-  if (match && match[1]) {
-    return match[1];
+  if (match && match[0]) {
+    return match[0];
   }
 
   console.warn("Could not extract test ID from URL:", url);
