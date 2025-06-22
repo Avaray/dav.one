@@ -130,7 +130,8 @@ async function waitForFinalUrl(page) {
 // Updated function to extract test ID specifically from /https-dav-one/ pattern
 function extractTestId(url) {
   // Example URL: https://pagespeed.web.dev/analysis/https-dav-one/vepqepoajh?form_factor=mobile
-  const match = url.match(/\/analysis\/https-dav-one\/([a-zA-Z0-9]+)/);
+  const regex = /[^/?]+(?=\?|$)/;
+  const match = url.match(regex);
 
   if (match && match[1]) {
     return match[1];
