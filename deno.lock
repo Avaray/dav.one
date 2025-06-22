@@ -16,6 +16,7 @@
     "npm:astro@^5.10.0": "5.10.0_vite@6.3.5__picomatch@4.0.2_zod@3.25.67_@types+node@22.15.15",
     "npm:daisyui@^5.0.43": "5.0.43",
     "npm:playwright@*": "1.53.1",
+    "npm:playwright@^1.53.1": "1.53.1",
     "npm:react-dom@^19.1.0": "19.1.0_react@19.1.0",
     "npm:react@^19.1.0": "19.1.0",
     "npm:sharp@~0.34.2": "0.34.2",
