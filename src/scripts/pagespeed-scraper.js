@@ -16,7 +16,7 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
     console.log("Starting PageSpeed analysis scraping...");
 
     // Navigate to PageSpeed Insights
-    await page.goto("https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdav.one%2F", {
+    await page.goto(`https://pagespeed.web.dev/analysis?url=${encodedUrl}`, {
       timeout: 60000,
       waitUntil: "networkidle",
     });
