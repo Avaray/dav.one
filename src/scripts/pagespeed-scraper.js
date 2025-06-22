@@ -63,7 +63,7 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
       timestamp: new Date().toISOString(),
     };
 
-    console.log("Extracted results:", completeResults);
+    console.log(completeResults);
 
     await browser.close();
     return completeResults;
@@ -74,7 +74,6 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
   }
 }
 
-// Simplified function that waits for both final URL and results availability
 async function waitForResultsReady(page) {
   let attempts = 0;
   const maxAttempts = 120; // 2 minutes max wait
@@ -86,10 +85,24 @@ async function waitForResultsReady(page) {
     const hasResultsPattern = /\/analysis\/[-a-zA-Z0-9]+\//.test(currentUrl);
 
     if (hasResultsPattern) {
-      // Check if results are actually loaded by looking for the scores header
-      const scoresHeaderExists = await page.locator(".lh-scores-header").count() > 0;
+      // Check if anchor elements with score hrefs are loaded
+      const scoreAnchorsLoaded = await page.evaluate(() => {
+        const targets = ["#performance", "#seo", "#accessibility", "#best-practices"];
+        let loadedCount = 0;
 
-      if (scoresHeaderExists) {
+        targets.forEach((target) => {
+          const anchor = document.querySelector(`a[href="${target}"]`);
+          if (anchor) {
+            loadedCount++;
+          }
+        });
+
+        // Return true if at least one score anchor is found (some tests might have fewer categories)
+        return loadedCount > 0;
+      });
+
+      if (scoreAnchorsLoaded) {
+        console.log("Results are ready");
         return currentUrl;
       }
     }
