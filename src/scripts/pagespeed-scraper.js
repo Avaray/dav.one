@@ -3,6 +3,13 @@
 
 import { chromium } from "playwright";
 
+const targets = {
+  performance: "#performance",
+  seo: "#seo",
+  accessibility: "#accessibility",
+  practices: "#best-practices",
+};
+
 async function scrapePageSpeedResults(url = "https://dav.one") {
   const encodedUrl = encodeURIComponent(url);
 
@@ -30,17 +37,13 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
     const testId = extractTestId(finalUrl);
 
     // Extract performance metrics
-    const results = await page.evaluate(() => {
+    const results = await page.evaluate((targetsObj) => {
       const scores = {};
 
       try {
-        // Target the four main categories
-        const targets = ["#performance", "#seo", "#accessibility", "#best-practices"];
-
-        targets.forEach((target) => {
-          const anchor = document.querySelector(`a[href="${target}"]`);
+        Object.entries(targetsObj).forEach(([key, selector]) => {
+          const anchor = document.querySelector(`a[href="${selector}"]`);
           if (anchor) {
-            // Get all child divs and find one with numeric content
             const childDivs = anchor.querySelectorAll("div");
             const scoreElement = Array.from(childDivs).find((div) => {
               const text = div.textContent.trim();
@@ -49,7 +52,7 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
 
             if (scoreElement) {
               const score = scoreElement.textContent.trim();
-              scores[target.substring(1)] = Number(score);
+              scores[key] = Number(score);
             }
           }
         });
@@ -58,7 +61,7 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
       }
 
       return scores;
-    });
+    }, targets);
 
     // Combine results
     const completeResults = {
@@ -91,20 +94,18 @@ async function waitForResultsReady(page) {
 
     if (hasResultsPattern) {
       // Check if anchor elements with score hrefs are loaded
-      const scoreAnchorsLoaded = await page.evaluate(() => {
-        const targets = ["#performance", "#seo", "#accessibility", "#best-practices"];
+      const scoreAnchorsLoaded = await page.evaluate((targetsObj) => {
         let loadedCount = 0;
 
-        targets.forEach((target) => {
-          const anchor = document.querySelector(`a[href="${target}"]`);
+        for (const target in targetsObj) {
+          const anchor = document.querySelector(`a[href="${targetsObj[target]}"]`);
           if (anchor) {
             loadedCount++;
           }
-        });
+        }
 
-        // Return true if at least one score anchor is found (some tests might have fewer categories)
         return loadedCount > 0;
-      });
+      }, targets);
 
       if (scoreAnchorsLoaded) {
         console.log("Results are ready");
