@@ -4253,6 +4253,7 @@
         "npm:@xtreat/astro-iconify@^1.2.7",
         "npm:astro@^5.10.0",
         "npm:daisyui@^5.0.43",
+        "npm:playwright@^1.53.1",
         "npm:react-dom@^19.1.0",
         "npm:react@^19.1.0",
         "npm:sharp@~0.34.2",
