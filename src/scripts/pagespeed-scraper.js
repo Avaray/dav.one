@@ -1,7 +1,7 @@
 // I need to use Playwright to get shareable PageSpeed Insights reports
 // Reports gotten with CURL are not shareable
 
-import { chromium } from "npm:playwright";
+import { chromium } from "playwright";
 
 async function scrapePageSpeedResults() {
   const browser = await chromium.launch({
