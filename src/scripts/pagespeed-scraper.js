@@ -117,6 +117,6 @@ function extractTestId(url) {
   return null;
 }
 
-await scrapePageSpeedResults();
+// await scrapePageSpeedResults();
 
 export { scrapePageSpeedResults };
