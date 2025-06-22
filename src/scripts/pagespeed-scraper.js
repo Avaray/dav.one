@@ -40,7 +40,12 @@ async function scrapePageSpeedResults(url = "https://dav.one") {
         targets.forEach((target) => {
           const anchor = document.querySelector(`a[href="${target}"]`);
           if (anchor) {
-            const scoreElement = anchor.querySelector(".lh-gauge__percentage");
+            // Get all child divs and find one with numeric content
+            const childDivs = anchor.querySelectorAll("div");
+            const scoreElement = Array.from(childDivs).find((div) => {
+              const text = div.textContent.trim();
+              return !isNaN(text) && text !== "";
+            });
 
             if (scoreElement) {
               const score = scoreElement.textContent.trim();
