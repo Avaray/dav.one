@@ -10,28 +10,6 @@ Styled with [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisy
 Deployed with [GitHub Actions](https://github.com/features/actions).\
 Hosted with [Cloudflare Pages](https://pages.cloudflare.com/).
 
-## 📑 Changelog (V1 -> V2)
-
-Key changes worth to mention
-
-- Updated to Tailwind CSS V4
-- Updated daisyUI to V5
-- Did many changes in layout and design
-- Created new components (mostly related to images)
-- Updated standalone pages (about me, about website, etc)
-- Created one new article
-- Switched to Deno (from Node+PNPM)
-- Updated Vite to v6
-- Added prefetching for most of pages
-
-Removed:
-
-- UnoCSS stuff (except web-fonts preset)
-- Biome
-- Preact
-- Nanostores
-- Rehype plugins
-
 ## 📆 Upcoming plans
 
 - [ ] Make this project 100% Deno based. Currently package for SVG icons is not compatible with Deno and it is blocking
