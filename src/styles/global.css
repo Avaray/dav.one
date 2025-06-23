@@ -103,6 +103,11 @@ pre:not(.tab-content code) {
   vertical-align: baseline;
 }
 
+.prose .badge {
+  display: inline;
+  vertical-align: baseline;
+}
+
 .prose code::before,
 .prose code::after {
   content: none;
