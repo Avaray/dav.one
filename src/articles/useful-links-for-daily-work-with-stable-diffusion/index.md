@@ -32,10 +32,10 @@ author: 'Dawid Wasowski'
   stages of development. Includes "autotagger" tool that lets you tag images automatically. Autotagger currently
   supports only [Pony Diffusion](https://civitai.com/models/257749/pony-diffusion-v6-xl) models, but
   [author](https://github.com/Jelosus2) said it will be extended to other models.
-- [VastAI Docker Images](https://github.com/ai-dock) - containerized UIs such as
-  [Forge](https://hub.docker.com/r/vastai/sd-forge), [ComfyUI](https://hub.docker.com/r/vastai/comfy), and
-  [Fooocus](https://hub.docker.com/r/vastai/fooocus), built on their
-  [base image](https://github.com/vast-ai/base-image), which can be run on either a local machine or a
+- [VastAI Docker Images](https://github.com/ai-dock) <div class="badge badge-soft badge-warning">Outdated</div> -
+  containerized UIs such as [Forge](https://hub.docker.com/r/vastai/sd-forge),
+  [ComfyUI](https://hub.docker.com/r/vastai/comfy), and [Fooocus](https://hub.docker.com/r/vastai/fooocus), built on
+  their [base image](https://github.com/vast-ai/base-image), which can be run on either a local machine or a
   [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
 
 ## Models
@@ -76,9 +76,10 @@ author: 'Dawid Wasowski'
 
 ## Tools
 
-- [CLIP Interrogator](https://huggingface.co/spaces/pharmapsychotic/CLIP-Interrogator) - analyzes images and generates
-  descriptive text prompts for SD1 & SDXL. [This one](https://huggingface.co/spaces/fffiloni/CLIP-Interrogator-2) is for
-  SD2 and [this one](https://huggingface.co/spaces/deepghs/wd14_tagging_online) is for Pony Diffusion.
+- [CLIP Interrogator](https://huggingface.co/spaces/pharmapsychotic/CLIP-Interrogator)
+  <div class="badge badge-soft badge-warning">Currently broken</div> - analyzes images and generates descriptive text
+  prompts for SD1 & SDXL. [This one](https://huggingface.co/spaces/fffiloni/CLIP-Interrogator-2) is for SD2 and
+  [this one](https://huggingface.co/spaces/deepghs/wd14_tagging_online) is for Pony Diffusion.
 - [Diffusion Tokenizer](https://sd-tokenizer.rocker.boo/) - converts text prompts into numerical tokens used by
   diffusion models.
 
