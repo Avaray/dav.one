@@ -1,0 +1,7 @@
+.flip-x {
+  @apply scale-x-[-1];
+}
+
+.flip-y {
+  @apply scale-y-[-1];
+}

@@ -8,6 +8,7 @@
 }
 
 @import "./themes.css";
+@import "./utils.css"
 
 @utility alert {
   font-size: var(--font-size-inherit);
@@ -74,14 +75,6 @@ pre:has(> code) {
 /* Remove margins from code blocks if they are inside Tab component */
 pre:not(.tab-content code) {
   @apply my-0;
-}
-
-.flip-x {
-  @apply scale-x-[-1];
-}
-
-.flip-y {
-  @apply scale-y-[-1];
 }
 
 @media print {
