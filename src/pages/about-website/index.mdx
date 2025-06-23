@@ -62,8 +62,10 @@ To be able to share an impressive 😅 total of **{Object.keys(articles).length}
 
 {List(technologies.services)}
 
-<StatsLighthouse />
+<div class="flex flex-col lg:flex-row gap-8">
+  <StatsLighthouse />
+  <BuildTime />
+</div>
 
 <StatsCloudflare />
 
-<BuildTime />

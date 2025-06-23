@@ -1,33 +1,54 @@
 ---
-const buildTimeISO = new Date().toISOString();
+import Icon from '@xtreat/astro-iconify';
+
+const buildTimeISO = new Date().toUTCString();
+
+const getLatestFailureDate = async () => {
+  const response = await fetch('https://api.github.com/repos/Avaray/dav.one/actions/workflows/deploy.yml/runs');
+  const data = await response.json();
+  const latestFailureObject = data.workflow_runs.find((run: any) => run.conclusion === 'failure').updated_at;
+  return new Date(latestFailureObject).toUTCString();
+};
+
+const isProduction = import.meta.env.PRODUCTION_BUILD;
+
+const latestFailureDate = isProduction ? await getLatestFailureDate() : '';
 ---
 
-<div id='build-hours'>Built just now</div>
+<div class='flex flex-col border-1 rounded-2xl min-w-[20vw] p-4 select-none'>
+  <div class='flex items-center justify-between text-base-content mb-8'>
+    <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl font-bold'>
+      <Icon icon='simple-icons:githubactions' class='inline-block w-14 h-14 m-2' />
+      <span class='mr-5'>Builds</span>
+    </div>
+    <a
+      href='https://github.com/Avaray/dav.one/actions'
+      class='hover:text-primary'
+      target='_blank'
+      title='Open history of builds'
+    >
+      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' />
+    </a>
+  </div>
 
-<script type='module' is:inline define:vars={{ buildTimeISO }}>
-  const buildDate = new Date(buildTimeISO);
-  const buildHoursElement = document.getElementById('build-hours');
-
-  function updateHours() {
-    const now = new Date();
-    const diffMs = now - buildDate;
-
-    // Calculate total hours and round to the nearest whole number
-    const hours = Math.round(diffMs / (1000 * 60 * 60));
-
-    if (hours < 1) {
-      // If build was less than 30 minutes ago, it rounds to 0.
-      buildHoursElement.textContent = 'Built just now';
-    } else {
-      // Handle singular 'hour' vs plural 'hours'
-      const unit = hours === 1 ? 'hour' : 'hours';
-      buildHoursElement.textContent = `Built ${hours} ${unit} ago`;
+  <div id='times' class='flex flex-col sm:flex-row lg:flex-col flex-1 gap-4'>
+    <div class='flex items-center gap-2 mr-5'>
+      <Icon icon='streamline:smiley-happy-solid' class='inline-block w-8 h-8 m-2 text-success' />
+      <div class='flex flex-col'>
+        <span class='font-bold'>Latest successful build:</span>
+        <div id='build-hours'>{buildTimeISO}</div>
+      </div>
+    </div>
+    {
+      latestFailureDate && (
+        <div class='flex items-center gap-2 mr-5'>
+          <Icon icon='streamline:smiley-crying-1-solid' class='inline-block w-8 h-8 m-2 text-error' />
+          <div class='flex flex-col'>
+            <span class='font-bold'>Latest failed build:</span>
+            <span>{latestFailureDate}</span>
+          </div>
+        </div>
+      )
     }
-  }
-
-  // Run once on load
-  updateHours();
-
-  // And then update every minute to keep it current
-  setInterval(updateHours, 60_000);
-</script>
+  </div>
+</div>
