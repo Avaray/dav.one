@@ -1,5 +1,6 @@
 // I need to use Playwright to get shareable PageSpeed Insights reports
-// Reports gotten with CURL are not shareable
+// Reports gotten with following API endpoint are not shareable
+// https://www.googleapis.com/pagespeedonline/v5/runPagespeed
 
 import { chromium } from "playwright";
 import type { Browser, Page } from "playwright";
