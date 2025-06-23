@@ -35,7 +35,13 @@ export const badgesList = (list) => {
   return (
     <div class="inline-flex flex-wrap gap-2 mx-1">
       {list.map((tool) => {
-        return <a href={tool.link} class="!font-normal"><div class="badge badge-outline badge-primary whitespace-nowrap">{tool.name}</div></a>
+        return (
+          <a href={tool.link} class="!font-normal !no-underline ">
+            <div class="badge badge-soft badge-primary whitespace-nowrap hover:outline-1">
+              {tool.name}
+            </div>
+          </a>
+        )
       })}
     </div>
   )
@@ -61,23 +67,26 @@ export const technologies = {
   mobile: [
     { name: "React Native", link: "https://reactnative.dev/", description: "" },
     { name: "Expo", link: "https://docs.expo.dev/", description: "" },
+    { name: "Lynx", link: "https://lynxjs.org/", description: "" },
   ]
 }
 
 {/* I am thinking abous using Collapses for this https://daisyui.com/components/collapse/#collapse-with-focus */}
 
 ## Currently, I'm looking for a full-time job as a:
-- Generative AI Engineer / Content Creator {badgesList(technologies.genAi)}
 - <span className='opacity-50'>Junior</span> Frontend Developer {badgesList(technologies.frontend)}
 - <span className='opacity-50'>Junior</span> Backend Developer {badgesList(technologies.backend)}
-- <span className='opacity-50'>Junior</span> Software Engineer
 - <span className='opacity-50'>Junior</span> Mobile Developer {badgesList(technologies.mobile)}
-- <span className='opacity-50'>Junior</span> IT Support / Helpdesk
+- <span className='opacity-50'>Junior</span> Software Engineer
 - <span className='opacity-50'>Junior</span> Manual Tester
-- <span className='opacity-50'>Junior</span> Automation Tester
+- <span className='opacity-50'>Junior</span> IT Support
 - ???
 
-<div class='flex items-center gap-2'><Icon icon='gis:earth-network-o' class="inline-flex align-center items-start w-[4em] h-[4em]" /> <span class='font-bold text-lg'>In locations:</span> </div>
+<div class='flex items-center gap-2'>
+  <Icon icon='gis:earth-network-o' class="inline-flex align-center items-start w-[4em] h-[4em]" /> 
+  <span class='font-bold text-lg'>In locations:</span> 
+</div>
+
 - [Düsseldorf](https://www.openstreetmap.org/#map=13/51.22334/6.78148) (Germany) and nearby towns, preferably those in the southeast of the city center
 - Remote
 

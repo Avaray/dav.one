@@ -15,8 +15,8 @@ const articles = await getCollection('articles', ({ data }) => {
 });
 
 const sortedArticles = [...articles].sort((a, b) => {
-  const dateA = a.data.updated || a.data.created;
-  const dateB = b.data.updated || b.data.created;
+  const dateA = new Date(a.data.updated || a.data.created).getTime();
+  const dateB = new Date(b.data.updated || b.data.created).getTime();
   return dateB - dateA;
 });
 ---
@@ -28,7 +28,7 @@ const sortedArticles = [...articles].sort((a, b) => {
     <MainProse>
       {
         sortedArticles.map((article) => (
-          <a href={`/${article.slug}/`} data-astro-prefetch>
+          <a href={`/${article.id}/`} data-astro-prefetch>
             <div class='flex flex-row'>
               <div class='max-md:hidden flex flex-col items-center min-w-[148px] min-h-[148px] text-center rounded-lg aspect-square'>
                 {/* Using [&>*]:fill-current to replace colors in icons */}

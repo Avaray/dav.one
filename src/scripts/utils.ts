@@ -20,7 +20,8 @@ export function getCurrentBranch() {
   }
 }
 
-// TODO
+// I switched to Playwright script
+// I will leave it here for now
 export async function getPageSpeedScores(url: string = "https://dav.one") {
   url ? url : `https://${import.meta.env.SITE_URL}`;
   const apiKey = import.meta.env.GOOGLE_PAGESPEED_KEY || "";

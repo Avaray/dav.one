@@ -1,6 +1,6 @@
 ---
 import PageSpeedRadial from './StatsLighthouseRadial.astro';
-import { getPageSpeedScores } from '../scripts/utils.ts';
+import { scrapePageSpeedResults } from '../scripts/pagespeed-scraper.js';
 import Icon from '@xtreat/astro-iconify';
 import Alert from './reusables/Alert.astro';
 
@@ -8,11 +8,12 @@ const isProduction = import.meta.env.PRODUCTION_BUILD;
 
 const randomScore = () => Math.floor(Math.random() * (100 - 70 + 1)) + 70;
 
-let scores = {
+let report = {
   performance: randomScore(),
   accessibility: randomScore(),
-  bestPractices: randomScore(),
+  practices: randomScore(),
   seo: randomScore(),
+  finalUrl: '',
 };
 
 const descriptions = {
@@ -25,10 +26,20 @@ const descriptions = {
   seo: 'Search Engine Optimization. This category measures how well webpage is optimized for search engines. It includes aspects like metadata usage, structured data implementation, and mobile-friendliness. A high SEO score indicates effective strategies to enhance visibility in search engine results',
 };
 
-isProduction && (scores = await getPageSpeedScores());
+if (isProduction) {
+  const site = Astro.site?.href || '';
+  const pageSpeedResults = await scrapePageSpeedResults(site);
+
+  if (pageSpeedResults) {
+    report.performance = pageSpeedResults.performance || 0;
+    report.accessibility = pageSpeedResults.accessibility || 0;
+    report.practices = pageSpeedResults.practices || 0;
+    report.seo = pageSpeedResults.seo || 0;
+  }
+}
 ---
 
-<div class='border-1 rounded-2xl w-full sm:w-[60%] md:w-[70%] p-4 select-none my-8'>
+<div class='border-1 rounded-2xl flex-1 p-4 select-none'>
   <div class='flex items-center justify-between text-base-content mb-8'>
     <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl font-bold'>
       <Icon icon='simple-icons:pagespeedinsights' class='inline-block w-14 h-14 m-2' />
@@ -36,44 +47,39 @@ isProduction && (scores = await getPageSpeedScores());
       <span class='block md:hidden'>PageSpeed Insights</span>
     </div>
     <a
-      href='https://pagespeed.web.dev/analysis/https-dav-one/gkkiblp0k7?form_factor=mobile'
+      href={report.finalUrl}
+      class='hover:text-primary'
       target='_blank'
       title='Go and check by yourself, you doubter! 😂'
-      ><Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' /></a
     >
+      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' />
+    </a>
   </div>
 
-  <div class='grid grid-cols-2 md:grid-cols-4 gap-4 @container my-8'>
+  <div class='grid grid-cols-2 sm:grid-cols-4 gap-4 @container'>
     <PageSpeedRadial
       category='Performance'
-      score={scores.performance}
+      score={report.performance}
       tooltip={descriptions.performance}
-      ariaLabel={`Radial progress bar showing ${scores.performance} score of Performance`}
+      ariaLabel={`Radial progress bar showing ${report.performance} score of Performance`}
     />
     <PageSpeedRadial
       category='Accessibility'
-      score={scores.accessibility}
+      score={report.accessibility}
       tooltip={descriptions.accessibility}
-      ariaLabel={`Radial progress bar showing ${scores.accessibility} score of Accessibility`}
+      ariaLabel={`Radial progress bar showing ${report.accessibility} score of Accessibility`}
     />
     <PageSpeedRadial
       category='Best Practices'
-      score={scores.bestPractices}
+      score={report.practices}
       tooltip={descriptions.bestPractices}
-      ariaLabel={`Radial progress bar showing ${scores.bestPractices} score of Best Practices`}
+      ariaLabel={`Radial progress bar showing ${report.practices} score of Best Practices`}
     />
     <PageSpeedRadial
       category='SEO'
-      score={scores.seo}
+      score={report.seo}
       tooltip={descriptions.seo}
-      ariaLabel={`Radial progress bar showing ${scores.seo} score of SEO`}
+      ariaLabel={`Radial progress bar showing ${report.seo} score of SEO`}
     />
   </div>
-  {
-    isProduction !== true && (
-      <Alert type='warning' noicon>
-        Real stats will be generated only in production builds.
-      </Alert>
-    )
-  }
 </div>

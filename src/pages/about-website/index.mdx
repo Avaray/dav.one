@@ -8,6 +8,7 @@ import Icon from '@xtreat/astro-iconify';
 
 import StatsLighthouse from "../../components/StatsLighthouse.astro";
 import StatsCloudflare from "../../components/StatsCloudflare.astro";
+import BuildTime from "../../components/BuildTime.astro";
 
 import { getCollection } from 'astro:content';
 export const articles = await getCollection('articles', ({ data }) => {
@@ -61,6 +62,10 @@ To be able to share an impressive 😅 total of **{Object.keys(articles).length}
 
 {List(technologies.services)}
 
-<StatsLighthouse />
+<div class="flex flex-col lg:flex-row gap-8">
+  <StatsLighthouse />
+  <BuildTime />
+</div>
 
 <StatsCloudflare />
+

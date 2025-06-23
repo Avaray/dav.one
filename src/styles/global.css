@@ -8,8 +8,14 @@
 }
 
 @import "./themes.css";
+@import "./utils.css";
 
 @utility alert {
+  font-size: var(--font-size-inherit);
+  line-height: var(--line-height-inherit);
+}
+
+@utility badge {
   font-size: var(--font-size-inherit);
   line-height: var(--line-height-inherit);
 }
@@ -71,16 +77,7 @@ pre:not(.tab-content code) {
   @apply my-0;
 }
 
-.flip-x {
-  @apply scale-x-[-1];
-}
-
-.flip-y {
-  @apply scale-y-[-1];
-}
-
 @media print {
-  /* Removes margins, hiding headers/footers in some browsers */
   @page {
     margin: 0; 
   }
@@ -102,6 +99,11 @@ pre:not(.tab-content code) {
 
 .prose :not(pre) > code {
   @apply bg-code-bg font-[inherit] p-1 align-middle;
+  display: inline;
+  vertical-align: baseline;
+}
+
+.prose .badge {
   display: inline;
   vertical-align: baseline;
 }

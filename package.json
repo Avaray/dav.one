@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.0.0",
   "scripts": {
-    "install": "deno i --allow-scripts",
+    "install": "deno i --allow-scripts && deno run --allow-all npm:playwright install --with-deps chromium",
     "dev": "astro dev",
     "clear": "astro dev --clear-cache",
     "serve": "astro dev --host 0.0.0.0",
@@ -21,6 +21,7 @@
     "@types/react-dom": "^19.1.6",
     "@xtreat/astro-iconify": "^1.2.7",
     "astro": "^5.10.0",
+    "playwright": "^1.53.1",
     "astro-minify-html-swc": "^0.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
