@@ -78,7 +78,6 @@ pre:not(.tab-content code) {
 }
 
 @media print {
-  /* Removes margins, hiding headers/footers in some browsers */
   @page {
     margin: 0; 
   }
