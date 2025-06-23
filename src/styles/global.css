@@ -8,7 +8,7 @@
 }
 
 @import "./themes.css";
-@import "./utils.css"
+@import "./utils.css";
 
 @utility alert {
   font-size: var(--font-size-inherit);
