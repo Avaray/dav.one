@@ -35,7 +35,13 @@ export const badgesList = (list) => {
   return (
     <div class="inline-flex flex-wrap gap-2 mx-1">
       {list.map((tool) => {
-        return <a href={tool.link} class="!font-normal"><div class="badge badge-outline badge-primary whitespace-nowrap">{tool.name}</div></a>
+        return (
+          <a href={tool.link} class="!font-normal">
+            <div class="badge badge-soft badge-primary whitespace-nowrap">
+              {tool.name}
+            </div>
+          </a>
+        )
       })}
     </div>
   )
