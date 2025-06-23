@@ -161,4 +161,4 @@ function extractTestId(url: string): string | null {
 // await scrapePageSpeedResults();
 
 export { scrapePageSpeedResults };
-// export type { CompleteResults, ScoreResults, Targets };
+export type { CompleteResults, ScoreResults, Targets };
