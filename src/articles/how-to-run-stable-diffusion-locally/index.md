@@ -106,9 +106,9 @@ Cons:
 - Sharing models between Docker images is harder. You will need to
   [configure it](https://docs.docker.com/get-started/docker-concepts/running-containers/sharing-local-files/).
 
-There are tons of Docker images created by the community. You need to find the one that suits your needs. Check
+There are many Docker images created by the community. You need to find the one that suits your needs by checking
 [Docker Hub](https://hub.docker.com/search?q=stable%20diffusion) and
-[GitHub](https://github.com/search?q=stable%20diffusion%20docker&type=repositories). Personally, I recommend using
-[AI-Dock](https://github.com/ai-dock) images. They are well maintained and they give you a cool feature to use
-[Provisioning Scripts](https://github.com/ai-dock/base-image/wiki/4.0-Running-the-Image#provisioning-script) to "perform
-certain actions when starting a container, such as creating directories and downloading files".
+[GitHub](https://github.com/search?q=stable%20diffusion%20docker&type=repositories). I recommend using
+[base image from Vast.ai](https://github.com/vast-ai/base-image). It's well maintained and gives you ability to use cool
+[Provisioning Scripts](https://github.com/vast-ai/base-image?tab=readme-ov-file#applications--startup) to perform
+certain actions when starting a container, such as creating directories and downloading files.
