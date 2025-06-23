@@ -14,7 +14,6 @@ Hosted with [Cloudflare Pages](https://pages.cloudflare.com/).
 
 - [ ] Make this project 100% Deno based. Currently package for SVG icons is not compatible with Deno and it is blocking
       me.
-- [ ] Do something cool with code blocks and Syntax Highlighting. I really want to avoid remark/rehype plugins.
 
 ## 🐣 How to run this project
 
