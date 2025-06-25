@@ -10,7 +10,11 @@ interface Props {
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
+const absoluteImageUrl = image && new URL(image, Astro.site).toString();
+
+// I need to make this better in the future
+const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 ---
 
 <head>
@@ -30,4 +34,12 @@ const { title, description } = Astro.props;
   <title>{title}</title>
   <meta name='title' content={title} />
   <meta name='description' content={description} />
+
+  {/*  Open Graph */}
+  <meta property='og:title' content={title} />
+  <meta property='og:description' content={description} />
+  <meta property='og:url' content={canonicalURL} />
+  <meta property='og:type' content={ogType} />
+  <meta property='og:locale' content='pl_PL' />
+  {absoluteImageUrl && <meta property='og:image' content={new URL(image, Astro.site).toString()} />}
 </head>
