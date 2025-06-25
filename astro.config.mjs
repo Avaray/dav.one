@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { fileURLToPath, URL } from "node:url";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -6,7 +7,6 @@ import tailwindcss from "@tailwindcss/vite";
 import UnoCSS from "unocss/astro";
 import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
-import { fileURLToPath, URL } from "node:url";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,6 +38,7 @@ export default defineConfig({
         "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
         "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
         "@layouts": fileURLToPath(new URL("./src/layouts", import.meta.url)),
+        "@scripts": fileURLToPath(new URL("./src/scripts", import.meta.url)),
         "@styles": fileURLToPath(new URL("./src/styles", import.meta.url)),
       },
     },
