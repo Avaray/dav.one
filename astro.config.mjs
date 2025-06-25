@@ -41,6 +41,11 @@ export default defineConfig({
         "@styles": fileURLToPath(new URL("./src/styles", import.meta.url)),
       },
     },
+    server: {
+      watch: {
+        ignored: ["**/.astro/**"],
+      },
+    },
   },
   prefetch: true,
   image: {
