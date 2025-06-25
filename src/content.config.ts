@@ -6,17 +6,19 @@ const articles = defineCollection({
     base: "./src/articles",
     pattern: "**/*.{md,mdx}",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    created: z.coerce.date(),
-    updated: z.coerce.date().optional(),
-    tags: z.array(z.string()).optional(),
-    icon: z.string().optional(),
-    image: z.string().optional(),
-    draft: z.boolean().optional(),
-    author: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      author: z.string().optional(),
+      created: z.coerce.date(),
+      description: z.string(),
+      draft: z.boolean().optional(),
+      icon: z.string().optional(),
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+      tags: z.array(z.string()).optional(),
+      title: z.string(),
+      updated: z.coerce.date().optional(),
+    }),
 });
 
 export const collections = { articles };
