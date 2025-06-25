@@ -1,14 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
-import { siteTitle, siteDescription } from '../consts';
-import Footer from '../components/Footer.astro';
-// import FormattedDate from '../components/FormattedDate.astro';
-import Head from '../components/Head.astro';
-import Header from '../components/Header.astro';
+import { siteTitle, siteDescription } from '@/consts.ts';
+
 import Icon from '@xtreat/astro-iconify';
-import MainProse from '../components/MainProse.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher.astro';
-import ThemeWrapper from '../components/ThemeWrapper.astro';
+
+import Footer from '@components/Footer.astro';
+import Head from '@components/Head.astro';
+import Header from '@components/Header.astro';
+import MainProse from '@components/MainProse.astro';
+import ThemeSwitcher from '@components/ThemeSwitcher.astro';
+import ThemeWrapper from '@components/ThemeWrapper.astro';
 
 const articles = await getCollection('articles', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
