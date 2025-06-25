@@ -13,6 +13,7 @@ const articles = defineCollection({
     updated: z.coerce.date().optional(),
     tags: z.array(z.string()).optional(),
     icon: z.string().optional(),
+    image: z.string().optional(),
     draft: z.boolean().optional(),
     author: z.string().optional(),
   }),
