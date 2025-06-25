@@ -1,9 +1,8 @@
 ---
+const { title, created, updated, author } = Astro.props;
+const articleUrl = new URL(Astro.request.url).toString();
 import { readableDate } from '@scripts/utils.ts';
 import Detail from './ArticleDetail.astro';
-const articleUrl = new URL(Astro.request.url).toString();
-const { title, created, updated, author } = Astro.props;
-
 const details = {};
 ---
 
