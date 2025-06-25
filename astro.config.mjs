@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import UnoCSS from "unocss/astro";
 import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
+import { fileURLToPath, URL } from "node:url";
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,8 +33,11 @@ export default defineConfig({
     ],
     resolve: {
       alias: {
-        "@": "/src",
-      },
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+        "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
+        "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
+        "@layouts": fileURLToPath(new URL("./src/layouts", import.meta.url)),
+        "@styles": fileURLToPath(new URL("./src/styles", import.meta.url)),
     },
   },
   prefetch: true,
