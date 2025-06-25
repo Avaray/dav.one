@@ -1,9 +1,10 @@
 ---
-import Head from '../components/Head.astro';
-import MainProse from '../components/MainProse.astro';
-import ThemeWrapper from '../components/ThemeWrapper.astro';
 const { frontmatter } = Astro.props;
 const { title, description } = frontmatter;
+
+import Head from '@components/Head.astro';
+import MainProse from '@components/MainProse.astro';
+import ThemeWrapper from '@components/ThemeWrapper.astro';
 ---
 
 <ThemeWrapper>
