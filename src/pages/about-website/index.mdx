@@ -1,14 +1,14 @@
 ---
-layout: '../../layouts/PageLayout.astro'
+layout: '@layouts/PageLayout.astro'
 title: 'About this website'
 description: 'The story of the creation of this website'
 ---
 
 import Icon from '@xtreat/astro-iconify';
 
-import StatsLighthouse from "../../components/StatsLighthouse.astro";
-import StatsCloudflare from "../../components/StatsCloudflare.astro";
-import BuildTime from "../../components/BuildTime.astro";
+import StatsLighthouse from "@components/StatsLighthouse.astro";
+import StatsCloudflare from "@components/StatsCloudflare.astro";
+import BuildTime from "@components/BuildTime.astro";
 
 import { getCollection } from 'astro:content';
 export const articles = await getCollection('articles', ({ data }) => {
