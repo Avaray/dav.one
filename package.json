@@ -20,19 +20,19 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^5.10.1",
+    "astro": "^5.11.0",
     "astro-minify-html-swc": "^0.1.5",
-    "playwright": "^1.53.1",
+    "playwright": "^1.53.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.11",
     "unist-util-visit": "^5.0.0",
-    "vite": "^7.0.0"
+    "vite": "^7.0.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^5.0.43",
-    "unocss": "^66.3.2"
+    "daisyui": "^5.0.46",
+    "unocss": "^66.3.3"
   }
 }
