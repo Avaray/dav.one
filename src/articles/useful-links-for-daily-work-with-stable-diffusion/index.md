@@ -26,7 +26,7 @@ author: 'Dawid Wasowski'
 - [LynxHub](https://github.com/KindaBrazy/LynxHub) - another Multi-Platform Package Manager for Stable Diffusion. It's a
   newer tool than Stability Matrix. Released in August 2024.
 - [chaiNNer](https://chainner.app/) - a node-based image processing GUI aimed at making chaining image processing tasks
-  easy and customizable. You can find Upscalers on [OpenModelDB](https://openmodeldb.info/).
+  easy and customizable. You can find models on [OpenModelDB](https://openmodeldb.info/).
 - [TagGUI](https://github.com/jhc13/taggui) - cross-platform desktop app for adding and editing image tags and captions.
 - [DatasetEditor](https://github.com/Jelosus2/DatasetEditor) - Windows app for editing datasets. Currently at early
   stages of development. Includes "autotagger" tool that lets you tag images automatically. Autotagger currently
