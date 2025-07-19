@@ -23,13 +23,16 @@ jobs:
           deno-version: v2.3.3
 
       - name: Install Dependencies
-        run: deno task install
+        run: |
+          set -e
+          deno task install
 
       - name: Get branch name
         run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
       
       - name: Set environment variables
         run: |
+          set -e
           if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
             echo "PRODUCTION_BUILD=true" >> $GITHUB_ENV
           fi
@@ -40,17 +43,24 @@ jobs:
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
           PRODUCTION_BUILD: ${{ env.PRODUCTION_BUILD }}
-        run: deno task build
+        run: |
+          set -e
+          echo "Starting build process..."
+          deno task build
+          echo "Build completed successfully"
 
       - name: Create robots.txt for non-production builds
         if: env.BRANCH_NAME != 'main'
         run: |
+          set -e
           echo "User-agent: *" > ./dist/robots.txt
           echo "Disallow: /" >> ./dist/robots.txt
           echo "robots.txt created successfully for non-production branch."
 
       - name: Install Wrangler
-        run: deno install --global --allow-scripts npm:wrangler@latest
+        run: |
+          set -e
+          deno install --global --allow-scripts npm:wrangler@latest
 
       - name: Deploy Website to Cloudflare
         uses: cloudflare/wrangler-action@v3
