@@ -128,3 +128,7 @@ pre:hover .code-line.darkened {
 pre:hover .code-line:not(.darkened) {
   @apply text-primary;
 }
+
+  .chart-bar {
+    @apply flex flex-1 gap-1 hover:bg-base-content hover:scale-y-110 origin-bottom sm:rounded-tl-2xl sm:rounded-tr-2xl;
+  }

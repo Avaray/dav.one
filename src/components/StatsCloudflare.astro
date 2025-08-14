@@ -96,24 +96,29 @@ const getHighestNumber = (data: any, key: string) => {
    First I need to figure out how to get deduplicated data from Cloudflare. 
    Currently they are not providing any way for that. 
    I think the only way is to base on requests that are done in dashboard. -->
+
   <div id='chart-container' class='w-full h-24 flex gap-1 mb-1 mt-4 items-end'>
     {
       data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
         const previousDays = data30Days.slice(Math.max(index - 3, 0), index);
 
+        const conditionalClasses = [
+          index === 0 ? 'sm:rounded-bl-xl' : '',
+          index === data30Days.length - 1 ? 'sm:rounded-br-xl' : '',
+          isDrop(
+            previousDays.map((d: any) => d.uniques),
+            day.uniques,
+          )
+            ? 'bg-error'
+            : 'bg-success',
+        ]
+          .filter(Boolean)
+          .join(' ');
+
         return (
           <div
-            class={`flex flex-1 gap-1 hover:bg-base-content hover:scale-y-110 origin-bottom  sm:rounded-tl-2xl sm:rounded-tr-2xl ${
-              index === 0 ? 'sm:rounded-bl-xl' : ''
-            } ${index === data30Days.length - 1 ? 'sm:rounded-br-xl' : ''} ${
-              isDrop(
-                previousDays.map((d: any) => d.uniques),
-                day.uniques,
-              )
-                ? 'bg-error'
-                : 'bg-success'
-            }`}
+            class={`chart-bar ${conditionalClasses}`}
             style={`height: ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%`}
             title={`${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`}
           />
