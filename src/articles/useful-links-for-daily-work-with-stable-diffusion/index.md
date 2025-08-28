@@ -34,9 +34,9 @@ author: "Dawid Wasowski"
   [author](https://github.com/Jelosus2) said it will be extended to other models.
 - [VastAI Docker Images](https://github.com/ai-dock) <span class="badge badge-soft badge-warning">Outdated</span> -
   containerized UIs such as [Forge](https://hub.docker.com/r/vastai/sd-forge),
-  [ComfyUI](https://hub.docker.com/r/vastai/comfy), and [Fooocus](https://hub.docker.com/r/vastai/fooocus), built on
-  their [base image](https://github.com/vast-ai/base-image), which can be run on either a local machine or a
-  [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals).
+  [ComfyUI](https://hub.docker.com/r/vastai/comfy), and [Fooocus](https://hub.docker.com/r/vastai/fooocus). Can be run
+  on either a local machine or a [rented server](/useful-links-for-daily-work-with-stable-diffusion#server-rentals). New
+  base image is located [here](https://github.com/vast-ai/base-image/).
 
 ## Models
 
