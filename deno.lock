@@ -1,18 +1,19 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@astrojs/mdx@^4.3.4": "4.3.4_astro@5.13.5__vite@6.3.5___picomatch@4.0.3__zod@3.25.76",
-    "npm:@astrojs/react@^4.3.0": "4.3.0_@types+react@19.1.12_@types+react-dom@19.1.9__@types+react@19.1.12_react@19.1.1_react-dom@19.1.1__react@19.1.1_vite@6.3.5__picomatch@4.0.3",
+    "npm:@astrojs/mdx@^4.3.4": "4.3.4_astro@5.13.5__vite@6.3.5___picomatch@4.0.3__zod@3.25.76_@types+node@24.2.0",
+    "npm:@astrojs/react@^4.3.0": "4.3.0_@types+react@19.1.12_@types+react-dom@19.1.9__@types+react@19.1.12_react@19.1.1_react-dom@19.1.1__react@19.1.1_vite@6.3.5__picomatch@4.0.3_@types+node@24.2.0",
     "npm:@astrojs/rss@^4.0.12": "4.0.12",
     "npm:@astrojs/sitemap@^3.5.1": "3.5.1",
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.1.13",
-    "npm:@tailwindcss/vite@^4.1.13": "4.1.13_vite@7.1.4__picomatch@4.0.3",
+    "npm:@tailwindcss/vite@^4.1.13": "4.1.13_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0",
+    "npm:@types/node@*": "24.2.0",
     "npm:@types/react-dom@^19.1.9": "19.1.9_@types+react@19.1.12",
     "npm:@types/react@^19.1.12": "19.1.12",
-    "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
+    "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7_@types+node@24.2.0",
     "npm:astro-minify-html-swc@~0.1.7": "0.1.7",
-    "npm:astro@5.13.5": "5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76",
-    "npm:astro@^5.13.5": "5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76",
+    "npm:astro@5.13.5": "5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76_@types+node@24.2.0",
+    "npm:astro@^5.13.5": "5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76_@types+node@24.2.0",
     "npm:daisyui@^5.1.7": "5.1.7",
     "npm:playwright@*": "1.55.0",
     "npm:playwright@^1.55.0": "1.55.0",
@@ -21,8 +22,8 @@
     "npm:sharp@~0.34.3": "0.34.3",
     "npm:tailwindcss@^4.1.13": "4.1.13",
     "npm:unist-util-visit@5": "5.0.0",
-    "npm:unocss@^66.5.0": "66.5.0_vite@7.1.4__picomatch@4.0.3",
-    "npm:vite@^7.1.4": "7.1.4_picomatch@4.0.3"
+    "npm:unocss@^66.5.0": "66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0",
+    "npm:vite@^7.1.4": "7.1.4_picomatch@4.0.3_@types+node@24.2.0"
   },
   "npm": {
     "@ampproject/remapping@2.3.0": {
@@ -80,7 +81,26 @@
         "@astrojs/markdown-remark",
         "@mdx-js/mdx",
         "acorn",
-        "astro",
+        "astro@5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76",
+        "es-module-lexer",
+        "estree-util-visit",
+        "hast-util-to-html",
+        "kleur@4.1.5",
+        "rehype-raw",
+        "remark-gfm",
+        "remark-smartypants",
+        "source-map",
+        "unist-util-visit",
+        "vfile"
+      ]
+    },
+    "@astrojs/mdx@4.3.4_astro@5.13.5__vite@6.3.5___picomatch@4.0.3__zod@3.25.76_@types+node@24.2.0": {
+      "integrity": "sha512-Ew3iP+6zuzzJWNEH5Qr1iknrue1heEfgmfuMpuwLaSwqlUiJQ0NDb2oxKosgWU1ROYmVf1H4KCmS6QdMWKyFjw==",
+      "dependencies": [
+        "@astrojs/markdown-remark",
+        "@mdx-js/mdx",
+        "acorn",
+        "astro@5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76_@types+node@24.2.0",
         "es-module-lexer",
         "estree-util-visit",
         "hast-util-to-html",
@@ -104,11 +124,23 @@
       "dependencies": [
         "@types/react",
         "@types/react-dom",
-        "@vitejs/plugin-react",
+        "@vitejs/plugin-react@4.7.0_vite@6.3.5__picomatch@4.0.3_@babel+core@7.28.3",
         "react",
         "react-dom",
         "ultrahtml",
         "vite@6.3.5_picomatch@4.0.3"
+      ]
+    },
+    "@astrojs/react@4.3.0_@types+react@19.1.12_@types+react-dom@19.1.9__@types+react@19.1.12_react@19.1.1_react-dom@19.1.1__react@19.1.1_vite@6.3.5__picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-N02aj52Iezn69qHyx5+XvPqgsPMEnel9mI5JMbGiRMTzzLMuNaxRVoQTaq2024Dpr7BLsxCjqMkNvelqMDhaHA==",
+      "dependencies": [
+        "@types/react",
+        "@types/react-dom",
+        "@vitejs/plugin-react@4.7.0_vite@6.3.5__picomatch@4.0.3_@babel+core@7.28.3_@types+node@24.2.0",
+        "react",
+        "react-dom",
+        "ultrahtml",
+        "vite@6.3.5_picomatch@4.0.3_@types+node@24.2.0"
       ]
     },
     "@astrojs/rss@4.0.12": {
@@ -1189,6 +1221,15 @@
         "vite@7.1.4_picomatch@4.0.3"
       ]
     },
+    "@tailwindcss/vite@4.1.13_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-0PmqLQ010N58SbMTJ7BVJ4I2xopiQn/5i6nlb4JmxzQf8zcS5+m2Cv6tqh+sfDwtIdjoEnOvwsGQ1hkUi8QEHQ==",
+      "dependencies": [
+        "@tailwindcss/node",
+        "@tailwindcss/oxide",
+        "tailwindcss",
+        "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0"
+      ]
+    },
     "@tybys/wasm-util@0.10.0": {
       "integrity": "sha512-VyyPYFlOMNylG45GoAe0xDoLwWuowvf92F9kySqzYh8vmYm7D2u4iUJKa1tOUpS70Ku13ASrOkS4ScXFsTaCNQ==",
       "dependencies": [
@@ -1310,11 +1351,23 @@
       "dependencies": [
         "@unocss/core",
         "@unocss/reset",
-        "@unocss/vite",
+        "@unocss/vite@66.5.0_vite@7.1.4__picomatch@4.0.3",
         "vite@7.1.4_picomatch@4.0.3"
       ],
       "optionalPeers": [
         "vite@7.1.4_picomatch@4.0.3"
+      ]
+    },
+    "@unocss/astro@66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-PueE1reSo0iu/yUos+bB4uYym3hZrNMGboXP5VmEjEL1PFVLuJYft1nLJ24p20nPyzWFNamYAxYTPveNW2BbWg==",
+      "dependencies": [
+        "@unocss/core",
+        "@unocss/reset",
+        "@unocss/vite@66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0",
+        "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0"
+      ],
+      "optionalPeers": [
+        "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0"
       ]
     },
     "@unocss/cli@66.5.0": {
@@ -1499,6 +1552,21 @@
         "vite@7.1.4_picomatch@4.0.3"
       ]
     },
+    "@unocss/vite@66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-4ogtBEHMXZhB4dM+qmG4d+2ATGEV94zbdrdQLEeBrzr52QbALuPHvp4JIQ7q7vIT/XNbMGJkPAiW8cgWiMQsMQ==",
+      "dependencies": [
+        "@jridgewell/remapping",
+        "@unocss/config",
+        "@unocss/core",
+        "@unocss/inspector",
+        "chokidar@3.6.0",
+        "magic-string",
+        "pathe",
+        "tinyglobby",
+        "unplugin-utils",
+        "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0"
+      ]
+    },
     "@vitejs/plugin-react@4.7.0_vite@6.3.5__picomatch@4.0.3_@babel+core@7.28.3": {
       "integrity": "sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA==",
       "dependencies": [
@@ -1511,10 +1579,28 @@
         "vite@6.3.5_picomatch@4.0.3"
       ]
     },
+    "@vitejs/plugin-react@4.7.0_vite@6.3.5__picomatch@4.0.3_@babel+core@7.28.3_@types+node@24.2.0": {
+      "integrity": "sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA==",
+      "dependencies": [
+        "@babel/core",
+        "@babel/plugin-transform-react-jsx-self",
+        "@babel/plugin-transform-react-jsx-source",
+        "@rolldown/pluginutils",
+        "@types/babel__core",
+        "react-refresh",
+        "vite@6.3.5_picomatch@4.0.3_@types+node@24.2.0"
+      ]
+    },
     "@xtreat/astro-iconify@1.2.7": {
       "integrity": "sha512-RhGLdUDPMhoMUmQEHwTXqigRcCblNAUMess+v+Xe3EgkEXGhGDNS20Yx6zyl/xygc4GKjcPOzSei3WDB0VLbxQ==",
       "dependencies": [
-        "astro"
+        "astro@5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76"
+      ]
+    },
+    "@xtreat/astro-iconify@1.2.7_@types+node@24.2.0": {
+      "integrity": "sha512-RhGLdUDPMhoMUmQEHwTXqigRcCblNAUMess+v+Xe3EgkEXGhGDNS20Yx6zyl/xygc4GKjcPOzSei3WDB0VLbxQ==",
+      "dependencies": [
+        "astro@5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76_@types+node@24.2.0"
       ]
     },
     "acorn-jsx@5.3.2_acorn@8.15.0": {
@@ -1631,7 +1717,78 @@
         "unstorage",
         "vfile",
         "vite@6.3.5_picomatch@4.0.3",
-        "vitefu",
+        "vitefu@1.1.1_vite@6.3.5__picomatch@4.0.3",
+        "xxhash-wasm",
+        "yargs-parser",
+        "yocto-spinner",
+        "zod",
+        "zod-to-json-schema",
+        "zod-to-ts"
+      ],
+      "optionalDependencies": [
+        "sharp@0.33.5"
+      ],
+      "bin": true
+    },
+    "astro@5.13.5_vite@6.3.5__picomatch@4.0.3_zod@3.25.76_@types+node@24.2.0": {
+      "integrity": "sha512-XmBzkl13XU97+n/QiOM5uXQdAVe0yKt5gO+Wlgc8dHRwHR499qhMQ5sMFckLJweUINLzcNGjP3F5nG4wV8a2XA==",
+      "dependencies": [
+        "@astrojs/compiler",
+        "@astrojs/internal-helpers",
+        "@astrojs/markdown-remark",
+        "@astrojs/telemetry",
+        "@capsizecss/unpack",
+        "@oslojs/encoding",
+        "@rollup/pluginutils",
+        "acorn",
+        "aria-query",
+        "axobject-query",
+        "boxen",
+        "ci-info",
+        "clsx",
+        "common-ancestor-path",
+        "cookie",
+        "cssesc",
+        "debug",
+        "deterministic-object-hash",
+        "devalue",
+        "diff",
+        "dlv",
+        "dset",
+        "es-module-lexer",
+        "esbuild",
+        "estree-walker@3.0.3",
+        "flattie",
+        "fontace",
+        "github-slugger",
+        "html-escaper",
+        "http-cache-semantics",
+        "import-meta-resolve",
+        "js-yaml",
+        "kleur@4.1.5",
+        "magic-string",
+        "magicast",
+        "mrmime",
+        "neotraverse",
+        "p-limit",
+        "p-queue",
+        "package-manager-detector",
+        "picomatch@4.0.3",
+        "prompts",
+        "rehype",
+        "semver@7.7.2",
+        "shiki",
+        "smol-toml",
+        "tinyexec@0.3.2",
+        "tinyglobby",
+        "tsconfck",
+        "ultrahtml",
+        "unifont",
+        "unist-util-visit",
+        "unstorage",
+        "vfile",
+        "vite@6.3.5_picomatch@4.0.3_@types+node@24.2.0",
+        "vitefu@1.1.1_vite@6.3.5__picomatch@4.0.3_@types+node@24.2.0",
         "xxhash-wasm",
         "yargs-parser",
         "yocto-spinner",
@@ -3883,7 +4040,7 @@
     "unocss@66.5.0_vite@7.1.4__picomatch@4.0.3": {
       "integrity": "sha512-dnrr3xqIm3B0t6OXyIxFYwfyMgdkp6MVRgrJXSEU0cEmea8lFf7ssU2MNx1Zice3JvQOOpe4FMVINtv/TBZCIA==",
       "dependencies": [
-        "@unocss/astro",
+        "@unocss/astro@66.5.0_vite@7.1.4__picomatch@4.0.3",
         "@unocss/cli",
         "@unocss/core",
         "@unocss/postcss",
@@ -3901,11 +4058,39 @@
         "@unocss/transformer-compile-class",
         "@unocss/transformer-directives",
         "@unocss/transformer-variant-group",
-        "@unocss/vite",
+        "@unocss/vite@66.5.0_vite@7.1.4__picomatch@4.0.3",
         "vite@7.1.4_picomatch@4.0.3"
       ],
       "optionalPeers": [
         "vite@7.1.4_picomatch@4.0.3"
+      ]
+    },
+    "unocss@66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-dnrr3xqIm3B0t6OXyIxFYwfyMgdkp6MVRgrJXSEU0cEmea8lFf7ssU2MNx1Zice3JvQOOpe4FMVINtv/TBZCIA==",
+      "dependencies": [
+        "@unocss/astro@66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0",
+        "@unocss/cli",
+        "@unocss/core",
+        "@unocss/postcss",
+        "@unocss/preset-attributify",
+        "@unocss/preset-icons",
+        "@unocss/preset-mini",
+        "@unocss/preset-tagify",
+        "@unocss/preset-typography",
+        "@unocss/preset-uno",
+        "@unocss/preset-web-fonts",
+        "@unocss/preset-wind",
+        "@unocss/preset-wind3",
+        "@unocss/preset-wind4",
+        "@unocss/transformer-attributify-jsx",
+        "@unocss/transformer-compile-class",
+        "@unocss/transformer-directives",
+        "@unocss/transformer-variant-group",
+        "@unocss/vite@66.5.0_vite@7.1.4__picomatch@4.0.3_@types+node@24.2.0",
+        "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0"
+      ],
+      "optionalPeers": [
+        "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0"
       ]
     },
     "unplugin-utils@0.3.0": {
@@ -3976,6 +4161,25 @@
       ],
       "bin": true
     },
+    "vite@6.3.5_picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==",
+      "dependencies": [
+        "@types/node@24.2.0",
+        "esbuild",
+        "fdir",
+        "picomatch@4.0.3",
+        "postcss",
+        "rollup",
+        "tinyglobby"
+      ],
+      "optionalDependencies": [
+        "fsevents@2.3.3"
+      ],
+      "optionalPeers": [
+        "@types/node@24.2.0"
+      ],
+      "bin": true
+    },
     "vite@7.1.4_picomatch@4.0.3": {
       "integrity": "sha512-X5QFK4SGynAeeIt+A7ZWnApdUyHYm+pzv/8/A57LqSGcI88U6R6ipOs3uCesdc6yl7nl+zNO0t8LmqAdXcQihw==",
       "dependencies": [
@@ -3991,6 +4195,25 @@
       ],
       "bin": true
     },
+    "vite@7.1.4_picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-X5QFK4SGynAeeIt+A7ZWnApdUyHYm+pzv/8/A57LqSGcI88U6R6ipOs3uCesdc6yl7nl+zNO0t8LmqAdXcQihw==",
+      "dependencies": [
+        "@types/node@24.2.0",
+        "esbuild",
+        "fdir",
+        "picomatch@4.0.3",
+        "postcss",
+        "rollup",
+        "tinyglobby"
+      ],
+      "optionalDependencies": [
+        "fsevents@2.3.3"
+      ],
+      "optionalPeers": [
+        "@types/node@24.2.0"
+      ],
+      "bin": true
+    },
     "vitefu@1.1.1_vite@6.3.5__picomatch@4.0.3": {
       "integrity": "sha512-B/Fegf3i8zh0yFbpzZ21amWzHmuNlLlmJT6n7bu5e+pCHUKQIfXSYokrqOBGEMMe9UG2sostKQF9mml/vYaWJQ==",
       "dependencies": [
@@ -3998,6 +4221,15 @@
       ],
       "optionalPeers": [
         "vite@6.3.5_picomatch@4.0.3"
+      ]
+    },
+    "vitefu@1.1.1_vite@6.3.5__picomatch@4.0.3_@types+node@24.2.0": {
+      "integrity": "sha512-B/Fegf3i8zh0yFbpzZ21amWzHmuNlLlmJT6n7bu5e+pCHUKQIfXSYokrqOBGEMMe9UG2sostKQF9mml/vYaWJQ==",
+      "dependencies": [
+        "vite@6.3.5_picomatch@4.0.3_@types+node@24.2.0"
+      ],
+      "optionalPeers": [
+        "vite@6.3.5_picomatch@4.0.3_@types+node@24.2.0"
       ]
     },
     "vue-flow-layout@0.2.0": {
