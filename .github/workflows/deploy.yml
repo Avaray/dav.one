@@ -18,12 +18,12 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v2
         with:
-          deno-version: v2.3.3
+          deno-version: v2.5.2
 
       - name: Install Dependencies
         run: |
           set -e
-          deno task install
+          deno install --allow-scripts
 
       - name: Get branch name
         run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
