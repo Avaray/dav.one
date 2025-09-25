@@ -11,6 +11,7 @@
     "npm:@types/react@^19.1.13": "19.1.13",
     "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
     "npm:astro-minify-html-swc@~0.1.7": "0.1.7",
+    "npm:astro@5.14.0": "5.14.0_vite@6.3.6__picomatch@4.0.3_zod@3.25.76",
     "npm:astro@^5.14.0": "5.14.0_vite@6.3.6__picomatch@4.0.3_zod@3.25.76",
     "npm:daisyui@^5.1.22": "5.1.22",
     "npm:playwright@^1.55.1": "1.55.1",
