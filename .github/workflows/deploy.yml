@@ -25,6 +25,12 @@ jobs:
           set -e
           deno install --allow-scripts
 
+      # Install Playwright browsers using Deno v2
+      - name: Install Playwright Browsers
+        run: |
+          set -e
+          deno run -A npm:playwright install chromium --with-deps
+
       - name: Get branch name
         run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
       
