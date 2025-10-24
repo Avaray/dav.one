@@ -12,27 +12,27 @@
     "taze": "deno -A npm:taze latest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.6",
+    "@astrojs/mdx": "^4.3.8",
     "@astrojs/react": "^4.4.0",
-    "@astrojs/rss": "^4.0.12",
+    "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
-    "@tailwindcss/vite": "^4.1.13",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
+    "@tailwindcss/vite": "^4.1.16",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^5.14.0",
-    "astro-minify-html-swc": "^0.1.7",
-    "playwright": "^1.55.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "astro": "^5.15.1",
+    "astro-minify-html-swc": "^0.1.8",
+    "playwright": "^1.56.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "sharp": "^0.34.4",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "^4.1.16",
     "unist-util-visit": "^5.0.0",
-    "vite": "^7.1.7"
+    "vite": "^7.1.12"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "daisyui": "^5.1.22",
-    "unocss": "^66.5.2"
+    "daisyui": "^5.3.8",
+    "unocss": "^66.5.4"
   }
 }
