@@ -25,7 +25,6 @@ jobs:
           set -e
           deno install --allow-scripts
 
-      # Install Playwright browsers using Deno v2
       - name: Install Playwright Browsers
         run: |
           set -e
