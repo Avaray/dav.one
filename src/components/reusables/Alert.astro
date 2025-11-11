@@ -2,9 +2,9 @@
 import Icon from '@xtreat/astro-iconify';
 
 interface Props {
-  type?: 'success' | 'info' | 'warning' | 'error';
+  type?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
+  icon?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
   style?: 'soft' | 'outline' | 'dash';
-  icon?: 'success' | 'info' | 'warning' | 'error';
   noicon?: boolean;
 }
 
@@ -27,6 +27,14 @@ const typeMap = {
     base: 'alert-error',
     icon: 'mdi:close-circle',
   },
+  link: {
+    base: 'bg-code-bg',
+    icon: 'mdi:link-variant',
+  },
+  neutral: {
+    base: 'bg-code-bg',
+    icon: 'mdi:android-messages',
+  },
 };
 
 const styleMap = {
@@ -35,7 +43,7 @@ const styleMap = {
   dash: 'alert-dash',
 };
 
-const alertClass = `alert ${typeMap[type].base} ${styleMap[style]}`;
+const alertClass = `alert ${typeMap[type].base} ${styleMap[style]} border-0`;
 const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
 ---
 
