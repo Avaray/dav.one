@@ -36,13 +36,10 @@ jobs:
           set -e
           deno run -A npm:playwright install chromium --with-deps
 
-      - name: Get branch name
-        run: echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
-
       - name: Set environment variables
         run: |
           set -e
-          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
+          if [ "${{ github.ref_name }}" = "main" ]; then
             echo "PRODUCTION_BUILD=true" >> $GITHUB_ENV
           else
             echo "PRODUCTION_BUILD=false" >> $GITHUB_ENV
@@ -61,7 +58,7 @@ jobs:
           echo "Build completed successfully"
 
       - name: Create robots.txt for non-production builds
-        if: env.BRANCH_NAME != 'main'
+        if: github.ref_name != 'main'
         run: |
           set -e
           echo "User-agent: *" > ./dist/robots.txt
@@ -78,4 +75,4 @@ jobs:
         with:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           apiToken: ${{ secrets.CF_DEPLOY_TOKEN }}
-          command: pages deploy ./dist --project-name=stupid --branch=${{ env.BRANCH_NAME }} --commit-dirty=true
+          command: pages deploy ./dist --project-name=stupid --branch=${{ github.ref_name }} --commit-dirty=true
