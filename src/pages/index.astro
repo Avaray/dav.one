@@ -29,7 +29,7 @@ const sortedArticles = [...articles].sort((a, b) => {
     <MainProse>
       {
         sortedArticles.map((article) => (
-          <a href={`/${article.id}/`} data-astro-prefetch aria-label={article.data.title} class='block no-underline'>
+          <a href={`/${article.id}/`} aria-label={article.data.title} class='block no-underline'>
             <div class='flex flex-row'>
               <div class='max-md:hidden flex flex-col items-center min-w-[148px] min-h-[148px] text-center rounded-lg aspect-square'>
                 <Icon

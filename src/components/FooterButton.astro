@@ -8,7 +8,6 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 
 <a
   href={href}
-  data-astro-prefetch
   class:list={[
     className,
     { active: isActive },
