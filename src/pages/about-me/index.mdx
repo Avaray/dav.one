@@ -32,19 +32,13 @@ import Icon from '@xtreat/astro-iconify';
 </div>
 
 export const badgesList = (list) => {
-  return (
-    <div class="inline-flex flex-wrap gap-2 mx-1">
-      {list.map((tool) => {
-        return (
-          <a href={tool.link} class="font-normal! no-underline!">
-            <div class="badge badge-soft badge-primary whitespace-nowrap hover:outline-1">
-              {tool.name}
-            </div>
-          </a>
-        )
-      })}
-    </div>
-  )
+  return list.map((tool) => (
+    <a href={tool.link} class="font-normal! no-underline! inline mx-1">
+      <span class="badge badge-soft badge-primary whitespace-nowrap hover:outline-1">
+        {tool.name}
+      </span>
+    </a>
+  ))
 }
 
 export const technologies = {
