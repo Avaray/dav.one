@@ -97,6 +97,10 @@ pre:not(.tab-content code) {
     color: inherit !important;
   }
 
+  ul li {
+    @apply leading-8;
+  }
+
   blockquote {
     @apply not-italic font-normal bg-code-bg pl-4 py-4 rounded-tr-lg rounded-br-lg;
     quotes: none;
