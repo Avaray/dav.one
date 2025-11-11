@@ -44,7 +44,7 @@ export default defineConfig({
     },
     server: {
       watch: {
-        ignored: ["**/.astro/**"],
+        ignored: ["**/.astro/**", "**/node_modules/**", "**/dist/**"],
       },
     },
   },
