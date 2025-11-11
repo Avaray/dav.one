@@ -48,11 +48,11 @@
 }
 
 main a {
-  @apply text-primary font-bold tracking-wider no-underline;
+  @apply text-primary font-bold tracking-wider underline decoration-primary/50 decoration-2 underline-offset-4 transition-colors duration-250;
 }
 
 main a:hover {
-  @apply underline decoration-2 underline-offset-4;
+  @apply decoration-primary;
 }
 
 blockquote {
