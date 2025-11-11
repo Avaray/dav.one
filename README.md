@@ -10,11 +10,6 @@ Styled with [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisy
 Deployed with [GitHub Actions](https://github.com/features/actions).\
 Hosted with [Cloudflare Pages](https://pages.cloudflare.com/).
 
-## 📆 Upcoming plans
-
-- [ ] Make this project 100% Deno based. Currently package for SVG icons is not compatible with Deno and it is blocking
-      me.
-
 ## 🐣 How to run this project
 
 Clone this repository
