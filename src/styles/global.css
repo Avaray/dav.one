@@ -50,11 +50,11 @@ main a:hover {
 }
 
 pre {
-  @apply !bg-code-bg !text-base-content/90;
+  @apply bg-code-bg! text-base-content/90!;
 }
 
 code, pre {
-  @apply !rounded-[inherit];
+  @apply rounded-[inherit]!;
   font-family: 'Fira Code' ;
 }
 pre:has(> code) {
