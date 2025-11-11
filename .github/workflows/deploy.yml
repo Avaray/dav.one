@@ -25,23 +25,31 @@ jobs:
           set -e
           deno install --allow-scripts
 
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('deno.lock') }}
+
       - name: Install Playwright Browsers
         run: |
           set -e
           deno run -A npm:playwright install chromium --with-deps
 
       - name: Get branch name
-        run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
-      
+        run: echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
       - name: Set environment variables
         run: |
           set -e
           if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
             echo "PRODUCTION_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "PRODUCTION_BUILD=false" >> $GITHUB_ENV
           fi
 
       - name: Build Website
-        env: 
+        env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
