@@ -48,7 +48,10 @@ export default defineConfig({
       },
     },
   },
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "hover",
+  },
   image: {
     // Tailwind default breakpoints
     // https://tailwindcss.com/docs/responsive-design#overview
