@@ -41,23 +41,12 @@
   @apply text-base-100 bg-primary;
 }
 
-.prose {
-  h1 {
-    @apply md:text-[2.25em] md:leading-[1.2] lg:text-[2.3em] lg:leading-[1.3] xl:text-[2.4em] xl:leading-[1.35];
-  }
-}
-
 main a {
   @apply text-primary font-bold tracking-wider underline decoration-primary/50 decoration-2 underline-offset-4 transition-colors duration-250;
 }
 
 main a:hover {
   @apply decoration-primary;
-}
-
-blockquote {
-  @apply not-italic;
-  quotes: none;
 }
 
 pre {
@@ -86,6 +75,20 @@ pre:not(.tab-content code) {
   }
   .article-details > span {
     @apply px-0;
+  }
+}
+
+.prose {
+  h1 {
+    @apply md:text-[2.25em] md:leading-[1.2] lg:text-[2.3em] lg:leading-[1.3] xl:text-[2.4em] xl:leading-[1.35];
+  }
+
+  blockquote {
+    @apply not-italic font-normal;
+    quotes: none;
+    font-family: inherit;
+    color: inherit;
+    opacity: inherit;
   }
 }
 
