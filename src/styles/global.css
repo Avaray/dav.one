@@ -22,7 +22,13 @@
 
 @layer utilities {
   main .alert a {
-    color: currentColor !important;
+  color: currentColor !important;
+  text-decoration-color: color-mix(in oklab, currentColor 50%, transparent) !important;
+  transition: text-decoration-color 250ms !important;
+  }
+
+  main .alert a:hover {
+    text-decoration-color: currentColor !important;
   }
   main .alert p {
     margin: 0;
