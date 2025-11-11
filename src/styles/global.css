@@ -120,7 +120,6 @@ pre:not(.tab-content code) {
 }
 
 .prose .badge {
-  display: inline;
   vertical-align: baseline;
 }
 
