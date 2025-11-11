@@ -90,7 +90,7 @@ pre:not(.tab-content code) {
   }
 
   blockquote {
-    @apply not-italic font-normal bg-code-bg pl-4 py-2 rounded-tr-lg rounded-br-lg;
+    @apply not-italic font-normal bg-code-bg pl-4 py-4 rounded-tr-lg rounded-br-lg;
     quotes: none;
     font-family: inherit;
     color: inherit;
