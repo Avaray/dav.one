@@ -17,10 +17,10 @@
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.17",
-    "@types/react": "^19.2.3",
-    "@types/react-dom": "^19.2.2",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^5.15.5",
+    "astro": "^5.15.7",
     "astro-minify-html-swc": "^0.1.8",
     "playwright": "^1.56.1",
     "react": "^19.2.0",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "daisyui": "^5.5.0",
+    "daisyui": "^5.5.4",
     "unocss": "^66.5.6"
   }
 }
