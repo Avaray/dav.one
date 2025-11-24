@@ -22,21 +22,24 @@ It's very important to choose the right model for the work you want to do.
 There are models trained to generate realistic images of people, general-purpose models for generating various types of images, 
 models targeted at generating anime or cartoon styles, and many more. 
 You can find them, for example on the popular website [CivitAI.com](https://civitai.com/models).
+Every model has its own strengths and weaknesses, responding uniquely to different keywords.
 
 The second most important factor are **the prompts** you write. Positive and Negative.
 They have impact on the appearance of the generated person and the overall quality of the image.
 If you don't specify exactly how the generated person should look, they will most likely resemble those on which the model was trained.
-I don't remember how many times I've seen people talking on [Reddit](https://www.reddit.com/r/StableDiffusion/) about seeing the same faces in generated images. 
 You have many possibilities to manipulate the appearance of the generated person using just prompts.
 Starting from the face shape, through the hair style, skin tone, body type, specific body parts, age, nationality, and more.
 
 The third factor is **configuration**. 
-[Image resolution](https://en.wikipedia.org/wiki/Image_resolution), [Sampler](https://stable-diffusion-art.com/samplers/), number of [Sampling Steps](https://getimg.ai/guides/interactive-guide-to-stable-diffusion-steps-parameter), [Guidance Scale](https://www.reddit.com/r/StableDiffusion/comments/xdvgyn/i_made_a_comparison_table_between_steps_and/) and [Variational Autoencoder (VAE)](https://wiki.civitai.com/wiki/Variational_Autoencoder) are the most important things in the configuration. 
-Each of them has a huge impact on the final image. Higher resolution means more details will be visible. 
-It's like giving artist a bigger canvas to paint on. 
+[Image resolution](https://en.wikipedia.org/wiki/Image_resolution), [Sampler](https://stable-diffusion-art.com/samplers/), 
+[Sampling Steps](https://getimg.ai/guides/interactive-guide-to-stable-diffusion-steps-parameter), 
+[Guidance Scale](https://www.reddit.com/r/StableDiffusion/comments/xdvgyn/i_made_a_comparison_table_between_steps_and/) 
+and [Variational Autoencoder (VAE)](https://wiki.civitai.com/wiki/Variational_Autoencoder) are the most important things in the configuration. 
+Higher resolution means more details will be visible. It's like giving artist a bigger canvas to paint on. 
 Sampler has control over image generation process and each sampler can produce different results.
-More Sampling Steps means more details will be rendered. Skin and clothes will have better textures. 
-More objects will appear on generated image. Guidance Scale is a multiplier for the influence of the prompts on the final image. 
+More Sampling Steps means more details will be rendered. 
+Skin and clothes will have better textures, and more objects will appear on the generated image. 
+Guidance Scale is a multiplier for the influence of the prompts on the final image. 
 So, with higher Guidance Scale, the prompts will have more impact on the final image.
 VAE is responsible for the quality of the generated image. 
 In case of SDXL, [standard VAE](https://huggingface.co/stabilityai/sdxl-vae) should be fine.
