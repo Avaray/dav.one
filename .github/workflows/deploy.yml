@@ -57,6 +57,21 @@ jobs:
           deno task build
           echo "Build completed successfully"
 
+      - name: Validate Build Output
+        run: |
+          set -e
+          if [ ! -d "./dist" ]; then
+            echo "ERROR: Build output directory './dist' does not exist"
+            exit 1
+          fi
+          
+          if [ ! -f "./dist/index.html" ]; then
+            echo "ERROR: Main index.html file was not generated"
+            exit 1
+          fi
+          
+          echo "Build validation passed"
+
       - name: Create robots.txt for non-production builds
         if: github.ref_name != 'main'
         run: |
