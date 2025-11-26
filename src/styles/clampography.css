@@ -22,6 +22,7 @@
   :where(h1, h2, h3, h4, h5, h6) {
     @apply tracking-wider;
     scroll-margin-top: var(--scroll-offset);
+    font-weight: 600;
   }
 
   h1 {
@@ -35,7 +36,6 @@
   h2 {
     font-size: clamp(1.25rem, 1rem + 1.25vw, 1.875rem);
     line-height: 1.45;
-    font-weight: 600;
     margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-md);
   }
@@ -43,9 +43,49 @@
   h3 {
     font-size: clamp(1.125rem, 0.9375rem + 0.9375vw, 1.5rem);
     line-height: 1.55;
-    font-weight: 600;
     margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-sm);
+  }
+
+  h4 {
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    line-height: 1.6;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  h5 {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  h6 {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+
+  /* Links - Color Agnostic */
+  a {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  a:hover,
+  a:focus-visible {
+    opacity: 0.7;
+    text-decoration-thickness: 2px;
   }
 
   /* Paragraphs and line-height */
@@ -55,6 +95,16 @@
 
   p {
     margin-bottom: var(--spacing-md);
+  }
+
+  /* Blockquotes - Color Agnostic */
+  blockquote {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-md);
+    border-left: 4px solid currentColor;
+    font-style: italic;
+    opacity: 0.8;
   }
 
   /* Lists - shared properties */
@@ -84,15 +134,76 @@
     padding-left: var(--spacing-md);
   }
 
-  /* Images and videos - spacing only */
-  :where(img, video) {
+  /* Code - Color Agnostic */
+  :where(code):not(:where(pre *)) {
+    @apply font-mono text-sm;
+    /* Opcjonalnie: użytkownik może dodać bg-gray-100 jeśli chce tło */
+  }
+
+  pre {
     margin-top: var(--spacing-md);
     margin-bottom: var(--spacing-md);
+    @apply font-mono text-sm p-4 border border-solid rounded-lg overflow-x-auto;
+    border-color: currentColor;
+    opacity: 0.9;
+  }
+
+  pre code {
+    @apply border-none p-0;
+  }
+
+  /* Tables - Color Agnostic */
+  table {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  thead {
+    border-bottom: 2px solid currentColor;
+  }
+
+  th, td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-bottom: 1px solid currentColor;
+    opacity: 0.9;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  /* Horizontal Rule - Color Agnostic */
+  hr {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border: 0;
+    border-top: 1px solid currentColor;
+    opacity: 0.3;
+  }
+
+  /* Images and videos */
+  :where(img, video, figure) {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
     max-width: 100%;
   }
 
   img {
     height: auto;
+  }
+
+  figure {
+    display: block;
+  }
+
+  figcaption {
+    margin-top: var(--spacing-xs);
+    font-size: 0.875rem;
+    opacity: 0.8;
+    text-align: center;
   }
 
   /* Remove top margin from first elements */
@@ -105,22 +216,23 @@
     margin-bottom: 0;
   }
 
-  /* Print-specific styles for PDF and paper output */
+  /* Print-specific styles */
   @media print {
-    /* Standard readable sizes for printed documents */
     body {
       font-size: 12pt;
       line-height: 1.5;
     }
 
-    /* Keep headings with following content */
     :where(h1, h2, h3, h4, h5, h6) {
       break-after: avoid;
     }
 
-    /* Don't split these across pages */
-    :where(img, figure, pre, table, ) {
+    :where(img, figure, pre, table) {
       break-inside: avoid;
+    }
+
+    a {
+      text-decoration: underline;
     }
   }
 }
