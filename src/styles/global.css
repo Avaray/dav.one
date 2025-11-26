@@ -1,15 +1,154 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
+@import "./clampography.css";
 
+/* ============================================
+   THEME CONFIGURATION
+   ============================================ */
 @theme {
-  --color-*: initial; /* This prevents including the entire color palette in the CSS file */
+  --color-*: initial;
   --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100));
   --color-code-highlight: color-mix(in oklab, var(--color-base-content) 15%, var(--color-base-100));
+  
+  /* Font families - define once */
+  --font-family-mono: 'Fira Code', ui-monospace, monospace;
 }
 
 @import "./themes.css";
 @import "./utils.css";
 
+/* ============================================
+   BASE LAYER - Element Defaults
+   ============================================ */
+@layer base {
+  body {
+    padding: 0.625rem;
+  }
+
+  ::selection {
+    @apply text-base-100 bg-primary;
+  }
+
+  /* Links in main content area */
+  main a {
+    @apply text-primary font-bold tracking-wider 
+           underline decoration-primary/30 decoration-2 
+           underline-offset-4 transition-colors duration-150;
+  }
+
+  main a:hover {
+    @apply decoration-primary;
+  }
+
+  /* Code styling */
+  code,
+  pre {
+    font-family: var(--font-family-mono);
+    border-radius: inherit;
+  }
+
+  pre {
+    background-color: var(--color-code-bg);
+    color: color-mix(in oklab, var(--color-base-content) 90%, transparent);
+  }
+
+  pre:has(> code) {
+    @apply text-lg;
+  }
+
+  /* Print styles */
+  @media print {
+    @page {
+      margin: 0;
+    }
+
+    header,
+    footer {
+      display: none;
+    }
+
+    .article-details > span {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    figure.diff {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+}
+
+/* ============================================
+   COMPONENT LAYER - Reusable Components
+   ============================================ */
+@layer components {
+  /* Alert component styling */
+  .alert {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .alert svg {
+    width: 2em;
+    height: 2em;
+  }
+
+  .alert p {
+    margin: 0;
+  }
+
+  /* Alert links - scoped to main to avoid global pollution */
+  main .alert a {
+    color: currentColor;
+    text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
+    transition: text-decoration-color 250ms;
+  }
+
+  main .alert a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Badge component */
+  .badge {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  /* Code block enhancements */
+  .code-line {
+    transition: color 0.3s, background-color 0.3s, filter 0.3s, opacity 0.3s;
+  }
+
+  .code-line.darkened {
+    opacity: 0.5;
+  }
+
+  pre:hover .code-line.darkened {
+    opacity: 1;
+  }
+
+  pre:hover .code-line:not(.darkened) {
+    @apply text-primary;
+  }
+
+  /* Conditional code block margins */
+  pre:not(:has(+ .tab-content)) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /* Chart component */
+  .chart-bar {
+    @apply flex flex-1 gap-1 
+           hover:bg-base-content hover:scale-y-110 
+           origin-bottom 
+           sm:rounded-tl-2xl sm:rounded-tr-2xl;
+  }
+}
+
+/* ============================================
+   UTILITIES LAYER - Custom Utilities
+   ============================================ */
 @utility alert {
   font-size: var(--font-size-inherit);
   line-height: var(--line-height-inherit);
@@ -19,135 +158,3 @@
   font-size: var(--font-size-inherit);
   line-height: var(--line-height-inherit);
 }
-
-@layer utilities {
-  main .alert a {
-  color: currentColor !important;
-  text-decoration-color: color-mix(in oklab, currentColor 30%, transparent) !important;
-  transition: text-decoration-color 250ms !important;
-  }
-
-  main .alert a:hover {
-    text-decoration-color: currentColor !important;
-  }
-  main .alert p {
-    margin: 0;
-  }
-  .alert svg {
-    width: 2em;
-    height: 2em;
-  }
-}
-
-:root {
-  @apply p-2.5;
-}
-
-::selection {
-  @apply text-base-100 bg-primary;
-}
-
-main a {
-  @apply text-primary font-bold tracking-wider underline decoration-primary/30 decoration-2 underline-offset-4 transition-colors duration-150;
-}
-
-main a:hover {
-  @apply decoration-primary;
-}
-
-pre {
-  @apply bg-code-bg! text-base-content/90!;
-}
-
-code, pre {
-  @apply rounded-[inherit]!;
-  font-family: 'Fira Code' ;
-}
-pre:has(> code) {
-  @apply text-lg
-}
-
-/* Remove margins from code blocks if they are inside Tab component */
-pre:not(.tab-content code) {
-  @apply my-0;
-}
-
-@media print {
-  @page {
-    margin: 0; 
-  }
-  header, footer {
-    display: none;
-  }
-  .article-details > span {
-    @apply px-0;
-  }
-}
-
-.prose {
-  h1 {
-    @apply tracking-wider md:text-[2.25em] md:leading-[1.2] lg:text-[2.3em] lg:leading-[1.3] xl:text-[2.4em] xl:leading-[1.35];
-  }
-
-  p > code,
-  li > code,
-  td > code,
-  th > code {
-    font-size: inherit !important;
-    color: inherit !important;
-  }
-
-  ul li {
-    @apply leading-8;
-  }
-
-  blockquote {
-    @apply not-italic font-normal bg-code-bg pl-4 py-4 rounded-tr-lg rounded-br-lg;
-    quotes: none;
-    font-family: inherit;
-    color: inherit;
-    opacity: inherit;
-    border-left: 4px solid var(--color-primary);
-  }
-
-  blockquote p {
-    margin: 0;
-  }
-}
-
-
-
-.prose :not(pre) > code {
-  @apply bg-code-bg font-[inherit] p-1 align-middle;
-  display: inline;
-  vertical-align: baseline;
-}
-
-.prose .badge {
-  vertical-align: baseline;
-}
-
-.prose code::before,
-.prose code::after {
-  content: none;
-}
-
-.code-line {
-  transition: color 0.3s, background-color 0.3s, filter 0.3s, opacity 0.3s;
-}
-
-.code-line.darkened {
-  opacity: 0.5;
-}
-
-pre:hover .code-line.darkened {
-  opacity: 1;
-}
-
-pre:hover .code-line:not(.darkened) {
-  @apply text-primary;
-}
-
-  .chart-bar {
-    @apply flex flex-1 gap-1 hover:bg-base-content hover:scale-y-110 origin-bottom sm:rounded-tl-2xl sm:rounded-tr-2xl;
-  }
