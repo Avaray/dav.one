@@ -5,7 +5,7 @@ import ArticleDetails from '@components/ArticleDetails.astro';
 import Footer from '@components/Footer.astro';
 import Head from '@components/Head.astro';
 import Header from '@components/Header.astro';
-import MainProse from '@components/MainProse.astro';
+import Main from '@/components/Main.astro';
 import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 import ThemeWrapper from '@components/ThemeWrapper.astro';
 
@@ -18,12 +18,12 @@ const { title, description, created, updated, author }: Props = Astro.props;
   <Head title={title} description={description} />
   <body>
     <Header />
-    <MainProse>
+    <Main>
       <article>
         <ArticleDetails {title} {description} {created} {updated} {author} />
         <slot />
       </article>
-    </MainProse>
+    </Main>
   </body>
   <ThemeSwitcher />
   <Footer />

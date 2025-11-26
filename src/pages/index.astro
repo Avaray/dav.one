@@ -7,7 +7,7 @@ import Icon from '@xtreat/astro-iconify';
 import Footer from '@components/Footer.astro';
 import Head from '@components/Head.astro';
 import Header from '@components/Header.astro';
-import MainProse from '@components/MainProse.astro';
+import Main from '@/components/Main.astro';
 import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 import ThemeWrapper from '@components/ThemeWrapper.astro';
 
@@ -26,7 +26,7 @@ const sortedArticles = [...articles].sort((a, b) => {
   <Head title={siteTitle} description={siteDescription} />
   <body>
     <Header />
-    <MainProse>
+    <Main>
       {
         sortedArticles.map((article) => (
           <a href={`/${article.id}/`} aria-label={article.data.title} class='block no-underline'>
@@ -54,7 +54,7 @@ const sortedArticles = [...articles].sort((a, b) => {
           </a>
         ))
       }
-    </MainProse>
+    </Main>
     <ThemeSwitcher />
     <Footer />
   </body>
