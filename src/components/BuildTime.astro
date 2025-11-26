@@ -46,7 +46,7 @@ const isProduction = import.meta.env.PRODUCTION_BUILD;
 const latestFailureDate = isProduction ? await getLatestFailureDate() : null;
 ---
 
-<div class='flex flex-col border-1 rounded-2xl min-w-[20vw] p-4 select-none'>
+<div class='flex flex-col border rounded-2xl min-w-[20vw] p-4 select-none'>
   <div class='flex items-center justify-between text-base-content mb-8'>
     <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl font-bold'>
       <Icon icon='simple-icons:githubactions' class='inline-block w-14 h-14 m-2' />
