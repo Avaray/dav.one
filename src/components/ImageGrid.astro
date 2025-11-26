@@ -13,7 +13,7 @@ const gridCols = (imagesCount = images.length) => {
 };
 ---
 
-<div class={`grid ${gridCols()} not-prose rounded-lg`}>
+<div class={`grid ${gridCols()} rounded-lg`}>
   {
     // check if there is at least one image without throwing errors
     images.length > 1 ? <Fragment set:html={images} /> : <div class='skeleton w-full h-100 opacity-10' />
