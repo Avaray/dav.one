@@ -36,6 +36,12 @@ Start development server
 deno task dev
 ```
 
+Build production version
+
+```
+deno task build
+```
+
 ## ✨ Themes
 
 Currently theme switch component is hidden because I have just one theme for now. Rest of themes are experimental (not
