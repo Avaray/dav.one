@@ -9,7 +9,7 @@ const images = html.match(/<img.*?>/gm) || [];
   images.length != 2 ? (
     <div class='skeleton w-full h-100 opacity-10' />
   ) : (
-    <figure class='diff rounded-xl aspect-video w-full not-prose'>
+    <figure class='diff rounded-xl aspect-video w-full'>
       <div class='diff-item-1' role='img'>
         <Fragment set:html={images[0]} />
       </div>
