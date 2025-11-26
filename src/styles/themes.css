@@ -1,6 +1,5 @@
 @plugin "daisyui" {
   themes: dark, forest;
-  /* exclude: rootscrollgutter; */
 }
 
 @plugin "daisyui/theme" {
@@ -49,11 +48,6 @@
 
 [data-theme="futura"] {
   font-family: "Quando";
-  .prose {
-    a {
-      @apply underline decoration-2 underline-offset-4 hover:no-underline
-    }
-  }
 }
 
 [data-theme="forest"] {
@@ -63,8 +57,3 @@
 [data-theme="enlightment"] {
   font-family: "Quando";
 }
-
-/* .article-icon {
-  text-box-edge: text !important;
-  text-box-trim: both !important;
-} */
