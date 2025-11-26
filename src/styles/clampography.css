@@ -1,52 +1,62 @@
 @layer base {
   /* ==========================================================================
-     CLAMPOGRAPHY - PURE TYPOGRAPHY SYSTEM
+     CLAMPOGRAPHY v1.0 - PERFECT EDITION
      ==========================================================================
      A strict, fluid typography system based on CSS clamp().
      
      PHILOSOPHY:
-     - Focuses ONLY on size, spacing, weight, and text rhythm
-     - No colors, borders, backgrounds, transforms, or decorations
-     - No layout properties (padding on containers, overflow, etc)
-     - Minimal opinions - maximum portability
+     - ZERO stylistic opinions (no colors, borders, transforms, decorations)
+     - Structure ONLY: size, spacing, weight, font-family
+     - Contextual elements use 'em' (relative), blocks use 'clamp' (fluid)
+     - Maximum portability across any design system
      
      USAGE:
-     Import this before your design system. Add visual styling separately.
+     Import this first, then layer your design system on top.
      ========================================================================== */
 
   /* --------------------------------------------------------------------------
-     ROOT VARIABLES - Spacing Scale
+     ROOT CONFIGURATION
      -------------------------------------------------------------------------- */
   :root {
+    /* Fluid spacing scale - harmonious rhythm */
     --spacing-xs: clamp(0.5rem, 0.375rem + 0.625vw, 0.75rem);
     --spacing-sm: clamp(0.75rem, 0.5625rem + 0.9375vw, 1.25rem);
     --spacing-md: clamp(1rem, 0.75rem + 1.25vw, 1.5rem);
     --spacing-lg: clamp(1.5rem, 1.125rem + 1.875vw, 2.5rem);
     --spacing-xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-    --scroll-offset: 5rem;
     
-    /* Optional: Define font families for consistency */
-    --font-family-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+    /* Utility variables */
+    --scroll-offset: 5rem;
+
+    /* System font stacks - optimal performance & consistency */
+    --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   /* --------------------------------------------------------------------------
-     BODY - Base Typography Settings
+     BODY - Global Typography Settings
      -------------------------------------------------------------------------- */
   body {
-    font-size: clamp(0.875rem, 0.8125rem + 0.3125vw, 1.125rem);
+    font-family: var(--font-family-base);
+    font-size: clamp(0.875rem, 0.8125rem + 0.3125vw, 1.125rem); /* 14px → 18px */
     line-height: 1.75;
+    
+    /* Rendering optimizations */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
+    /* Progressive enhancement - better line breaks */
+    text-wrap: pretty;
   }
 
   /* --------------------------------------------------------------------------
-     HEADINGS (H1-H6) - Hierarchy & Spacing
+     HEADINGS (H1-H6) - Structural Hierarchy
      -------------------------------------------------------------------------- */
   :where(h1, h2, h3, h4, h5, h6) {
     font-weight: 600;
     scroll-margin-top: var(--scroll-offset);
-    letter-spacing: 0.02em;
+    text-wrap: balance; /* Prevents orphaned words */
   }
 
   h1 {
@@ -54,7 +64,7 @@
     line-height: 1.2;
     font-weight: 700;
     margin-top: 0;
-    margin-bottom: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+    margin-bottom: var(--spacing-xl);
   }
 
   h2 {
@@ -93,7 +103,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     TEXT ELEMENTS - Paragraphs, Lists, Modifiers
+     TEXT CONTENT - Paragraphs & Inline Elements
      -------------------------------------------------------------------------- */
   
   /* Paragraphs */
@@ -102,30 +112,62 @@
     margin-bottom: var(--spacing-md);
   }
 
-  /* Text modifiers */
-  strong, b {
+  /* Text modifiers - semantic emphasis */
+  :where(strong, b) {
     font-weight: 700;
   }
 
-  em, i {
+  :where(em, i, cite, var, address) {
     font-style: italic;
   }
 
+  /* Contextual sizing - uses 'em' to scale with parent */
   small {
-    font-size: 0.875em;
+    font-size: 0.875em; /* 87.5% of parent */
     line-height: 1.5;
   }
 
-  /* Blockquotes - spacing + semantic italic */
+  /* Code-related elements */
+  :where(code, kbd, samp) {
+    font-family: var(--font-family-mono);
+    font-size: 0.875em; /* Relative to context */
+  }
+
+  /* Superscript & subscript - essential for scientific notation */
+  :where(sub, sup) {
+    font-size: 0.75em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup { top: -0.5em; }
+  sub { bottom: -0.25em; }
+
+  /* Abbreviations with titles */
+  abbr[title] {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+
+  /* Address element */
+  address {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* --------------------------------------------------------------------------
+     BLOCKQUOTES - Structural Spacing Only
+     -------------------------------------------------------------------------- */
   blockquote {
     margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
     padding-left: var(--spacing-md);
-    font-style: italic;
+    /* No font-style - let users decide visual treatment */
   }
 
   /* --------------------------------------------------------------------------
-     LISTS - Structure & Spacing
+     LISTS - Structure & Indentation
      -------------------------------------------------------------------------- */
   :where(ul, ol) {
     margin-bottom: var(--spacing-md);
@@ -133,13 +175,8 @@
     list-style-position: outside;
   }
 
-  ul {
-    list-style-type: disc;
-  }
-
-  ol {
-    list-style-type: decimal;
-  }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
 
   li {
     line-height: 1.75;
@@ -155,7 +192,6 @@
 
   /* Definition lists */
   dl {
-    margin-top: var(--spacing-md);
     margin-bottom: var(--spacing-md);
   }
 
@@ -166,26 +202,20 @@
 
   dd {
     margin-left: var(--spacing-md);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
   }
 
   /* --------------------------------------------------------------------------
-     CODE - Monospace Typography
+     CODE BLOCKS - Monospace Typography
      -------------------------------------------------------------------------- */
-  
-  /* Inline code */
-  :where(code):not(:where(pre *)) {
-    font-family: var(--font-family-mono);
-    font-size: 0.875em;
-  }
-
-  /* Code blocks */
   pre {
-    font-family: var(--font-family-mono);
-    font-size: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.9375rem);
-    line-height: 1.6;
     margin-top: var(--spacing-md);
     margin-bottom: var(--spacing-md);
+    font-family: var(--font-family-mono);
+    font-size: 0.875em;
+    line-height: 1.6;
+    overflow-x: auto;
+    /* Padding & background moved to global.css */
   }
 
   pre code {
@@ -206,13 +236,14 @@
   }
 
   figcaption {
+    margin-top: var(--spacing-xs);
     font-size: 0.875em;
     line-height: 1.5;
-    margin-top: var(--spacing-xs);
+    /* Text-align removed - let users decide alignment */
   }
 
   /* --------------------------------------------------------------------------
-     TABLES - Basic Structure
+     TABLES - Structural Layout
      -------------------------------------------------------------------------- */
   table {
     width: 100%;
@@ -226,6 +257,7 @@
   th, td {
     padding: var(--spacing-xs) var(--spacing-sm);
     text-align: left;
+    /* Padding kept - structurally necessary for readability */
   }
 
   th {
@@ -233,12 +265,31 @@
   }
 
   /* --------------------------------------------------------------------------
-     HORIZONTAL RULE - Spacing Only
+     SEPARATORS - Spacing Only
      -------------------------------------------------------------------------- */
   hr {
     margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
     border: 0;
+    /* Border style moved to global.css */
+  }
+
+  /* --------------------------------------------------------------------------
+     INTERACTIVE ELEMENTS - Accessibility
+     -------------------------------------------------------------------------- */
+  :focus-visible {
+    outline-offset: 2px;
+  }
+
+  details {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
   }
 
   /* --------------------------------------------------------------------------
@@ -259,6 +310,7 @@
     body {
       font-size: 12pt;
       line-height: 1.5;
+      color: #000;
     }
 
     :where(h1, h2, h3, h4, h5, h6) {
@@ -267,6 +319,10 @@
 
     :where(img, figure, pre, table) {
       break-inside: avoid;
+    }
+
+    a {
+      text-decoration: underline;
     }
   }
 }
