@@ -1,20 +1,28 @@
-@import "tailwindcss";
-@import "./clampography.css";
+@import 'tailwindcss';
+@import './clampography.css';
 
 /* ============================================
    THEME CONFIGURATION
    ============================================ */
 @theme {
   --color-*: initial;
-  --color-code-bg: color-mix(in oklab, var(--color-base-content) 5%, var(--color-base-100));
-  --color-code-highlight: color-mix(in oklab, var(--color-base-content) 15%, var(--color-base-100));
-  
+  --color-code-bg: color-mix(
+    in oklab,
+    var(--color-base-content) 5%,
+    var(--color-base-100)
+  );
+  --color-code-highlight: color-mix(
+    in oklab,
+    var(--color-base-content) 15%,
+    var(--color-base-100)
+  );
+
   /* Font families - define once */
   --font-family-mono: 'Fira Code', ui-monospace, monospace;
 }
 
-@import "./themes.css";
-@import "./utils.css";
+@import './themes.css';
+@import './utils.css';
 
 /* ============================================
    BASE LAYER - Element Defaults
