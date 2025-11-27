@@ -11,6 +11,7 @@
     "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
     "npm:astro-minify-html-swc@~0.1.10": "0.1.10",
     "npm:astro@^5.16.1": "5.16.1_vite@6.4.1__picomatch@4.0.3_zod@3.25.76",
+    "npm:clampography@0.9": "0.9.0",
     "npm:daisyui@^5.5.5": "5.5.5",
     "npm:playwright@*": "1.57.0",
     "npm:playwright@^1.57.0": "1.57.0",
@@ -1601,6 +1602,9 @@
     },
     "ci-info@4.3.1": {
       "integrity": "sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA=="
+    },
+    "clampography@0.9.0": {
+      "integrity": "sha512-dkm+B640FMljvqNtgpkj6PwpbiMME95reiqglpyZdmpuwM6lKMMpFrBSSDyfV2DayjM/gpIbBWgUqWV7nVbxNA=="
     },
     "cli-boxes@3.0.0": {
       "integrity": "sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g=="
@@ -3953,6 +3957,7 @@
         "npm:@xtreat/astro-iconify@^1.2.7",
         "npm:astro-minify-html-swc@~0.1.10",
         "npm:astro@^5.16.1",
+        "npm:clampography@0.9",
         "npm:daisyui@^5.5.5",
         "npm:playwright@^1.57.0",
         "npm:react-dom@^19.2.0",

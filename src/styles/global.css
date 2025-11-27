@@ -1,11 +1,12 @@
 @import 'tailwindcss';
-@import './clampography.css';
+@import 'clampography';
 
 /* ============================================
    THEME CONFIGURATION
    ============================================ */
 @theme {
   --color-*: initial;
+
   --color-code-bg: color-mix(
     in oklab,
     var(--color-base-content) 5%,
@@ -17,7 +18,6 @@
     var(--color-base-100)
   );
 
-  /* Font families - define once */
   --font-family-mono: 'Fira Code', ui-monospace, monospace;
 }
 
@@ -36,22 +36,28 @@
     @apply text-base-100 bg-primary;
   }
 
-  /* Links in main content area */
   main a {
-    @apply text-primary font-bold tracking-wider 
-           underline decoration-primary/30 decoration-2 
-           underline-offset-4 transition-colors duration-150;
+    @apply text-primary font-bold tracking-wider underline decoration-2 underline-offset-4 transition-colors duration-150;
+
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-primary) 30%,
+      transparent
+    );
   }
 
   main a:hover {
-    @apply decoration-primary;
+    text-decoration-color: var(--color-primary);
   }
 
-  /* Code styling */
+  h1 {
+    letter-spacing: 0.03em;
+  }
+
   code,
   pre {
-    font-family: var(--font-family-mono);
     border-radius: inherit;
+    padding: 1em;
   }
 
   pre {
@@ -68,15 +74,13 @@
     @page {
       margin: 0;
     }
-
     header,
     footer {
       display: none;
     }
 
     .article-details > span {
-      padding-left: 0;
-      padding-right: 0;
+      padding-inline: 0;
     }
 
     figure.diff {
@@ -105,7 +109,7 @@
     margin: 0;
   }
 
-  /* Alert links - scoped to main to avoid global pollution */
+  /* Alert links - scoped */
   main .alert a {
     color: currentColor;
     text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
@@ -141,8 +145,7 @@
 
   /* Conditional code block margins */
   pre:not(:has(+ .tab-content)) {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block: 0;
   }
 
   /* Chart component */
@@ -150,19 +153,6 @@
     @apply flex flex-1 gap-1 
            hover:bg-base-content hover:scale-y-110 
            origin-bottom 
-           sm:rounded-tl-2xl sm:rounded-tr-2xl;
+           sm:rounded-t-2xl;
   }
-}
-
-/* ============================================
-   UTILITIES LAYER - Custom Utilities
-   ============================================ */
-@utility alert {
-  font-size: var(--font-size-inherit);
-  line-height: var(--line-height-inherit);
-}
-
-@utility badge {
-  font-size: var(--font-size-inherit);
-  line-height: var(--line-height-inherit);
 }

@@ -22,6 +22,7 @@
     "@xtreat/astro-iconify": "^1.2.7",
     "astro": "^5.16.1",
     "astro-minify-html-swc": "^0.1.10",
+    "clampography": "^0.9.0",
     "playwright": "^1.57.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
