@@ -1,0 +1,432 @@
+---
+import Head from '@components/Head.astro';
+const title = 'Clampography';
+const description = 'Fluid typography system based on CSS clamp() for Tailwind CSS v4';
+---
+
+<!doctype html>
+<html lang='en' data-theme='dark'>
+  <Head title={title} description={description} />
+
+  <style>
+    @import 'tailwindcss';
+    @import 'clampography';
+    @plugin 'daisyui' {
+      themes: all;
+      logs: false;
+    }
+
+    @plugin "daisyui/theme" {
+      name: 'forest';
+      default: true;
+      prefersdark: true;
+    }
+  </style>
+
+  <body class='bg-base-100 text-base-content transition-colors duration-300'>
+    <!-- Header with Theme Switcher -->
+    <header class='border-b border-base-300 sticky top-0 bg-base-100/80 backdrop-blur-sm z-50'>
+      <div class='max-w-5xl mx-auto px-6 py-4 flex items-center justify-between'>
+        <a href='/' class='text-sm font-semibold text-base-content/70 hover:text-base-content transition-colors'>
+          ← Back to Home
+        </a>
+
+        <!-- Theme Switcher -->
+        <div class='flex items-center gap-3 bg-base-200 rounded-lg px-2 py-1'>
+          <button id='theme-prev' class='btn btn-ghost btn-sm btn-square' aria-label='Previous theme'>
+            <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
+            </svg>
+          </button>
+
+          <span id='theme-name' class='capitalize text-sm font-medium min-w-24 text-center'> dark </span>
+
+          <button id='theme-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next theme'>
+            <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class='max-w-3xl mx-auto px-6 py-16'>
+      <!-- Hero Section -->
+      <div class='mb-24 text-center'>
+        <h1 class='mb-6 bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent'>Clampography</h1>
+        <p class='text-xl text-base-content/70 mb-8 max-w-2xl mx-auto'>
+          A fluid typography system for Tailwind CSS v4. Zero stylistic opinions, pure structure. Resize your browser
+          window to see the magic of CSS <code class='text-primary'>clamp()</code> in action.
+        </p>
+        <div class='flex gap-4 justify-center flex-wrap'>
+          <a href='https://www.npmjs.com/package/clampography' target='_blank' class='btn btn-primary btn-lg'>
+            View on NPM
+          </a>
+          <a href='https://github.com/yourusername/clampography' target='_blank' class='btn btn-neutral btn-lg'>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <hr class='border-base-300 mb-16' />
+
+      <!-- Typography Scale -->
+      <article>
+        <h2>Typography Scale</h2>
+        <p class='text-base-content/70'>
+          All headings scale fluidly from mobile to desktop using <code>clamp()</code>. No breakpoints needed.
+        </p>
+
+        <h1>Heading 1 — Main Page Title</h1>
+        <h2>Heading 2 — Major Section</h2>
+        <h3>Heading 3 — Subsection</h3>
+        <h4>Heading 4 — Minor Heading</h4>
+        <h5>Heading 5 — Rarely Used</h5>
+        <h6>Heading 6 — Even Rarer</h6>
+
+        <h2>Paragraphs & Inline Elements</h2>
+        <p>
+          This is a <strong>paragraph</strong> demonstrating various inline text elements. You can use <em>emphasis</em>
+          for subtle stress, <b>bold text</b> for attention, and <i>italic text</i> for stylistic reasons. Technical terms
+          like <dfn>clamp()</dfn>
+          are defined using dfn tags.
+        </p>
+
+        <p>
+          Inline code works too: <code>const result = clamp(min, val, max)</code>. For keyboard shortcuts, use kbd: <kbd
+            >Ctrl</kbd
+          > + <kbd>C</kbd> to copy. Variables are styled like <var>x</var> and <var>y</var>. Sample output looks like <samp
+            >Error 404: Not Found</samp
+          >.
+        </p>
+
+        <p>
+          Mathematical expressions use superscript and subscript: E = mc<sup>2</sup>, H<sub>2</sub>O. Abbreviations with
+          tooltips:
+          <abbr title='HyperText Markup Language'>HTML</abbr> and
+          <abbr title='Cascading Style Sheets'>CSS</abbr>.
+        </p>
+
+        <p>
+          Text can be <mark class='bg-warning/30'>highlighted</mark>, <del>deleted</del>, <ins>inserted</ins>,
+          <s>struck through</s>, or <u>underlined</u>. Citations look like
+          <cite>The Design of Everyday Things</cite>.
+        </p>
+
+        <p>
+          <small>This is small print, typically used for legal disclaimers and fine print.</small>
+        </p>
+
+        <address class='text-base-content/70'>
+          Written by John Doe<br />
+          Email: <a href='mailto:john@example.com' class='link link-primary'>john@example.com</a><br />
+          Visit: 123 Typography Lane, Web City
+        </address>
+
+        <p>
+          Current time: <time datetime='2024-11-27T14:30'>November 27, 2024 at 2:30 PM</time>
+        </p>
+
+        <h2>Links & Navigation</h2>
+        <p>
+          Regular links look like <a href='#' class='link link-primary'>this link</a>. They inherit color from your
+          design system. External links to <a href='https://example.com' target='_blank' class='link link-secondary'
+            >example.com</a
+          > work the same way.
+        </p>
+
+        <h2>Lists</h2>
+        <h3>Unordered Lists</h3>
+        <ul>
+          <li>First item in the list</li>
+          <li>Second item with some longer text to demonstrate how multi-line list items look</li>
+          <li>
+            Third item with a nested list:
+            <ul>
+              <li>Nested item A</li>
+              <li>Nested item B with more content</li>
+              <li>
+                Deeply nested item:
+                <ul>
+                  <li>Level 3 item</li>
+                  <li>Another level 3 item</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Final item in the main list</li>
+        </ul>
+
+        <h3>Ordered Lists</h3>
+        <ol>
+          <li>First step in the process</li>
+          <li>Second step with detailed instructions</li>
+          <li>
+            Third step with substeps:
+            <ol>
+              <li>Substep 3.1</li>
+              <li>Substep 3.2</li>
+            </ol>
+          </li>
+          <li>Final step to completion</li>
+        </ol>
+
+        <h3>Definition Lists</h3>
+        <dl>
+          <dt>Clampography</dt>
+          <dd>A fluid typography system based on CSS clamp() function.</dd>
+
+          <dt>Responsive Design</dt>
+          <dd>An approach to web design that makes web pages render well on a variety of devices and window sizes.</dd>
+
+          <dt>Fluid Typography</dt>
+          <dd>Typography that scales smoothly between minimum and maximum sizes based on viewport width.</dd>
+          <dd>Eliminates the need for fixed breakpoints in type scales.</dd>
+        </dl>
+
+        <h2>Blockquotes</h2>
+        <blockquote class='border-l-4 border-primary/50 pl-4 italic text-base-content/80'>
+          <p>"Simplicity is the ultimate sophistication. Good design is as little design as possible."</p>
+          <cite>— Dieter Rams</cite>
+        </blockquote>
+
+        <p>Blockquotes can be nested to show quoted replies:</p>
+
+        <blockquote class='border-l-4 border-primary/50 pl-4 italic text-base-content/80'>
+          <p>First level quote with important information.</p>
+          <blockquote class='border-l-4 border-secondary/50 pl-4 mt-2'>
+            <p>Nested quote showing a reply or referenced material.</p>
+          </blockquote>
+        </blockquote>
+
+        <h2>Inline Quotes</h2>
+        <p>
+          As the saying goes, <q>practice makes perfect</q>, but remember that
+          <q>perfect practice makes perfect</q> is more accurate.
+        </p>
+
+        <h2>Code Blocks</h2>
+        <p>For code examples, use pre and code tags:</p>
+
+        <pre
+          class='bg-base-200 p-6 rounded-lg border border-base-300 overflow-x-auto'><code>// Install Clampography
+npm install clampography
+
+// Import in your CSS
+@import "clampography";
+
+// That's it! All elements are now styled.</code></pre>
+
+        <p>
+          Inline code like <code class='bg-base-200 px-2 py-1 rounded text-sm'>npm install</code> is styled differently from
+          blocks.
+        </p>
+
+        <h2>Tables</h2>
+        <div class='overflow-x-auto'>
+          <table class='table'>
+            <caption class='text-left font-semibold mb-2'>Clampography Feature Comparison</caption>
+            <thead class='bg-base-200'>
+              <tr>
+                <th>Feature</th>
+                <th>Clampography</th>
+                <th>Traditional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class='border-b border-base-300'>
+                <td>Fluid Scaling</td>
+                <td class='text-success'>✓ Built-in</td>
+                <td class='text-error'>✗ Manual</td>
+              </tr>
+              <tr class='border-b border-base-300'>
+                <td>Breakpoints</td>
+                <td class='text-success'>✓ Not needed</td>
+                <td class='text-error'>✗ Required</td>
+              </tr>
+              <tr class='border-b border-base-300'>
+                <td>File Size</td>
+                <td class='text-success'>✓ Minimal</td>
+                <td class='text-base-content/50'>~ Variable</td>
+              </tr>
+            </tbody>
+            <tfoot class='bg-base-200/50'>
+              <tr>
+                <td colspan='3' class='text-sm text-base-content/60'>Data accurate as of November 2024</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <h2>Forms & Interactive Elements</h2>
+        <fieldset class='border border-base-300 rounded-lg p-6 bg-base-200/50'>
+          <legend class='text-lg font-semibold px-2'>Example Form Elements</legend>
+          <p>Form elements maintain consistent typography:</p>
+
+          <p>
+            Calculation result: <output class='badge badge-primary'>42</output>
+          </p>
+
+          <p>
+            Progress indicator: <progress class='progress progress-primary' value='70' max='100'>70%</progress>
+          </p>
+
+          <p>
+            Meter example: <meter class='w-full' value='0.7' min='0' max='1'>70%</meter>
+          </p>
+        </fieldset>
+
+        <h2>Details & Summary</h2>
+        <details class='collapse collapse-arrow bg-base-200 mb-4'>
+          <summary class='collapse-title font-medium'> Click to expand installation instructions </summary>
+          <div class='collapse-content'>
+            <p>To install Clampography, run the following command in your terminal:</p>
+            <pre class='bg-base-300 p-4 rounded mt-2'><code>npm install clampography</code></pre>
+            <p class='mt-2'>Then import it in your main CSS file before your other styles.</p>
+          </div>
+        </details>
+
+        <details class='collapse collapse-arrow bg-base-200'>
+          <summary class='collapse-title font-medium'> Usage with Tailwind CSS v4 </summary>
+          <div class='collapse-content'>
+            <p>Clampography is designed specifically for Tailwind CSS v4. Simply import it in your main CSS file:</p>
+            <pre class='bg-base-300 p-4 rounded mt-2'><code>@import "tailwindcss";
+@import "clampography";</code></pre>
+          </div>
+        </details>
+
+        <h2>Media Elements</h2>
+        <figure class='card bg-base-200 shadow-md'>
+          <img
+            src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=400&fit=crop'
+            alt='Abstract gradient representing fluid design'
+            class='rounded-t-lg'
+          />
+          <figcaption class='p-4 text-sm text-base-content/70'>
+            Figure 1: Responsive images scale properly within the typography system.
+          </figcaption>
+        </figure>
+
+        <h2>Horizontal Rules</h2>
+        <p>Use horizontal rules to separate major sections:</p>
+
+        <hr class='border-base-300' />
+
+        <p>Content continues after the divider.</p>
+
+        <h2>Special Characters & Entities</h2>
+        <p>Common symbols: © ® ™ • × ÷ ± ≠ ≈ ≤ ≥ → ← ↑ ↓</p>
+        <p>Quotes: " " ' ' « » ‹ › „ ‚</p>
+        <p>Dashes: - – — (hyphen, en dash, em dash)</p>
+
+        <h2>Badges & Status</h2>
+        <div class='flex gap-2 flex-wrap'>
+          <span class='badge badge-primary'>Primary</span>
+          <span class='badge badge-secondary'>Secondary</span>
+          <span class='badge badge-accent'>Accent</span>
+          <span class='badge badge-info'>Info</span>
+          <span class='badge badge-success'>Success</span>
+          <span class='badge badge-warning'>Warning</span>
+          <span class='badge badge-error'>Error</span>
+        </div>
+      </article>
+
+      <!-- Footer -->
+      <footer class='mt-24 pt-12 border-t border-base-300 text-center text-sm text-base-content/60'>
+        <p>
+          Made with ❤️ for the web typography community.
+          <a href='https://github.com/yourusername/clampography' class='link link-primary'> Contribute on GitHub </a>
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      // Theme switcher
+      const themes = [
+        'light',
+        'dark',
+        'cupcake',
+        'bumblebee',
+        'emerald',
+        'corporate',
+        'synthwave',
+        'retro',
+        'cyberpunk',
+        'valentine',
+        'halloween',
+        'garden',
+        'forest',
+        'aqua',
+        'lofi',
+        'pastel',
+        'fantasy',
+        'wireframe',
+        'black',
+        'luxury',
+        'dracula',
+        'cmyk',
+        'autumn',
+        'business',
+        'acid',
+        'lemonade',
+        'night',
+        'coffee',
+        'winter',
+        'dim',
+        'nord',
+        'sunset',
+      ];
+
+      let currentThemeIndex = themes.indexOf('dark');
+
+      const html = document.documentElement;
+      const themeName = document.getElementById('theme-name');
+      const prevBtn = document.getElementById('theme-prev');
+      const nextBtn = document.getElementById('theme-next');
+
+      function setTheme(index) {
+        currentThemeIndex = index;
+        const theme = themes[currentThemeIndex];
+        html.setAttribute('data-theme', theme);
+        if (themeName) {
+          themeName.textContent = theme;
+        }
+      }
+
+      prevBtn?.addEventListener('click', () => {
+        const newIndex = currentThemeIndex === 0 ? themes.length - 1 : currentThemeIndex - 1;
+        setTheme(newIndex);
+      });
+
+      nextBtn?.addEventListener('click', () => {
+        const newIndex = (currentThemeIndex + 1) % themes.length;
+        setTheme(newIndex);
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevBtn?.click();
+        } else if (e.key === 'ArrowRight') {
+          nextBtn?.click();
+        }
+      });
+    </script>
+
+    <style>
+      /* Additional styling for better daisyUI integration */
+      code {
+        font-family: var(--font-family-mono);
+      }
+
+      kbd {
+        font-family: var(--font-family-mono);
+      }
+
+      mark {
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.125rem;
+      }
+    </style>
+  </body>
+</html>
