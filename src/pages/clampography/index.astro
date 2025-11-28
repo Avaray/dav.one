@@ -5,17 +5,19 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
 ---
 
 <!doctype html>
-<html lang='en' data-theme='dark'>
+<html lang='en'>
   <Head title={title} description={description} />
 
   <style>
     @import 'tailwindcss';
     @import 'clampography';
     @plugin "daisyui" {
-      themes: light, dark, cupcake, bumblebee, emerald, corporate, synthwave, retro, cyberpunk, valentine, halloween,
-        garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid,
-        lemonade, night, coffee, winter, dim, nord, sunset;
-      logs: false;
+      themes: all;
+    }
+    @plugin 'daisyui/theme' {
+      name: 'forest';
+      default: true;
+      prefersdark: true;
     }
 
     /* Clampography will override these fonts when loaded */
