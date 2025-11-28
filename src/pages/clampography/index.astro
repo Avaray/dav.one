@@ -76,8 +76,7 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
         <h1 class='mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Clampography</h1>
         <p class='text-xl text-base-content/70 mb-8 max-w-2xl mx-auto'>
           A fluid typography system for Tailwind CSS v4. Zero stylistic opinions, pure structure. Resize your browser
-          window to see the magic of CSS <code class='bg-base-200 px-2 py-1 rounded text-sm text-primary'>clamp()</code>
-          in action.
+          window to see the magic of CSS <code>clamp()</code> in action.
         </p>
         <div class='flex gap-4 justify-center flex-wrap'>
           <a
@@ -102,10 +101,8 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
       <!-- Typography Scale -->
       <article>
         <h2>Typography Scale</h2>
-        <p class='text-base-content/70'>
-          All headings scale fluidly from mobile to desktop using <code class='bg-base-200 px-2 py-1 rounded text-sm'
-            >clamp()</code
-          >. No breakpoints needed.
+        <p>
+          All headings scale fluidly from mobile to desktop using <code>clamp()</code>. No breakpoints needed.
         </p>
 
         <h1>Heading 1 — Main Page Title</h1>
@@ -119,28 +116,23 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
         <p>
           This is a <strong>paragraph</strong> demonstrating various inline text elements. You can use <em>emphasis</em>
           for subtle stress, <b>bold text</b> for attention, and <i>italic text</i> for stylistic reasons. Technical terms
-          like <dfn>clamp()</dfn>
-          are defined using dfn tags.
+          like <dfn>clamp()</dfn> are defined using dfn tags.
         </p>
 
         <p>
-          Inline code works too: <code class='bg-base-200 px-2 py-1 rounded text-sm'
-            >const result = clamp(min, val, max)</code
-          >. For keyboard shortcuts, use kbd: <kbd
-            class='bg-base-200 border border-base-300 px-2 py-1 rounded text-sm shadow'>Ctrl</kbd
-          > + <kbd class='bg-base-200 border border-base-300 px-2 py-1 rounded text-sm shadow'>C</kbd> to copy. Variables
-          are styled like <var>x</var> and <var>y</var>. Sample output looks like <samp>Error 404: Not Found</samp>.
+          Inline code works too: <code>const result = clamp(min, val, max)</code>. For keyboard shortcuts, use kbd:
+          <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy. Variables are styled like <var>x</var> and <var>y</var>. Sample output
+          looks like <samp>Error 404: Not Found</samp>.
         </p>
 
         <p>
           Mathematical expressions use superscript and subscript: E = mc<sup>2</sup>, H<sub>2</sub>O. Abbreviations with
-          tooltips:
-          <abbr title='HyperText Markup Language'>HTML</abbr> and
+          tooltips: <abbr title='HyperText Markup Language'>HTML</abbr> and
           <abbr title='Cascading Style Sheets'>CSS</abbr>.
         </p>
 
         <p>
-          Text can be <mark class='bg-warning/30 px-1'>highlighted</mark>, <del>deleted</del>, <ins>inserted</ins>,
+          Text can be <mark>highlighted</mark>, <del>deleted</del>, <ins>inserted</ins>,
           <s>struck through</s>, or <u>underlined</u>. Citations look like
           <cite>The Design of Everyday Things</cite>.
         </p>
@@ -149,11 +141,9 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
           <small>This is small print, typically used for legal disclaimers and fine print.</small>
         </p>
 
-        <address class='text-base-content/70'>
+        <address>
           Written by John Doe<br />
-          Email: <a href='mailto:john@example.com' class='text-primary underline hover:text-primary/80'
-            >john@example.com</a
-          ><br />
+          Email: <a href='mailto:john@example.com'>john@example.com</a><br />
           Visit: 123 Typography Lane, Web City
         </address>
 
@@ -163,12 +153,9 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
 
         <h2>Links & Navigation</h2>
         <p>
-          Regular links look like <a href='#' class='text-primary underline hover:text-primary/80'>this link</a>. They
-          inherit color from your design system. External links to <a
-            href='https://example.com'
-            target='_blank'
-            class='text-secondary underline hover:text-secondary/80'>example.com</a
-          > work the same way.
+          Regular links look like <a href='#'>this link</a>. They inherit color from your design system. External links
+          to
+          <a href='https://example.com' target='_blank'>example.com</a> work the same way.
         </p>
 
         <h2>Lists</h2>
@@ -221,16 +208,16 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
         </dl>
 
         <h2>Blockquotes</h2>
-        <blockquote class='border-l-4 border-primary/50 pl-4 italic text-base-content/80'>
+        <blockquote>
           <p>"Simplicity is the ultimate sophistication. Good design is as little design as possible."</p>
           <cite>— Dieter Rams</cite>
         </blockquote>
 
         <p>Blockquotes can be nested to show quoted replies:</p>
 
-        <blockquote class='border-l-4 border-primary/50 pl-4 italic text-base-content/80'>
+        <blockquote>
           <p>First level quote with important information.</p>
-          <blockquote class='border-l-4 border-secondary/50 pl-4 mt-2'>
+          <blockquote>
             <p>Nested quote showing a reply or referenced material.</p>
           </blockquote>
         </blockquote>
@@ -244,8 +231,7 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
         <h2>Code Blocks</h2>
         <p>For code examples, use pre and code tags:</p>
 
-        <pre
-          class='bg-base-200 p-6 rounded-lg border border-base-300 overflow-x-auto'><code>// Install Clampography
+        <pre><code>// Install Clampography
 npm install clampography
 
 // Import in your CSS
@@ -254,111 +240,89 @@ npm install clampography
 // That's it! All elements are now styled.</code></pre>
 
         <p>
-          Inline code like <code class='bg-base-200 px-2 py-1 rounded text-sm'>npm install</code> is styled differently from
-          blocks.
+          Inline code like <code>npm install</code> is styled differently from blocks.
         </p>
 
         <h2>Tables</h2>
-        <div class='overflow-x-auto'>
-          <table class='w-full border border-base-300'>
-            <caption class='text-left font-semibold mb-2'>Clampography Feature Comparison</caption>
-            <thead class='bg-base-200'>
-              <tr>
-                <th class='border-b border-base-300'>Feature</th>
-                <th class='border-b border-base-300'>Clampography</th>
-                <th class='border-b border-base-300'>Traditional</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class='border-b border-base-300'>
-                <td>Fluid Scaling</td>
-                <td class='text-success'>✓ Built-in</td>
-                <td class='text-error'>✗ Manual</td>
-              </tr>
-              <tr class='border-b border-base-300'>
-                <td>Breakpoints</td>
-                <td class='text-success'>✓ Not needed</td>
-                <td class='text-error'>✗ Required</td>
-              </tr>
-              <tr>
-                <td>File Size</td>
-                <td class='text-success'>✓ Minimal</td>
-                <td class='text-base-content/50'>~ Variable</td>
-              </tr>
-            </tbody>
-            <tfoot class='bg-base-200/50'>
-              <tr>
-                <td colspan='3' class='text-sm text-base-content/60 border-t border-base-300'
-                  >Data accurate as of November 2024</td
-                >
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+        <table>
+          <caption>Clampography Feature Comparison</caption>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Clampography</th>
+              <th>Traditional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fluid Scaling</td>
+              <td>✓ Built-in</td>
+              <td>✗ Manual</td>
+            </tr>
+            <tr>
+              <td>Breakpoints</td>
+              <td>✓ Not needed</td>
+              <td>✗ Required</td>
+            </tr>
+            <tr>
+              <td>File Size</td>
+              <td>✓ Minimal</td>
+              <td>~ Variable</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan='3'>Data accurate as of November 2024</td>
+            </tr>
+          </tfoot>
+        </table>
 
         <h2>Forms & Interactive Elements</h2>
-        <fieldset class='border border-base-300 rounded-lg p-6 bg-base-200/50'>
-          <legend class='text-lg font-semibold px-2'>Example Form Elements</legend>
+        <fieldset>
+          <legend>Example Form Elements</legend>
           <p>Form elements maintain consistent typography:</p>
 
-          <p class='flex items-center gap-2'>
-            Calculation result: <output
-              class='px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-medium'>42</output
-            >
+          <p>
+            Calculation result: <output>42</output>
           </p>
 
-          <p class='flex items-center gap-2'>
-            Progress indicator: <progress
-              class='w-full h-2 rounded-full overflow-hidden [&::-webkit-progress-bar]:bg-base-300 [&::-webkit-progress-value]:bg-primary [&::-moz-progress-bar]:bg-primary'
-              value='70'
-              max='100'>70%</progress
-            >
+          <p>
+            Progress indicator: <progress value='70' max='100'>70%</progress>
           </p>
 
-          <p class='flex items-center gap-2'>
-            Meter example: <meter class='w-full h-2' value='0.7' min='0' max='1'>70%</meter>
+          <p>
+            Meter example: <meter value='0.7' min='0' max='1'>70%</meter>
           </p>
         </fieldset>
 
         <h2>Details & Summary</h2>
-        <details class='border border-base-300 rounded-lg bg-base-200/50 mb-4 overflow-hidden'>
-          <summary class='cursor-pointer font-medium p-4 hover:bg-base-200 transition-colors'>
-            Click to expand installation instructions
-          </summary>
-          <div class='p-4 border-t border-base-300'>
-            <p>To install Clampography, run the following command in your terminal:</p>
-            <pre class='bg-base-300 p-4 rounded mt-2 overflow-x-auto'><code>npm install clampography</code></pre>
-            <p class='mt-2'>Then import it in your main CSS file before your other styles.</p>
-          </div>
+        <details>
+          <summary>Click to expand installation instructions</summary>
+          <p>To install Clampography, run the following command in your terminal:</p>
+          <pre><code>npm install clampography</code></pre>
+          <p>Then import it in your main CSS file before your other styles.</p>
         </details>
 
-        <details class='border border-base-300 rounded-lg bg-base-200/50 overflow-hidden'>
-          <summary class='cursor-pointer font-medium p-4 hover:bg-base-200 transition-colors'>
-            Usage with Tailwind CSS v4
-          </summary>
-          <div class='p-4 border-t border-base-300'>
-            <p>Clampography is designed specifically for Tailwind CSS v4. Simply import it in your main CSS file:</p>
-            <pre
-              class='bg-base-300 p-4 rounded mt-2 overflow-x-auto'><code>@import "tailwindcss";
+        <details>
+          <summary>Usage with Tailwind CSS v4</summary>
+          <p>Clampography is designed specifically for Tailwind CSS v4. Simply import it in your main CSS file:</p>
+          <pre><code>@import "tailwindcss";
 @import "clampography";</code></pre>
-          </div>
         </details>
 
         <h2>Media Elements</h2>
-        <figure class='rounded-lg overflow-hidden bg-base-200 shadow-md'>
+        <figure>
           <img
             src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=400&fit=crop'
             alt='Abstract gradient representing fluid design'
           />
-          <figcaption class='p-4 text-sm text-base-content/70'>
-            Figure 1: Responsive images scale properly within the typography system.
-          </figcaption>
+          <figcaption>Figure 1: Responsive images scale properly within the typography system.</figcaption>
         </figure>
 
         <h2>Horizontal Rules</h2>
         <p>Use horizontal rules to separate major sections:</p>
 
-        <hr class='border-base-300' />
+        <hr />
 
         <p>Content continues after the divider.</p>
 
@@ -366,26 +330,13 @@ npm install clampography
         <p>Common symbols: © ® ™ • × ÷ ± ≠ ≈ ≤ ≥ → ← ↑ ↓</p>
         <p>Quotes: " " ' ' « » ‹ › „ ‚</p>
         <p>Dashes: - – — (hyphen, en dash, em dash)</p>
-
-        <h2>Status Indicators</h2>
-        <div class='flex gap-2 flex-wrap'>
-          <span class='px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-medium'>Primary</span>
-          <span class='px-3 py-1 bg-secondary text-secondary-content rounded-full text-sm font-medium'>Secondary</span>
-          <span class='px-3 py-1 bg-accent text-accent-content rounded-full text-sm font-medium'>Accent</span>
-          <span class='px-3 py-1 bg-info text-info-content rounded-full text-sm font-medium'>Info</span>
-          <span class='px-3 py-1 bg-success text-success-content rounded-full text-sm font-medium'>Success</span>
-          <span class='px-3 py-1 bg-warning text-warning-content rounded-full text-sm font-medium'>Warning</span>
-          <span class='px-3 py-1 bg-error text-error-content rounded-full text-sm font-medium'>Error</span>
-        </div>
       </article>
 
       <!-- Footer -->
       <footer class='mt-24 pt-12 border-t border-base-300 text-center text-sm text-base-content/60'>
         <p>
           Made with ❤️ for the web typography community.
-          <a href='https://github.com/yourusername/clampography' class='text-primary underline hover:text-primary/80'>
-            Contribute on GitHub
-          </a>
+          <a href='https://github.com/yourusername/clampography'>Contribute on GitHub</a>
         </p>
       </footer>
     </main>
