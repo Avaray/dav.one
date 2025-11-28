@@ -39,7 +39,7 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
               </svg>
             </button>
 
-            <span id='theme-name' class='capitalize text-sm font-medium min-w-20 text-center'> dark </span>
+            <span id='theme-name' class='capitalize font-mono text-sm font-medium min-w-20 text-center'> dark </span>
 
             <button id='theme-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next theme'>
               <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -56,7 +56,7 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
               </svg>
             </button>
 
-            <span id='font-name' class='text-sm font-medium min-w-24 text-center'> System </span>
+            <span id='font-name' class='capitalize font-mono text-sm font-medium min-w-24 text-center'> System </span>
 
             <button id='font-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next font'>
               <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -429,14 +429,14 @@ npm install clampography
       const fonts = [
         { name: 'System', family: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif', url: null },
         {
-          name: 'Inter',
-          family: '"Inter", sans-serif',
-          url: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap',
+          name: 'Quando',
+          family: '"Quando", serif',
+          url: 'https://fonts.googleapis.com/css2?family=Quando&display=swap',
         },
         {
-          name: 'Roboto',
-          family: '"Roboto", sans-serif',
-          url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap',
+          name: 'Fira Mono',
+          family: '"Fira Mono", monospace',
+          url: 'https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;600;700&display=swap',
         },
         {
           name: 'Open Sans',
@@ -444,34 +444,14 @@ npm install clampography
           url: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap',
         },
         {
-          name: 'Lato',
-          family: '"Lato", sans-serif',
-          url: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap',
+          name: 'Sour Gummy',
+          family: '"Sour Gummy", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap',
         },
         {
-          name: 'Montserrat',
-          family: '"Montserrat", sans-serif',
-          url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap',
-        },
-        {
-          name: 'Poppins',
-          family: '"Poppins", sans-serif',
-          url: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap',
-        },
-        {
-          name: 'Merriweather',
-          family: '"Merriweather", serif',
-          url: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap',
-        },
-        {
-          name: 'Playfair',
-          family: '"Playfair Display", serif',
-          url: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&display=swap',
-        },
-        {
-          name: 'Source Sans',
-          family: '"Source Sans 3", sans-serif',
-          url: 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap',
+          name: 'Mansalva',
+          family: '"Mansalva", cursive',
+          url: 'https://fonts.googleapis.com/css2?family=Mansalva&display=swap',
         },
       ];
 
