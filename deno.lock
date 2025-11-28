@@ -1,7 +1,7 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@astrojs/mdx@^4.3.12": "4.3.12_astro@5.16.1__vite@6.4.1___picomatch@4.0.3__zod@3.25.76",
+    "npm:@astrojs/mdx@^4.3.12": "4.3.12_astro@5.16.2__vite@6.4.1___picomatch@4.0.3__zod@3.25.76",
     "npm:@astrojs/react@^4.4.2": "4.4.2_@types+react@19.2.7_@types+react-dom@19.2.3__@types+react@19.2.7_react@19.2.0_react-dom@19.2.0__react@19.2.0_vite@6.4.1__picomatch@4.0.3",
     "npm:@astrojs/rss@^4.0.14": "4.0.14",
     "npm:@astrojs/sitemap@^3.6.0": "3.6.0",
@@ -10,8 +10,8 @@
     "npm:@types/react@^19.2.7": "19.2.7",
     "npm:@xtreat/astro-iconify@^1.2.7": "1.2.7",
     "npm:astro-minify-html-swc@~0.1.10": "0.1.10",
-    "npm:astro@^5.16.1": "5.16.1_vite@6.4.1__picomatch@4.0.3_zod@3.25.76",
-    "npm:clampography@0.9": "0.9.0",
+    "npm:astro@^5.16.2": "5.16.2_vite@6.4.1__picomatch@4.0.3_zod@3.25.76",
+    "npm:clampography@~0.9.1": "0.9.1",
     "npm:daisyui@^5.5.5": "5.5.5",
     "npm:playwright@*": "1.57.0",
     "npm:playwright@^1.57.0": "1.57.0",
@@ -78,7 +78,7 @@
         "vfile"
       ]
     },
-    "@astrojs/mdx@4.3.12_astro@5.16.1__vite@6.4.1___picomatch@4.0.3__zod@3.25.76": {
+    "@astrojs/mdx@4.3.12_astro@5.16.2__vite@6.4.1___picomatch@4.0.3__zod@3.25.76": {
       "integrity": "sha512-pL3CVPtuQrPnDhWjy7zqbOibNyPaxP4VpQS8T8spwKqKzauJ4yoKyNkVTD8jrP7EAJHmBhZ7PTmUGZqOpKKp8g==",
       "dependencies": [
         "@astrojs/markdown-remark",
@@ -1422,8 +1422,8 @@
         "fast-glob"
       ]
     },
-    "astro@5.16.1_vite@6.4.1__picomatch@4.0.3_zod@3.25.76": {
-      "integrity": "sha512-fkEP3Qi7QlVL4ncyecLRzi+eZx/2RByNApjyw7n5kMhkF9vCYuOZBBm7EbdYM3vrCirSqvSn19C03vjhvKRa6A==",
+    "astro@5.16.2_vite@6.4.1__picomatch@4.0.3_zod@3.25.76": {
+      "integrity": "sha512-NFXqhB1UgBvleF5rLZ7a31Qzprf1lSch+k8o2XTvsw1d97gxGrjVVeWa8AnZUFtirz84YPW6+5NbLVNzS2y+uQ==",
       "dependencies": [
         "@astrojs/compiler",
         "@astrojs/internal-helpers",
@@ -1603,8 +1603,8 @@
     "ci-info@4.3.1": {
       "integrity": "sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA=="
     },
-    "clampography@0.9.0": {
-      "integrity": "sha512-dkm+B640FMljvqNtgpkj6PwpbiMME95reiqglpyZdmpuwM6lKMMpFrBSSDyfV2DayjM/gpIbBWgUqWV7nVbxNA=="
+    "clampography@0.9.1": {
+      "integrity": "sha512-qI/n2YUtaoPc+UKfQGCExZwWSfTZY+Fb3Jst0/dqHZU3znBSHUTRMvirCyiCUu2eYlIllotj8SQwwpyiQOvgnQ=="
     },
     "cli-boxes@3.0.0": {
       "integrity": "sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g=="
@@ -3956,8 +3956,8 @@
         "npm:@types/react@^19.2.7",
         "npm:@xtreat/astro-iconify@^1.2.7",
         "npm:astro-minify-html-swc@~0.1.10",
-        "npm:astro@^5.16.1",
-        "npm:clampography@0.9",
+        "npm:astro@^5.16.2",
+        "npm:clampography@~0.9.1",
         "npm:daisyui@^5.5.5",
         "npm:playwright@^1.57.0",
         "npm:react-dom@^19.2.0",
