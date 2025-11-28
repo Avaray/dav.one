@@ -11,41 +11,59 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
   <style>
     @import 'tailwindcss';
     @import 'clampography';
-    @plugin 'daisyui' {
-      themes: all;
+    @plugin "daisyui" {
+      themes: light, dark, cupcake, bumblebee, emerald, corporate, synthwave, retro, cyberpunk, valentine, halloween,
+        garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid,
+        lemonade, night, coffee, winter, dim, nord, sunset;
       logs: false;
     }
 
-    @plugin "daisyui/theme" {
-      name: 'forest';
-      default: true;
-      prefersdark: true;
+    /* Clampography will override these fonts when loaded */
+    body {
+      font-family: var(--current-font, var(--font-family-base));
     }
   </style>
 
   <body class='bg-base-100 text-base-content transition-colors duration-300'>
-    <!-- Header with Theme Switcher -->
+    <!-- Header with Theme & Font Switchers -->
     <header class='border-b border-base-300 sticky top-0 bg-base-100/80 backdrop-blur-sm z-50'>
-      <div class='max-w-5xl mx-auto px-6 py-4 flex items-center justify-between'>
-        <a href='/' class='text-sm font-semibold text-base-content/70 hover:text-base-content transition-colors'>
-          ← Back to Home
-        </a>
+      <div class='max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4'>
+        <a href='/' class='btn btn-ghost btn-sm'> ← Home </a>
 
-        <!-- Theme Switcher -->
-        <div class='flex items-center gap-3 bg-base-200 rounded-lg px-2 py-1'>
-          <button id='theme-prev' class='btn btn-ghost btn-sm btn-square' aria-label='Previous theme'>
-            <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
-            </svg>
-          </button>
+        <div class='flex items-center gap-3 flex-wrap justify-end'>
+          <!-- Theme Switcher -->
+          <div class='flex items-center gap-2 bg-base-200 rounded-lg px-2 py-1'>
+            <button id='theme-prev' class='btn btn-ghost btn-sm btn-square' aria-label='Previous theme'>
+              <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
+              </svg>
+            </button>
 
-          <span id='theme-name' class='capitalize text-sm font-medium min-w-24 text-center'> dark </span>
+            <span id='theme-name' class='capitalize text-sm font-medium min-w-20 text-center'> dark </span>
 
-          <button id='theme-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next theme'>
-            <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </button>
+            <button id='theme-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next theme'>
+              <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Font Switcher -->
+          <div class='flex items-center gap-2 bg-base-200 rounded-lg px-2 py-1'>
+            <button id='font-prev' class='btn btn-ghost btn-sm btn-square' aria-label='Previous font'>
+              <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
+              </svg>
+            </button>
+
+            <span id='font-name' class='text-sm font-medium min-w-24 text-center'> System </span>
+
+            <button id='font-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next font'>
+              <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -53,16 +71,25 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
     <main class='max-w-3xl mx-auto px-6 py-16'>
       <!-- Hero Section -->
       <div class='mb-24 text-center'>
-        <h1 class='mb-6 bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent'>Clampography</h1>
+        <h1 class='mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Clampography</h1>
         <p class='text-xl text-base-content/70 mb-8 max-w-2xl mx-auto'>
           A fluid typography system for Tailwind CSS v4. Zero stylistic opinions, pure structure. Resize your browser
-          window to see the magic of CSS <code class='text-primary'>clamp()</code> in action.
+          window to see the magic of CSS <code class='bg-base-200 px-2 py-1 rounded text-sm text-primary'>clamp()</code>
+          in action.
         </p>
         <div class='flex gap-4 justify-center flex-wrap'>
-          <a href='https://www.npmjs.com/package/clampography' target='_blank' class='btn btn-primary btn-lg'>
+          <a
+            href='https://www.npmjs.com/package/clampography'
+            target='_blank'
+            class='px-6 py-3 bg-primary hover:bg-primary/90 text-primary-content font-semibold rounded-lg transition-colors shadow-lg'
+          >
             View on NPM
           </a>
-          <a href='https://github.com/yourusername/clampography' target='_blank' class='btn btn-neutral btn-lg'>
+          <a
+            href='https://github.com/yourusername/clampography'
+            target='_blank'
+            class='px-6 py-3 bg-neutral hover:bg-neutral/90 text-neutral-content font-semibold rounded-lg transition-colors'
+          >
             GitHub
           </a>
         </div>
@@ -74,7 +101,9 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
       <article>
         <h2>Typography Scale</h2>
         <p class='text-base-content/70'>
-          All headings scale fluidly from mobile to desktop using <code>clamp()</code>. No breakpoints needed.
+          All headings scale fluidly from mobile to desktop using <code class='bg-base-200 px-2 py-1 rounded text-sm'
+            >clamp()</code
+          >. No breakpoints needed.
         </p>
 
         <h1>Heading 1 — Main Page Title</h1>
@@ -93,11 +122,12 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
         </p>
 
         <p>
-          Inline code works too: <code>const result = clamp(min, val, max)</code>. For keyboard shortcuts, use kbd: <kbd
-            >Ctrl</kbd
-          > + <kbd>C</kbd> to copy. Variables are styled like <var>x</var> and <var>y</var>. Sample output looks like <samp
-            >Error 404: Not Found</samp
-          >.
+          Inline code works too: <code class='bg-base-200 px-2 py-1 rounded text-sm'
+            >const result = clamp(min, val, max)</code
+          >. For keyboard shortcuts, use kbd: <kbd
+            class='bg-base-200 border border-base-300 px-2 py-1 rounded text-sm shadow'>Ctrl</kbd
+          > + <kbd class='bg-base-200 border border-base-300 px-2 py-1 rounded text-sm shadow'>C</kbd> to copy. Variables
+          are styled like <var>x</var> and <var>y</var>. Sample output looks like <samp>Error 404: Not Found</samp>.
         </p>
 
         <p>
@@ -108,7 +138,7 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
         </p>
 
         <p>
-          Text can be <mark class='bg-warning/30'>highlighted</mark>, <del>deleted</del>, <ins>inserted</ins>,
+          Text can be <mark class='bg-warning/30 px-1'>highlighted</mark>, <del>deleted</del>, <ins>inserted</ins>,
           <s>struck through</s>, or <u>underlined</u>. Citations look like
           <cite>The Design of Everyday Things</cite>.
         </p>
@@ -119,7 +149,9 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
 
         <address class='text-base-content/70'>
           Written by John Doe<br />
-          Email: <a href='mailto:john@example.com' class='link link-primary'>john@example.com</a><br />
+          Email: <a href='mailto:john@example.com' class='text-primary underline hover:text-primary/80'
+            >john@example.com</a
+          ><br />
           Visit: 123 Typography Lane, Web City
         </address>
 
@@ -129,9 +161,11 @@ const description = 'Fluid typography system based on CSS clamp() for Tailwind C
 
         <h2>Links & Navigation</h2>
         <p>
-          Regular links look like <a href='#' class='link link-primary'>this link</a>. They inherit color from your
-          design system. External links to <a href='https://example.com' target='_blank' class='link link-secondary'
-            >example.com</a
+          Regular links look like <a href='#' class='text-primary underline hover:text-primary/80'>this link</a>. They
+          inherit color from your design system. External links to <a
+            href='https://example.com'
+            target='_blank'
+            class='text-secondary underline hover:text-secondary/80'>example.com</a
           > work the same way.
         </p>
 
@@ -224,13 +258,13 @@ npm install clampography
 
         <h2>Tables</h2>
         <div class='overflow-x-auto'>
-          <table class='table'>
+          <table class='w-full border border-base-300'>
             <caption class='text-left font-semibold mb-2'>Clampography Feature Comparison</caption>
             <thead class='bg-base-200'>
               <tr>
-                <th>Feature</th>
-                <th>Clampography</th>
-                <th>Traditional</th>
+                <th class='border-b border-base-300'>Feature</th>
+                <th class='border-b border-base-300'>Clampography</th>
+                <th class='border-b border-base-300'>Traditional</th>
               </tr>
             </thead>
             <tbody>
@@ -244,7 +278,7 @@ npm install clampography
                 <td class='text-success'>✓ Not needed</td>
                 <td class='text-error'>✗ Required</td>
               </tr>
-              <tr class='border-b border-base-300'>
+              <tr>
                 <td>File Size</td>
                 <td class='text-success'>✓ Minimal</td>
                 <td class='text-base-content/50'>~ Variable</td>
@@ -252,7 +286,9 @@ npm install clampography
             </tbody>
             <tfoot class='bg-base-200/50'>
               <tr>
-                <td colspan='3' class='text-sm text-base-content/60'>Data accurate as of November 2024</td>
+                <td colspan='3' class='text-sm text-base-content/60 border-t border-base-300'
+                  >Data accurate as of November 2024</td
+                >
               </tr>
             </tfoot>
           </table>
@@ -263,44 +299,54 @@ npm install clampography
           <legend class='text-lg font-semibold px-2'>Example Form Elements</legend>
           <p>Form elements maintain consistent typography:</p>
 
-          <p>
-            Calculation result: <output class='badge badge-primary'>42</output>
+          <p class='flex items-center gap-2'>
+            Calculation result: <output
+              class='px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-medium'>42</output
+            >
           </p>
 
-          <p>
-            Progress indicator: <progress class='progress progress-primary' value='70' max='100'>70%</progress>
+          <p class='flex items-center gap-2'>
+            Progress indicator: <progress
+              class='w-full h-2 rounded-full overflow-hidden [&::-webkit-progress-bar]:bg-base-300 [&::-webkit-progress-value]:bg-primary [&::-moz-progress-bar]:bg-primary'
+              value='70'
+              max='100'>70%</progress
+            >
           </p>
 
-          <p>
-            Meter example: <meter class='w-full' value='0.7' min='0' max='1'>70%</meter>
+          <p class='flex items-center gap-2'>
+            Meter example: <meter class='w-full h-2' value='0.7' min='0' max='1'>70%</meter>
           </p>
         </fieldset>
 
         <h2>Details & Summary</h2>
-        <details class='collapse collapse-arrow bg-base-200 mb-4'>
-          <summary class='collapse-title font-medium'> Click to expand installation instructions </summary>
-          <div class='collapse-content'>
+        <details class='border border-base-300 rounded-lg bg-base-200/50 mb-4 overflow-hidden'>
+          <summary class='cursor-pointer font-medium p-4 hover:bg-base-200 transition-colors'>
+            Click to expand installation instructions
+          </summary>
+          <div class='p-4 border-t border-base-300'>
             <p>To install Clampography, run the following command in your terminal:</p>
-            <pre class='bg-base-300 p-4 rounded mt-2'><code>npm install clampography</code></pre>
+            <pre class='bg-base-300 p-4 rounded mt-2 overflow-x-auto'><code>npm install clampography</code></pre>
             <p class='mt-2'>Then import it in your main CSS file before your other styles.</p>
           </div>
         </details>
 
-        <details class='collapse collapse-arrow bg-base-200'>
-          <summary class='collapse-title font-medium'> Usage with Tailwind CSS v4 </summary>
-          <div class='collapse-content'>
+        <details class='border border-base-300 rounded-lg bg-base-200/50 overflow-hidden'>
+          <summary class='cursor-pointer font-medium p-4 hover:bg-base-200 transition-colors'>
+            Usage with Tailwind CSS v4
+          </summary>
+          <div class='p-4 border-t border-base-300'>
             <p>Clampography is designed specifically for Tailwind CSS v4. Simply import it in your main CSS file:</p>
-            <pre class='bg-base-300 p-4 rounded mt-2'><code>@import "tailwindcss";
+            <pre
+              class='bg-base-300 p-4 rounded mt-2 overflow-x-auto'><code>@import "tailwindcss";
 @import "clampography";</code></pre>
           </div>
         </details>
 
         <h2>Media Elements</h2>
-        <figure class='card bg-base-200 shadow-md'>
+        <figure class='rounded-lg overflow-hidden bg-base-200 shadow-md'>
           <img
             src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=400&fit=crop'
             alt='Abstract gradient representing fluid design'
-            class='rounded-t-lg'
           />
           <figcaption class='p-4 text-sm text-base-content/70'>
             Figure 1: Responsive images scale properly within the typography system.
@@ -319,15 +365,15 @@ npm install clampography
         <p>Quotes: " " ' ' « » ‹ › „ ‚</p>
         <p>Dashes: - – — (hyphen, en dash, em dash)</p>
 
-        <h2>Badges & Status</h2>
+        <h2>Status Indicators</h2>
         <div class='flex gap-2 flex-wrap'>
-          <span class='badge badge-primary'>Primary</span>
-          <span class='badge badge-secondary'>Secondary</span>
-          <span class='badge badge-accent'>Accent</span>
-          <span class='badge badge-info'>Info</span>
-          <span class='badge badge-success'>Success</span>
-          <span class='badge badge-warning'>Warning</span>
-          <span class='badge badge-error'>Error</span>
+          <span class='px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-medium'>Primary</span>
+          <span class='px-3 py-1 bg-secondary text-secondary-content rounded-full text-sm font-medium'>Secondary</span>
+          <span class='px-3 py-1 bg-accent text-accent-content rounded-full text-sm font-medium'>Accent</span>
+          <span class='px-3 py-1 bg-info text-info-content rounded-full text-sm font-medium'>Info</span>
+          <span class='px-3 py-1 bg-success text-success-content rounded-full text-sm font-medium'>Success</span>
+          <span class='px-3 py-1 bg-warning text-warning-content rounded-full text-sm font-medium'>Warning</span>
+          <span class='px-3 py-1 bg-error text-error-content rounded-full text-sm font-medium'>Error</span>
         </div>
       </article>
 
@@ -335,7 +381,9 @@ npm install clampography
       <footer class='mt-24 pt-12 border-t border-base-300 text-center text-sm text-base-content/60'>
         <p>
           Made with ❤️ for the web typography community.
-          <a href='https://github.com/yourusername/clampography' class='link link-primary'> Contribute on GitHub </a>
+          <a href='https://github.com/yourusername/clampography' class='text-primary underline hover:text-primary/80'>
+            Contribute on GitHub
+          </a>
         </p>
       </footer>
     </main>
@@ -377,13 +425,70 @@ npm install clampography
         'sunset',
       ];
 
+      // Font configurations with Google Fonts
+      const fonts = [
+        { name: 'System', family: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif', url: null },
+        {
+          name: 'Inter',
+          family: '"Inter", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap',
+        },
+        {
+          name: 'Roboto',
+          family: '"Roboto", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap',
+        },
+        {
+          name: 'Open Sans',
+          family: '"Open Sans", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap',
+        },
+        {
+          name: 'Lato',
+          family: '"Lato", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap',
+        },
+        {
+          name: 'Montserrat',
+          family: '"Montserrat", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap',
+        },
+        {
+          name: 'Poppins',
+          family: '"Poppins", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap',
+        },
+        {
+          name: 'Merriweather',
+          family: '"Merriweather", serif',
+          url: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap',
+        },
+        {
+          name: 'Playfair',
+          family: '"Playfair Display", serif',
+          url: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&display=swap',
+        },
+        {
+          name: 'Source Sans',
+          family: '"Source Sans 3", sans-serif',
+          url: 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap',
+        },
+      ];
+
       let currentThemeIndex = themes.indexOf('dark');
+      let currentFontIndex = 0;
+      const loadedFonts = new Set();
 
       const html = document.documentElement;
+      const body = document.body;
       const themeName = document.getElementById('theme-name');
-      const prevBtn = document.getElementById('theme-prev');
-      const nextBtn = document.getElementById('theme-next');
+      const fontName = document.getElementById('font-name');
+      const themePrevBtn = document.getElementById('theme-prev');
+      const themeNextBtn = document.getElementById('theme-next');
+      const fontPrevBtn = document.getElementById('font-prev');
+      const fontNextBtn = document.getElementById('font-next');
 
+      // Theme functions
       function setTheme(index) {
         currentThemeIndex = index;
         const theme = themes[currentThemeIndex];
@@ -393,40 +498,84 @@ npm install clampography
         }
       }
 
-      prevBtn?.addEventListener('click', () => {
+      // Font functions
+      function loadFont(fontUrl) {
+        return new Promise((resolve, reject) => {
+          if (!fontUrl || loadedFonts.has(fontUrl)) {
+            resolve();
+            return;
+          }
+
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = fontUrl;
+          link.onload = () => {
+            loadedFonts.add(fontUrl);
+            resolve();
+          };
+          link.onerror = reject;
+          document.head.appendChild(link);
+        });
+      }
+
+      async function setFont(index) {
+        currentFontIndex = index;
+        const font = fonts[currentFontIndex];
+
+        if (fontName) {
+          fontName.textContent = font.name;
+        }
+
+        // Load font if needed
+        if (font.url) {
+          await loadFont(font.url);
+        }
+
+        // Apply font
+        document.documentElement.style.setProperty('--current-font', font.family);
+      }
+
+      // Theme event listeners
+      themePrevBtn?.addEventListener('click', () => {
         const newIndex = currentThemeIndex === 0 ? themes.length - 1 : currentThemeIndex - 1;
         setTheme(newIndex);
       });
 
-      nextBtn?.addEventListener('click', () => {
+      themeNextBtn?.addEventListener('click', () => {
         const newIndex = (currentThemeIndex + 1) % themes.length;
         setTheme(newIndex);
       });
 
+      // Font event listeners
+      fontPrevBtn?.addEventListener('click', () => {
+        const newIndex = currentFontIndex === 0 ? fonts.length - 1 : currentFontIndex - 1;
+        setFont(newIndex);
+      });
+
+      fontNextBtn?.addEventListener('click', () => {
+        const newIndex = (currentFontIndex + 1) % fonts.length;
+        setFont(newIndex);
+      });
+
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-          prevBtn?.click();
-        } else if (e.key === 'ArrowRight') {
-          nextBtn?.click();
+        // Alt + Left/Right for themes
+        if (e.altKey && e.key === 'ArrowLeft') {
+          e.preventDefault();
+          themePrevBtn?.click();
+        } else if (e.altKey && e.key === 'ArrowRight') {
+          e.preventDefault();
+          themeNextBtn?.click();
+        }
+        // Ctrl + Left/Right for fonts
+        else if (e.ctrlKey && e.key === 'ArrowLeft') {
+          e.preventDefault();
+          fontPrevBtn?.click();
+        } else if (e.ctrlKey && e.key === 'ArrowRight') {
+          e.preventDefault();
+          fontNextBtn?.click();
         }
       });
     </script>
-
-    <style>
-      /* Additional styling for better daisyUI integration */
-      code {
-        font-family: var(--font-family-mono);
-      }
-
-      kbd {
-        font-family: var(--font-family-mono);
-      }
-
-      mark {
-        padding: 0.125rem 0.25rem;
-        border-radius: 0.125rem;
-      }
-    </style>
   </body>
 </html>
