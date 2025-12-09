@@ -1,41 +1,44 @@
 ---
-import '@/styles/global.css';
-
 interface Props {
   title: string;
   description: string;
   image?: string;
+  ignoreGlobalStyles?: boolean;
 }
 
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image } = Astro.props;
+const { title, description, image, ignoreGlobalStyles = false } = Astro.props;
 const absoluteImageUrl = image && new URL(image, Astro.site).toString();
+
+if (!ignoreGlobalStyles) {
+  import('@/styles/global.css');
+}
 
 // I need to make this better in the future
 const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 ---
 
 <head>
-  {/*  Global Metadata */}
+  {/* Global Metadata */}
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width,initial-scale=1' />
   <link rel='icon' type='image/png' href='/favicon.png' />
   <meta name='generator' content={Astro.generator} />
 
-  {/*  Prevent indexing on non-main branches */}
+  {/* Prevent indexing on non-main branches */}
   {!isProduction && <meta name='robots' content='noindex, nofollow' />}
 
-  {/*  Canonical URL */}
+  {/* Canonical URL */}
   {isProduction && <link rel='canonical' href={canonicalURL} />}
 
-  {/*  Primary Meta Tags */}
+  {/* Primary Meta Tags */}
   <title>{title}</title>
   <meta name='title' content={title} />
   <meta name='description' content={description} />
 
-  {/*  Open Graph */}
+  {/* Open Graph */}
   <meta property='og:title' content={title} />
   <meta property='og:description' content={description} />
   <meta property='og:url' content={canonicalURL} />
