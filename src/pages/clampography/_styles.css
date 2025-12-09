@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+@import '../../../../../PACKAGES/clampography/clampography.css';
+
+@plugin "daisyui" {
+  themes: all;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'forest';
+  default: true;
+  prefersdark: true;
+}
+
+body {
+  font-family: var(--current-font, var(--font-family-base));
+}
+
+body.extra-styles-enabled {
+  table {
+    @apply border-collapse border border-base-300 w-full;
+
+    th,
+    td {
+      @apply border border-base-300;
+    }
+
+    th {
+      @apply bg-base-200;
+    }
+
+    tr:nth-child(even) {
+      @apply bg-base-200/30;
+    }
+  }
+
+  pre {
+    @apply bg-base-300/50 border border-base-content/10 rounded-lg p-4 overflow-x-auto shadow-sm;
+  }
+
+  :not(pre) > code {
+    @apply bg-base-300 px-1.5 py-0.5 rounded text-sm text-secondary font-semibold border border-base-content/10;
+  }
+
+  blockquote {
+    @apply border-l-4 border-primary pl-4 italic bg-base-200/20 py-2 pr-2 my-4 rounded-r;
+  }
+
+  a:not(.btn) {
+    @apply underline decoration-primary decoration-2 underline-offset-2 hover:text-primary transition-colors;
+  }
+}

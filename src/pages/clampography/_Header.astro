@@ -1,0 +1,206 @@
+<header class='border-b border-base-300 sticky top-0 bg-base-100/80 backdrop-blur-sm z-50'>
+  <div class='max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4'>
+    <a href='/' class='btn btn-ghost btn-sm'> ← Home </a>
+
+    <div class='flex items-center gap-3 flex-wrap justify-end'>
+      <!-- Style Toggle -->
+      <div class='flex items-center gap-2 bg-base-200 rounded-lg px-2 py-1'>
+        <button id='style-toggle' class='btn btn-sm btn-ghost gap-2' aria-label='Toggle Extra Styles'>
+          <!-- Domyślnie czerwony (OFF) -->
+          <span class='w-2 h-2 rounded-full bg-error transition-colors duration-300' id='style-indicator'></span>
+          <span id='style-status' class='font-mono text-sm font-medium'>OFF</span>
+        </button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class='flex items-center gap-2 bg-base-200 rounded-lg px-2 py-1'>
+        <button id='theme-prev' class='btn btn-ghost btn-sm btn-square' aria-label='Previous theme'>
+          <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
+          </svg>
+        </button>
+        <span id='theme-name' class='capitalize font-mono text-sm font-medium min-w-20 text-center'> dark </span>
+        <button id='theme-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next theme'>
+          <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Font Switcher -->
+      <div class='flex items-center gap-2 bg-base-200 rounded-lg px-2 py-1'>
+        <button id='font-prev' class='btn btn-ghost btn-sm btn-square' aria-label='Previous font'>
+          <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
+          </svg>
+        </button>
+        <span id='font-name' class='capitalize font-mono text-sm font-medium min-w-24 text-center'> System </span>
+        <button id='font-next' class='btn btn-ghost btn-sm btn-square' aria-label='Next font'>
+          <svg class='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // --- Extra Styles Logic ---
+  const styleToggleBtn = document.getElementById('style-toggle');
+  const styleStatus = document.getElementById('style-status');
+  const styleIndicator = document.getElementById('style-indicator');
+
+  // Domyślnie false (wyłączone)
+  let isExtraStyleEnabled = false;
+  const EXTRA_STYLE_CLASS = 'extra-styles-enabled';
+
+  function updateStyleUI() {
+    if (!styleStatus || !styleIndicator) return;
+
+    if (isExtraStyleEnabled) {
+      document.body.classList.add(EXTRA_STYLE_CLASS);
+      styleStatus.textContent = 'ON';
+      styleIndicator.classList.remove('bg-error');
+      styleIndicator.classList.add('bg-success');
+    } else {
+      document.body.classList.remove(EXTRA_STYLE_CLASS);
+      styleStatus.textContent = 'OFF';
+      styleIndicator.classList.remove('bg-success');
+      styleIndicator.classList.add('bg-error');
+    }
+  }
+
+  // Init
+  styleToggleBtn?.addEventListener('click', () => {
+    isExtraStyleEnabled = !isExtraStyleEnabled;
+    updateStyleUI();
+  });
+
+  // --- Theme Switcher Logic (Bez zmian) ---
+  const themes = [
+    'light',
+    'dark',
+    'cupcake',
+    'bumblebee',
+    'emerald',
+    'corporate',
+    'synthwave',
+    'retro',
+    'cyberpunk',
+    'valentine',
+    'halloween',
+    'garden',
+    'forest',
+    'aqua',
+    'lofi',
+    'pastel',
+    'fantasy',
+    'wireframe',
+    'black',
+    'luxury',
+    'dracula',
+    'cmyk',
+    'autumn',
+    'business',
+    'acid',
+    'lemonade',
+    'night',
+    'coffee',
+    'winter',
+    'dim',
+    'nord',
+    'sunset',
+  ];
+
+  const fonts = [
+    { name: 'System', family: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif', url: null },
+    { name: 'Quando', family: '"Quando", serif', url: 'https://fonts.googleapis.com/css2?family=Quando&display=swap' },
+    {
+      name: 'Fira Mono',
+      family: '"Fira Mono", monospace',
+      url: 'https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;600;700&display=swap',
+    },
+    {
+      name: 'Open Sans',
+      family: '"Open Sans", sans-serif',
+      url: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap',
+    },
+    {
+      name: 'Sour Gummy',
+      family: '"Sour Gummy", sans-serif',
+      url: 'https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap',
+    },
+  ];
+
+  let currentThemeIndex = themes.indexOf('dark');
+  let currentFontIndex = 0;
+  const loadedFonts = new Set<string>();
+
+  const html = document.documentElement;
+  const themeName = document.getElementById('theme-name');
+  const fontName = document.getElementById('font-name');
+  const themePrevBtn = document.getElementById('theme-prev');
+  const themeNextBtn = document.getElementById('theme-next');
+  const fontPrevBtn = document.getElementById('font-prev');
+  const fontNextBtn = document.getElementById('font-next');
+
+  function setTheme(index: number) {
+    currentThemeIndex = index;
+    const theme = themes[currentThemeIndex];
+    html.setAttribute('data-theme', theme);
+    if (themeName) themeName.textContent = theme;
+  }
+
+  function loadFont(fontUrl: string) {
+    return new Promise((resolve, reject) => {
+      if (!fontUrl || loadedFonts.has(fontUrl)) {
+        resolve(null);
+        return;
+      }
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = fontUrl;
+      link.onload = () => {
+        loadedFonts.add(fontUrl);
+        resolve(null);
+      };
+      link.onerror = reject;
+      document.head.appendChild(link);
+    });
+  }
+
+  async function setFont(index: number) {
+    currentFontIndex = index;
+    const font = fonts[currentFontIndex];
+    if (fontName) fontName.textContent = font.name;
+    if (font.url) await loadFont(font.url);
+    document.documentElement.style.setProperty('--current-font', font.family);
+  }
+
+  // Setup Listeners
+  themePrevBtn?.addEventListener('click', () =>
+    setTheme(currentThemeIndex === 0 ? themes.length - 1 : currentThemeIndex - 1),
+  );
+  themeNextBtn?.addEventListener('click', () => setTheme((currentThemeIndex + 1) % themes.length));
+  fontPrevBtn?.addEventListener('click', () =>
+    setFont(currentFontIndex === 0 ? fonts.length - 1 : currentFontIndex - 1),
+  );
+  fontNextBtn?.addEventListener('click', () => setFont((currentFontIndex + 1) % fonts.length));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.altKey && e.key === 'ArrowLeft') {
+      e.preventDefault();
+      themePrevBtn?.click();
+    } else if (e.altKey && e.key === 'ArrowRight') {
+      e.preventDefault();
+      themeNextBtn?.click();
+    } else if (e.ctrlKey && e.key === 'ArrowLeft') {
+      e.preventDefault();
+      fontPrevBtn?.click();
+    } else if (e.ctrlKey && e.key === 'ArrowRight') {
+      e.preventDefault();
+      fontNextBtn?.click();
+    }
+  });
+</script>
