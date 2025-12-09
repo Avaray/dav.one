@@ -143,8 +143,7 @@
     @apply text-primary;
   }
 
-  /* Conditional code block margins */
-  pre:not(:has(+ .tab-content)) {
+  .tab-content pre {
     margin-block: 0;
   }
 
