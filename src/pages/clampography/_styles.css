@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '../../../../../PACKAGES/clampography/clampography.css';
+@import 'clampography';
 
 @plugin "daisyui" {
   themes: all;
