@@ -1,0 +1,171 @@
+---
+title: 'Creating banger songs using Suno'
+description: "A practical guide to Suno AI's Meta Tag system and song structure commands. This article explains square bracket notation, vocal style tags, and dynamics control for structuring generated audio. Includes a Liquid Drum & Bass walkthrough demonstrating atmospheric builds, non-lyrical choruses, and climactic drops using v5 features."
+created: '2025-12-05T07:49:14.232Z'
+icon: 'game-icons:boombox'
+author: 'Dawid Wasowski'
+draft: true
+---
+
+Suno AI has revolutionized music creation, but the difference between a random generation and a professional-sounding track lies in your knowledge. This guide will teach you how to take control of the AI by combining technical commands (Meta Tags) with the fundamentals of how music works.
+
+## Part 1: The Language of Suno (Meta Tags)
+
+Suno listens to instructions placed inside square brackets `[...]`. These are your directorial commands; they are not sung.
+
+### 1. The Foundation of Structure (The Song's Skeleton)
+Every song needs a framework. Use these tags to give your track shape:
+*   **`[Intro]`**: The beginning. Define the mood, e.g., `[Intro: Melodic Piano]`.
+*   **`[Verse]`**: The story part, usually with lower energy.
+*   **`[Pre-Chorus]`**: Builds tension before the hook.
+*   **`[Chorus]`**: The main hook, typically with the highest energy.
+*   **`[Bridge]`**: A change of pace or mood to break monotony.
+*   **`[Outro]`**: The ending, e.g., `[Outro: Fade out]`.
+
+### 2. Controlling Vocals and Emotion
+Don't leave it to chance. Tell the AI *how* to sing:
+*   **`[Vocal Style: Whisper]`**: Creates intimacy.
+*   **`[Vocal Style: Belting]`**: Powerful, loud singing for a climax.
+*   **`[Vocal Style: Legato]`**: Smoothly connected notes.
+*   **`[Spoken Word]`**: Narration or non-sung speech.
+*   **`[Choir]`** / **`[Backing Vocals]`**: Adds layers of vocals.
+
+> **Pro Tip (Parentheses):** Use `()` for background vocalizations that you don't want the lead vocalist to sing, e.g., `(Ooh-yeah!)` or `(Echo)`.
+
+### 3. "Producer Mode" – Instruments & Dynamics
+Direct your AI band:
+*   **`[Instrumental Solo: Saxophone]`**: Forces an instrumental-only section.
+*   **`[Breakdown]`**: Strips away energy (e.g., removes drums) to focus on melody.
+*   **`[Build-up]`**: A rhythmic swell (like a snare roll) that creates anticipation.
+*   **`[Drop]`**: The release of energy, crucial in EDM/DnB.
+*   **`[Stop]`** or **`[Silence]`**: A dramatic pause.
+
+### 4. The Phrasing Hack (Fixing Rhythm)
+Suno sometimes splits lines awkwardly. To prevent this:
+1.  **Remove commas** within a line.
+2.  **Use hyphens** to glue words together: `I-am-running-fast-because-I-want-to-win`.
+3.  This forces the AI to sing the phrase in a single breath.
+
+---
+
+## Part 2: Music Theory for the AI Producer
+
+Knowing the tags is half the battle. Knowing *what* to ask for is the other half. Here are 5 pillars you need to understand.
+
+### 1. Dynamics (Tension & Release)
+A song is a journey, not a straight line [web:44].
+*   **Tension:** Build anticipation. Use tags like `[Riser]`, `[Build-up]`, `[Accelerating]`.
+*   **Release:** The satisfying payoff (the Chorus or Drop). This is where the full bass and melody hit.
+*   *In Suno:* Don't just go from `[Verse]` to `[Chorus]`. Add a `[Pre-Chorus]` or `[Build-up]` to make the drop more impactful.
+
+### 2. BPM and Key (Tempo & Mood)
+The *Style of Music* box is not just for genres. Suno v3.5 and v4 are increasingly accurate with specific technical values.
+*   **BPM (Beats Per Minute):** Control the speed explicitly.
+    *   *128 BPM* = Standard House Music.
+    *   *174 BPM* = Drum and Bass.
+    *   *90 BPM* = Hip Hop/Slow Jam.
+*   **Key (Tonality):** Set the emotional baseline.
+    *   *C Minor Key* = Sad, dark, serious mood.
+    *   *G Major Key* = Happy, bright, uplifting.
+
+### 3. Timbre and Texture
+Describe the "color" of the sound.
+*   **Warm vs. Cold:** *Warm analog pads* vs *Icy digital synths*.
+*   **Dense vs. Sparse:** *Wall of sound* (many instruments) vs *Minimalist* (just bass and drums).
+*   *In Suno:* These adjectives define the character of your track more than the genre name itself [web:50].
+
+### 4. Rhythm and Groove
+Most pop music is in 4/4 time, but the magic happens elsewhere.
+*   **6/8 Time Signature:** Creates a swinging, waltz-like feel (common in soul and ballads).
+*   **Syncopation:** Accenting the off-beat. This is the heart of funk, jazz, and DnB.
+*   *In Suno:* Write `Syncopated drums` or `6/8 time signature` in the style prompt.
+
+### 5. Space and The Frequency Spectrum
+Avoid the "Muddy Mix" trap. Users often overload the prompt with "Heavy Bass", "Piano", "Strings", and "Guitars" all at once. The AI tries to jam them all in, resulting in a mess.
+*   **The Rule of Space:** "One element per frequency band."
+    *   If you have **Heavy Sub Bass** (Low Frequencies), do not ask for *Low Piano Notes*.
+    *   If you have **Screaming Guitars** (Mid/High), keep the synth pads simple.
+*   **Ambience:** Define the physical space.
+    *   *Intimate Dry Vocal* (close to the ear) vs *Stadium Reverb* (huge hall).
+
+---
+
+## Part 3: Case Study - "Atmospheric Liquid DnB"
+
+Here is a complete prompt that combines technical tags with music theory.
+
+**Style of Music:**
+> Liquid Drum and Bass, Atmospheric, Deep Sub Bass, Female Vocals, Angelic Voice, Orchestral Strings, Cinematic, 174 BPM, C Minor Key, High Fidelity, Euphoric Climax
+
+**Lyrics & Structure:**
+
+```
+[Intro: Grand Piano & Rain FX]
+(Soft ambient pads - establishing Timbre)
+[Vocal Style: Soft Whisper]
+
+[Verse 1]
+(Minimalist beat, slow phrasing - Low Energy)
+Walking-through-the-shadows-into-the-light
+Every-step-is-heavy-but-I-will-fight
+(Soft echo in background)
+
+[Pre-Chorus: Rising Intensity]
+[Instrument: Violins fade in]
+(Building Tension - adding High Frequencies)
+The fire is burning inside my soul
+[Vocal Style: Breathier]
+I am finally losing all control
+
+[Build-up: Long Snare Roll]
+(Maximum Tension... wait for it...)
+[Stop]
+
+[Drop: Heavy Bass & Angelic Choir]
+(The Release!)
+[Chorus: Non-Lyrical]
+(Ahhhhh-Oooooh-Ahhhhh)
+(Soaring high-pitch harmonies)
+[Bass: Deep Reese Bass]
+(Complex drum patterns)
+
+[Bridge: The Calm]
+[Breakdown: Atmospheric Silence]
+(Music cuts out - Texture becomes sparse)
+[Vocal Style: Intimate]
+Nothing can stop me now.
+
+[Climax: The Apogeum]
+[Dynamics: Maximum Loudness]
+[Vocal Style: Belting]
+(Explosion of sound and energy)
+
+[Outro]
+[Fade to Silence]
+[End]
+```
+
+
+---
+
+## Part 4: The AI Producer's Library (Further Learning)
+
+To write better prompts, you need to understand the language of music. These resources will help.
+
+### 📚 Books (The Foundations)
+1.  **"Music Theory for Electronic Music Producers" – Dr. J. Anthony Allen**
+    *   The bible for producers. It explains theory in the language of a DAW (piano roll), not sheet music. Helps you understand how to request harmony (e.g., *Minor Key* for sadness).
+2.  **"Making Music: 74 Creative Strategies" – Dennis DeSantis (Ableton)**
+    *   A book about arranging and problem-solving. It helps you understand why a song needs a `[Bridge]` and how to overcome creative blocks [web:85].
+
+### 🎥 YouTube Channels
+3.  **EDMProd (Tension & Release)**
+    *   Search for their videos on building energy. You'll understand why a "Drop" only works if it's preceded by a "Build-up" [web:48].
+4.  **Signals Music Studio**
+    *   Brilliantly explains complex concepts (like modes) in a simple way. This will help you choose adjectives for your style prompt (e.g., *Lydian Mode* for a "spacey" vibe).
+
+### 🌐 Online Articles & Tools
+5.  **"The 4 Elements of Texture in Music" (Splice Blog)**
+    *   Learn how to manage the "density" of your track [web:50].
+6.  **Learning Music (Ableton)**
+    *   A free, interactive website where you can see and click on rhythms, melodies, and structures. The best hands-on course online.
