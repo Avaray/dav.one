@@ -18,8 +18,6 @@
     var(--color-base-content) 15%,
     var(--color-base-100)
   );
-
-  --font-family-mono: 'Fira Code', ui-monospace, monospace;
 }
 
 @import './themes.css';
@@ -58,11 +56,12 @@
   code,
   pre {
     border-radius: inherit;
+    padding: 1em;
   }
 
   pre {
     background-color: var(--color-code-bg);
-    color: color-mix(in oklab, var(--color-base-content) 90%, transparent);
+    /* color: color-mix(in oklab, var(--color-base-content) 90%, transparent); */
   }
 
   /* Print styles */
