@@ -18,7 +18,7 @@ body {
 
 body.extra-styles-enabled {
   hr {
-    @apply h-px border-0 my-12 bg-linear-to-r from-transparent via-base-content/20 to-transparent;
+    @apply h-px border-0 my-12 bg-base-content/20;
   }
 
   table {
