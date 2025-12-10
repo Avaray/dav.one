@@ -16,6 +16,10 @@ body {
 }
 
 body.extra-styles-enabled {
+  hr {
+    @apply h-px border-0 my-12 bg-linear-to-r from-transparent via-base-content/20 to-transparent;
+  }
+
   table {
     @apply border-collapse border border-base-300 w-full;
 
@@ -38,7 +42,7 @@ body.extra-styles-enabled {
   }
 
   :not(pre) > code {
-    @apply bg-base-300 px-1.5 py-0.5 rounded text-sm text-secondary font-semibold border border-base-content/10;
+    @apply bg-base-content/10 rounded;
   }
 
   blockquote {
@@ -46,6 +50,25 @@ body.extra-styles-enabled {
   }
 
   a:not(.btn) {
-    @apply underline decoration-primary decoration-2 underline-offset-2 hover:text-primary transition-colors;
+    @apply text-primary font-bold tracking-wider underline decoration-2 underline-offset-4 transition-colors duration-150;
+
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-primary) 30%,
+      transparent
+    );
+  }
+
+  a:hover {
+    text-decoration-color: var(--color-primary);
+  }
+
+  mark {
+    @apply text-base-100 bg-primary rounded;
+    padding: 0.3em;
+  }
+
+  del {
+    @apply decoration-error decoration-2;
   }
 }

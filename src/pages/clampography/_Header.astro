@@ -6,9 +6,8 @@
       <!-- Style Toggle -->
       <div class='flex items-center gap-2 bg-base-200 rounded-lg px-2 py-1'>
         <button id='style-toggle' class='btn btn-sm btn-ghost gap-2' aria-label='Toggle Extra Styles'>
-          <!-- Domyślnie czerwony (OFF) -->
           <span class='w-2 h-2 rounded-full bg-error transition-colors duration-300' id='style-indicator'></span>
-          <span id='style-status' class='font-mono text-sm font-medium'>OFF</span>
+          <span id='style-status' class='font-mono text-sm font-medium'>Enable extra style</span>
         </button>
       </div>
 
@@ -60,12 +59,12 @@
 
     if (isExtraStyleEnabled) {
       document.body.classList.add(EXTRA_STYLE_CLASS);
-      styleStatus.textContent = 'ON';
+      styleStatus.textContent = 'Extra style enabled';
       styleIndicator.classList.remove('bg-error');
       styleIndicator.classList.add('bg-success');
     } else {
       document.body.classList.remove(EXTRA_STYLE_CLASS);
-      styleStatus.textContent = 'OFF';
+      styleStatus.textContent = 'Extra style diasabled';
       styleIndicator.classList.remove('bg-success');
       styleIndicator.classList.add('bg-error');
     }
