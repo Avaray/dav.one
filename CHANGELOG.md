@@ -1,4 +1,11 @@
-## 📑 Changelog (V1 -> V2)
+# Changelog
+
+## 📑 v2.1
+
+- Replaced [Tailwind CSS Typography plugin](https://github.com/tailwindlabs/tailwindcss-typography) with
+  [Clampography](https://www.npmjs.com/package/clampography)
+
+## 📑 v1 -> v2
 
 - Updated to Tailwind CSS V4
 - Updated daisyUI to V5
