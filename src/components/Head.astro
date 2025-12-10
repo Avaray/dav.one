@@ -1,4 +1,6 @@
 ---
+import globalCssUrl from '@/styles/global.css?url';
+
 interface Props {
   title: string;
   description: string;
@@ -12,10 +14,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image, ignoreGlobalStyles = false } = Astro.props;
 const absoluteImageUrl = image && new URL(image, Astro.site).toString();
 
-if (!ignoreGlobalStyles) {
-  import('@/styles/global.css');
-}
-
 // I need to make this better in the future
 const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 ---
@@ -26,6 +24,9 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
   <meta name='viewport' content='width=device-width,initial-scale=1' />
   <link rel='icon' type='image/png' href='/favicon.png' />
   <meta name='generator' content={Astro.generator} />
+
+  {/* Conditionally load global styles */}
+  {!ignoreGlobalStyles && <link rel='stylesheet' href={globalCssUrl} />}
 
   {/* Prevent indexing on non-main branches */}
   {!isProduction && <meta name='robots' content='noindex, nofollow' />}
