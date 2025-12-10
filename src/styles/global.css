@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'clampography';
+/* @import '../../../../PACKAGES/clampography/clampography.css'; */
 
 /* ============================================
    THEME CONFIGURATION
@@ -62,10 +63,6 @@
   pre {
     background-color: var(--color-code-bg);
     color: color-mix(in oklab, var(--color-base-content) 90%, transparent);
-  }
-
-  pre:has(> code) {
-    @apply text-lg;
   }
 
   /* Print styles */
