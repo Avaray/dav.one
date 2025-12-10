@@ -51,7 +51,7 @@ body.extra-styles-enabled {
   }
 
   a:not(.btn) {
-    @apply text-primary font-bold tracking-wider underline decoration-2 underline-offset-4 transition-colors duration-150;
+    @apply text-primary font-bold tracking-wide underline decoration-2 underline-offset-4 transition-colors duration-150;
 
     text-decoration-color: color-mix(
       in srgb,
