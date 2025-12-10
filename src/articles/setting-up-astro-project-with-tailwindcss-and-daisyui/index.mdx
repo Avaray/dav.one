@@ -150,6 +150,8 @@ In this example, four themes are specified. **Cupcake** is the default theme. **
 
 ## 7. Add Typography plugin (optional)
 
+<Alert>Recently I created the [Clampography](https://www.npmjs.com/package/clampography) - an alternative for Tailwind CSS Typography. You might like it.</Alert>
+
 By default, [Tailwind CSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
 To make [Typography](https://tailwindcss-typography.vercel.app/) available in your project, first you need to install package.
 
@@ -165,7 +167,8 @@ export const typography = [
 
 Add plugin in your CSS file.
 
-```
+```css [2]
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 ```
 
