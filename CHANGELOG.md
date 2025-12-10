@@ -4,6 +4,9 @@
 
 - Replaced [Tailwind CSS Typography plugin](https://github.com/tailwindlabs/tailwindcss-typography) with
   [Clampography](https://www.npmjs.com/package/clampography)
+- Replaced logo with a new design due to licensing constraints. The previous logo used a commercial font that required a
+  paid license for sites exceeding 5000 monthly visitors. New font is
+  [Crunchy Time](https://www.dafont.com/crunchy-time.font).
 
 ## 📑 v1 -> v2
 
