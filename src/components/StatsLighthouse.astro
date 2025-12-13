@@ -2,6 +2,7 @@
 import PageSpeedRadial from './StatsLighthouseRadial.astro';
 import { scrapePageSpeedResults } from '@scripts/pagespeed-scraper.js';
 import Icon from '@xtreat/astro-iconify';
+import Alert from './reusables/Alert.astro';
 
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 
@@ -46,6 +47,7 @@ if (isProduction) {
       <span class='hidden md:block'>Google PageSpeed Insights</span>
       <span class='block md:hidden'>PageSpeed Insights</span>
     </div>
+
     <a
       href={report.finalUrl}
       class='hover:text-primary'
@@ -55,6 +57,9 @@ if (isProduction) {
       <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' />
     </a>
   </div>
+  <Alert type='warning'>
+    Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
+  </Alert>
 
   <div class='grid grid-cols-2 sm:grid-cols-4 gap-4 @container'>
     <PageSpeedRadial
