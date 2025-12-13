@@ -39,7 +39,7 @@ body.extra-styles-enabled {
   }
 
   pre {
-    @apply bg-base-300/50 border border-base-content/10 rounded-lg p-4 overflow-x-auto shadow-sm;
+    @apply bg-base-300/50 rounded-lg p-4 overflow-x-auto shadow-sm;
   }
 
   :not(pre) > code {
