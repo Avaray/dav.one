@@ -1,6 +1,7 @@
 ---
 import Head from '@components/Head.astro';
 import Header from './_Header.astro';
+import Readme from './_Readme.astro';
 import TypographyDemo from './_TypographyDemo.astro';
 import Footer from './_Footer.astro';
 
@@ -9,6 +10,14 @@ import './_styles.css';
 const title = 'Clampography';
 const description =
   'Fluid typography system based on CSS clamp() for Tailwind CSS v4. Alternative to Tailwind CSS Typography plugin.';
+
+// const url = `https://registry.npmjs.org/-/package/clampography/dist-tags`;
+// const response = await fetch(url);
+// const data = await response.json();
+// const latestVersion = data.latest;
+
+import pkg from '../../../package.json';
+const version = pkg.dependencies?.clampography?.replace(/^[\^~]/, '') || 'unknown';
 ---
 
 <!doctype html>
@@ -19,30 +28,10 @@ const description =
     <main class='max-w-3xl mx-auto px-6 py-16'>
       <h1 class='text-primary'>
         {title}
+        <small class='text-base-content/50'>v{version}</small>
       </h1>
 
-      <p>
-        Alternative to the official
-        <a href='https://github.com/tailwindlabs/tailwindcss-typography'>Tailwind CSS Typography plugin</a>. Instead of
-        fixed sizes, it uses the CSS
-        <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/clamp'>clamp()</a>
-        function to create fluid typography that adapts to any screen. With
-        <a href='https://caniuse.com/css-math-functions'>94% global browser support</a>, it works on nearly all devices.
-      </p>
-
-      <p>
-        Built for <a href='https://tailwindcss.com/blog/tailwindcss-v4'>Tailwind v4's</a> CSS-first architecture. Zero JavaScript
-        configuration required. Best suited for blogs, documentation, and content-heavy websites.
-      </p>
-
-      <ul>
-        <li><strong>No default styling:</strong> No colors, borders, transforms, or decorations.</li>
-        <li><strong>Structure only:</strong> Manages size, spacing, weight, and font-family.</li>
-        <li>
-          <strong>Smart scaling:</strong> Contextual elements use <code>em</code> (relative), blocks use
-          <code>clamp()</code> (fluid).
-        </li>
-      </ul>
+      <Readme />
 
       <blockquote>
         <b>Note:</b> This package and demo page are under development. Some features may be incomplete or subject to change.
@@ -51,6 +40,7 @@ const description =
       </blockquote>
 
       <TypographyDemo />
+
       <Footer />
     </main>
   </body>

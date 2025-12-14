@@ -1,0 +1,30 @@
+---
+import { marked } from 'marked';
+
+// 1. Fetch the raw Markdown content from GitHub
+const readmeUrl = 'https://raw.githubusercontent.com/Avaray/clampography/main/README.md';
+const response = await fetch(readmeUrl);
+
+if (!response.ok) {
+  throw new Error(`Failed to fetch README: ${response.statusText}`);
+}
+
+const fullMarkdown = await response.text();
+
+// 2. Extract content between the first H1 and "## Installation"
+// Regex Breakdown:
+// ^#\s+[^\n]+       -> Matches the first H1 (starts with #, excludes newline)
+// \n                -> Matches the newline after H1
+// ([\s\S]*?)        -> Captures all content (non-greedy) in group 1
+// (?=\n##\s+Installation) -> Lookahead for the "Installation" H2 (stops capturing before it)
+const extractionRegex = /^#\s+[^\n]+\n([\s\S]*?)(?=\n##\s+Installation)/m;
+const match = fullMarkdown.match(extractionRegex);
+
+// If match found, use captured group 1. Otherwise, fallback or empty string.
+const extractedMarkdown = match ? match[1].trim() : '> Section not found.';
+
+// 3. Convert extracted Markdown to HTML
+const contentHtml = await marked.parse(extractedMarkdown);
+---
+
+<article class='readme-content' set:html={contentHtml} />
