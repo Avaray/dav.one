@@ -47,7 +47,7 @@ body.extra-styles-enabled {
   }
 
   blockquote {
-    @apply border-l-4 border-primary pl-4 italic bg-base-200/20 py-2 pr-2 my-4 rounded-r;
+    @apply border-l-4 border-primary pl-4 italic bg-base-200/20 py-2 pr-2;
   }
 
   a:not(.btn) {
