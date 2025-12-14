@@ -26,10 +26,17 @@ const version = pkg.dependencies?.clampography?.replace(/^[\^~]/, '') || 'unknow
   <body class='bg-base-100 text-base-content transition-colors duration-300'>
     <Header />
     <main class='max-w-3xl mx-auto px-6 py-16'>
-      <h1 class='text-primary'>
-        {title}
-        <small class='text-base-content/50'>v{version}</small>
-      </h1>
+      <div class='flex items-start justify-between select-none'>
+        <!-- Left Div: Heading -->
+        <div>
+          <h1 class='text-primary select-none'>{title}</h1>
+        </div>
+
+        <!-- Right Div: Version (Aligned to top) -->
+        <div class='text-base-100 bg-primary rounded-xl py-0 px-4' title='Version used on this page'>
+          v{version}
+        </div>
+      </div>
 
       <Readme />
 
