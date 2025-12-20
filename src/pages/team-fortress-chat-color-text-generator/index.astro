@@ -1,5 +1,7 @@
 ---
 import Head from '@components/Head.astro';
+import Header from './_Header.astro';
+import Footer from './_Footer.astro';
 import './_styles.css';
 import TF2Editor from './_Editor.jsx';
 
@@ -11,11 +13,9 @@ const description = 'TF2 Colored Text Generator';
 <html lang='en'>
   <Head title={title} description={description} ignoreGlobalStyles />
   <body class='bg-[#0f1014] text-slate-200 min-h-screen font-sans flex flex-col items-center justify-center p-4'>
-    <!-- Montujemy React Component. client:only jest kluczowe! -->
     <TF2Editor client:only='react' />
 
     <style is:global>
-      /* Style dla paska przewijania wewnątrz Reacta */
       .custom-scrollbar::-webkit-scrollbar {
         width: 6px;
       }

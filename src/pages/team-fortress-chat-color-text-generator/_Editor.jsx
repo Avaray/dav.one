@@ -1,6 +1,4 @@
-// src/pages/team-fortress-chat-color-text-generator/_Editor.jsx
-
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { COLOR_PALETTES, serializeEditorContent } from "./serializer.js";
 
 export default function TF2Editor() {
@@ -11,7 +9,7 @@ export default function TF2Editor() {
   const [copyFeedback, setCopyFeedback] = useState(false);
   const [activeHex, setActiveHex] = useState("FFFFFF");
 
-  // Helper do obliczania bajtów
+  // Helper to calculate bytes
   const calculateBytes = useCallback(() => {
     if (!editorRef.current) return;
     const tf2String = serializeEditorContent(editorRef.current);
@@ -20,7 +18,7 @@ export default function TF2Editor() {
   }, []);
 
   // Debounced update function
-  // Używamy useRef, aby zachować timeout ID między renderami
+  // We use useRef to keep timeout ID between renders
   const debounceTimeout = useRef(null);
 
   const handleContentChange = () => {
@@ -33,7 +31,7 @@ export default function TF2Editor() {
     }, 100); // 100ms debounce
   };
 
-  // Oblicz bajty przy załadowaniu
+  // Calculate bytes on load
   useEffect(() => {
     calculateBytes();
     return () => {
@@ -43,11 +41,13 @@ export default function TF2Editor() {
 
   const applyColor = (hex) => {
     setActiveHex(hex);
-    const selection = window.getSelection();
+    const selection = globalThis.getSelection();
     if (!selection.rangeCount) return;
+
     if (editorRef.current) {
       editorRef.current.focus();
     }
+
     document.execCommand("styleWithCSS", false, true);
     document.execCommand("foreColor", false, "#" + hex);
 
@@ -71,13 +71,13 @@ export default function TF2Editor() {
     if (e.key === "Enter") {
       e.preventDefault();
     }
-    // Możemy wywołać update tutaj, jeśli chcemy natychmiastowej reakcji na delete/backspace
-    // ale onInput i tak to obsłuży
+    // We could trigger update here if we want immediate reaction to delete/backspace
+    // but onInput handles that anyway
   };
 
-  const handlePaste = (e) => {
-    // Pozwalamy na wklejenie, ale wymuszamy przeliczenie z małym opóźnieniem,
-    // żeby DOM zdążył się zaktualizować
+  const handlePaste = (_e) => {
+    // Allow paste, but force recalculation with a small delay,
+    // so the DOM has time to update
     setTimeout(calculateBytes, 0);
   };
 
@@ -104,7 +104,7 @@ export default function TF2Editor() {
   };
 
   const renderColorGrid = (category, colors) => {
-    if (category === "Team Paints (Red/Blue)") {
+    if (category === "Team Paints") {
       const reds = colors.filter((c) => c.type === "red");
       const blues = colors.filter((c) => c.type === "blue");
 
@@ -113,6 +113,7 @@ export default function TF2Editor() {
           <div className="flex flex-wrap justify-center gap-1.5 pb-2 border-b border-white/5">
             {reds.map((color) => (
               <button
+                type="button"
                 key={color.hex}
                 onClick={() => applyColor(color.hex)}
                 className="group relative w-8 h-8 rounded-md hover:scale-110 hover:z-10 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#16181d] focus:ring-red-500/50 shadow-sm"
@@ -124,6 +125,7 @@ export default function TF2Editor() {
           <div className="flex flex-wrap justify-center gap-1.5">
             {blues.map((color) => (
               <button
+                type="button"
                 key={color.hex}
                 onClick={() => applyColor(color.hex)}
                 className="group relative w-8 h-8 rounded-md hover:scale-110 hover:z-10 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#16181d] focus:ring-blue-500/50 shadow-sm"
@@ -140,6 +142,7 @@ export default function TF2Editor() {
       <div className="flex flex-wrap justify-center gap-1.5">
         {colors.map((color) => (
           <button
+            type="button"
             key={color.hex}
             onClick={() => applyColor(color.hex)}
             className="group relative w-8 h-8 rounded-md hover:scale-110 hover:z-10 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#16181d] focus:ring-slate-500 shadow-sm"
@@ -162,7 +165,9 @@ export default function TF2Editor() {
             <div className="w-3 h-3 rounded-full bg-slate-600"></div>
             <div className="w-3 h-3 rounded-full bg-slate-600"></div>
           </div>
-          <span className={`text-xs font-mono ${charCount > 127 ? "text-red-500 font-bold" : "text-slate-500"}`}>
+          <span
+            className={`text-xs font-mono ${charCount > 127 ? "text-red-500 font-bold" : "text-slate-500"}`}
+          >
             {charCount}/127 bytes
           </span>
         </div>
@@ -175,13 +180,12 @@ export default function TF2Editor() {
           <div
             ref={editorRef}
             contentEditable
-            // KLUCZOWE ZMIANY EVENTÓW:
-            onInput={handleContentChange} // To łapie każde wpisywanie, usuwanie
-            onPaste={handlePaste} // Specjalna obsługa wklejania
-            onKeyUp={handleContentChange} // Nawigacja strzałkami itp.
-            onMouseUp={handleContentChange} // Zmiana zaznaczenia myszką
+            onInput={handleContentChange}
+            onPaste={handlePaste}
+            onKeyUp={handleContentChange}
+            onMouseUp={handleContentChange}
             onKeyDown={handleKeyDown}
-            className="w-full h-full p-6 outline-none text-slate-200 overflow-auto custom-scrollbar whitespace-pre-wrap break-words"
+            className="w-full h-full p-6 outline-none text-slate-200 overflow-auto custom-scrollbar whitespace-pre-wrap wrap-break-word"
             spellCheck={false}
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           />
@@ -219,6 +223,7 @@ export default function TF2Editor() {
             </div>
 
             <button
+              type="button"
               onClick={removeColor}
               className="px-3 py-1.5 text-xs font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors"
             >
@@ -227,8 +232,9 @@ export default function TF2Editor() {
           </div>
 
           <button
+            type="button"
             onClick={handleCopy}
-            className="w-32 py-2 bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2"
+            className="w-32 py-2 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2"
           >
             <span>{copyFeedback ? "COPIED!" : "COPY TEXT"}</span>
           </button>

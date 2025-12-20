@@ -1,5 +1,3 @@
-// src/scripts/serializer.js
-
 const CONSTANTS = {
   CTRL_COLOR: "\u0007",
   CTRL_ALPHA: "\u0008",
@@ -54,7 +52,6 @@ export function serializeEditorContent(editorRoot) {
   return tf2String;
 }
 
-// --- PEŁNA I ZWERYFIKOWANA PALETA ---
 export const COLOR_PALETTES = {
   "Team Paints (Red/Blue)": [
     // Podstawowe
@@ -76,39 +73,49 @@ export const COLOR_PALETTES = {
     { name: "Air of Debonair (Blue)", hex: "28394D", type: "blue" },
   ],
   "Item Qualities": [
-    { name: "Normal", hex: "B2B2B2" },
-    { name: "Unique", hex: "FFD700" },
-    { name: "Vintage", hex: "476291" },
-    { name: "Genuine", hex: "4D7455" },
-    { name: "Strange", hex: "CF6A32" },
-    { name: "Unusual", hex: "8650AC" },
-    { name: "Haunted", hex: "38F3AB" },
-    { name: "Collector's", hex: "AA0000" },
-    { name: "Community", hex: "70B04A" },
-    { name: "Valve", hex: "A50F79" },
+    // Grey -> Yellow/Orange -> Red -> Purple -> Green
+    { name: "Normal", hex: "B2B2B2" }, // Grey
+    { name: "Unique", hex: "FFD700" }, // Gold
+    { name: "Strange", hex: "CF6A32" }, // Orange
+    { name: "Collector's", hex: "AA0000" }, // Dark Red
+    { name: "Valve", hex: "A50F79" }, // Magenta
+    { name: "Unusual", hex: "8650AC" }, // Purple
+    { name: "Vintage", hex: "476291" }, // Blue
+    { name: "Haunted", hex: "38F3AB" }, // Teal/Cyan
+    { name: "Genuine", hex: "4D7455" }, // Green
+    { name: "Community", hex: "70B04A" }, // Light Green
   ],
   "Standard Paints": [
-    { name: "A Color Similar to Slate", hex: "2F4F4F" },
-    { name: "Indubitably Green", hex: "729E42" },
-    { name: "A Deep Commitment to Purple", hex: "7D4071" },
-    { name: "Mann Co. Orange", hex: "CF7336" },
-    { name: "A Distinctive Lack of Hue", hex: "141414" },
-    { name: "Muskelmannbraun", hex: "A57545" },
-    { name: "A Mann's Mint", hex: "BCDDB3" }, // Dodane
-    { name: "Noble Hatter's Violet", hex: "51384A" },
-    { name: "After Eight", hex: "2D2D24" }, // Dodane
-    { name: "Peculiarly Drab Tincture", hex: "C5AF91" },
-    { name: "Aged Moustache Grey", hex: "7E7E7E" },
-    { name: "Pink as Hell", hex: "FF69B4" },
+    // Grayscale (White -> Black)
     { name: "An Extraordinary Abundance of Tinge", hex: "E6E6E6" },
-    { name: "Radigan Conagher Brown", hex: "694D3A" },
+    { name: "Aged Moustache Grey", hex: "7E7E7E" },
+    { name: "A Color Similar to Slate", hex: "2F4F4F" },
+    { name: "After Eight", hex: "2D2D24" },
+    { name: "A Distinctive Lack of Hue", hex: "141414" },
+
+    // Yellows / Oranges / Browns
     { name: "Australium Gold", hex: "E7B53B" },
-    { name: "The Bitter Taste of Defeat and Lime", hex: "32CD32" },
-    { name: "Color No. 216-190-216", hex: "D8BED8" }, // Dodane
-    { name: "The Color of a Gentlemann's Business Pants", hex: "F0E68C" }, // Dodane
-    { name: "Dark Salmon Injustice", hex: "E9967A" },
-    { name: "Ye Olde Rustic Colour", hex: "7C6C57" }, // Dodane
+    { name: "The Color of a Gentlemann's Business Pants", hex: "F0E68C" },
+    { name: "Muskelmannbraun", hex: "A57545" },
+    { name: "Mann Co. Orange", hex: "CF7336" },
+    { name: "Radigan Conagher Brown", hex: "694D3A" },
+    { name: "Peculiarly Drab Tincture", hex: "C5AF91" },
+    { name: "Ye Olde Rustic Colour", hex: "7C6C57" },
     { name: "Drably Olive", hex: "808000" },
+
+    // Reds / Pinks
+    { name: "Dark Salmon Injustice", hex: "E9967A" },
+    { name: "Pink as Hell", hex: "FF69B4" },
+
+    // Purples
+    { name: "Color No. 216-190-216", hex: "D8BED8" },
+    { name: "A Deep Commitment to Purple", hex: "7D4071" },
+    { name: "Noble Hatter's Violet", hex: "51384A" },
+
+    // Greens
+    { name: "A Mann's Mint", hex: "BCDDB3" },
+    { name: "The Bitter Taste of Defeat and Lime", hex: "32CD32" },
+    { name: "Indubitably Green", hex: "729E42" },
     { name: "Zepheniah's Greed", hex: "424F3B" },
   ],
 };
