@@ -56,6 +56,7 @@ jobs:
           echo "Starting build process..."
           rm -rf dist/
           rm -rf node_modules/.vite
+          sleep 1
           deno task build
           echo "Build completed successfully"
 
