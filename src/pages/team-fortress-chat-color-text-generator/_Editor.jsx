@@ -198,7 +198,7 @@ export default function TF2Editor() {
           />
           {charCount === 0 && (
             <div className="absolute top-6 left-6 text-slate-600 pointer-events-none select-none">
-              Type here... Select text to colorize.
+              Type here... Then select text to colorize.
             </div>
           )}
         </div>
