@@ -104,13 +104,15 @@ export default function TF2Editor() {
   };
 
   const renderColorGrid = (category, colors) => {
-    if (category === "Team Paints") {
+    // Special handling for Team Paints - split into Red and Blue sections
+    if (category === "Team Paints (Red/Blue)") {
       const reds = colors.filter((c) => c.type === "red");
       const blues = colors.filter((c) => c.type === "blue");
 
       return (
         <div className="space-y-3">
-          <div className="flex flex-wrap justify-center gap-1.5 pb-2 border-b border-white/5">
+          {/* RED SECTION */}
+          <div className="flex flex-wrap justify-center gap-1.5 pb-3">
             {reds.map((color) => (
               <button
                 type="button"
@@ -122,7 +124,12 @@ export default function TF2Editor() {
               />
             ))}
           </div>
-          <div className="flex flex-wrap justify-center gap-1.5">
+
+          {/* HORIZONTAL SEPARATOR */}
+          <div className="border-t border-slate-800"></div>
+
+          {/* BLUE SECTION */}
+          <div className="flex flex-wrap justify-center gap-1.5 pt-3">
             {blues.map((color) => (
               <button
                 type="button"
@@ -138,6 +145,7 @@ export default function TF2Editor() {
       );
     }
 
+    // Standard grid for other categories
     return (
       <div className="flex flex-wrap justify-center gap-1.5">
         {colors.map((color) => (
