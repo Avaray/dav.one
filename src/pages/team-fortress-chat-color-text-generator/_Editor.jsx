@@ -105,14 +105,14 @@ export default function TF2Editor() {
 
   const renderColorGrid = (category, colors) => {
     // Special handling for Team Paints - split into Red and Blue sections
-    if (category === "Team Paints (Red/Blue)") {
+    if (category === "Team Paints") {
       const reds = colors.filter((c) => c.type === "red");
       const blues = colors.filter((c) => c.type === "blue");
 
       return (
-        <div className="space-y-3">
+        <>
           {/* RED SECTION */}
-          <div className="flex flex-wrap justify-center gap-1.5 pb-3">
+          <div className="flex justify-center gap-1.5">
             {reds.map((color) => (
               <button
                 type="button"
@@ -125,11 +125,10 @@ export default function TF2Editor() {
             ))}
           </div>
 
-          {/* HORIZONTAL SEPARATOR */}
-          <div className="border-t border-slate-800"></div>
+          <hr className="my-3 border-slate-800" />
 
           {/* BLUE SECTION */}
-          <div className="flex flex-wrap justify-center gap-1.5 pt-3">
+          <div className="flex justify-center gap-1.5">
             {blues.map((color) => (
               <button
                 type="button"
@@ -141,7 +140,7 @@ export default function TF2Editor() {
               />
             ))}
           </div>
-        </div>
+        </>
       );
     }
 
@@ -174,7 +173,7 @@ export default function TF2Editor() {
             <div className="w-3 h-3 rounded-full bg-slate-600"></div>
           </div>
           <span
-            className={`text-xs font-mono ${charCount > 127 ? "text-red-500 font-bold" : "text-slate-500"}`}
+            className={`text-xs font-mono select-none ${charCount > 127 ? "text-red-500 font-bold" : "text-slate-500"}`}
           >
             {charCount}/127 bytes
           </span>
@@ -233,7 +232,7 @@ export default function TF2Editor() {
             <button
               type="button"
               onClick={removeColor}
-              className="px-3 py-1.5 text-xs font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors"
+              className="px-3 py-1.5 text-xs font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors select-none"
             >
               RESET SELECTION
             </button>
@@ -242,7 +241,7 @@ export default function TF2Editor() {
           <button
             type="button"
             onClick={handleCopy}
-            className="w-32 py-2 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2"
+            className="w-32 py-2 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
           >
             <span>{copyFeedback ? "COPIED!" : "COPY TEXT"}</span>
           </button>
@@ -254,7 +253,7 @@ export default function TF2Editor() {
         {Object.entries(COLOR_PALETTES).map(([category, colors]) => (
           <div
             key={category}
-            className="bg-[#16181d] border border-slate-800/50 rounded-lg p-4 hover:border-slate-700 transition-colors flex flex-col h-full"
+            className="bg-[#16181d] border border-slate-800/50 rounded-lg p-4 hover:border-slate-700 transition-colors flex flex-col h-full select-none"
           >
             <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4 text-center border-b border-slate-800 pb-2">
               {category}

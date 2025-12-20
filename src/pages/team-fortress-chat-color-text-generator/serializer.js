@@ -56,7 +56,7 @@ export function serializeEditorContent(editorRoot) {
 
 // --- COLOR PALETTES ---
 export const COLOR_PALETTES = {
-  "Team Paints (Red/Blue)": [
+  "Team Paints": [
     // Base team colors
     { name: "Red Team", hex: "FF4040", type: "red" },
     { name: "Blue Team", hex: "99CCFF", type: "blue" },
