@@ -13,22 +13,8 @@ const description = 'TF2 Colored Text Generator';
 <html lang='en'>
   <Head title={title} description={description} ignoreGlobalStyles />
   <body class='bg-[#0f1014] text-slate-200 min-h-screen font-sans flex flex-col items-center justify-center p-4'>
+    <!-- <Header /> -->
     <TF2Editor client:only='react' />
-
-    <style is:global>
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 10px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-    </style>
+    <Footer />
   </body>
 </html>
