@@ -1,12 +1,10 @@
 // src/pages/colorizer.js
 
 export const COLOR_PALETTES = {
-  "Teams & Basic": [
+  "Team Colors": [
     { name: "Red Team", hex: "FF4040" },
     { name: "Blue Team", hex: "99CCFF" },
-    { name: "Spec Green", hex: "3EFF3E" },
-    { name: "Low Health", hex: "FF3232" },
-    { name: "Credits", hex: "43CB56" },
+    { name: "Spectator", hex: "3EFF3E" },
   ],
   "Item Qualities": [
     { name: "Normal", hex: "B2B2B2" },
@@ -43,6 +41,10 @@ export const COLOR_PALETTES = {
     { name: "Cream Spirit (Red)", hex: "C36C2D" },
     { name: "Cream Spirit (Blue)", hex: "B88035" },
   ],
+  "HUD & Misc": [
+    { name: "Low Health", hex: "FF3232" },
+    { name: "Credits Green", hex: "43CB56" },
+  ],
 };
 
 const CONSTANTS = {
@@ -57,53 +59,78 @@ const CONSTANTS = {
 export function processText(raw) {
   if (!raw) return "";
 
-  // THE MAGIC FORMAT: \x07 + "color!" + \x07 + HEX
-  // This adds exactly 14 chars (1+6+1+6) for standard colors
-  // and 16 chars (1+6+1+8) for alpha colors.
-
-  // Standard Hex: {#RRGGBB}
+  // Format: \x07 + "color!" + \x07 + HEX
   let tf2String = raw.replace(/{#([0-9A-Fa-f]{6})}/g, (match, hex) => {
     return CONSTANTS.CTRL_COLOR + "color!" + CONSTANTS.CTRL_COLOR + hex.toUpperCase();
   });
 
-  // Alpha Hex: {#RRGGBBAA}
   tf2String = tf2String.replace(/{#([0-9A-Fa-f]{8})}/g, (match, hex) => {
     return CONSTANTS.CTRL_ALPHA + "color!" + CONSTANTS.CTRL_ALPHA + hex.toUpperCase();
   });
 
-  // Reset: {reset} -> \x01
   tf2String = tf2String.replace(/{reset}/g, CONSTANTS.CTRL_RESET);
-
   return tf2String;
 }
 
-export function generateHtmlPreview(raw) {
-  if (!raw) return '<span class="text-slate-600 italic">Preview your text here...</span>';
+// Improved Syntax Highlighting
+export function generateHighlighting(raw) {
+  if (!raw) return "<br>"; // Return break if empty to maintain height
 
-  let html = raw
+  // 1. Escape HTML
+  let safeRaw = raw
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-  html = html.replace(/{#([0-9A-Fa-f]{6})}/g, (match, hex) => {
-    return `</span><span style="color: #${hex}; text-shadow: 1px 1px 0 #000;">`;
+  // 2. Tokenize
+  // We split by color tags but keep them in the array
+  const parts = safeRaw.split(/({#[0-9A-Fa-f]{6,8}}|{reset})/g);
+
+  let html = "";
+  let currentColor = null; // null means default color
+
+  parts.forEach((part) => {
+    if (!part) return;
+
+    const hexMatch = part.match(/{#([0-9A-Fa-f]{6,8})}/);
+    const resetMatch = part.match(/{reset}/);
+
+    if (hexMatch) {
+      // This is a TAG -> Render it DIMMED
+      html += `<span class="text-slate-600 font-normal select-none opacity-50">${part}</span>`;
+      // Set current color for SUBSEQUENT text
+      currentColor = hexMatch[1].substring(0, 6);
+    } else if (resetMatch) {
+      // This is a RESET TAG -> Render it DIMMED
+      html += `<span class="text-slate-600 font-normal select-none opacity-50">${part}</span>`;
+      currentColor = null;
+    } else {
+      // This is TEXT CONTENT
+      if (currentColor) {
+        // Colorized text
+        // Adding text-shadow helps visibility on dark backgrounds
+        html +=
+          `<span style="color: #${currentColor}; text-shadow: 0 0 2px rgba(0,0,0,0.5); font-weight: bold;">${part}</span>`;
+      } else {
+        // Default text (White/Grey)
+        html += `<span class="text-slate-200">${part}</span>`;
+      }
+    }
   });
 
-  html = html.replace(/{#([0-9A-Fa-f]{8})}/g, (match, hex) => {
-    const color = hex.substring(0, 6);
-    return `</span><span style="color: #${color}; opacity: 0.7; text-shadow: 1px 1px 0 #000;">`;
-  });
+  // Handle trailing newline for textarea sync
+  if (raw.endsWith("\n")) {
+    html += "<br>&nbsp;";
+  }
 
-  html = html.replace(/{reset}/g, `</span><span class="text-slate-200" style="text-shadow: none;">`);
-
-  return `<span>${html}</span>`;
+  return html;
 }
 
-// --- INIT & ROBUST COPY ---
+// --- INIT ---
 
 export function initColorizer() {
   const input = document.getElementById("input-text");
-  const preview = document.getElementById("preview-box");
+  const backdrop = document.getElementById("editor-backdrop");
   const charCount = document.getElementById("char-count");
   const copyBtn = document.getElementById("copy-btn");
   const feedback = document.getElementById("copy-feedback");
@@ -127,21 +154,29 @@ export function initColorizer() {
     const text = input.value;
     const processed = processText(text);
 
-    if (preview) preview.innerHTML = generateHtmlPreview(text);
+    // Update visuals
+    if (backdrop) backdrop.innerHTML = generateHighlighting(text);
 
     const byteLength = new Blob([processed]).size;
-
     if (charCount) {
-      charCount.textContent = `${byteLength} / ${CONSTANTS.CHAR_LIMIT} bytes`;
-      const isOverLimit = byteLength > CONSTANTS.CHAR_LIMIT;
-      charCount.className = isOverLimit
-        ? "text-xs font-mono font-bold text-red-500"
-        : "text-xs font-mono text-slate-500";
+      charCount.textContent = `${byteLength}/127`;
+      charCount.className = byteLength > 127 ? "font-mono font-bold text-red-500" : "font-mono text-slate-500";
+    }
+  };
+
+  // Sync Scroll
+  const syncScroll = () => {
+    if (backdrop) {
+      backdrop.scrollTop = input.scrollTop;
+      backdrop.scrollLeft = input.scrollLeft;
     }
   };
 
   input.addEventListener("input", updateState);
+  input.addEventListener("scroll", syncScroll);
+  new ResizeObserver(syncScroll).observe(input);
 
+  // Palette Clicks
   document.querySelectorAll(".js-color-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const hex = e.currentTarget.dataset.hex;
@@ -156,38 +191,32 @@ export function initColorizer() {
     insertTag(`{#${hex}}`);
   });
 
+  // Copy Logic
   copyBtn?.addEventListener("click", () => {
     const text = input.value;
     const payload = processText(text);
 
-    // Fallback copy mechanism for raw bytes preservation
     const textArea = document.createElement("textarea");
     textArea.value = payload;
     textArea.style.position = "fixed";
     textArea.style.left = "-9999px";
-    textArea.style.top = "0";
     document.body.appendChild(textArea);
-
     textArea.focus();
     textArea.select();
 
     try {
-      const successful = document.execCommand("copy");
-      if (successful) {
-        if (feedback) {
-          feedback.innerText = "Copied! Ready for TF2.";
-          feedback.classList.remove("opacity-0");
-          setTimeout(() => feedback.classList.add("opacity-0"), 3000);
-        }
-      } else {
-        throw new Error("execCommand returned false");
+      document.execCommand("copy");
+      if (feedback) {
+        feedback.classList.remove("opacity-0");
+        setTimeout(() => feedback.classList.add("opacity-0"), 2000);
       }
     } catch (err) {
-      console.error("Copy failed", err);
+      console.error(err);
     }
 
     document.body.removeChild(textArea);
   });
 
+  // Initial Run
   updateState();
 }
