@@ -25,21 +25,6 @@ jobs:
           set -e
           deno install --allow-scripts
 
-      - name: Cache Deno dependencies
-        uses: actions/cache@v5
-        with:
-          path: |
-            ~/.cache/deno
-            ~/.deno
-          key: deno-${{ runner.os }}-${{ hashFiles('deno.lock') }}
-          restore-keys: |
-            deno-${{ runner.os }}-
-
-      - name: Pre-install npm dependencies
-        run: |
-          set -e
-          deno cache --allow-scripts npm:astro npm:react npm:react-dom
-
       - name: Cache Playwright browsers
         uses: actions/cache@v5
         with:
@@ -66,7 +51,6 @@ jobs:
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
           PRODUCTION_BUILD: ${{ env.PRODUCTION_BUILD }}
-          DENO_NO_UPDATE_CHECK: 1
         run: |
           set -e
           echo "Starting build process..."
