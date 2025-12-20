@@ -112,7 +112,7 @@ export default function TF2Editor() {
       return (
         <>
           {/* RED SECTION */}
-          <div className="flex justify-center gap-1.5">
+          <div className="flex flex-wrap justify-center gap-1.5">
             {reds.map((color) => (
               <button
                 type="button"
@@ -128,7 +128,7 @@ export default function TF2Editor() {
           <hr className="my-3 border-slate-800" />
 
           {/* BLUE SECTION */}
-          <div className="flex justify-center gap-1.5">
+          <div className="flex flex-wrap justify-center gap-1.5">
             {blues.map((color) => (
               <button
                 type="button"
