@@ -20,7 +20,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^5.16.5",
+    "astro": "^5.16.6",
     "astro-minify-html-swc": "^0.1.10",
     "clampography": "^0.9.9",
     "marked": "^17.0.1",
@@ -30,7 +30,7 @@
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "unist-util-visit": "^5.0.0",
-    "vite": "^7.2.7"
+    "vite": "^7.3.0"
   },
   "devDependencies": {
     "daisyui": "^5.5.14",
