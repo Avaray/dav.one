@@ -17,3 +17,14 @@ button {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Custom selection colors - white background, preserve text color */
+.editor-selection::selection {
+  background-color: white;
+  color: inherit;
+}
+
+.editor-selection *::selection {
+  background-color: white;
+  color: inherit;
+}
