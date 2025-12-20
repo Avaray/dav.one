@@ -124,11 +124,6 @@ jobs:
           echo "Disallow: /" >> ./dist/robots.txt
           echo "robots.txt created successfully for non-production branch."
 
-      - name: Install Wrangler
-        run: |
-          set -e
-          deno install --global --allow-scripts npm:wrangler@latest
-
       - name: Deploy Website to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
