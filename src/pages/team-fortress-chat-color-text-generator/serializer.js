@@ -1,4 +1,4 @@
-// src/scripts/tf2-serializer.js
+// src/scripts/serializer.js
 
 const CONSTANTS = {
   CTRL_COLOR: "\u0007",
@@ -30,11 +30,9 @@ export function serializeEditorContent(editorRoot) {
       const colorRaw = parentStyle.color;
       const hex = rgbToHex(colorRaw);
 
-      // Kolory uznawane za "domyślne" (czyli brak tagu koloru)
-      const isDefault = hex === "E2E8F0" || hex === "FFFFFF" || hex === "CCCCCC" || hex === "94A3B8"; // Slate-200, White, Grey, Slate-400
+      const isDefault = hex === "E2E8F0" || hex === "FFFFFF" || hex === "CCCCCC" || hex === "94A3B8";
 
       if (hex && !isDefault && hex !== lastColor) {
-        // Double Tag Format
         tf2String += CONSTANTS.CTRL_COLOR + "color!" + CONSTANTS.CTRL_COLOR + hex;
         lastColor = hex;
       } else if ((isDefault || !hex) && lastColor !== null) {
@@ -56,15 +54,26 @@ export function serializeEditorContent(editorRoot) {
   return tf2String;
 }
 
-// --- PEŁNA PALETA KOLORÓW TF2 ---
+// --- PEŁNA I ZWERYFIKOWANA PALETA ---
 export const COLOR_PALETTES = {
-  "Team & Basics": [
-    { name: "Red Team", hex: "FF4040" },
-    { name: "Blue Team", hex: "99CCFF" },
-    { name: "Spectator", hex: "3EFF3E" },
-    { name: "Critical Hit", hex: "A0FF28" },
-    { name: "Low Health", hex: "FF3232" },
-    { name: "Credits", hex: "43CB56" },
+  "Team Paints (Red/Blue)": [
+    // Podstawowe
+    { name: "Red Team", hex: "FF4040", type: "red" },
+    { name: "Blue Team", hex: "99CCFF", type: "blue" },
+    // Team Paints (Red)
+    { name: "Team Spirit (Red)", hex: "B8383B", type: "red" },
+    { name: "Balaclavas (Red)", hex: "3B1F23", type: "red" },
+    { name: "Value of Teamwork (Red)", hex: "803020", type: "red" },
+    { name: "Cream Spirit (Red)", hex: "C36C2D", type: "red" },
+    { name: "Waterlogged Lab Coat (Red)", hex: "A89A8C", type: "red" },
+    { name: "Air of Debonair (Red)", hex: "654740", type: "red" },
+    // Team Paints (Blue)
+    { name: "Team Spirit (Blue)", hex: "5885A2", type: "blue" },
+    { name: "Balaclavas (Blue)", hex: "18233D", type: "blue" },
+    { name: "Value of Teamwork (Blue)", hex: "256D8D", type: "blue" },
+    { name: "Cream Spirit (Blue)", hex: "B88035", type: "blue" },
+    { name: "Waterlogged Lab Coat (Blue)", hex: "839FA3", type: "blue" },
+    { name: "Air of Debonair (Blue)", hex: "28394D", type: "blue" },
   ],
   "Item Qualities": [
     { name: "Normal", hex: "B2B2B2" },
@@ -79,35 +88,27 @@ export const COLOR_PALETTES = {
     { name: "Valve", hex: "A50F79" },
   ],
   "Standard Paints": [
-    { name: "Australium Gold", hex: "E7B53B" },
-    { name: "Pink as Hell", hex: "FF69B4" },
-    { name: "Lack of Hue", hex: "141414" },
-    { name: "Abundance of Tinge", hex: "E6E6E6" },
-    { name: "Dark Salmon Injustice", hex: "E9967A" },
+    { name: "A Color Similar to Slate", hex: "2F4F4F" },
     { name: "Indubitably Green", hex: "729E42" },
+    { name: "A Deep Commitment to Purple", hex: "7D4071" },
     { name: "Mann Co. Orange", hex: "CF7336" },
-    { name: "Noble Hatter's Violet", hex: "51384A" },
-    { name: "Deep Commitment to Purple", hex: "7D4071" },
-    { name: "Taste of Defeat and Lime", hex: "32CD32" },
-    { name: "Zepheniah's Greed", hex: "424F3B" },
-    { name: "Drably Olive", hex: "808000" },
+    { name: "A Distinctive Lack of Hue", hex: "141414" },
     { name: "Muskelmannbraun", hex: "A57545" },
+    { name: "A Mann's Mint", hex: "BCDDB3" }, // Dodane
+    { name: "Noble Hatter's Violet", hex: "51384A" },
+    { name: "After Eight", hex: "2D2D24" }, // Dodane
     { name: "Peculiarly Drab Tincture", hex: "C5AF91" },
-    { name: "Radigan Conagher Brown", hex: "694D3A" },
     { name: "Aged Moustache Grey", hex: "7E7E7E" },
-  ],
-  "Team Paints (Red/Blue)": [
-    { name: "Team Spirit (Red)", hex: "B8383B" },
-    { name: "Team Spirit (Blue)", hex: "5885A2" },
-    { name: "Balaclavas (Red)", hex: "3B1F23" },
-    { name: "Balaclavas (Blue)", hex: "18233D" },
-    { name: "Value of Teamwork (Red)", hex: "803020" },
-    { name: "Value of Teamwork (Blue)", hex: "256D8D" },
-    { name: "Cream Spirit (Red)", hex: "C36C2D" },
-    { name: "Cream Spirit (Blue)", hex: "B88035" },
-    { name: "Waterlogged Lab Coat (Red)", hex: "A89A8C" },
-    { name: "Waterlogged Lab Coat (Blue)", hex: "839FA3" },
-    { name: "Air of Debonair (Red)", hex: "654740" },
-    { name: "Air of Debonair (Blue)", hex: "28394D" },
+    { name: "Pink as Hell", hex: "FF69B4" },
+    { name: "An Extraordinary Abundance of Tinge", hex: "E6E6E6" },
+    { name: "Radigan Conagher Brown", hex: "694D3A" },
+    { name: "Australium Gold", hex: "E7B53B" },
+    { name: "The Bitter Taste of Defeat and Lime", hex: "32CD32" },
+    { name: "Color No. 216-190-216", hex: "D8BED8" }, // Dodane
+    { name: "The Color of a Gentlemann's Business Pants", hex: "F0E68C" }, // Dodane
+    { name: "Dark Salmon Injustice", hex: "E9967A" },
+    { name: "Ye Olde Rustic Colour", hex: "7C6C57" }, // Dodane
+    { name: "Drably Olive", hex: "808000" },
+    { name: "Zepheniah's Greed", hex: "424F3B" },
   ],
 };
