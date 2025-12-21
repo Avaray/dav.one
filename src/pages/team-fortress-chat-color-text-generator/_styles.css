@@ -20,11 +20,11 @@ button {
 
 /* Custom selection colors - white background, preserve text color */
 .editor-selection::selection {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
   color: inherit;
 }
 
 .editor-selection *::selection {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
   color: inherit;
 }
