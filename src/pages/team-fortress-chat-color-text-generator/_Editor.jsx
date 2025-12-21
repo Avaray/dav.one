@@ -10,6 +10,7 @@ export default function TF2Editor() {
   const [activeHex, setActiveHex] = useState("FFFFFF");
   const [history, setHistory] = useState([]);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   // Helper to calculate bytes
   const calculateBytes = useCallback(() => {
@@ -195,6 +196,15 @@ export default function TF2Editor() {
       console.error(err);
     }
     document.body.removeChild(textArea);
+  };
+
+  // Restore from history to editor
+  const restoreFromHistory = (html) => {
+    if (editorRef.current) {
+      editorRef.current.innerHTML = html;
+      editorRef.current.focus();
+      calculateBytes();
+    }
   };
 
   const renderColorGrid = (category, colors) => {
@@ -394,6 +404,26 @@ export default function TF2Editor() {
                       />
                       <button
                         type="button"
+                        onClick={() => restoreFromHistory(entry.html)}
+                        className="shrink-0 w-8 h-8 flex items-center justify-center bg-slate-700 hover:bg-slate-600 rounded shadow-md hover:shadow-slate-500/20 active:translate-y-0.5 transition-all"
+                        title="Restore to editor"
+                      >
+                        <svg
+                          className="w-4 h-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => copyFromHistory(entry.payload)}
                         className="shrink-0 w-8 h-8 flex items-center justify-center bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 rounded shadow-md hover:shadow-orange-500/20 active:translate-y-0.5 transition-all"
                         title="Copy to clipboard"
@@ -420,12 +450,52 @@ export default function TF2Editor() {
         )}
       </div>
 
-      <footer className="text-center pt-8 opacity-50 hover:opacity-100 transition-opacity">
-        <p className="text-xs text-slate-500">
-          Works in <span className="text-slate-300">Team Chat</span> and{" "}
-          <span className="text-slate-300">Dead Chat</span>.
-        </p>
-      </footer>
+      {/* --- ABOUT & USAGE SECTION --- */}
+      <div className="bg-[#16181d] border border-slate-800/50 rounded-lg overflow-hidden">
+        <button
+          type="button"
+          onClick={() => setAboutOpen(!aboutOpen)}
+          className="w-full px-4 py-3 flex items-center justify-between hover:bg-slate-800/30 transition-colors"
+        >
+          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+            Usage & About
+          </h3>
+          <svg
+            className={`w-4 h-4 text-slate-500 transition-transform ${aboutOpen ? "rotate-180" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        {aboutOpen && (
+          <div className="border-t border-slate-800/50 p-6 space-y-4 text-sm text-slate-400">
+            <div>
+              <h3 className="text-slate-300 font-bold mb-2">How to Use</h3>
+              <ol className="list-decimal list-inside space-y-1.5 ml-2">
+                <li>Type your message in the editor</li>
+                <li>Select the part of the text you want to colorize</li>
+                <li>Click on a color from the palettes below, or use the color picker</li>
+                <li>Click "COPY TEXT" to copy the formatted text</li>
+                <li>
+                  Paste it in TF2 chat <b>when you are dead</b>. Round of the game cannot be finished.
+                </li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 className="text-slate-300 font-bold mb-2">Inspiration</h3>
+              <p>
+                The main inspiration for this project was{" "}
+                <a href="https://sourcecolors.neocities.org/" class="underline">this website</a>. The idea was to create
+                something more pleasant to use.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
