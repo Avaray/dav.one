@@ -480,7 +480,8 @@ export default function TF2Editor() {
                 <li>Click on a color from the palettes below, or use the color picker</li>
                 <li>Click "COPY TEXT" to copy the formatted text</li>
                 <li>
-                  Paste it in TF2 chat <b>when you are dead</b>. Round of the game cannot be finished.
+                  Paste it in TF2 chat <b>when you are dead</b>{" "}
+                  (during preparation time or the active round; round of the game cannot be finished)
                 </li>
               </ol>
             </div>
