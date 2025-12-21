@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+@import 'clampography';
+
+@theme {
+  --breakpoint-xl2: 1400px;
+}
 
 button {
   cursor: pointer;
