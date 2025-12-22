@@ -37,6 +37,23 @@ export default function ColorPalettes({ applyColor }) {
       );
     }
 
+    if (category === "Item Qualities") {
+      return (
+        <div className="grid grid-cols-5 gap-1.5 place-content-center">
+          {colors.map((color) => (
+            <button
+              type="button"
+              key={color.hex}
+              onClick={() => applyColor(color.hex)}
+              className="group relative w-8 h-8 rounded-md hover:scale-110 hover:z-10 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#16181d] focus:ring-slate-500 shadow-sm"
+              style={{ backgroundColor: `#${color.hex}` }}
+              title={color.name}
+            />
+          ))}
+        </div>
+      );
+    }
+
     return (
       <div className="flex flex-wrap justify-center gap-1.5">
         {colors.map((color) => (
@@ -54,11 +71,13 @@ export default function ColorPalettes({ applyColor }) {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
       {Object.entries(COLOR_PALETTES).map(([category, colors]) => (
         <div
           key={category}
-          className="bg-[#16181d] border border-slate-800/50 rounded-lg p-4 hover:border-slate-700 transition-colors flex flex-col h-full select-none"
+          className={`bg-[#16181d] border border-slate-800/50 rounded-lg p-4 hover:border-slate-700 transition-colors flex flex-col h-full select-none ${
+            category === "Standard Paints" ? "md:col-span-2" : "md:col-span-1"
+          }`}
         >
           <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 text-center border-b border-slate-800 pb-2">
             {category}

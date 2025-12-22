@@ -14,6 +14,8 @@ export default function HistoryFavourites({
 }) {
   const [showConfirmHistory, setShowConfirmHistory] = useState(false);
   const [showConfirmFavourites, setShowConfirmFavourites] = useState(false);
+  const [scriptSelection, setScriptSelection] = useState([]);
+  const [scriptCopied, setScriptCopied] = useState(false);
 
   const displayItems = activeTab === "history" ? history : favourites;
   const MAX_ENTRIES = 100;
@@ -32,6 +34,7 @@ export default function HistoryFavourites({
       setShowConfirmHistory(false);
     } else {
       clearAllFavourites();
+      setScriptSelection([]); // Clear selection when clearing favourites
       setShowConfirmFavourites(false);
     }
   };
@@ -46,6 +49,50 @@ export default function HistoryFavourites({
   // Check if entry is in favourites
   const isInFavourites = (entryId) => {
     return favourites.some((fav) => fav.id === entryId);
+  };
+
+  // Toggle selection for script generation
+  const toggleScriptSelection = (entryId) => {
+    setScriptSelection((prev) => {
+      if (prev.includes(entryId)) {
+        return prev.filter((id) => id !== entryId);
+      } else {
+        return [...prev, entryId];
+      }
+    });
+  };
+
+  // Generate and copy TF2 script
+  const handleCopyScript = () => {
+    if (scriptSelection.length === 0) return;
+
+    // Filter favourites to get selected items in order
+    // We map over 'favourites' to preserve the order they appear in the list
+    const selectedItems = favourites.filter((fav) => scriptSelection.includes(fav.id));
+
+    if (selectedItems.length === 0) return;
+
+    // Generate script lines
+    // alias "msg1" "say Wiadomosc 1; bind o msg2"
+    // ...
+    // alias "msgN" "say Wiadomosc N; bind o msg1"
+
+    const scriptLines = selectedItems.map((item, index) => {
+      const currentAlias = `msg${index + 1}`;
+      const nextAlias = `msg${index + 1 === selectedItems.length ? 1 : index + 2}`;
+      // Clean payload: remove newlines and escape quotes if necessary (basic escaping)
+      const message = item.payload.replace(/"/g, "'").replace(/\n/g, " ");
+
+      return `alias "${currentAlias}" "say ${message}; bind o ${nextAlias}"`;
+    });
+
+    // MODIFICATION: Join with newline character instead of space
+    const script = scriptLines.join("\n");
+
+    navigator.clipboard.writeText(script).then(() => {
+      setScriptCopied(true);
+      setTimeout(() => setScriptCopied(false), 2000);
+    });
   };
 
   return (
@@ -75,11 +122,50 @@ export default function HistoryFavourites({
           >
             Favourites ({favourites.length}/{MAX_ENTRIES})
           </button>
+
+          {/* Script Copy Button (Only for Favourites) */}
+          {activeTab === "favourites" && displayItems.length > 0 && (
+            <button
+              type="button"
+              onClick={handleCopyScript}
+              disabled={scriptSelection.length === 0}
+              // MODIFICATION: Added 'relative' and fixed width to prevent layout shift
+              className={`relative px-4 py-3 transition-colors border-l border-slate-800/50 w-[53px] flex items-center justify-center ${
+                scriptSelection.length > 0
+                  ? "text-green-500 hover:bg-green-900/20 cursor-pointer"
+                  : "text-slate-700 cursor-not-allowed"
+              }`}
+              title={scriptCopied ? "Copied!" : "Copy TF2 Loop Script (Select items first)"}
+            >
+              {/* MODIFICATION: Absolute positioning for feedback to not affect layout */}
+              <span
+                className={`absolute inset-0 flex items-center justify-center font-bold text-[10px] transition-opacity duration-200 ${
+                  scriptCopied ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                COPIED
+              </span>
+              <svg
+                className={`w-5 h-5 transition-opacity duration-200 ${scriptCopied ? "opacity-0" : "opacity-100"}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </button>
+          )}
+
           {displayItems.length > 0 && (
             <button
               type="button"
               onClick={handleClearAll}
-              className="px-4 py-3 text-slate-500 hover:text-red-400 hover:bg-slate-800/20 transition-colors"
+              className="px-4 py-3 text-slate-500 hover:text-red-400 hover:bg-slate-800/20 transition-colors border-l border-slate-800/50"
               title={`Clear all ${activeTab}`}
             >
               <svg
@@ -110,15 +196,29 @@ export default function HistoryFavourites({
               </div>
             )
             : (
-              <div className="divide-y divide-slate-800/50">
+              <div>
                 {displayItems.map((entry) => {
                   const isFavourited = activeTab === "history" ? isInFavourites(entry.id) : true;
+                  const isSelected = scriptSelection.includes(entry.id);
 
                   return (
                     <div
                       key={entry.id}
-                      className="p-4 hover:bg-slate-800/20 transition-colors flex items-center gap-3"
+                      // MODIFICATION: 'items-center' ensures vertical centering of checkbox
+                      className="p-4 hover:bg-slate-800/20 transition-colors flex items-center gap-3 border-b border-slate-800/50 last:border-0"
                     >
+                      {/* Checkbox for Script Selection (Only in Favourites) */}
+                      {activeTab === "favourites" && (
+                        <div className="shrink-0 flex items-center">
+                          <input
+                            type="checkbox"
+                            checked={isSelected}
+                            onChange={() => toggleScriptSelection(entry.id)}
+                            className="w-5 h-5 rounded border-slate-600 bg-slate-800/50 text-orange-600 focus:ring-orange-500 focus:ring-offset-0 cursor-pointer accent-orange-600"
+                          />
+                        </div>
+                      )}
+
                       <div
                         className="flex-1 font-mono overflow-hidden"
                         dangerouslySetInnerHTML={{ __html: entry.html }}
