@@ -26,7 +26,7 @@ export function serializeEditorContent(editorRoot) {
 
   const traverse = (node) => {
     if (node.nodeType === Node.TEXT_NODE) {
-      const parentStyle = window.getComputedStyle(node.parentElement);
+      const parentStyle = globalThis.getComputedStyle(node.parentElement);
       const colorRaw = parentStyle.color;
       const hex = rgbToHex(colorRaw);
 
