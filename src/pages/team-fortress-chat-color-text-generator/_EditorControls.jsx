@@ -15,7 +15,7 @@ export default function EditorControls({
         {/* Color Picker Button */}
         <div
           onClick={triggerColorPicker}
-          className="relative group cursor-pointer flex items-center justify-center gap-2 px-3 py-1.5 bg-black/40 rounded border border-slate-700 hover:border-slate-500 transition-colors select-none"
+          className="relative group cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-black/40 rounded border border-slate-700 hover:border-slate-500 transition-colors select-none"
         >
           <div
             className="w-4 h-4 rounded-full border border-white/10 shadow-sm transition-colors duration-300"
@@ -30,7 +30,7 @@ export default function EditorControls({
             value={`#${activeHex}`}
             onChange={(e) => applyColor(e.target.value.replace("#", "").toUpperCase())}
           />
-          <span className="font-bold text-slate-400 group-hover:text-slate-200 transition-colors uppercase tracking-wide">
+          <span className=" font-bold text-slate-400 group-hover:text-slate-200 transition-colors uppercase tracking-wide">
             Color Picker
           </span>
         </div>
