@@ -318,7 +318,7 @@ export default function TF2Editor() {
         </div>
 
         {/* Right Section (History/Favourites) - 40% */}
-        <div className="h-[600px] xl2:h-auto xl2:sticky xl2:top-0">
+        <div className="max-h-[1024px] xl2:max-h-[calc(100vh-2rem)] xl2:sticky xl2:top-0">
           <HistoryFavourites
             activeTab={activeTab}
             setActiveTab={setActiveTab}
