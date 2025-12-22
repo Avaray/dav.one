@@ -30,7 +30,7 @@ export default function EditorControls({
             value={`#${activeHex}`}
             onChange={(e) => applyColor(e.target.value.replace("#", "").toUpperCase())}
           />
-          <span className="text-[10px] font-bold text-slate-400 group-hover:text-slate-200 transition-colors uppercase tracking-wide">
+          <span className=" font-bold text-slate-400 group-hover:text-slate-200 transition-colors uppercase tracking-wide">
             Color Picker
           </span>
         </div>
@@ -38,7 +38,7 @@ export default function EditorControls({
         <button
           type="button"
           onClick={removeColor}
-          className="px-3 py-1.5 text-[10px] font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors select-none uppercase tracking-wide"
+          className="px-3 py-1.5 font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors select-none uppercase tracking-wide"
         >
           Reset Color
         </button>
@@ -50,7 +50,7 @@ export default function EditorControls({
           onClick={toggleFavourite}
           className={`w-10 h-10 flex items-center justify-center rounded shadow-md active:translate-y-0.5 transition-all ${
             isFavourite
-              ? "bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
+              ? "bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
               : "bg-slate-700 hover:bg-slate-600 hover:shadow-slate-500/20"
           }`}
           title={isFavourite ? "Remove from favourites" : "Add to favourites"}
@@ -73,7 +73,7 @@ export default function EditorControls({
         <button
           type="button"
           onClick={handleCopy}
-          className="w-32 py-2 bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
+          className="w-32 py-2 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
         >
           <span>{copyFeedback ? "COPIED!" : "COPY TEXT"}</span>
         </button>

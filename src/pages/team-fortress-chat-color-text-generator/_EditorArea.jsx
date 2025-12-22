@@ -95,7 +95,7 @@ export default function EditorArea({
             onClick={toggleFavourite}
             className={`w-10 h-10 flex items-center justify-center rounded shadow-md active:translate-y-0.5 transition-all ${
               isFavourite
-                ? "bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
+                ? "bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
                 : "bg-slate-700 hover:bg-slate-600 hover:shadow-slate-500/20"
             }`}
             title={isFavourite ? "Remove from favourites" : "Add to favourites"}
@@ -118,7 +118,7 @@ export default function EditorArea({
           <button
             type="button"
             onClick={handleCopy}
-            className="w-32 h-10 bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
+            className="w-32 h-10 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
           >
             <span>{copyFeedback ? "COPIED!" : "COPY TEXT"}</span>
           </button>

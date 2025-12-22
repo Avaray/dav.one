@@ -10,7 +10,7 @@ export default function AboutSection() {
         onClick={() => setAboutOpen(!aboutOpen)}
         className="w-full px-4 py-3 flex items-center justify-between hover:bg-slate-800/30 transition-colors"
       >
-        <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+        <p className=" text-slate-500 tracking-wider">
           Usage & About
         </p>
         <svg

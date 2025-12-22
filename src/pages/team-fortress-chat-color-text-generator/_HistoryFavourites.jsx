@@ -49,7 +49,7 @@ export default function HistoryFavourites({
 
   return (
     <>
-      <div className="bg-[#16181d] border border-slate-800/50 rounded-lg overflow-hidden flex flex-col h-full">
+      <div className="bg-[#16181d] border border-slate-800/50 rounded-lg overflow-hidden flex flex-col max-h-256 xl2:max-h-[calc(100vh-2rem)]">
         {/* Tab Headers with Delete Button */}
         <div className="flex items-center border-b border-slate-800/50 shrink-0">
           <button
@@ -99,7 +99,7 @@ export default function HistoryFavourites({
         </div>
 
         {/* Content - Scrollable */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar">
+        <div className="flex-1 overflow-y-auto custom-scrollbar min-h-0">
           {displayItems.length === 0
             ? (
               <div className="p-8 text-center text-slate-600 text-sm">
@@ -127,7 +127,7 @@ export default function HistoryFavourites({
                         onClick={() => toggleFavouriteEntry(entry.id, isFavourited)}
                         className={`shrink-0 w-8 h-8 flex items-center justify-center rounded shadow-md active:translate-y-0.5 transition-all ${
                           isFavourited
-                            ? "bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
+                            ? "bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
                             : "bg-slate-700 hover:bg-slate-600 hover:shadow-slate-500/20"
                         }`}
                         title={isFavourited ? "Remove from favourites" : "Add to favourites"}
@@ -169,7 +169,7 @@ export default function HistoryFavourites({
                       <button
                         type="button"
                         onClick={() => copyFromHistory(entry.payload)}
-                        className="shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 rounded shadow-md hover:shadow-orange-500/20 active:translate-y-0.5 transition-all"
+                        className="shrink-0 w-8 h-8 flex items-center justify-center bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 rounded shadow-md hover:shadow-orange-500/20 active:translate-y-0.5 transition-all"
                         title="Copy to clipboard"
                       >
                         <svg
@@ -201,8 +201,8 @@ export default function HistoryFavourites({
             <h3 className="text-lg font-bold text-slate-200 mb-3">Confirm Deletion</h3>
             <p className="text-sm text-slate-400 mb-6">
               {activeTab === "history"
-                ? "Are you sure you want to clear all history entries? Favourites will remain accessible in the Favourites tab. This action cannot be undone."
-                : "Are you sure you want to clear all favourites? This action cannot be undone."}
+                ? "Do you really want to delete entire history?"
+                : "Do you really want to delete entire list of your favourites?"}
             </p>
             <div className="flex gap-3">
               <button
@@ -210,7 +210,7 @@ export default function HistoryFavourites({
                 onClick={confirmClear}
                 className="flex-1 px-4 py-2 text-sm font-bold bg-red-700 text-white rounded hover:bg-red-600 transition-colors uppercase tracking-wide"
               >
-                Yes, Clear All
+                Yes, Delete All
               </button>
               <button
                 type="button"
