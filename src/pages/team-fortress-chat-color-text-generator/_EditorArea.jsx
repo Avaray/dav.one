@@ -60,7 +60,7 @@ export default function EditorArea({
           {/* Color Picker Button */}
           <div
             onClick={triggerColorPicker}
-            className="relative group cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-black/40 rounded border border-slate-700 hover:border-slate-500 transition-colors select-none"
+            className="relative group cursor-pointer flex items-center gap-2 px-3 h-10 bg-black/40 rounded border border-slate-700 hover:border-slate-500 transition-colors select-none"
           >
             <div
               className="w-4 h-4 rounded-full border border-white/10 shadow-sm transition-colors duration-300"
@@ -83,7 +83,7 @@ export default function EditorArea({
           <button
             type="button"
             onClick={removeColor}
-            className="px-3 py-1.5 text-[10px] font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors select-none uppercase tracking-wide"
+            className="px-3 h-10 text-[10px] font-bold bg-slate-800 text-slate-400 rounded hover:bg-slate-700 border border-transparent hover:border-slate-600 transition-colors select-none uppercase tracking-wide"
           >
             Reset Color
           </button>
@@ -118,7 +118,7 @@ export default function EditorArea({
           <button
             type="button"
             onClick={handleCopy}
-            className="w-32 py-2 bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
+            className="w-32 h-10 bg-gradient-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
           >
             <span>{copyFeedback ? "COPIED!" : "COPY TEXT"}</span>
           </button>

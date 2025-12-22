@@ -26,9 +26,9 @@ export default function TF2Editor() {
 
     // Check if current content is in favourites
     const currentHtml = editorRef.current.innerHTML;
-    const isFav = history.some((entry) => entry.html === currentHtml && entry.isFavourite);
+    const isFav = favourites.some((entry) => entry.html === currentHtml);
     setCurrentEntryIsFavourite(isFav);
-  }, [history]);
+  }, [favourites]);
 
   // Debounced update function
   const debounceTimeout = useRef(null);
@@ -49,13 +49,17 @@ export default function TF2Editor() {
 
     try {
       const savedHistory = localStorage.getItem("tf2-history");
+      const savedFavourites = localStorage.getItem("tf2-favourites");
+
       if (savedHistory) {
-        const parsedHistory = JSON.parse(savedHistory);
-        setHistory(parsedHistory);
-        setFavourites(parsedHistory.filter((entry) => entry.isFavourite));
+        setHistory(JSON.parse(savedHistory));
+      }
+
+      if (savedFavourites) {
+        setFavourites(JSON.parse(savedFavourites));
       }
     } catch (error) {
-      console.error("Failed to load history:", error);
+      console.error("Failed to load data:", error);
     }
 
     return () => {
@@ -63,17 +67,21 @@ export default function TF2Editor() {
     };
   }, []);
 
-  // Update favourites when history changes
-  useEffect(() => {
-    setFavourites(history.filter((entry) => entry.isFavourite));
-  }, [history]);
-
   // Save history to localStorage
   const saveHistory = (newHistory) => {
     try {
       localStorage.setItem("tf2-history", JSON.stringify(newHistory));
     } catch (error) {
       console.error("Failed to save history:", error);
+    }
+  };
+
+  // Save favourites to localStorage
+  const saveFavourites = (newFavourites) => {
+    try {
+      localStorage.setItem("tf2-favourites", JSON.stringify(newFavourites));
+    } catch (error) {
+      console.error("Failed to save favourites:", error);
     }
   };
 
@@ -121,59 +129,70 @@ export default function TF2Editor() {
 
     if (!payload.trim()) return;
 
-    const existingIndex = history.findIndex((entry) => entry.html === currentHtml);
+    const existingFavIndex = favourites.findIndex((entry) => entry.html === currentHtml);
 
-    if (existingIndex !== -1) {
-      // Toggle existing entry
-      const newHistory = [...history];
-      newHistory[existingIndex].isFavourite = !newHistory[existingIndex].isFavourite;
-      setHistory(newHistory);
-      saveHistory(newHistory);
-      setCurrentEntryIsFavourite(newHistory[existingIndex].isFavourite);
+    if (existingFavIndex !== -1) {
+      // Remove from favourites
+      const newFavourites = favourites.filter((_, index) => index !== existingFavIndex);
+      setFavourites(newFavourites);
+      saveFavourites(newFavourites);
+      setCurrentEntryIsFavourite(false);
     } else {
-      // Add new entry as favourite
+      // Add to favourites
       const newEntry = {
         id: Date.now(),
         payload: payload,
         html: currentHtml,
         timestamp: new Date().toISOString(),
-        isFavourite: true,
       };
-      const newHistory = [newEntry, ...history].slice(0, 100);
-      setHistory(newHistory);
-      saveHistory(newHistory);
+      const newFavourites = [newEntry, ...favourites].slice(0, 100);
+      setFavourites(newFavourites);
+      saveFavourites(newFavourites);
       setCurrentEntryIsFavourite(true);
     }
   };
 
-  const toggleFavouriteEntry = (entryId) => {
-    const newHistory = history.map((entry) =>
-      entry.id === entryId ? { ...entry, isFavourite: !entry.isFavourite } : entry
-    );
-    setHistory(newHistory);
-    saveHistory(newHistory);
+  const toggleFavouriteEntry = (entryId, currentlyInFavourites) => {
+    if (currentlyInFavourites) {
+      // Remove from favourites
+      const newFavourites = favourites.filter((entry) => entry.id !== entryId);
+      setFavourites(newFavourites);
+      saveFavourites(newFavourites);
+    } else {
+      // Find in history and add to favourites
+      const entryToAdd = history.find((entry) => entry.id === entryId);
+      if (entryToAdd) {
+        const newFavourites = [entryToAdd, ...favourites].slice(0, 100);
+        setFavourites(newFavourites);
+        saveFavourites(newFavourites);
+      }
+    }
 
     // Update current entry favourite status if it matches
     if (editorRef.current) {
       const currentHtml = editorRef.current.innerHTML;
-      const updatedEntry = newHistory.find((e) => e.id === entryId);
-      if (updatedEntry && updatedEntry.html === currentHtml) {
-        setCurrentEntryIsFavourite(updatedEntry.isFavourite);
+      if (currentlyInFavourites) {
+        const removedEntry = favourites.find((e) => e.id === entryId);
+        if (removedEntry && removedEntry.html === currentHtml) {
+          setCurrentEntryIsFavourite(false);
+        }
+      } else {
+        const addedEntry = history.find((e) => e.id === entryId);
+        if (addedEntry && addedEntry.html === currentHtml) {
+          setCurrentEntryIsFavourite(true);
+        }
       }
     }
   };
 
   const clearAllHistory = () => {
-    const newHistory = [];
-    setHistory(newHistory);
-    saveHistory(newHistory);
-    setCurrentEntryIsFavourite(false);
+    setHistory([]);
+    saveHistory([]);
   };
 
   const clearAllFavourites = () => {
-    const newHistory = history.map((entry) => ({ ...entry, isFavourite: false }));
-    setHistory(newHistory);
-    saveHistory(newHistory);
+    setFavourites([]);
+    saveFavourites([]);
     setCurrentEntryIsFavourite(false);
   };
 
@@ -226,7 +245,6 @@ export default function TF2Editor() {
           payload: payload,
           html: htmlContent,
           timestamp: new Date().toISOString(),
-          isFavourite: currentEntryIsFavourite,
         };
         newHistory = [newEntry, ...history].slice(0, 100);
       }
@@ -269,11 +287,11 @@ export default function TF2Editor() {
   };
 
   return (
-    <div className="w-full max-w-[1920px] mx-auto space-y-6 px-4">
-      {/* Main Layout - 2:1 ratio at xl2 breakpoint */}
-      <div className="flex flex-col xl2:grid xl2:grid-cols-3 xl2:items-start gap-6">
-        {/* Left Section (Editor + Color Palettes) - Takes 2 columns */}
-        <div className="xl2:col-span-2 space-y-6">
+    <div className="w-full h-full max-w-[1920px] mx-auto overflow-y-auto custom-scrollbar p-4">
+      {/* Main Layout - 60/40 ratio at xl2 breakpoint */}
+      <div className="flex flex-col xl2:grid xl2:grid-cols-[3fr_2fr] gap-6">
+        {/* Left Section (Editor + Color Palettes) - 60% */}
+        <div className="space-y-6">
           <EditorArea
             editorRef={editorRef}
             charCount={charCount}
@@ -299,8 +317,8 @@ export default function TF2Editor() {
           </div>
         </div>
 
-        {/* Right Section (History/Favourites) - Takes 1 column */}
-        <div className="xl2:col-span-1">
+        {/* Right Section (History/Favourites) - 40% */}
+        <div className="h-[600px] xl2:h-auto xl2:sticky xl2:top-0">
           <HistoryFavourites
             activeTab={activeTab}
             setActiveTab={setActiveTab}
@@ -316,7 +334,7 @@ export default function TF2Editor() {
       </div>
 
       {/* About Section - Shows here on small screens (below xl2) */}
-      <div className="xl2:hidden">
+      <div className="xl2:hidden mt-6">
         <AboutSection />
       </div>
     </div>
