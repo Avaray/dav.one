@@ -73,7 +73,7 @@ export default function EditorControls({
         <button
           type="button"
           onClick={handleCopy}
-          className="w-32 py-2 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold text-sm rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
+          className="w-32 py-2 bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded shadow-lg hover:shadow-orange-500/20 active:translate-y-0.5 transition-all flex justify-center items-center gap-2 select-none"
         >
           <span>{copyFeedback ? "COPIED!" : "COPY TEXT"}</span>
         </button>

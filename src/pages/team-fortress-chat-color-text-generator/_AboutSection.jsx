@@ -24,7 +24,7 @@ export default function AboutSection() {
       </button>
 
       {aboutOpen && (
-        <div className="border-t border-slate-800/50 p-6 space-y-4 text-sm text-slate-400">
+        <div className="border-t border-slate-800/50 p-6 space-y-4 text-slate-400">
           <div>
             <p className="text-slate-300 font-bold mb-2">How to Use</p>
             <ol className="">

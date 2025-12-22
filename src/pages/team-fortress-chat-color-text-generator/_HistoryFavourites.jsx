@@ -102,7 +102,7 @@ export default function HistoryFavourites({
         <div className="flex-1 overflow-y-auto custom-scrollbar min-h-0">
           {displayItems.length === 0
             ? (
-              <div className="p-8 text-center text-slate-600 text-sm">
+              <div className="p-8 text-center text-slate-600">
                 {activeTab === "history"
                   ? "No history yet. Copy some text to get started!"
                   : "No favourites yet. Star some entries to save them!"}
@@ -119,7 +119,7 @@ export default function HistoryFavourites({
                       className="p-4 hover:bg-slate-800/20 transition-colors flex items-center gap-3"
                     >
                       <div
-                        className="flex-1 font-mono text-sm overflow-hidden"
+                        className="flex-1 font-mono overflow-hidden"
                         dangerouslySetInnerHTML={{ __html: entry.html }}
                       />
                       <button
@@ -198,8 +198,10 @@ export default function HistoryFavourites({
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[#16181d] border border-slate-800 rounded-lg p-6 max-w-md w-full shadow-2xl">
-            <h3 className="text-lg font-bold text-slate-200 mb-3">Confirm Deletion</h3>
-            <p className="text-sm text-slate-400 mb-6">
+            <h3 className="text-lg font-bold text-slate-200 mb-3">
+              Confirm {activeTab === "history" ? "History" : "Favourites"} Deletion
+            </h3>
+            <p className="text-slate-400 mb-6">
               {activeTab === "history"
                 ? "Do you really want to delete entire history?"
                 : "Do you really want to delete entire list of your favourites?"}
@@ -208,14 +210,14 @@ export default function HistoryFavourites({
               <button
                 type="button"
                 onClick={confirmClear}
-                className="flex-1 px-4 py-2 text-sm font-bold bg-red-700 text-white rounded hover:bg-red-600 transition-colors uppercase tracking-wide"
+                className="flex-1 px-4 py-2 font-bold bg-red-700 text-white rounded hover:bg-red-600 transition-colors uppercase tracking-wide"
               >
                 Yes, Delete All
               </button>
               <button
                 type="button"
                 onClick={cancelClear}
-                className="flex-1 px-4 py-2 text-sm font-bold bg-slate-700 text-slate-300 rounded hover:bg-slate-600 transition-colors uppercase tracking-wide"
+                className="flex-1 px-4 py-2 font-bold bg-slate-700 text-slate-300 rounded hover:bg-slate-600 transition-colors uppercase tracking-wide"
               >
                 Cancel
               </button>
