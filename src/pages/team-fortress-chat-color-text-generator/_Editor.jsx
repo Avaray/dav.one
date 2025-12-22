@@ -185,6 +185,23 @@ export default function TF2Editor() {
     }
   };
 
+  const deleteEntry = (entryId, fromFavourites) => {
+    if (fromFavourites) {
+      const newFavourites = favourites.filter((entry) => entry.id !== entryId);
+      setFavourites(newFavourites);
+      saveFavourites(newFavourites);
+    } else {
+      const newHistory = history.filter((entry) => entry.id !== entryId);
+      setHistory(newHistory);
+      saveHistory(newHistory);
+
+      // Also remove from favourites if it exists there
+      const newFavourites = favourites.filter((entry) => entry.id !== entryId);
+      setFavourites(newFavourites);
+      saveFavourites(newFavourites);
+    }
+  };
+
   const clearAllHistory = () => {
     setHistory([]);
     saveHistory([]);
@@ -327,6 +344,7 @@ export default function TF2Editor() {
             restoreFromHistory={restoreFromHistory}
             copyFromHistory={copyFromHistory}
             toggleFavouriteEntry={toggleFavouriteEntry}
+            deleteEntry={deleteEntry}
             clearAllHistory={clearAllHistory}
             clearAllFavourites={clearAllFavourites}
           />

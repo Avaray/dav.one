@@ -8,6 +8,7 @@ export default function HistoryFavourites({
   restoreFromHistory,
   copyFromHistory,
   toggleFavouriteEntry,
+  deleteEntry,
   clearAllHistory,
   clearAllFavourites,
 }) {
@@ -55,7 +56,7 @@ export default function HistoryFavourites({
           <button
             type="button"
             onClick={() => setActiveTab("history")}
-            className={`flex-1 px-4 py-3 text-xs font-bold uppercase tracking-widest transition-colors ${
+            className={`flex-1 px-4 py-3 text-xs uppercase tracking-widest transition-colors ${
               activeTab === "history"
                 ? "bg-slate-800/30 text-slate-300 border-b-2 border-orange-500"
                 : "text-slate-500 hover:bg-slate-800/20"
@@ -66,7 +67,7 @@ export default function HistoryFavourites({
           <button
             type="button"
             onClick={() => setActiveTab("favourites")}
-            className={`flex-1 px-4 py-3 text-xs font-bold uppercase tracking-widest transition-colors ${
+            className={`flex-1 px-4 py-3 text-xs uppercase tracking-widest transition-colors ${
               activeTab === "favourites"
                 ? "bg-slate-800/30 text-slate-300 border-b-2 border-orange-500"
                 : "text-slate-500 hover:bg-slate-800/20"
@@ -148,6 +149,26 @@ export default function HistoryFavourites({
                       </button>
                       <button
                         type="button"
+                        onClick={() => deleteEntry(entry.id, activeTab === "favourites")}
+                        className="shrink-0 w-8 h-8 flex items-center justify-center bg-red-900/20 hover:bg-red-900/30 rounded shadow-md hover:shadow-red-500/20 active:translate-y-0.5 transition-all border border-red-800/50 hover:border-red-700"
+                        title="Delete entry"
+                      >
+                        <svg
+                          className="w-4 h-4 text-red-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => restoreFromHistory(entry.html)}
                         className="shrink-0 w-8 h-8 flex items-center justify-center bg-slate-700 hover:bg-slate-600 rounded shadow-md hover:shadow-slate-500/20 active:translate-y-0.5 transition-all"
                         title="Restore to editor"
@@ -198,7 +219,7 @@ export default function HistoryFavourites({
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[#16181d] border border-slate-800 rounded-lg p-6 max-w-md w-full shadow-2xl">
-            <h3 className="text-lg font-bold text-slate-200 mb-3">
+            <h3 className="text-slate-200 mb-3">
               Confirm {activeTab === "history" ? "History" : "Favourites"} Deletion
             </h3>
             <p className="text-slate-400 mb-6">
@@ -210,14 +231,14 @@ export default function HistoryFavourites({
               <button
                 type="button"
                 onClick={confirmClear}
-                className="flex-1 px-4 py-2 font-bold bg-red-700 text-white rounded hover:bg-red-600 transition-colors uppercase tracking-wide"
+                className="flex-1 px-4 py-2 bg-red-700 text-white rounded hover:bg-red-600 transition-colors uppercase tracking-wide"
               >
                 Yes, Delete All
               </button>
               <button
                 type="button"
                 onClick={cancelClear}
-                className="flex-1 px-4 py-2 font-bold bg-slate-700 text-slate-300 rounded hover:bg-slate-600 transition-colors uppercase tracking-wide"
+                className="flex-1 px-4 py-2 bg-slate-700 text-slate-300 rounded hover:bg-slate-600 transition-colors uppercase tracking-wide"
               >
                 Cancel
               </button>
