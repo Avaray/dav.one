@@ -32,7 +32,7 @@ export default function EditorArea({
 
       {/* EDITOR AREA */}
       <div
-        className="relative h-32 w-full text-lg font-mono leading-relaxed bg-[#16181d] cursor-text"
+        className="relative h-32 w-full font-mono leading-relaxed bg-[#16181d] cursor-text"
         onClick={() => editorRef.current?.focus()}
       >
         <div
