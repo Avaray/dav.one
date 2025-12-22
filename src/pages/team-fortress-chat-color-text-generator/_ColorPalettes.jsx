@@ -7,8 +7,6 @@ export default function ColorPalettes({ applyColor }) {
       const blues = colors.filter((c) => c.type === "blue");
 
       return (
-        /* 1. Use flex-col to stack groups vertically */
-        /* 2. Use gap-1.5 to match the horizontal gap inside the groups */
         <div className="flex flex-col gap-1.5">
           <div className="flex flex-wrap justify-center gap-1.5">
             {reds.map((color) => (
@@ -22,8 +20,6 @@ export default function ColorPalettes({ applyColor }) {
               />
             ))}
           </div>
-
-          {/* REMOVED: <hr className="my-3 border-slate-800" /> */}
 
           <div className="flex flex-wrap justify-center gap-1.5">
             {blues.map((color) => (
