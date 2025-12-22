@@ -287,7 +287,7 @@ export default function TF2Editor() {
   };
 
   return (
-    <div className="w-full h-full max-w-[1920px] mx-auto overflow-y-auto custom-scrollbar p-4">
+    <div className="w-full h-full max-w-480 mx-auto overflow-y-auto custom-scrollbar p-4">
       {/* Main Layout - 60/40 ratio at xl2 breakpoint */}
       <div className="flex flex-col xl2:grid xl2:grid-cols-[3fr_2fr] gap-6">
         {/* Left Section (Editor + Color Palettes) - 60% */}
