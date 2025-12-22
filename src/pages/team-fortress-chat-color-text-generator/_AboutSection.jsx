@@ -28,13 +28,13 @@ export default function AboutSection() {
           <div>
             <p className="text-slate-300 font-bold mb-2">How to Use</p>
             <ol className="">
-              <li>Type your message in the editor</li>
-              <li>Select the part of the text you want to colorize</li>
-              <li>Click on a color from the palettes below, or use the color picker</li>
-              <li>Click "COPY TEXT" to copy the formatted text</li>
+              <li>Type your message in the editor.</li>
+              <li>Select the part of the text you want to colorize.</li>
+              <li>Click on a color from the palettes, or use the color picker.</li>
+              <li>Click "COPY TEXT" button to copy the formatted text to your clipboard.</li>
               <li>
                 Paste it in TF2 chat <b>when you are dead</b>{" "}
-                (during preparation time or the active round; round of the game cannot be finished)
+                (during preparation time or the active round; round of the game cannot be finished).
               </li>
             </ol>
           </div>
