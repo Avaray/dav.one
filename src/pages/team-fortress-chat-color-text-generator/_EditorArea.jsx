@@ -15,7 +15,7 @@ export default function EditorArea({
   copyFeedback,
 }) {
   return (
-    <div className="relative w-full bg-[#16181d] border border-slate-800 rounded-xl shadow-2xl overflow-hidden group">
+    <div className="relative w-full border border-slate-800 rounded-xl overflow-hidden group">
       {/* Top Bar */}
       <div className="flex justify-between items-center px-4 py-3 bg-[#1e2026] border-b border-slate-800">
         <div className="flex gap-2 opacity-50">
