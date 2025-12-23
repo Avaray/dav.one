@@ -50,7 +50,7 @@ export default function HistoryFavourites({
 
   return (
     <>
-      <div className="bg-[#16181d] border border-slate-800/50 rounded-lg overflow-hidden flex flex-col max-h-256 xl2:max-h-[calc(100vh-2rem)] min-h-[246px]">
+      <div className="bg-[#16181d] border border-slate-800/50 rounded-xl overflow-hidden flex flex-col max-h-256 xl2:max-h-[calc(100vh-2rem)]">
         {/* Tab Headers with Delete Button */}
         <div className="flex items-center border-b border-slate-800/50 shrink-0">
           <button
