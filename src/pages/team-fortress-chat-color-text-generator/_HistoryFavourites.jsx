@@ -103,7 +103,7 @@ export default function HistoryFavourites({
         <div className="flex-1 overflow-y-auto custom-scrollbar min-h-0">
           {displayItems.length === 0
             ? (
-              <div className="p-8 text-center text-slate-600">
+              <div className="p-4 text-center text-slate-600">
                 {activeTab === "history"
                   ? "No history yet. Copy some text to get started!"
                   : "No favourites yet. Star some entries to save them!"}
