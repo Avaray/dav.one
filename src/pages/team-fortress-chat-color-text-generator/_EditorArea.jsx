@@ -24,7 +24,7 @@ export default function EditorArea({
           <div className="w-3 h-3 rounded-full bg-slate-600"></div>
         </div>
         <span
-          className={`text-xs font-mono select-none ${charCount > 127 ? "text-red-500 font-bold" : "text-slate-500"}`}
+          className={`font-mono select-none ${charCount > 127 ? "text-red-500 font-bold" : "text-slate-500"}`}
         >
           {charCount}/127 bytes
         </span>

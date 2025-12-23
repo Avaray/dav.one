@@ -50,7 +50,7 @@ export default function HistoryFavourites({
 
   return (
     <>
-      <div className="bg-[#16181d] border border-slate-800/50 rounded-lg overflow-hidden flex flex-col max-h-256 xl2:max-h-[calc(100vh-2rem)]">
+      <div className="bg-[#16181d] border border-slate-800/50 rounded-lg overflow-hidden flex flex-col max-h-256 xl2:max-h-[calc(100vh-2rem)] min-h-[246px]">
         {/* Tab Headers with Delete Button */}
         <div className="flex items-center border-b border-slate-800/50 shrink-0">
           <button
@@ -112,7 +112,7 @@ export default function HistoryFavourites({
             : (
               <div className="divide-y divide-slate-800/50">
                 {displayItems.map((entry) => {
-                  const isFavourited = activeTab === "history" ? isInFavourites(entry.id) : true;
+                  const isFavourited = isInFavourites(entry.id);
 
                   return (
                     <div
@@ -123,30 +123,33 @@ export default function HistoryFavourites({
                         className="flex-1 font-mono overflow-hidden"
                         dangerouslySetInnerHTML={{ __html: entry.html }}
                       />
-                      <button
-                        type="button"
-                        onClick={() => toggleFavouriteEntry(entry.id, isFavourited)}
-                        className={`shrink-0 w-8 h-8 flex items-center justify-center rounded shadow-md active:translate-y-0.5 transition-all ${
-                          isFavourited
-                            ? "bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
-                            : "bg-slate-700 hover:bg-slate-600 hover:shadow-slate-500/20"
-                        }`}
-                        title={isFavourited ? "Remove from favourites" : "Add to favourites"}
-                      >
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill={isFavourited ? "currentColor" : "none"}
-                          stroke="currentColor"
-                          strokeWidth={isFavourited ? 0 : 2}
-                          viewBox="0 0 24 24"
+                      {/* Show favourite button only in history tab */}
+                      {activeTab === "history" && (
+                        <button
+                          type="button"
+                          onClick={() => toggleFavouriteEntry(entry.id, isFavourited)}
+                          className={`shrink-0 w-8 h-8 flex items-center justify-center rounded shadow-md active:translate-y-0.5 transition-all ${
+                            isFavourited
+                              ? "bg-linear-to-r from-orange-700 to-orange-600 hover:from-orange-600 hover:to-orange-500 hover:shadow-orange-500/20"
+                              : "bg-slate-700 hover:bg-slate-600 hover:shadow-slate-500/20"
+                          }`}
+                          title={isFavourited ? "Remove from favourites" : "Add to favourites"}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-                          />
-                        </svg>
-                      </button>
+                          <svg
+                            className="w-4 h-4 text-white"
+                            fill={isFavourited ? "currentColor" : "none"}
+                            stroke="currentColor"
+                            strokeWidth={isFavourited ? 0 : 2}
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                            />
+                          </svg>
+                        </button>
+                      )}
                       <button
                         type="button"
                         onClick={() => deleteEntry(entry.id, activeTab === "favourites")}
