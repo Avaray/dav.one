@@ -1,4 +1,4 @@
-import type { Oklab, P3, RGB } from "./_elotypes.ts";
+import type { Oklab, P3, RGB } from "./_Types.ts";
 
 export const hexToRgb = (hex: string): RGB | null => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
