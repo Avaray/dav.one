@@ -12,7 +12,7 @@
     "npm:astro-minify-html-swc@~0.1.10": "0.1.10",
     "npm:astro@*": "5.16.6_vite@6.4.1__picomatch@4.0.3_zod@3.25.76",
     "npm:astro@^5.16.6": "5.16.6_vite@6.4.1__picomatch@4.0.3_zod@3.25.76",
-    "npm:clampography@~0.9.9": "0.9.9",
+    "npm:clampography@~0.9.10": "0.9.10",
     "npm:daisyui@^5.5.14": "5.5.14",
     "npm:marked@^17.0.1": "17.0.1",
     "npm:playwright@*": "1.57.0",
@@ -1709,8 +1709,8 @@
     "ci-info@4.3.1": {
       "integrity": "sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA=="
     },
-    "clampography@0.9.9": {
-      "integrity": "sha512-S2gkKCTEetAAKBrpC8/9OftMm0z8M/5etabk7WAXOUlA8RhovMtiDgE4tJ+0GnZ3f8CF/3SToVYFHAs2sLEPJQ=="
+    "clampography@0.9.10": {
+      "integrity": "sha512-3NgRh3j3qNyekSaW5ANmoO7dBW7AAl9S4jnQEgdIS7INaM/SLicUyQDkUrc1kv5UpoDAFjt/q8jtu1lzJXnGlw=="
     },
     "cli-boxes@3.0.0": {
       "integrity": "sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g=="
@@ -4058,7 +4058,7 @@
         "npm:@xtreat/astro-iconify@^1.2.7",
         "npm:astro-minify-html-swc@~0.1.10",
         "npm:astro@^5.16.6",
-        "npm:clampography@~0.9.9",
+        "npm:clampography@~0.9.10",
         "npm:daisyui@^5.5.14",
         "npm:marked@^17.0.1",
         "npm:playwright@^1.57.0",
