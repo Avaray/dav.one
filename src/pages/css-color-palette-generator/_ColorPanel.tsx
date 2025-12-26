@@ -46,6 +46,7 @@ export const ColorPanel: React.FC<ColorPanelProps> = ({
       style={{ backgroundColor: color }}
     >
       <button
+        type="button"
         onClick={() => onToggleLock(index)}
         className="p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-colors mb-4"
         style={{ color: textColor, opacity: isLocked ? 1 : 0.7 }}
