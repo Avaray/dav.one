@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "daisyui": "^5.5.14",
-    "unocss": "^66.5.10"
+    "unocss": "^66.5.11"
   }
 }
