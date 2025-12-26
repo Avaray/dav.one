@@ -150,27 +150,55 @@ Nothing can stop me now.
 [End]
 ```
 
+## Part 4: The Developer's Cheat Sheet (Advanced Troubleshooting)
 
----
+Even with perfect prompts, AI generation is probabilistic. Sometimes it ignores your commands or hallucinates vocals. Here is a troubleshooting guide for when the model disobeys your tags.
 
-## Part 4: The AI Producer's Library (Further Learning)
+### 1. Debugging Structure: The "Start" and "Stop" Problem
+Suno v5 sometimes struggles to begin or end cleanly.
+*   **The Ignored Intro:** A plain `[Intro]` tag is often skipped by the AI. Always qualify it with an instrument or texture to force the generation.
+    *   *Bad:* `[Intro]`
+    *   *Good:* `[Intro: Solo Cello]` or `[Intro: Distorted Bass Line]`
+*   **The Never-Ending Song:** If the AI refuses to stop singing at the end, stack your tags. Using multiple "stop" commands in a row acts like a hard interrupt.
+    *   *The "Kill Switch":*
+        ```
+        [Outro]
+        (Fading out...)
+        [Big Finish]
+        [End]
+        ```
 
-To write better prompts, you need to understand the language of music. These resources will help.
+### 2. Vocal Engineering: Phonetics and Flow
+When the standard spelling fails, you need to "code" the pronunciation.
+*   **Phonetic Spelling:** If Suno mispronounces a word, spell it exactly how it sounds.
+    *   *Example:* Change "The aesthetics of the night" to "The ess-thet-ics of the night".
+*   **The Hyphen Hack (Flow Control):** As mentioned in Part 1, hyphens are your speed controller.
+    *   *Standard:* "I am running fast" (The AI might pause: "I am... running fast").
+    *   *Hyphenated:* "I-am-running-fast" (Forces a rapid-fire, legato delivery useful for Rap or fast DnB).
+*   **The "Ad-Lib" Fix:** If you want background vocals but the AI keeps ignoring them, try using different brackets.
+    *   Standard `(Yeah)` usually works.
+    *   If that fails, try `[Backing Vocals: Yeah!]` to force a layer change.
 
-### 📚 Books (The Foundations)
-1.  **"Music Theory for Electronic Music Producers" – Dr. J. Anthony Allen**
-    *   The bible for producers. It explains theory in the language of a DAW (piano roll), not sheet music. Helps you understand how to request harmony (e.g., *Minor Key* for sadness).
-2.  **"Making Music: 74 Creative Strategies" – Dennis DeSantis (Ableton)**
-    *   A book about arranging and problem-solving. It helps you understand why a song needs a `[Bridge]` and how to overcome creative blocks [web:85].
+### 3. Preventing Hallucinations (Phantom Vocals)
+One of the most common bugs in v5 is the AI singing during an instrumental section.
+*   **The "Empty" Bracket:** Never leave a long instrumental section purely empty in the lyrics box. The AI "panics" and tries to fill the silence with gibberish.
+*   **The Fix:** Give it a "null" command. Place descriptive tags every 4-8 bars to keep the AI focused on the music.
+    ```
+    [Instrumental Interlude]
+    (Synth Solo)
+    ...
+    (Drums intensify)
+    ...
+    [Break]
+    ```
 
-### 🎥 YouTube Channels
-3.  **EDMProd (Tension & Release)**
-    *   Search for their videos on building energy. You'll understand why a "Drop" only works if it's preceded by a "Build-up" [web:48].
-4.  **Signals Music Studio**
-    *   Brilliantly explains complex concepts (like modes) in a simple way. This will help you choose adjectives for your style prompt (e.g., *Lydian Mode* for a "spacey" vibe).
+### 4. The "Negative Prompting" Logic
+Suno doesn't have a specific "Negative Prompt" box (like Midjourney), but you can achieve it through "Exclusionary Adjectives."
+*   **The Muddy Mix Fix:** If your track is too chaotic, don't ask for *more* clarity; ask for *less* clutter.
+    *   Instead of "High Fidelity, Clear Mix", try **"Sparse," "Minimalist,"** or **"Dry Production."**
+    *   This forces the AI to remove reverb and background noise, effectively cleaning up the frequency spectrum.
 
-### 🌐 Online Articles & Tools
-5.  **"The 4 Elements of Texture in Music" (Splice Blog)**
-    *   Learn how to manage the "density" of your track [web:50].
-6.  **Learning Music (Ableton)**
-    *   A free, interactive website where you can see and click on rhythms, melodies, and structures. The best hands-on course online.
+### 5. Context Extension (The "Clip Stitching" Strategy)
+If you are generating a song in parts (extending clips), the **last 10 seconds** of the previous clip dictate the future.
+*   **The Cliffhanger:** Never end a clip right *after* the Drop or Chorus finishes.
+*   **The Strategy:** End your clip during the `[Build-up]` or `[Pre-Chorus]`. When you click "Extend," the AI knows the only logical next step is the `[Drop]`. This creates seamless transitions and prevents the AI from getting confused about where it is in the song structure.
