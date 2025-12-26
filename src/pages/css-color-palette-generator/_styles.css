@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@import 'clampography';
+
+body {
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+}
