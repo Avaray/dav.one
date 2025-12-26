@@ -15,25 +15,16 @@ interface ColorPanelProps {
 const LockIcon: React.FC<{ locked: boolean }> = ({ locked }) => {
   if (locked) {
     return (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-        />
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="5" y="11" width="14" height="10" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     );
   }
-
   return (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
-      />
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="5" y="11" width="14" height="10" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 9.9-1" />
     </svg>
   );
 };
@@ -51,28 +42,20 @@ export const ColorPanel: React.FC<ColorPanelProps> = ({
 
   return (
     <div
-      className="flex-1 relative group"
+      className="flex-1 flex flex-col justify-between p-6"
       style={{ backgroundColor: color }}
     >
-      <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        <button
-          type="button"
-          onClick={() => onToggleLock(index)}
-          className="p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-colors mb-4"
-          style={{ color: textColor }}
-        >
-          <LockIcon locked={isLocked} />
-        </button>
-
-        <div
-          className="px-4 py-2 rounded-lg bg-black/30 backdrop-blur-sm text-sm font-mono"
-          style={{ color: textColor }}
-        >
+      <button
+        onClick={() => onToggleLock(index)}
+        className="p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-colors mb-4"
+        style={{ color: textColor, opacity: isLocked ? 1 : 0.7 }}
+      >
+        <LockIcon locked={isLocked} />
+      </button>
+      <div>
+        <div className="text-2xl font-mono mb-3" style={{ color: textColor }}>
           {formatColor(color, format)}
         </div>
-      </div>
-
-      <div className="absolute bottom-4 left-4 right-4">
         <input
           type="text"
           value={name}
