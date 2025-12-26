@@ -43,13 +43,19 @@ const styleMap = {
   dash: 'alert-dash',
 };
 
-const alertClass = `alert ${typeMap[type].base} ${styleMap[style]} border-0`;
+const alertClass = `${typeMap[type].base} ${styleMap[style]} border-0 flex w-full items-center gap-3 p-[0.5em] [&_a]:text-inherit [&_a]:decoration-current`;
 const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
 ---
 
 <div role='alert' class={alertClass}>
-  {!noicon && <Icon icon={icon} />}
-  <span>
+  {
+    !noicon && (
+      <span class='flex shrink-0 items-center'>
+        <Icon icon={icon} class='size-[2em]' />
+      </span>
+    )
+  }
+  <span class='w-full'>
     <slot />
   </span>
 </div>
