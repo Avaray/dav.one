@@ -1,5 +1,5 @@
 ---
-title: 'Creating better songs using Suno v5 prompts and meta tags'
+title: 'Creating songs using Suno v5 prompts and meta tags'
 description: "A practical guide to Suno AI's Meta Tag system and song structure commands. This article explains square bracket notation, vocal style tags, and dynamics control for structuring generated audio. Includes a Liquid Drum & Bass walkthrough demonstrating atmospheric builds, non-lyrical choruses, and climactic drops using v5 features."
 created: '2025-12-05T07:49:14.232Z'
 icon: 'game-icons:boombox'
@@ -202,3 +202,77 @@ Suno doesn't have a specific "Negative Prompt" box (like Midjourney), but you ca
 If you are generating a song in parts (extending clips), the **last 10 seconds** of the previous clip dictate the future.
 *   **The Cliffhanger:** Never end a clip right *after* the Drop or Chorus finishes.
 *   **The Strategy:** End your clip during the `[Build-up]` or `[Pre-Chorus]`. When you click "Extend," the AI knows the only logical next step is the `[Drop]`. This creates seamless transitions and prevents the AI from getting confused about where it is in the song structure.
+
+<script>
+{`
+  document.addEventListener('DOMContentLoaded', () => {
+    // All code elements (block + inline)
+    const allCode = document.querySelectorAll('code');
+
+    allCode.forEach(code => {
+      const isBlock = code.closest('pre') !== null;
+
+      if (isBlock) {
+        // Existing behavior: split into lines
+        const lines = code.textContent.split('\\n');
+
+        const wrappedLines = lines.map(line => {
+          const trimmed = line.trim();
+
+          const isInfo =
+            trimmed.startsWith('[') &&
+            trimmed.endsWith(']') &&
+            trimmed.length >= 2;
+
+          const isWarning =
+            trimmed.startsWith('(') &&
+            trimmed.endsWith(')') &&
+            trimmed.length >= 2;
+
+          const safe = line
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+
+          if (isInfo) {
+            return '<span class="text-primary">' + safe + '</span>';
+          }
+          if (isWarning) {
+            return '<span class="text-warning">' + safe + '</span>';
+          }
+          return safe;
+        });
+
+        code.innerHTML = wrappedLines.join('\\n');
+      } else {
+        // Inline code: treat whole content as a single line
+        const raw = code.textContent;
+        const trimmed = raw.trim();
+
+        const isInfo =
+          trimmed.startsWith('[') &&
+          trimmed.endsWith(']') &&
+          trimmed.length >= 2;
+
+        const isWarning =
+          trimmed.startsWith('(') &&
+          trimmed.endsWith(')') &&
+          trimmed.length >= 2;
+
+        const safe = raw
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+
+        if (isInfo) {
+          code.innerHTML = '<span class="text-primary">' + safe + '</span>';
+        } else if (isWarning) {
+          code.innerHTML = '<span class="text-warning">' + safe + '</span>';
+        } else {
+          code.innerHTML = safe;
+        }
+      }
+    });
+  });
+`}
+</script>
