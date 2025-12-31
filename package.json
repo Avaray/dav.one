@@ -22,7 +22,7 @@
     "@xtreat/astro-iconify": "^1.2.7",
     "astro": "^5.16.6",
     "astro-minify-html-swc": "^0.1.10",
-    "clampography": "^0.9.10",
+    "clampography": "^0.9.11",
     "marked": "^17.0.1",
     "playwright": "^1.57.0",
     "react": "^19.2.3",
@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "daisyui": "^5.5.14",
-    "unocss": "^66.5.11"
+    "unocss": "^66.5.12"
   }
 }
