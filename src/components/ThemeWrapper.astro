@@ -6,8 +6,9 @@
     document.documentElement.setAttribute('data-theme', currentTheme);
   </script>
 
-  {/* Set the theme for printing */}
-  <script is:inline>
+  {/* Set the theme for printing. Currently disabled. */}
+  {
+    /* <!-- <script is:inline>
     let originalTheme;
     window.addEventListener('beforeprint', () => {
       originalTheme = document.documentElement.getAttribute('data-theme');
@@ -16,7 +17,8 @@
     window.addEventListener('afterprint', () => {
       if (originalTheme) document.documentElement.setAttribute('data-theme', originalTheme);
     });
-  </script>
+  </script> */
+  }
 
   {/* Render the content */}
   <slot />
