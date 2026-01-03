@@ -1,0 +1,128 @@
+---
+import Icon from '@xtreat/astro-iconify';
+import Alert from './reusables/Alert.astro';
+
+const API_KEY = import.meta.env.POSTHOG_API_KEY;
+const PROJECT_ID = import.meta.env.POSTHOG_PROJECT_ID;
+const isProduction = import.meta.env.PRODUCTION_BUILD;
+
+// Calculate date range
+const endDate = new Date();
+const startDate = new Date();
+startDate.setDate(startDate.getDate() - 30);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+};
+
+// Query for last 30 days
+const query = {
+  kind: 'HogQLQuery',
+  query: `
+    SELECT 
+      uniq(distinct_id) as unique_visitors,
+      count() as total_events,
+      countIf(event = '$pageview') as pageviews,
+      round(countIf(event = '$pageview') / uniq(distinct_id), 2) as pages_per_visitor
+    FROM events 
+    WHERE timestamp >= now() - INTERVAL 30 DAY
+      AND timestamp <= now()
+  `,
+};
+
+// Generate mock data for development
+function getMockStats() {
+  return {
+    unique_visitors: Math.floor(Math.random() * 5000) + 1000,
+    total_events: Math.floor(Math.random() * 20000) + 5000,
+    pageviews: Math.floor(Math.random() * 15000) + 3000,
+    pages_per_visitor: (Math.random() * 3 + 1.5).toFixed(2),
+  };
+}
+
+async function getStats() {
+  // Return mock data in development
+  if (!isProduction) {
+    return getMockStats();
+  }
+
+  // Fetch real data in production
+  try {
+    const response = await fetch(`https://eu.i.posthog.com/api/projects/${PROJECT_ID}/query/`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const [unique_visitors, total_events, pageviews, pages_per_visitor] = data.results[0];
+
+    return {
+      unique_visitors,
+      total_events,
+      pageviews,
+      pages_per_visitor,
+    };
+  } catch (error) {
+    console.error('Failed to fetch PostHog stats:', error);
+    return null;
+  }
+}
+
+const stats = await getStats();
+---
+
+{
+  stats && (
+    <div class='border rounded-2xl w-full p-4 select-none my-8 bg-base-100'>
+      <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl text-base-content font-bold mb-4'>
+        <Icon icon='simple-icons:posthog' class='inline-block w-14 h-14 ml-2' />
+        PostHog Web Analytics
+      </div>
+
+      {!isProduction && (
+        <Alert type='warning'>
+          Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
+        </Alert>
+      )}
+
+      <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
+        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
+          <span class='text-3xl md:text-4xl font-bold text-primary mb-2'>{stats.unique_visitors}</span>
+          <span class='text-center'>Unique Visitors</span>
+        </div>
+
+        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
+          <span class='text-3xl md:text-4xl font-bold text-primary mb-2'>{stats.pageviews}</span>
+          <span class='text-center'>Page Views</span>
+        </div>
+
+        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
+          <span class='text-3xl md:text-4xl font-bold text-primary mb-2'>{stats.pages_per_visitor}</span>
+          <span class='text-center'>Pages per Visitor</span>
+        </div>
+
+        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
+          <span class='text-3xl md:text-4xl font-bold text-primary mb-2'>{stats.total_events}</span>
+          <span class='text-center'>Total Events</span>
+        </div>
+      </div>
+      {isProduction && (
+        <p class='my-4'>
+          * These statistics were added on January 3, 2026. So far, they do not reflect the true monthly values.
+        </p>
+      )}
+    </div>
+  )
+}
