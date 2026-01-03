@@ -7,6 +7,10 @@ on:
       - next
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,97 +19,53 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup Deno
-        uses: denoland/setup-deno@v2
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          deno-version: v2.x
+          bun-version: latest
 
-      - name: Cache Deno dependencies
+      - name: Cache Bun dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Cache Astro images
         uses: actions/cache@v5
         with:
           path: |
-            ~/.cache/deno
-            ~/.deno
-            node_modules
-          key: deno-deps-${{ runner.os }}-${{ hashFiles('deno.lock', 'deno.json', 'package.json') }}
+            node_modules/.astro
+            .astro
+          key: astro-images-${{ hashFiles('src/**/*.{jpg,jpeg,png,webp,avif,gif,svg}') }}
           restore-keys: |
-            deno-deps-${{ runner.os }}-
-
-      - name: Install and Download All Dependencies
-        run: |
-          set -e
-          echo "Installing dependencies..."
-          deno install --allow-scripts
-          
-          echo "Pre-caching all npm dependencies..."
-          deno cache --allow-scripts --reload npm:astro npm:react npm:react-dom npm:@astrojs/mdx npm:@astrojs/react npm:@astrojs/sitemap npm:@tailwindcss/vite npm:unocss npm:astro-minify-html-swc npm:unist-util-visit
-          
-          echo "Caching TypeScript/JavaScript files..."
-          if [ -f "astro.config.ts" ]; then
-            deno cache --allow-scripts astro.config.ts || true
-          fi
-          if [ -f "astro.config.mjs" ]; then
-            deno cache --allow-scripts astro.config.mjs || true
-          fi
-          
-          echo "Finding and caching all project files..."
-          find src -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.mjs" \) 2>/dev/null | head -30 | while read file; do
-            deno cache --allow-scripts "$file" 2>/dev/null || true
-          done
-          
-          echo "Dependency pre-download completed"
+            astro-images-
 
       - name: Cache Playwright browsers
         uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('deno.lock') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: bun install
 
       - name: Install Playwright Browsers
-        run: |
-          set -e
-          deno run -A npm:playwright install chromium --with-deps
-
-      - name: Set environment variables
-        run: |
-          set -e
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "PRODUCTION_BUILD=true" >> $GITHUB_ENV
-          else
-            echo "PRODUCTION_BUILD=false" >> $GITHUB_ENV
-          fi
+        run: bunx playwright install chromium --with-deps
 
       - name: Build Website
         env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
-          PRODUCTION_BUILD: ${{ env.PRODUCTION_BUILD }}
-          DENO_NO_UPDATE_CHECK: 1
-        run: |
-          set -e
-          echo "Starting build process..."
-          
-          # Retry logic with delay to handle race conditions
-          for attempt in 1 2 3; do
-            echo "Build attempt $attempt..."
-            if deno task build; then
-              echo "Build completed successfully"
-              exit 0
-            else
-              if [ $attempt -lt 3 ]; then
-                echo "Build failed, waiting 3 seconds before retry..."
-                sleep 3
-              else
-                echo "Build failed after 3 attempts"
-                exit 1
-              fi
-            fi
-          done
+          PRODUCTION_BUILD: ${{ github.ref_name == 'main' }}
+        run: bun run build
 
       - name: Validate Build Output
         run: |
-          set -e
           if [ ! -d "./dist" ]; then
             echo "ERROR: Build output directory './dist' does not exist"
             exit 1
@@ -114,15 +74,14 @@ jobs:
             echo "ERROR: Main index.html file was not generated"
             exit 1
           fi
-          echo "Build validation passed"
+          echo "✔️ Build validation passed"
 
       - name: Create robots.txt for non-production builds
         if: github.ref_name != 'main'
         run: |
-          set -e
           echo "User-agent: *" > ./dist/robots.txt
           echo "Disallow: /" >> ./dist/robots.txt
-          echo "robots.txt created successfully for non-production branch."
+          echo "🤖 robots.txt created for non-production branch"
 
       - name: Deploy Website to Cloudflare
         uses: cloudflare/wrangler-action@v3
