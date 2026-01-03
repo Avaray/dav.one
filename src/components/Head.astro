@@ -49,5 +49,6 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
   <meta property='og:locale' content='pl_PL' />
   {absoluteImageUrl && <meta property='og:image' content={new URL(image, Astro.site).toString()} />}
 
+  {/* PostHog Web Analytics */}
   <PostHog />
 </head>
