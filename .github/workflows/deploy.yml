@@ -42,7 +42,9 @@ jobs:
           restore-keys: |
             astro-images-
 
+      # other branches are not using it
       - name: Cache Playwright browsers
+        if: github.ref_name == 'main'
         uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
@@ -54,7 +56,14 @@ jobs:
         run: bun install
 
       - name: Install Playwright Browsers
-        run: bunx playwright install chromium --with-deps
+        if: github.ref_name == 'main'
+        run: |
+          if [ ! -d ~/.cache/ms-playwright/chromium-* ]; then
+            echo "📥 Installing Playwright Chromium..."
+            bunx playwright install chromium --with-deps
+          else
+            echo "✔️ Playwright Chromium already cached"
+          fi
 
       - name: Build Website
         env:
@@ -62,16 +71,20 @@ jobs:
           CF_RADAR_TOKEN: ${{ secrets.CF_RADAR_TOKEN }}
           GOOGLE_PAGESPEED_KEY: ${{ secrets.GOOGLE_PAGESPEED_KEY }}
           PRODUCTION_BUILD: ${{ github.ref_name == 'main' }}
-        run: bun run build
+        run: |
+          echo "⏱️ Build started at $(date +%H:%M:%S)"
+          bun run build
+          echo "✔️ Build finished at $(date +%H:%M:%S)"
+          echo "📦 Build size: $(du -sh dist/ | cut -f1)"
 
       - name: Validate Build Output
         run: |
           if [ ! -d "./dist" ]; then
-            echo "ERROR: Build output directory './dist' does not exist"
+            echo "❌ ERROR: Build output directory './dist' does not exist"
             exit 1
           fi
           if [ ! -f "./dist/index.html" ]; then
-            echo "ERROR: Main index.html file was not generated"
+            echo "❌ ERROR: Main index.html file was not generated"
             exit 1
           fi
           echo "✔️ Build validation passed"
