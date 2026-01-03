@@ -57,9 +57,13 @@ if (isProduction) {
       <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' />
     </a>
   </div>
-  <Alert type='warning'>
-    Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
-  </Alert>
+  {
+    !isProduction && (
+      <Alert type='warning'>
+        Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
+      </Alert>
+    )
+  }
 
   <div class='grid grid-cols-2 sm:grid-cols-4 gap-4 @container'>
     <PageSpeedRadial
