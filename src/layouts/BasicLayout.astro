@@ -1,0 +1,19 @@
+---
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+
+import Head from '@components/Head.astro';
+import Main from '@/components/Main.astro';
+import ThemeWrapper from '@components/ThemeWrapper.astro';
+---
+
+<ThemeWrapper>
+  <Head title={title} description={description} />
+  <body>
+    <Main>
+      <article class='my-8'>
+        <slot />
+      </article>
+    </Main>
+  </body>
+</ThemeWrapper>
