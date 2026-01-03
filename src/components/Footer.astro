@@ -13,7 +13,7 @@ const links = [
 ];
 
 const linksRight = [
-  { href: '/rss.xml', text: 'RSS', icon: 'bx:rss' },
+  { href: '/rss.xml', text: 'RSS feed', icon: 'bx:rss' },
   { href: '/sitemap-0.xml', text: 'Sitemap', icon: 'solar:documents-minimalistic-bold-duotone' },
 ];
 ---
@@ -39,7 +39,7 @@ const linksRight = [
     <nav class='flex flex-wrap gap-8 p-4 item justify-center'>
       {
         linksRight.map(({ href, text, icon }) => (
-          <FooterButton href={href} class=''>
+          <FooterButton href={href} target='_blank'>
             <Icon icon={icon} class='h-10 w-10 mx-auto' />
             <>{text}</>
           </FooterButton>
