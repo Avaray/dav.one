@@ -43,7 +43,7 @@ const styleMap = {
   dash: 'alert-dash',
 };
 
-const alertClass = `${typeMap[type].base} ${styleMap[style]} border-0 flex w-full items-center gap-3 p-[0.5em] [&_a]:text-inherit [&_a]:decoration-current`;
+const alertClass = `${typeMap[type].base} ${styleMap[style]} border-0 flex w-full items-center gap-3 my-4 rounded-xl p-[0.5em] [&_a]:text-inherit [&_a]:decoration-current`;
 const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
 ---
 
