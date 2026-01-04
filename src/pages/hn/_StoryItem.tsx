@@ -30,11 +30,12 @@ const StoryItem = ({ story, index }: StoryItemProps) => {
     }
   };
 
-  const storyUrl = story.url || `https://news.ycombinator.com/item?id=${story.id}`;
+  const storyUrl = story.url ||
+    `https://news.ycombinator.com/item?id=${story.id}`;
   const domain = getDomain(story.url);
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-4 border border-gray-100">
+    <div className="rounded-lg over:shadow-md transition-shadow p-4 border border-base-content/5">
       <div className="flex gap-4">
         {/* Index */}
         <div className="shrink-0 text-gray-400 font-mono text-sm w-8">
