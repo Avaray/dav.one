@@ -12,7 +12,7 @@ const { icon, title, level = 1, iconClass = '' } = Astro.props;
 const Tag = `h${level}` as any;
 ---
 
-<div class='inline-flex items-center gap-4 mb-(--spacing-lg)'>
-  <Icon class={`h-[3em] w-[3em] ${iconClass}`} icon={icon} />
-  <Tag class='m-0'>{title}</Tag>
-</div>
+<Tag class='flex items-center gap-4'>
+  <Icon class={`h-[1.5em] w-[1.5em] ${iconClass}`} icon={icon} />
+  {title}
+</Tag>
