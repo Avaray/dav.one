@@ -1,0 +1,18 @@
+---
+import Icon from '@xtreat/astro-iconify';
+
+interface Props {
+  icon: string;
+  title: string;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  iconClass?: string;
+}
+
+const { icon, title, level = 1, iconClass = '' } = Astro.props;
+const Tag = `h${level}` as any;
+---
+
+<div class='inline-flex items-center gap-4 mb-(--spacing-lg)'>
+  <Icon class={`h-[3em] w-[3em] ${iconClass}`} icon={icon} />
+  <Tag class='m-0'>{title}</Tag>
+</div>
