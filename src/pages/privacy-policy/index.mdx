@@ -10,7 +10,7 @@ import HeadingWithIcon from '@components/reusables/HeadingWithIcon.astro';
 
 This **Privacy Policy** applies to the [dav.one](https://dav.one/) website and its preview version available at [next.dav.one](https://next.dav.one/).
 
-**Last Updated:** January 3, 2026
+**Last Updated:** January 5, 2026
 
 ## Overview
 
@@ -35,10 +35,11 @@ and **Cloudflare's standard HTTP traffic logging** may record typical request/re
 
 ### Analytics
 
-This website uses [PostHog Web Analytics](https://posthog.com/web-analytics) configured with [in-memory persistence only](https://posthog.com/docs/libraries/js/persistence), 
-meaning no cookies or persistent data are stored in your browser.
+This website uses two privacy-focused analytics solutions:
 
-Data collected is limited to basic usage patterns and is not tied to persistent identifiers.
+**[PostHog Web Analytics](https://posthog.com/web-analytics)** is configured with [in-memory persistence only](https://posthog.com/docs/libraries/js/persistence), meaning no cookies or persistent data are stored in your browser. Data collected is limited to basic usage patterns and is not tied to persistent identifiers.
+
+**[Medama.io](https://oss.medama.io/methodology/overview)** is a self-hosted analytics platform that collects basic usage data including page views, referrer information, and general device/browser statistics. Being self-hosted, all data remains under my direct control and is not shared with third parties.
 
 ## Cookies
 
@@ -49,11 +50,15 @@ This website **does not use** [cookies](https://en.wikipedia.org/wiki/HTTP_cooki
 HTTP request data is processed by Cloudflare Pages as part of the hosting infrastructure. 
 For information about your privacy rights and how Cloudflare handles data, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy/).
 
+Analytics data from Medama.io is processed on my own infrastructure and is not shared with external parties.
+
 ## Data Retention
 
 **Cloudflare HTTP logs:** Retained temporarily by Cloudflare for security and infrastructure purposes. Refer to [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy/) for details.
 
 **PostHog Analytics:** With in-memory persistence, data exists only during your active session and is automatically discarded when you close the tab or navigate away. No long-term retention occurs.
+
+**Medama.io Analytics:** Basic usage statistics are retained on my self-hosted infrastructure for analytical purposes. This data is aggregated and not linked to individual users.
 
 ## Changes to This Policy
 
