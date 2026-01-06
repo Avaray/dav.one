@@ -1,15 +1,14 @@
 ---
+import StandaloneLayout from '@layouts/BasicLayout.astro';
 import HackerNewsReader from './_HackerNewsReader.tsx';
+
+const title = 'Hacker News Reader';
+const description = 'Hacker News Reader';
 ---
 
 <!doctype html>
 <html lang='pl'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Hacker News Reader</title>
-  </head>
-  <body>
+  <StandaloneLayout frontmatter={{ title, description }}>
     <HackerNewsReader client:load />
-  </body>
+  </StandaloneLayout>
 </html>
