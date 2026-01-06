@@ -1,7 +1,7 @@
 ---
 import globalCssUrl from '@/styles/global.css?url';
 
-import PostHog from './PostHog.astro';
+import PostHogScript from './PostHogScript.astro';
 
 interface Props {
   title: string;
@@ -52,5 +52,5 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
   {absoluteImageUrl && <meta property='og:image' content={new URL(image, Astro.site).toString()} />}
 
   {/* PostHog Web Analytics */}
-  <PostHog />
+  <PostHogScript />
 </head>
