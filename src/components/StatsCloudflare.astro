@@ -1,5 +1,6 @@
 ---
 import Icon from '@xtreat/astro-iconify';
+import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
 
 export const isDrop = (previous: number[], current: number) => {
@@ -34,6 +35,13 @@ const fetchCloudflareStats = async () => {
           query GetDailyStats($zoneId: String!, $since: ISO8601DateTime!) {
             viewer {
               zones(filter: { zoneTag: $zoneId }) {
+                totals: httpRequests1dGroups(
+                  filter: { date_gt: $since },
+                  limit: 30
+                ) {
+                  uniq { uniques }
+                  sum { requests }
+                }
                 httpRequests1dGroups(
                   filter: { date_gt: $since },
                   limit: 30,
@@ -61,7 +69,10 @@ const fetchCloudflareStats = async () => {
   const data = await dailyResponse.json();
 
   try {
-    return data.data.viewer.zones[0].httpRequests1dGroups.map((day: any) => {
+    const zoneData = data.data.viewer.zones[0];
+    const totalUniques = zoneData.totals[0]?.uniq?.uniques || 0;
+    const totalRequests = zoneData.totals[0]?.sum?.requests || 0;
+    const dailyData = zoneData.httpRequests1dGroups.map((day: any) => {
       return {
         date: day.dimensions.date,
         pageViews: day.sum.pageViews,
@@ -69,12 +80,15 @@ const fetchCloudflareStats = async () => {
         uniques: day.uniq.uniques,
       };
     });
+
+    return { dailyData, totalUniques, totalRequests };
   } catch (error) {
     console.log(`Can't fetch Cloudflare stats: ${error}`);
+    return { dailyData: [], totalUniques: 0, totalRequests: 0 };
   }
 };
 
-const data30Days = await fetchCloudflareStats();
+const { dailyData: data30Days, totalUniques, totalRequests } = await fetchCloudflareStats();
 
 const highestVisitorsCount = data30Days.reduce((maxObj: any, currentObj: any) => {
   return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
@@ -88,16 +102,8 @@ const getHighestNumber = (data: any, key: string) => {
 ---
 
 <div class='border rounded-2xl w-full p-4 select-none my-8'>
-  <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl text-base-content font-bold mb-8'>
-    <Icon icon='icon-park-outline:analysis' class='inline-block w-14 h-14 m-2' />
-    Cloudflare Analytics
-  </div>
-  <!-- Charts will be hidden on mobile and small screens in the future. 
-   First I need to figure out how to get deduplicated data from Cloudflare. 
-   Currently they are not providing any way for that. 
-   I think the only way is to base on requests that are done in dashboard. -->
-
-  <div id='chart-container' class='w-full h-24 flex gap-1 mb-1 mt-4 items-end'>
+  <HeadingWithIcon icon='icon-park-outline:analysis' title='Cloudflare Statistics' level={2} />
+  <div id='chart-container' class='hidden md:flex w-full h-24 gap-1 mb-1 mt-4 items-end'>
     {
       data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
@@ -128,7 +134,11 @@ const getHighestNumber = (data: any, key: string) => {
   </div>
 
   <div class='flex justify-between text-base-content'>
-    <small class='px-1'>{data30Days[0].date}</small>
-    <small class='px-1'>{data30Days[data30Days.length - 1].date}</small>
+    <small class='px-1 hidden md:inline'>{data30Days[0].date}</small>
+    <div class='flex flex-col md:flex-row gap-2 md:gap-4 mx-auto md:mx-0'>
+      <small class='font-bold'>{totalUniques} unique visitors</small>
+      <small class='font-bold md:hidden'>{totalRequests} total requests</small>
+    </div>
+    <small class='px-1 hidden md:inline'>{data30Days[data30Days.length - 1].date}</small>
   </div>
 </div>
