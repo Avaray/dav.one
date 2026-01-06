@@ -1,5 +1,4 @@
 ---
-import Icon from '@xtreat/astro-iconify';
 import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
 
@@ -102,7 +101,6 @@ const getHighestNumber = (data: any, key: string) => {
 ---
 
 <div class='border rounded-2xl w-full p-4 select-none my-8'>
-  <HeadingWithIcon icon='icon-park-outline:analysis' title='Cloudflare Statistics' level={2} />
   <div id='chart-container' class='hidden md:flex w-full h-24 gap-1 mb-1 mt-4 items-end'>
     {
       data30Days.map((day: any, index: number) => {
