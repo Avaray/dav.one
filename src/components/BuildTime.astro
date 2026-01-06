@@ -1,5 +1,6 @@
 ---
 import Icon from '@xtreat/astro-iconify';
+import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 
 const buildTimeISO = new Date().toUTCString();
 
@@ -47,18 +48,15 @@ const latestFailureDate = isProduction ? await getLatestFailureDate() : null;
 ---
 
 <div class='flex flex-col border rounded-2xl min-w-[20vw] p-4 select-none'>
-  <div class='flex items-center justify-between text-base-content mb-8'>
-    <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl font-bold'>
-      <Icon icon='simple-icons:githubactions' class='inline-block w-14 h-14 m-2' />
-      <span class='mr-5'>Builds</span>
-    </div>
+  <div class='flex items-center justify-between text-base-content gap-4'>
+    <HeadingWithIcon icon='simple-icons:githubactions' title='Builds' level={2} />
     <a
       href='https://github.com/Avaray/dav.one/actions'
       class='hover:text-primary'
       target='_blank'
       title='Open history of builds'
     >
-      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' />
+      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 mb-(--spacing-md)' />
     </a>
   </div>
 
