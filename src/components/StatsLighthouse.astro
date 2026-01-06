@@ -3,6 +3,7 @@ import PageSpeedRadial from './StatsLighthouseRadial.astro';
 import { scrapePageSpeedResults } from '@scripts/pagespeed-scraper.js';
 import Icon from '@xtreat/astro-iconify';
 import Alert from './reusables/Alert.astro';
+import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 
@@ -41,12 +42,8 @@ if (isProduction) {
 ---
 
 <div class='border rounded-2xl flex-1 p-4 select-none'>
-  <div class='flex items-center justify-between text-base-content mb-8'>
-    <div class='flex items-center gap-2 xs:text-xl md:text-3xl text-xl font-bold'>
-      <Icon icon='simple-icons:pagespeedinsights' class='inline-block w-14 h-14 m-2' />
-      <span class='hidden md:block'>Google PageSpeed Insights</span>
-      <span class='block md:hidden'>PageSpeed Insights</span>
-    </div>
+  <div class='flex items-center justify-between text-base-content gap-4'>
+    <HeadingWithIcon icon='simple-icons:pagespeedinsights' title='Google PageSpeed Insights' level={2} />
 
     <a
       href={report.finalUrl}
@@ -54,7 +51,7 @@ if (isProduction) {
       target='_blank'
       title='Go and check by yourself, you doubter! 😂'
     >
-      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 m-2' />
+      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 mb-(--spacing-md)' />
     </a>
   </div>
   {
