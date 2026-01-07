@@ -1,23 +1,12 @@
 ---
-import Head from '@components/Head.astro';
-import Footer from '@components/Footer.astro';
-import Header from '@components/Header.astro';
-import ThemeWrapper from '@components/ThemeWrapper.astro';
-import { siteTitle, siteDescription } from '@/consts.ts';
+import PageLayout from '@/layouts/PageLayout.astro';
 ---
 
-<ThemeWrapper>
-  <Head title={siteTitle} description={siteDescription} />
-  <body>
-    <Header />
-    <main class='flex flex-col items-center text-center py-48px select-none'>
-      <a
-        href='/'
-        class='text-5xl no-underline'
-        title='This error means that the page does not exist. Click to return to the main page.'>ERROR 404</a
-      >
-      <p class='text-2xl'>This error means that the page does not exist.</p>
-    </main>
-    <Footer />
-  </body>
-</ThemeWrapper>
+<PageLayout frontmatter={{ title: '404', description: '404' }}>
+  <a
+    href='/'
+    class='text-5xl no-underline'
+    title='This error means that the page does not exist. Click to return to the main page.'>ERROR 404</a
+  >
+  <p class='text-2xl'>This error means that the page does not exist.</p>
+</PageLayout>
