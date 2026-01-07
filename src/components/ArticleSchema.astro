@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, created, updated, author, tags, image } = entry.data;
+const { title, description, created, updated, author, genre, tags, image } = entry.data;
 
 // 1. Handle image from the image() helper
 // Astro's image() helper returns an object with 'src' (relative/processed path).
@@ -34,7 +34,7 @@ const schema = {
     name: authorName,
      url: new URL('/about-me/', Astro.site)
   },
-  genre: "Technology",
+  genre: genre ? genre : undefined,
   // Map tags to keywords
   keywords: tags ? tags.join(', ') : undefined,
 

@@ -12,6 +12,7 @@ const articles = defineCollection({
       created: z.coerce.date(),
       description: z.string(),
       draft: z.boolean().optional(),
+      genre: z.string().optional(),
       icon: z.string(),
       image: image().optional(),
       imageAlt: z.string().optional(),
