@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'articles'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, created, updated, author, tags, image } = entry.data;
+
+// 1. Handle image from the image() helper
+// Astro's image() helper returns an object with 'src' (relative/processed path).
+// JSON-LD requires an absolute URL, so we use Astro.site to construct it.
+// Note: You must have 'site' defined in your astro.config.mjs.
+const imageUrl = image ? new URL(image.src, Astro.site).toString() : null;
+
+// 2. Fallback for author
+const authorName = author || 'Dawid Wasowski';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, Astro.site).toString()
+  },
+  headline: title,
+  description: description,
+  inLanguage: "en-US",
+  datePublished: created.toISOString(),
+  dateModified: updated ? updated.toISOString() : created.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: authorName,
+     url: new URL('/about-me/', Astro.site)
+  },
+  genre: "Technology",
+  // Map tags to keywords
+  keywords: tags ? tags.join(', ') : undefined,
+
+  // TODO: Add Publisher someday
+  // "publisher": {
+  //   "@type": "Organization",
+  //   "name": "dav.one",
+  // etc...
+};
+
+// Add image field only if it exists
+imageUrl ? { image: imageUrl } : {};
+---
+
+<script type='application/ld+json' set:html={JSON.stringify(schema)} />
