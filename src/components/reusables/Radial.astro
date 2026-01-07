@@ -1,0 +1,84 @@
+---
+interface Props {
+  value: number;
+  text: string;
+  description: string;
+}
+
+const { value, text, description } = Astro.props;
+
+// Fixed dimensions
+const size = 120;
+const strokeWidth = 8;
+
+// Calculate circle properties
+const radius = (size - strokeWidth) / 2;
+const circumference = 2 * Math.PI * radius;
+
+// Calculate progress based on value (assuming 0-100 scale)
+const clampedValue = Math.min(Math.max(value, 0), 100);
+const offset = circumference - (clampedValue / 100) * circumference;
+
+// Determine background color based on value
+let bgColorClass = '';
+if (clampedValue >= 90) {
+  bgColorClass = 'fill-success';
+} else if (clampedValue >= 75) {
+  bgColorClass = 'fill-info';
+} else if (clampedValue >= 50) {
+  bgColorClass = 'fill-warning';
+} else {
+  bgColorClass = 'fill-error';
+}
+---
+
+<div class='inline-flex flex-col items-center gap-3 relative group'>
+  <div class='relative inline-flex items-center justify-center' style={`width: ${size}px; height: ${size}px;`}>
+    <svg class='transform -rotate-90' width={size} height={size}>
+      <!-- Background ring (20% opacity) - drawn first -->
+      <circle
+        class='text-bg-text stroke-current opacity-20'
+        stroke-width={strokeWidth}
+        fill='transparent'
+        r={radius}
+        cx={size / 2}
+        cy={size / 2}></circle>
+
+      <!-- Colored background circle - drawn second, covers the ring -->
+      <circle class={bgColorClass} r={radius} cx={size / 2} cy={size / 2}></circle>
+
+      <!-- Progress circle (full opacity) - drawn last, on top -->
+      <circle
+        class='text-bg-text stroke-current transition-all duration-500 ease-out'
+        stroke-width={strokeWidth}
+        stroke-linecap='round'
+        fill='transparent'
+        r={radius}
+        cx={size / 2}
+        cy={size / 2}
+        style={`stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};`}></circle>
+    </svg>
+
+    <!-- Center value -->
+    <div class='absolute inset-0 flex items-center justify-center'>
+      <span class='text-2xl font-semibold text-gray-700'>
+        {value}
+      </span>
+    </div>
+  </div>
+
+  <!-- Text below radial -->
+  <small class=''>
+    {text}
+  </small>
+
+  <!-- Hover description tooltip -->
+  <div class='absolute bottom-full mb-2 hidden group-hover:block z-10'>
+    <div class='bg-gray-900 text-white text-sm rounded-lg py-2 px-3 whitespace-nowrap shadow-lg'>
+      {description}
+      <div class='absolute top-full left-1/2 -translate-x-1/2 -mt-1'>
+        <div class='border-4 border-transparent border-t-gray-900'></div>
+      </div>
+    </div>
+  </div>
+</div>
