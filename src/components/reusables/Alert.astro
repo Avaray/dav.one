@@ -4,46 +4,39 @@ import Icon from '@xtreat/astro-iconify';
 interface Props {
   type?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
   icon?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
-  style?: 'soft' | 'outline' | 'dash';
   noicon?: boolean;
 }
 
-const { type = 'info', style = 'soft', icon: iconOverride, noicon = false } = Astro.props;
+const { type = 'info', icon: iconOverride, noicon = false } = Astro.props;
 
 const typeMap = {
   success: {
-    base: 'alert-success',
+    base: 'bg-success',
     icon: 'mdi:check-circle',
   },
   info: {
-    base: 'alert-info',
+    base: 'bg-surface',
     icon: 'mdi:information-variant-circle',
   },
   warning: {
-    base: 'alert-warning',
+    base: 'bg-warning',
     icon: 'mdi:alert-box',
   },
   error: {
-    base: 'alert-error',
+    base: 'bg-error',
     icon: 'mdi:close-circle',
   },
   link: {
-    base: 'bg-code-bg',
+    base: 'bg-info',
     icon: 'mdi:link-variant',
   },
   neutral: {
-    base: 'bg-code-bg',
+    base: 'bg-surface',
     icon: 'mdi:android-messages',
   },
 };
 
-const styleMap = {
-  soft: 'alert-soft',
-  outline: 'alert-outline',
-  dash: 'alert-dash',
-};
-
-const alertClass = `${typeMap[type].base} ${styleMap[style]} border-0 flex w-full items-center gap-3 my-4 rounded-xl p-[0.5em] [&_a]:text-inherit [&_a]:decoration-current`;
+const alertClass = `${typeMap[type].base} flex w-full items-center gap-3 my-4 rounded-xl p-[0.5em] [&_a]:text-inherit [&_a]:decoration-current`;
 const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
 ---
 
