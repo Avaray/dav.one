@@ -12,7 +12,7 @@ const { icon, iconRight = false, iconFlip = false, ...attrs } = Astro.props;
 ---
 
 <div class={`flex items-center gap-4 ${iconRight ? 'flex-row-reverse' : ''}`} {...attrs}>
-  <div class="flex-shrink-0">
+  <div class="shrink-0">
     <Icon class={`text-text h-[8em] w-[8em] ${iconFlip ? 'flip-x' : ''}`} icon={icon} />
   </div>
   <div class="flex-1">
