@@ -1,0 +1,29 @@
+---
+import Icon from '@xtreat/astro-iconify';
+
+interface Props {
+  href: string;
+  text: string;
+  icon: string;
+  class?: string;
+  target?: string;
+}
+
+const { href, text, icon, class: className, ...props } = Astro.props;
+const { pathname } = Astro.url;
+const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+---
+
+<a
+  href={href}
+  class:list={[
+    className,
+    { active: isActive },
+    isActive && 'text-primary',
+    'inline-flex flex-col items-center justify-center hover:text-primary transition-colors',
+  ]}
+  {...props}
+>
+  <Icon icon={icon} class='h-10 w-10' />
+  <p class='mt-1 text-center'>{text}</p>
+</a>
