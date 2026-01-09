@@ -10,9 +10,9 @@ genre: 'Tutorial'
 author: 'Dawid Wasowski'
 ---
 
-import ImageGrid from '@/components/ImageGrid.astro'
-import ImageDiff from '@/components/ImageDiff.astro'
-import ImagePreview from '@/components/ImagePreview.astro'
+import ImageGrid from '@components/ImageGrid.astro'
+import ImageDiff from '@reusables/ImageDiff.astro'
+import ImagePreview from '@components/ImagePreview.astro'
 
 <ImagePreview />
 
@@ -57,10 +57,17 @@ Anyway, for the purpose of this article, let's create short Negative Prompt. We 
 
 Below you can see the difference between the image generated without Negative Prompt (left side) and the image generated with Negative Prompt (right side).
 
-<ImageDiff>
-  ![Image without Negative Prompt](./images/diff01.webp)
-  ![Image with Negative Prompt](./images/diff02.webp)
-</ImageDiff>
+import diff01 from './images/diff01.webp';
+import diff02 from './images/diff02.webp';
+
+<ImageDiff 
+  beforeImage={diff01} 
+  afterImage={diff02} 
+  beforeAlt="Without negative prompt" 
+  afterAlt="With negative prompt"
+  beforeCaption="Without negative prompt"
+  afterCaption="With negative prompt"
+/>
 
 ## Positive prompt - What we want to generate
 
