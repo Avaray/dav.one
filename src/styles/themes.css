@@ -1,59 +1,20 @@
-@plugin "daisyui" {
-  themes: dark, forest;
-}
+/* @plugin "clampography/theme" { */
+@plugin "../../../../PACKAGES/clampography/src/theme-plugin.js" {
+  name: 'greenery';
 
-@plugin "daisyui/theme" {
-  name: "dark";
-  default: true;
-  --color-base-100: oklch(16.77% 0.01 252.43);
-  --color-primary: var(--color-success);
-}
+  color-scheme: 'dark';
+  default: false;
+  prefersdark: true;
 
-@plugin "daisyui/theme" {
-  name: "forest";
-  --radius-box: 0.5rem;
-}
+  background: #0c0f13;
+  surface: #44475a;
+  border: #6272a4;
 
-@plugin "daisyui/theme" {
-  name: "futura";
-  color-scheme: "dark";
-  --color-base-100: oklch(28.06% 0.1278 304.55);
-  --color-base-content: oklch(62.97% 0.1593 305.14);
-  --color-primary: oklch(62.97% 0.1593 305.14);
-  --color-neutral: oklch(37.83% 0.1593 305.14);
-  --radius-selector: 0.5rem;
-  --radius-field: 1rem;
-  --radius-box: 0.5rem;
-}
+  heading: oklch(0.87 0.03 288.63);
+  text: #f8f8f2;
+  muted: #00d390;
 
-@plugin "daisyui/theme" {
-  name: "enlightenment";
-  default: true;
-  color-scheme: "light";
-  --color-base-100: oklch(99.7% 0 0);
-  --color-base-content: oklch(26.45% 0 0);
-  --color-primary: oklch(26.45% 0 0);
-}
-
-@plugin "daisyui/theme" {
-  name: "print";
-  default: true;
-  color-scheme: "light";
-  --color-base-100: oklch(99.7% 0 0);
-  --color-base-content: oklch(26.45% 0 0);
-  --color-primary: oklch(26.45% 0 0);
-}
-
-/* [data-theme="dark"] {} */
-
-[data-theme="futura"] {
-  font-family: "Quando";
-}
-
-[data-theme="forest"] {
-  font-family: "Fira Mono";
-}
-
-[data-theme="enlightment"] {
-  font-family: "Quando";
+  link: oklch(76% 0.177 163.223);
+  primary: #00d390;
+  secondary: #00d390;
 }
