@@ -1,0 +1,151 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '@xtreat/astro-iconify';
+
+interface Props {
+  beforeImage: ImageMetadata;
+  afterImage: ImageMetadata;
+  beforeAlt?: string;
+  afterAlt?: string;
+  beforeCaption?: string;
+  afterCaption?: string;
+  initialPosition?: number;
+}
+
+const {
+  beforeImage,
+  afterImage,
+  beforeAlt = 'Before image',
+  afterAlt = 'After image',
+  beforeCaption,
+  afterCaption,
+  initialPosition = 50,
+} = Astro.props;
+---
+
+<figure class='image-diff-container'>
+  <div class='image-diff relative w-full overflow-hidden select-none rounded-xl' data-position={initialPosition}>
+    <!-- After Image (Bottom Layer) -->
+    <div class='image-diff-after w-full'>
+      <Image src={afterImage} alt={afterAlt} class='w-full h-auto block' loading='lazy' />
+    </div>
+
+    <!-- Before Image (Top Layer with Clip) -->
+    <div
+      class='image-diff-before absolute inset-0 overflow-hidden'
+      style={`clip-path: inset(0 ${100 - initialPosition}% 0 0);`}
+    >
+      <Image src={beforeImage} alt={beforeAlt} class='w-full h-auto block' loading='lazy' />
+    </div>
+
+    <!-- Slider Handle with larger hit area -->
+    <div
+      class='image-diff-slider absolute inset-y-0 cursor-ew-resize flex items-center justify-center'
+      style={`left: ${initialPosition}%; width: 64px; margin-left: -32px;`}
+    >
+      <!-- Visual line -->
+      <div class='absolute inset-y-0 w-1 bg-white left-1/2 -translate-x-1/2'></div>
+
+      <!-- Smaller circle with subtle background and resize icon -->
+      <div
+        class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center pointer-events-none'
+      >
+        <!-- TODO: Replace white color with something else -->
+        <Icon icon='tabler:arrows-left-right' class='h-7 w-7 text-[white]/50' />
+      </div>
+    </div>
+  </div>
+
+  <!-- Captions -->
+  {
+    (beforeCaption || afterCaption) && (
+      <div class='image-diff-captions grid grid-cols-2 gap-4 mt-2'>
+        {beforeCaption && (
+          <figcaption class='text-sm text-gray-600 dark:text-gray-400 text-left'>{beforeCaption}</figcaption>
+        )}
+        {afterCaption && (
+          <figcaption
+            class='text-sm text-gray-600 dark:text-gray-400 text-right'
+            style={beforeCaption ? '' : 'grid-column: 2;'}
+          >
+            {afterCaption}
+          </figcaption>
+        )}
+      </div>
+    )
+  }
+</figure>
+
+<script>
+  function initImageDiff() {
+    const containers = document.querySelectorAll('.image-diff');
+
+    containers.forEach((container) => {
+      const slider = container.querySelector('.image-diff-slider') as HTMLElement;
+      const beforeLayer = container.querySelector('.image-diff-before') as HTMLElement;
+      let isDragging = false;
+
+      const updatePosition = (clientX: number) => {
+        const rect = container.getBoundingClientRect();
+        const x = clientX - rect.left;
+        let percentage = (x / rect.width) * 100;
+
+        // Clamp between 5% and 90% (safety margin)
+        percentage = Math.max(5, Math.min(95, percentage));
+
+        slider.style.left = `${percentage}%`;
+        beforeLayer.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+      };
+
+      const handleMouseDown = (e: MouseEvent) => {
+        isDragging = true;
+        e.preventDefault();
+      };
+
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!isDragging) return;
+        updatePosition(e.clientX);
+      };
+
+      const handleMouseUp = () => {
+        isDragging = false;
+      };
+
+      const handleTouchStart = (e: TouchEvent) => {
+        isDragging = true;
+      };
+
+      const handleTouchMove = (e: TouchEvent) => {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        updatePosition(touch.clientX);
+      };
+
+      const handleTouchEnd = () => {
+        isDragging = false;
+      };
+
+      // Mouse events
+      slider.addEventListener('mousedown', handleMouseDown);
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+
+      // Touch events
+      slider.addEventListener('touchstart', handleTouchStart);
+      document.addEventListener('touchmove', handleTouchMove);
+      document.addEventListener('touchend', handleTouchEnd);
+    });
+  }
+
+  // Initialize on load
+  initImageDiff();
+
+  // Re-initialize on view transitions (if using Astro view transitions)
+  document.addEventListener('astro:page-load', initImageDiff);
+</script>
+
+<style>
+  .image-diff {
+    touch-action: none;
+  }
+</style>
