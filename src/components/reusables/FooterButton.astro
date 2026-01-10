@@ -19,11 +19,11 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
   class:list={[
     className,
     { active: isActive },
-    isActive && 'text-primary',
-    'inline-flex flex-col items-center justify-center hover:text-primary transition-colors',
+    isActive && 'text-link',
+    'inline-flex flex-col items-center justify-center transition-colors',
   ]}
   {...props}
 >
-  <Icon icon={icon} class='h-10 w-10' />
+  <Icon icon={icon} class='h-10 w-10 text-text' />
   <p class='mt-1 text-center'>{text}</p>
 </a>
