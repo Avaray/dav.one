@@ -6,8 +6,8 @@
   default: false;
   prefersdark: true;
 
-  background: #0c0f13;
-  surface: #44475a;
+  background: oklch(16.77% 0.01 252.43);
+  surface: oklch(16.77% 0.01 252.43);
   border: #6272a4;
 
   heading: oklch(0.87 0.03 288.63);
