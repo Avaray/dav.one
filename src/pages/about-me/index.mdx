@@ -4,32 +4,26 @@ title: 'About Me'
 description: 'Few words about myself. What I like and what I do.'
 ---
 
+import BlockWithIcon from '@/components/reusables/BlockWithIcon.astro'
+import HeadingWithIcon from '@/components/reusables/HeadingWithIcon.astro'
+
 import Icon from '@xtreat/astro-iconify';
 
 ## I'm a Programmer, Web Developer, and Generative AI artist.
 
-{/* I think I will need to create components for this in the future */}
-<div class='flex items-center'>
-  <div class='mr-4 hidden sm:block'>
-    <Icon icon='game-icons:anatomy' class='h-24 w-24 md:h-32 md:w-32 text-primary' />
-  </div>
-  <div>
-    For half of my life, I've been involved with computers.  
-    I've always been interested in things related to the web and graphics.  
-    Most of my programming interests and projects are more or less related to JavaScript.  
-    I like to solve problems, automate things, and create new things.
-  </div>
-</div>
+<BlockWithIcon icon='game-icons:anatomy'>
+  For half of my life, I've been involved with computers.  
+  I've always been interested in things related to the web and graphics.  
+  Most of my programming interests and projects are more or less related to JavaScript.  
+  I like to solve problems, automate things, and create new things.
+</BlockWithIcon>
 
-<div class='flex items-center'>
-
-  <div>
-    I'm open to various interesting job proposals, not necessarily limited to coding. I am interested in solving problems within companies, streamlining processes, automation, and surely there's more. I am mature and responsible. Despite my age, I am still interested in new things and like to learn new things. 
-  </div>
-    <div class='mr-4 hidden sm:block'>
-    <Icon icon='game-icons:skills' class='h-24 w-24 md:h-32 md:w-32 text-primary scale-x-[-1]' />
-  </div>
-</div>
+<BlockWithIcon icon='game-icons:skills' iconRight iconFlip >
+  I'm open to various interesting job proposals, not necessarily limited to coding. 
+  I am interested in solving problems within companies, streamlining processes, automation, and surely there's more. 
+  I am mature and responsible. 
+  Despite my age, I am still interested in new things and like to learn new things. 
+</BlockWithIcon>
 
 export const badgesList = (list) => {
   return list.map((tool) => (
@@ -72,22 +66,15 @@ export const technologies = {
 - <span className='opacity-50'>Junior</span> Manual Tester
 - ???
 
-<div class='flex items-center gap-2'>
-  <Icon icon='gis:earth-network-o' class="inline-flex align-center items-start w-[4em] h-[4em]" /> 
-  <span class='font-bold text-lg'>In locations:</span> 
-</div>
+<HeadingWithIcon icon='gis:earth-network-o' title='In locations:' level={2} />
 
 - [Düsseldorf](https://www.openstreetmap.org/#map=13/51.22334/6.78148) (Germany) and nearby towns, preferably those in the southeast of the city center
 - Remote
 
 ## Contact with Me
 
-<div class='flex items-center'>
-  <div class='mr-4 hidden sm:block'>
-    <Icon icon='game-icons:telepathy' class='h-24 w-24 md:h-32 md:w-32 ' />
-  </div>
-  <div>
-    If you'd like to get in touch, reach out to me on [LinkedIn](https://www.linkedin.com/in/wasowsky/).  
-    If you want to see my public projects, check out my [GitHub](https://github.com/Avaray).  
-  </div>
-</div>
+<BlockWithIcon icon='game-icons:telepathy'>
+  If you'd like to get in touch, reach out to me on [LinkedIn](https://www.linkedin.com/in/wasowsky/).  
+  If you want to see my public projects, check out my [GitHub](https://github.com/Avaray).  
+</BlockWithIcon>
+
