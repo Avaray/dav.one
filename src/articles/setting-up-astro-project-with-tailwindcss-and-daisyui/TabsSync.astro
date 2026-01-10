@@ -1,52 +1,48 @@
+<!-- src/components/TabsSync.astro -->
 <script>
-  // Type definition for radio change event
-  type RadioChangeEvent = Event & {
-    target: HTMLInputElement;
+  // Shared function to change tab state
+  const changeTab = (button: HTMLButtonElement): void => {
+    const container = button.closest('[data-tabs]');
+    if (!container) return;
+
+    const tabIndex = parseInt(button.getAttribute('data-tab-index') || '0');
+    const buttons = container.querySelectorAll('.tab-button');
+    const panels = container.querySelectorAll('.tab-panel');
+
+    // Deselect all buttons
+    buttons.forEach((btn) => btn.setAttribute('aria-selected', 'false'));
+
+    // Hide all panels
+    panels.forEach((panel) => panel.classList.add('hidden'));
+
+    // Select clicked button
+    button.setAttribute('aria-selected', 'true');
+
+    // Show corresponding panel
+    panels[tabIndex].classList.remove('hidden');
   };
 
-  // Use 'let' instead of 'const' for better compatibility with Astro's HMR
-  let syncRadioInputs = (): void => {
-    const radioButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll(
-      'input[type="radio"][aria-label]:not([disabled])',
-    );
+  let syncTabs = (): void => {
+    document.addEventListener('click', (event: Event): void => {
+      const target = event.target as HTMLElement;
+      if (!(target instanceof HTMLButtonElement && target.matches('.tab-button'))) return;
 
-    const handleRadioChange = (event: RadioChangeEvent): void => {
-      const { target } = event;
-      const selectedAriaLabel: string | null = target.getAttribute('aria-label');
+      const label = target.textContent?.trim();
+      if (!label) return;
 
-      // Guard clause for invalid aria-label
-      if (!selectedAriaLabel) return;
-
-      // Use more efficient selector to find matching radio buttons
-      const matchingRadios: NodeListOf<HTMLInputElement> = document.querySelectorAll(
-        `input[type="radio"][aria-label="${selectedAriaLabel}"]:not([disabled])`,
-      );
-
-      matchingRadios.forEach((radio: HTMLInputElement): void => {
-        radio.checked = true;
+      // Change state in all containers immediately
+      const allContainers = document.querySelectorAll('[data-tabs]');
+      allContainers.forEach((container) => {
+        const buttons = container.querySelectorAll('.tab-button');
+        buttons.forEach((btn) => {
+          if (btn.textContent?.trim() === label) {
+            changeTab(btn as HTMLButtonElement);
+          }
+        });
       });
-    };
-
-    // Use event delegation for better performance
-    document.addEventListener('change', (event: Event): void => {
-      if (event.target instanceof HTMLInputElement && event.target.matches('input[type="radio"][aria-label]')) {
-        handleRadioChange(event as RadioChangeEvent);
-      }
     });
   };
 
-  // Initialize the synchronization when the DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    syncRadioInputs();
-  });
-
-  // Handle Astro's view transitions if enabled
-  document.addEventListener('astro:page-load', () => {
-    syncRadioInputs();
-  });
-
-  // Cleanup on page unload
-  document.addEventListener('astro:before-swap', () => {
-    // Add any cleanup code here if needed
-  });
+  document.addEventListener('DOMContentLoaded', syncTabs);
+  document.addEventListener('astro:page-load', syncTabs);
 </script>
