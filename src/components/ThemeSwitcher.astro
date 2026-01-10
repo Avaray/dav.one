@@ -1,27 +1,5 @@
-{
-  /* <aside class='fixed top-4 right-4 z-10 flex flex-col w-auto'>
-  <div class="bg-base-100">
-  <ul id='themeList' tabindex='0' class='menu dropdown-content p-4 rounded-box gap-3'>
-    {
-      customThemesList.map((theme) => {
-        return (
-          <li>
-            <div id='themeButton' class='justify-between gap-4 b-3 border-primary' data-theme={theme} data-value={theme}>
-              <p class='capitalize'>{theme.replace(/_/g, ' ')}</p>
-              <div class='flex gap-1'>
-                <div class='size-24px bg-primary border-rd-10' />
-              </div>
-            </div>
-          </li>
-        );
-      })
-    }
-  </ul>
-</div>
-</aside> */
-}
 <script>
-  const customThemesList = ['dark', 'forest', 'enlightment', 'futura'];
+  const customThemesList = ['light', 'dark', 'retro', 'cyberpunk', 'greenery'];
 
   function loadTheme() {
     const url = new URL(window.location.href);
@@ -41,15 +19,6 @@
       localStorage.setItem('theme', theme);
     } catch (error) {}
   }
-
-  // Change themes with buttons
-  // const themeButtons = document.querySelectorAll('#themeButton');
-  // themeButtons.forEach((button) => {
-  //   button.addEventListener('click', () => {
-  //     const theme: string | null = button.getAttribute('data-value');
-  //     theme ? setTheme(theme) : setTheme('');
-  //   });
-  // });
 
   // Update URL with theme if parameter is present
   // I don't want to use theme param in URL by default
