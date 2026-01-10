@@ -1,7 +1,7 @@
 ---
-import Icon from '@xtreat/astro-iconify';
 import Alert from './reusables/Alert.astro';
 import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
+import Stat from './reusables/Stat.astro';
 
 const API_KEY = import.meta.env.POSTHOG_API_KEY;
 const PROJECT_ID = import.meta.env.POSTHOG_PROJECT_ID;
@@ -90,31 +90,16 @@ const stats = await getStats();
       <HeadingWithIcon icon='simple-icons:posthog' title="PostHog's Web Analytics" level={2} />
 
       {!isProduction && (
-        <Alert type='warning'>
+        <Alert type='info'>
           Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
         </Alert>
       )}
 
       <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
-        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
-          <h2 class='font-bold text-primary mb-2'>{stats.unique_visitors}</h2>
-          <span class='text-center'>Unique Visitors</span>
-        </div>
-
-        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
-          <h2 class='font-bold text-primary mb-2'>{stats.pageviews}</h2>
-          <span class='text-center'>Page Views</span>
-        </div>
-
-        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
-          <h2 class='font-bold text-primary mb-2'>{stats.pages_per_visitor}</h2>
-          <span class='text-center'>Pages per Visitor</span>
-        </div>
-
-        <div class='flex flex-col items-center justify-center p-4 bg-base-content/3 rounded-xl'>
-          <h2 class='font-bold text-primary mb-2'>{stats.total_events}</h2>
-          <span class='text-center'>Total Events</span>
-        </div>
+        <Stat value={stats.unique_visitors} label='Unique Visitors' />
+        <Stat value={stats.pageviews} label='Page Views' />
+        <Stat value={stats.pages_per_visitor} label='Pages per Visitor' />
+        <Stat value={stats.total_events} label='Total Events' />
       </div>
       {isProduction && (
         <p class='my-4'>
