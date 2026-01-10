@@ -21,6 +21,7 @@
     "@xtreat/astro-iconify": "^1.2.7",
     "astro": "^5.16.7",
     "astro-minify-html-swc": "^0.1.10",
+    "clampography": "^2.0.0-beta.14",
     "marked": "^17.0.1",
     "playwright": "^1.57.0",
     "react": "^19.2.3",

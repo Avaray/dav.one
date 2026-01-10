@@ -15,6 +15,7 @@
         "@xtreat/astro-iconify": "^1.2.7",
         "astro": "^5.16.7",
         "astro-minify-html-swc": "^0.1.10",
+        "clampography": "^2.0.0-beta.14",
         "marked": "^17.0.1",
         "playwright": "^1.57.0",
         "react": "^19.2.3",
@@ -497,6 +498,8 @@
     "chokidar": ["chokidar@5.0.0", "", { "dependencies": { "readdirp": "^5.0.0" } }, "sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw=="],
 
     "ci-info": ["ci-info@4.3.1", "", {}, "sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA=="],
+
+    "clampography": ["clampography@2.0.0-beta.14", "", { "peerDependencies": { "tailwindcss": ">=4.0.0" } }, "sha512-IzSsom87MP0EU8HVJqtStdhi8qhGkQOcru5R5a+yo8XLHOPHKiD8I7bA0aJcR+5JASmUVwuKrIpIKutdLoQIGQ=="],
 
     "cli-boxes": ["cli-boxes@3.0.0", "", {}, "sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g=="],
 
