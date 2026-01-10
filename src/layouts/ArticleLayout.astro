@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 
 import ArticleDetails from '@components/ArticleDetails.astro';
+import ArticleSchema from '@components/ArticleSchema.astro';
 import Footer from '@components/Footer.astro';
 import Head from '@components/Head.astro';
 import Header from '@components/Header.astro';
@@ -9,22 +10,30 @@ import Main from '@components/Main.astro';
 import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 import ThemeWrapper from '@components/ThemeWrapper.astro';
 
-type Props = CollectionEntry<'articles'>['data'];
+interface Props {
+  entry: CollectionEntry<'articles'>;
+}
 
-const { title, description, created, updated, author }: Props = Astro.props;
+const { entry } = Astro.props;
+
+const { title, description, created, updated, author, tags, image } = entry.data;
 ---
 
-<ThemeWrapper>
+<!doctype html>
+<html lang='en'>
   <Head title={title} description={description} />
-  <body>
-    <Header />
-    <Main>
-      <article>
-        <ArticleDetails {title} {description} {created} {updated} {author} />
-        <slot />
-      </article>
-    </Main>
+  <ArticleSchema entry={entry} />
+  <body class='m-0 p-0'>
+    <div class='max-w-5xl mx-auto p-2.5'>
+      <ThemeWrapper>
+        <Header />
+        <Main>
+          <ThemeSwitcher />
+          <ArticleDetails title={title} created={created} updated={updated} author={author} tags={tags} image={image} />
+          <slot />
+        </Main>
+        <Footer />
+      </ThemeWrapper>
+    </div>
   </body>
-  <ThemeSwitcher />
-  <Footer />
-</ThemeWrapper>
+</html>
