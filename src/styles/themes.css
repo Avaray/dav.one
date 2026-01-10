@@ -1,5 +1,5 @@
 /* @plugin "clampography/theme" { */
-@plugin "../../../../PACKAGES/clampography/src/theme-plugin.js" {
+@plugin "clampography" {
   name: 'greenery';
 
   color-scheme: 'dark';
