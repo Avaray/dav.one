@@ -4,10 +4,11 @@ import { scrapePageSpeedResults } from '@scripts/pagespeed-scraper.js';
 import Icon from '@xtreat/astro-iconify';
 import Alert from './reusables/Alert.astro';
 import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
+import Radial from './reusables/Radial.astro';
 
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 
-const randomScore = () => Math.floor(Math.random() * (100 - 70 + 1)) + 70;
+const randomScore = () => Math.floor(Math.random() * 101);
 
 let report = {
   performance: randomScore(),
@@ -56,36 +57,16 @@ if (isProduction) {
   </div>
   {
     !isProduction && (
-      <Alert type='warning'>
+      <Alert type='info'>
         Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
       </Alert>
     )
   }
 
   <div class='grid grid-cols-2 sm:grid-cols-4 gap-4 @container'>
-    <PageSpeedRadial
-      category='Performance'
-      score={report.performance}
-      tooltip={descriptions.performance}
-      ariaLabel={`Radial progress bar showing ${report.performance} score of Performance`}
-    />
-    <PageSpeedRadial
-      category='Accessibility'
-      score={report.accessibility}
-      tooltip={descriptions.accessibility}
-      ariaLabel={`Radial progress bar showing ${report.accessibility} score of Accessibility`}
-    />
-    <PageSpeedRadial
-      category='Best Practices'
-      score={report.practices}
-      tooltip={descriptions.bestPractices}
-      ariaLabel={`Radial progress bar showing ${report.practices} score of Best Practices`}
-    />
-    <PageSpeedRadial
-      category='SEO'
-      score={report.seo}
-      tooltip={descriptions.seo}
-      ariaLabel={`Radial progress bar showing ${report.seo} score of SEO`}
-    />
+    <Radial value={report.performance} text='Performance' description={descriptions.performance} />
+    <Radial value={report.accessibility} text='Accessibility' description={descriptions.accessibility} />
+    <Radial value={report.practices} text='Best Practices' description={descriptions.bestPractices} />
+    <Radial value={report.seo} text='SEO' description={descriptions.seo} />
   </div>
 </div>
