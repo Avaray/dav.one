@@ -9,11 +9,13 @@ import ThemeWrapper from '@components/ThemeWrapper.astro';
 
 <ThemeWrapper>
   <Head title={title} description={description} />
-  <body>
-    <Main>
-      <article class='mt-8 mb-24'>
-        <slot />
-      </article>
-    </Main>
+  <body class='m-0 p-0'>
+    <div class='max-w-5xl mx-auto p-2.5'>
+      <Main>
+        <article class='mt-8 mb-24'>
+          <slot />
+        </article>
+      </Main>
+    </div>
   </body>
 </ThemeWrapper>
