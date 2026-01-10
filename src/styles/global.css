@@ -1,6 +1,11 @@
 @import 'tailwindcss';
-@import 'clampography';
-/* @import '../../../../PACKAGES/clampography/clampography.css'; */
+@plugin '../../../../PACKAGES/clampography/src/index.js' {
+  themes: retro --default, cyberpunk --prefersdark, light, dark;
+  base: true;
+  extra: true;
+  logs: false;
+  root: '#my-app';
+}
 
 /* ============================================
    THEME CONFIGURATION
@@ -27,43 +32,6 @@
    BASE LAYER - Element Defaults
    ============================================ */
 @layer base {
-  body {
-    padding: 0.625rem;
-  }
-
-  ::selection {
-    @apply text-base-100 bg-primary;
-  }
-
-  main a {
-    @apply text-primary font-bold tracking-wider underline decoration-2 underline-offset-4 transition-colors duration-150;
-
-    text-decoration-color: color-mix(
-      in srgb,
-      var(--color-primary) 30%,
-      transparent
-    );
-  }
-
-  main a:hover {
-    text-decoration-color: var(--color-primary);
-  }
-
-  h1 {
-    letter-spacing: 0.03em;
-  }
-
-  code,
-  pre {
-    border-radius: inherit;
-    padding: 1em;
-  }
-
-  pre {
-    background-color: var(--color-code-bg);
-    /* color: color-mix(in oklab, var(--color-base-content) 90%, transparent); */
-  }
-
   /* Print styles */
   @media print {
     @page {
@@ -89,32 +57,6 @@
    COMPONENT LAYER - Reusable Components
    ============================================ */
 @layer components {
-  /* Alert component styling */
-  .alert {
-    font-size: inherit;
-    line-height: inherit;
-  }
-
-  .alert svg {
-    width: 2em;
-    height: 2em;
-  }
-
-  .alert p {
-    margin: 0;
-  }
-
-  /* Alert links - scoped */
-  main .alert a {
-    color: currentColor;
-    text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
-    transition: text-decoration-color 250ms;
-  }
-
-  main .alert a:hover {
-    text-decoration-color: currentColor;
-  }
-
   /* Badge component */
   .badge {
     font-size: inherit;
@@ -134,18 +76,15 @@
     opacity: 1;
   }
 
-  pre:hover .code-line:not(.darkened) {
+  /* pre:hover .code-line:not(.darkened) {
     @apply text-primary;
-  }
-
-  .tab-content pre {
-    margin-block: 0;
-  }
+  } */
 
   /* Chart component */
   .chart-bar {
     @apply flex flex-1 gap-1 
-           hover:bg-base-content hover:scale-y-110 
+           /* hover:bg-base-content  */
+           hover:scale-y-110 
            origin-bottom 
            sm:rounded-t-2xl;
   }
