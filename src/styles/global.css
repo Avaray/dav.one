@@ -1,9 +1,9 @@
 @import 'tailwindcss';
-@plugin '../../../../PACKAGES/clampography/src/index.js' {
+@plugin "clampography" {
   themes: retro --default, cyberpunk --prefersdark, light, dark;
   base: true;
   extra: true;
-  logs: false;
+  logs: true;
   root: '#my-app';
 }
 
