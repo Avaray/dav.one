@@ -1,5 +1,5 @@
 /* @import 'tailwindcss'; */
-@import 'clampography';
+@plugin 'clampography';
 
 @theme {
   --breakpoint-xl2: 1400px;
