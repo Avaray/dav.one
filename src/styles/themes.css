@@ -1,6 +1,7 @@
-/* @plugin "clampography/theme" { */
-@plugin "../../../../PACKAGES/clampography/src/theme-plugin.js" {
+@plugin "clampography/theme" {
+  /* @plugin "../../../../PACKAGES/clampography/src/theme-plugin.js" { */
   name: 'greenery';
+  logs: false;
 
   color-scheme: 'dark';
   default: false;
@@ -11,7 +12,7 @@
   border: #6272a4;
 
   heading: oklch(0.87 0.03 288.63);
-  text: #f8f8f2;
+  text: oklch(0.87 0.03 288.63);
   muted: #00d390;
 
   link: oklch(76% 0.177 163.223);
