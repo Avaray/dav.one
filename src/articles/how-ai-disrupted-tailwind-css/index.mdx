@@ -7,17 +7,31 @@ genre: "Analysis"
 draft: true
 ---
 
-## The Catalyst
+import HeadingWithIcon from '@reusables/HeadingWithIcon.astro';
 
-On January 7, 2026, [Adam Wathan](https://adamwathan.me/), creator of [Tailwind CSS](https://tailwindcss.com/), made a [sobering announcement](https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957) in a GitHub pull request discussion: 75% of Tailwind Labs' engineering team - three out of four engineers - lost their jobs due to what he called **"the brutal impact AI has had on our business"**. What started as [a simple discussion](https://news.ycombinator.com/item?id=46527950) about adding [LLM](https://en.wikipedia.org/wiki/Large_language_model)-friendly documentation became a window into one of the most significant challenges facing [Open Source](https://en.wikipedia.org/wiki/Open_source) projects in the AI era.
+<HeadingWithIcon icon="game-icons:barn-owl" title="The Catalyst" level={2} iconSize='xl' />
 
-## What is Tailwind CSS and why it matters
+On January 7, 2026, [Adam Wathan](https://adamwathan.me/), creator of [Tailwind CSS](https://tailwindcss.com/), 
+made a [sobering announcement](https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957) 
+in a GitHub pull request discussion: 75% of Tailwind Labs' engineering team - three out of four engineers - 
+lost their jobs due to what he called **"the brutal impact AI has had on our business"**. 
+What started as [a simple discussion](https://news.ycombinator.com/item?id=46527950) about adding 
+[LLM](https://en.wikipedia.org/wiki/Large_language_model)-friendly documentation became a window into one of the most 
+significant challenges facing [open-source](https://en.wikipedia.org/wiki/Open_source) projects in the AI era.
 
-[Tailwind CSS](https://tailwindcss.com/) is a utility-first [CSS framework](https://en.wikipedia.org/wiki/CSS_framework) that revolutionized how developers approach styling web applications. Instead of writing custom CSS, developers use pre-defined utility classes directly in their HTML markup. Since its launch, Tailwind has become one of the most popular CSS frameworks in modern web development, used by thousands of companies and millions of developers worldwide.
+<HeadingWithIcon icon="file-icons:tailwind" title="What is Tailwind CSS and why it matters" level={2} iconSize='xl' />
 
-The framework itself is open-source and free under the [MIT license](https://en.wikipedia.org/wiki/MIT_License). Tailwind Labs monetized through Tailwind UI (later rebranded to Tailwind Plus)—a collection of pre-built, beautifully designed components and templates sold as a one-time purchase for around $299.
+**Tailwind CSS** is a utility-first [CSS framework](https://en.wikipedia.org/wiki/CSS_framework) 
+that revolutionized how developers approach styling web applications. Instead of writing custom CSS, 
+developers use pre-defined utility classes [directly in their HTML markup](https://tailwindcss.com/docs/styling-with-utility-classes). 
+Since its launch, Tailwind has become one of the most popular CSS frameworks in modern web development, 
+used by thousands of companies and millions of developers worldwide.
 
-## The Perfect Storm: What Went Wrong
+The framework itself is open-source and free under the [MIT license](https://en.wikipedia.org/wiki/MIT_License). 
+Tailwind Labs monetized through [Tailwind Plus](https://tailwindcss.com/plus) (previously known as Tailwind UI) - a collection 
+of pre-built components and templates sold as a one-time purchase for around $299.
+
+<HeadingWithIcon icon="game-icons:robot-antennas" title="What Went Wrong" level={2} iconSize='xl' />
 
 ### The AI Disruption
 
@@ -27,7 +41,10 @@ Adam revealed staggering numbers in his comments:
 - **Revenue down approximately 80%**
 - The docs were their primary discovery channel for paid products
 
-The mechanism is straightforward: developers now ask Claude, ChatGPT, or Cursor to generate UI components instead of browsing documentation or purchasing pre-built templates. Every LLM seems to default to Tailwind for styling, but ironically, this ubiquity doesn't translate to revenue—it bypasses the very documentation that drove customers to their paid offerings.
+The mechanism is straightforward: developers now ask Claude, ChatGPT, 
+or Cursor to generate UI components instead of browsing documentation or purchasing pre-built templates. 
+Every LLM seems to default to Tailwind for styling, but ironically, 
+this ubiquity doesn't translate to revenue—it bypasses the very documentation that drove customers to their paid offerings.
 
 One commenter captured the shift perfectly: "I have the entire UI basically working and I haven't even looked at the tailwind classes. I just say 'yes that's fine but can you improve the width for the sidebar on mobile'... I never had to look at the docs, I never went to their website."
 
@@ -43,7 +60,7 @@ Tailwind's business model had a fundamental flaw: they offered lifetime access f
 
 Adam himself discussed this pricing strategy in a 2023 podcast, arguing that lifetime pricing captures customer lifetime value upfront and creates goodwill. However, this strategy assumes continuous customer acquisition—something AI and free alternatives severely disrupted.
 
-## Community Reactions: A Divided Response
+<HeadingWithIcon icon="game-icons:confrontation" title="Community Reactions" level={2} iconSize='xl' />
 
 ### The Sympathetic Majority
 
