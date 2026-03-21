@@ -4,7 +4,6 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import UnoCSS from "unocss/astro";
 import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
 
@@ -15,7 +14,6 @@ export default defineConfig({
     format: "directory",
   },
   integrations: [
-    UnoCSS(),
     mdx({
       rehypePlugins: [
         rehypeCodeHighlightLines,
