@@ -51,14 +51,15 @@ author: "Dawid Wasowski"
 
 ## Models
 
-- [CivitAI](https://civitai.com/?ref_code=ADD-THI) - the best place to find
+- [CivitAI](https://civitai.com/?ref_code=ADD-THI) and
+  [CivitAI RED](https://civitai.red/?ref_code=ADD-THI) - the best places to find
   great Checkpoints, Lora's, Embeddings and more. Almost every model has some
   images generated using it. So you can easily find out if it's worth
   downloading. Also it's a great place for inspiration.
 - [HuggingFace](https://huggingface.co/) - a platform for sharing and deploying
   AI models.\
   I recommend checking out the
-  [Spaces](https://huggingface.co/spaces?sort=trending&search=sdxl) section and
+  [Spaces](https://huggingface.co/spaces?category=image-generation) section and
   especially [LoRA Studio](https://huggingface.co/spaces/enzostvs/lora-studio).
 - [OpenModelDB](https://openmodeldb.info/) - a community driven database of AI
   Upscaling models.
