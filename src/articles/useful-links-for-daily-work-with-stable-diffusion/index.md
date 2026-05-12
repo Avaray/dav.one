@@ -72,6 +72,12 @@ author: "Dawid Wasowski"
   This service has the best prices.
 - [Runpod.io](https://runpod.io?ref=gzvzzzv9) - a bit more expensive than Vast
   and has a worse server browser, but it’s still a good place to rent a server.
+- [Clore.io](https://clore.ai/register?ref=kieu3nl4) - another marketplace for
+  renting GPUs directly from other users. It works similarly to the platforms
+  above. The main difference is that it uses its own cryptocurrency for payments
+  and bonuses.
+- [Octa.space] - a decentralized cloud platform where you can rent both CPUs and
+  GPUs. Just like Clore, it uses its own cryptocurrency.
 
 ## Styles and Studies
 
