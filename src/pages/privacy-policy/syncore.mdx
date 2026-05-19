@@ -15,12 +15,21 @@ information, nor does it track or store any user activity.
 
 ### Information Collection and Use
 
-The "Syncore" app does not collect any personal data from users. All SFTP
-connection credentials (host, port, username, password or private key) are
-stored **locally on your device only** and are never transmitted to the
-developer or any third party. Files are synchronized directly between your
-device and your own SFTP server — no data passes through the developer's
-infrastructure.
+The "Syncore" app does not collect any personal data from users. 
+Furthermore, since no personal data is collected, no data is shared with, sold to, or transferred to any third parties. 
+
+All SFTP connection credentials (host, port, username, password or private key) are stored locally on your device only, 
+kept entirely within the secure SQLite database and encrypted system storage, 
+and are never transmitted to the developer or any third party. 
+Files are synchronized directly between your device and your own SFTP server — 
+no data passes through the developer's infrastructure, 
+and no intermediate proxies or third-party servers are used to relay your sync traffic.
+
+### System Permissions
+
+Syncore requests local storage access permissions to browse and read the folders selected for synchronization, 
+and background battery exemption permissions to reliably execute automatic sync operations in the background. 
+Storage access is utilized strictly locally and is never transmitted to external servers for tracking or any other purposes.
 
 ### Log Data
 
