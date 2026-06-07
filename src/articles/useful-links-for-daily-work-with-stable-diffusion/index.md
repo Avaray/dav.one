@@ -76,7 +76,7 @@ author: "Dawid Wasowski"
   renting GPUs directly from other users. It works similarly to the platforms
   above. The main difference is that it uses its own cryptocurrency for payments
   and bonuses.
-- [Octa.space] - a decentralized cloud platform where you can rent both CPUs and
+- [Octa.space](https://octa.space/) - a decentralized cloud platform where you can rent both CPUs and
   GPUs. Just like Clore, it uses its own cryptocurrency.
 
 ## Styles and Studies
