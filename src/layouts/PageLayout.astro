@@ -8,22 +8,22 @@ interface Props {
   };
 }
 
-import Footer from '@components/Footer.astro';
-import Head from '@components/Head.astro';
-import Header from '@components/Header.astro';
-import Main from '@/components/Main.astro';
-import ThemeSwitcher from '@components/ThemeSwitcher.astro';
-import ThemeWrapper from '@components/ThemeWrapper.astro';
+import Footer from "@components/Footer.astro";
+import Head from "@components/Head.astro";
+import Header from "@components/Header.astro";
+import Main from "@/components/Main.astro";
+import ThemeSwitcher from "@components/ThemeSwitcher.astro";
+import ThemeWrapper from "@components/ThemeWrapper.astro";
 
 const props = Astro.props;
-const title = props.frontmatter?.title || props.title || '';
-const description = props.frontmatter?.description || props.description || '';
+const title = props.frontmatter?.title || props.title || "";
+const description = props.frontmatter?.description || props.description || "";
 ---
 
 <ThemeWrapper>
   <Head title={title} description={description} />
-  <body class='m-0 p-0'>
-    <div class='max-w-5xl mx-auto p-2.5'>
+  <body class="m-0 p-0">
+    <div class="max-w-5xl mx-auto p-2.5">
       <Header />
       <Main>
         <article>
