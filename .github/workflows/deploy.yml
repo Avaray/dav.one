@@ -93,7 +93,7 @@ jobs:
           echo "🤖 robots.txt created for non-production branch"
 
       - name: Deploy Website to Cloudflare
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           apiToken: ${{ secrets.CF_DEPLOY_TOKEN }}
