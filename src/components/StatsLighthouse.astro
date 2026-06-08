@@ -1,10 +1,10 @@
 ---
-import PageSpeedRadial from './StatsLighthouseRadial.astro';
-import { scrapePageSpeedResults } from '@scripts/pagespeed-scraper.js';
-import Icon from '@xtreat/astro-iconify';
-import Alert from './reusables/Alert.astro';
-import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
-import Radial from './reusables/Radial.astro';
+import PageSpeedRadial from "./StatsLighthouseRadial.astro";
+import { scrapePageSpeedResults } from "@scripts/pagespeed-scraper.ts";
+import Icon from "@xtreat/astro-iconify";
+import Alert from "./reusables/Alert.astro";
+import HeadingWithIcon from "./reusables/HeadingWithIcon.astro";
+import Radial from "./reusables/Radial.astro";
 
 const isProduction = import.meta.env.PRODUCTION_BUILD;
 
@@ -15,21 +15,21 @@ let report = {
   accessibility: randomScore(),
   practices: randomScore(),
   seo: randomScore(),
-  finalUrl: '',
+  finalUrl: "",
 };
 
 const descriptions = {
   performance:
-    'This score reflects how well webpage performs in terms of speed and optimization. It is calculated based on key metrics like First Contentful Paint (FCP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS) among others, which measure loading times and responsiveness.',
+    "This score reflects how well webpage performs in terms of speed and optimization. It is calculated based on key metrics like First Contentful Paint (FCP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS) among others, which measure loading times and responsiveness.",
   accessibility:
-    'This metric evaluates how accessible web content is for users with disabilities. It considers factors such as text readability, color contrast, and the presence of alternative text for images, ensuring that all users can navigate and understand your site effectively.',
+    "This metric evaluates how accessible web content is for users with disabilities. It considers factors such as text readability, color contrast, and the presence of alternative text for images, ensuring that all users can navigate and understand your site effectively.",
   bestPractices:
-    'This score indicates adherence to web development best practices. It assesses the use of modern technologies, secure connections, optimized code, and proper use of meta tags. Higher scores suggest better compliance with industry standards.',
-  seo: 'Search Engine Optimization. This category measures how well webpage is optimized for search engines. It includes aspects like metadata usage, structured data implementation, and mobile-friendliness. A high SEO score indicates effective strategies to enhance visibility in search engine results',
+    "This score indicates adherence to web development best practices. It assesses the use of modern technologies, secure connections, optimized code, and proper use of meta tags. Higher scores suggest better compliance with industry standards.",
+  seo: "Search Engine Optimization. This category measures how well webpage is optimized for search engines. It includes aspects like metadata usage, structured data implementation, and mobile-friendliness. A high SEO score indicates effective strategies to enhance visibility in search engine results",
 };
 
 if (isProduction) {
-  const site = Astro.site?.href || '';
+  const site = Astro.site?.href || "";
   const pageSpeedResults = await scrapePageSpeedResults(site);
 
   if (pageSpeedResults) {
@@ -37,36 +37,56 @@ if (isProduction) {
     report.accessibility = pageSpeedResults.accessibility || 0;
     report.practices = pageSpeedResults.practices || 0;
     report.seo = pageSpeedResults.seo || 0;
-    report.finalUrl = pageSpeedResults.finalUrl || '';
+    report.finalUrl = pageSpeedResults.finalUrl || "";
   }
 }
 ---
 
-<div class='border rounded-2xl flex-1 p-4 select-none'>
-  <div class='flex items-center justify-between text-base-content gap-4'>
-    <HeadingWithIcon icon='simple-icons:pagespeedinsights' title='Google PageSpeed Insights' level={2} />
+<div class="border rounded-2xl flex-1 p-4 select-none">
+  <div class="flex items-center justify-between text-base-content gap-4">
+    <HeadingWithIcon
+      icon="simple-icons:pagespeedinsights"
+      title="Google PageSpeed Insights"
+      level={2}
+    />
 
     <a
       href={report.finalUrl}
-      class='hover:text-primary'
-      target='_blank'
-      title='Go and check by yourself, you doubter! 😂'
+      class="hover:text-primary"
+      target="_blank"
+      title="Go and check by yourself, you doubter! 😂"
     >
-      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8 mb-(--spacing-md)' />
+      <Icon
+        icon="octicon:link-external-16"
+        class="inline-block w-8 h-8 mb-(--spacing-md)"
+      />
     </a>
   </div>
   {
     !isProduction && (
-      <Alert type='info'>
-        Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
+      <Alert type="info">
+        Real stats are generated only on{" "}
+        <a href="https://dav.one/about-website/">main branch</a>
       </Alert>
     )
   }
 
-  <div class='grid grid-cols-2 sm:grid-cols-4 gap-4 @container'>
-    <Radial value={report.performance} text='Performance' description={descriptions.performance} />
-    <Radial value={report.accessibility} text='Accessibility' description={descriptions.accessibility} />
-    <Radial value={report.practices} text='Best Practices' description={descriptions.bestPractices} />
-    <Radial value={report.seo} text='SEO' description={descriptions.seo} />
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 @container">
+    <Radial
+      value={report.performance}
+      text="Performance"
+      description={descriptions.performance}
+    />
+    <Radial
+      value={report.accessibility}
+      text="Accessibility"
+      description={descriptions.accessibility}
+    />
+    <Radial
+      value={report.practices}
+      text="Best Practices"
+      description={descriptions.bestPractices}
+    />
+    <Radial value={report.seo} text="SEO" description={descriptions.seo} />
   </div>
 </div>
