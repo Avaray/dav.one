@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:prod": "PRODUCTION_BUILD=true astro dev",
+    "dev:prod:host": "PRODUCTION_BUILD=true astro dev --host 0.0.0.0",
     "clear": "astro dev --clear-cache",
     "serve": "astro dev --host 0.0.0.0",
     "build": "astro build",
