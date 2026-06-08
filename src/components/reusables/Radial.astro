@@ -20,53 +20,58 @@ const clampedValue = Math.min(Math.max(value, 0), 100);
 const offset = circumference - (clampedValue / 100) * circumference;
 
 // Determine background color based on value
-let bgColorClass = '';
+let bgColorClass = "";
 if (clampedValue >= 90) {
-  bgColorClass = 'fill-success';
+  bgColorClass = "text-clampography-success";
 } else if (clampedValue >= 75) {
-  bgColorClass = 'fill-info';
+  bgColorClass = "text-info";
 } else if (clampedValue >= 50) {
-  bgColorClass = 'fill-warning';
+  bgColorClass = "text-warning";
 } else {
-  bgColorClass = 'fill-error';
+  bgColorClass = "fill-error";
 }
 ---
 
-<div class='inline-flex flex-col items-center gap-3' title={description}>
-  <div class='relative inline-flex items-center justify-center' style={`width: ${size}px; height: ${size}px;`}>
-    <svg class='transform -rotate-90' width={size} height={size}>
+<div class="inline-flex flex-col items-center gap-3" title={description}>
+  <div
+    class="relative inline-flex items-center justify-center"
+    style={`width: ${size}px; height: ${size}px;`}
+  >
+    <svg class="transform -rotate-90" width={size} height={size}>
       <!-- Background ring (20% opacity) - drawn first -->
       <circle
-        class='text-bg-text stroke-current opacity-20'
+        class="text-bg-text stroke-current opacity-20"
         stroke-width={strokeWidth}
-        fill='transparent'
+        fill="transparent"
         r={radius}
         cx={size / 2}
         cy={size / 2}></circle>
 
       <!-- Colored background circle - drawn second, covers the ring -->
-      <circle class={bgColorClass} r={radius} cx={size / 2} cy={size / 2}></circle>
+      <circle class={bgColorClass} r={radius} cx={size / 2} cy={size / 2}
+      ></circle>
 
       <!-- Progress circle (full opacity) - drawn last, on top -->
       <circle
-        class='text-text stroke-current transition-all duration-500 ease-out'
+        class="text-text stroke-current transition-all duration-500 ease-out"
         stroke-width={strokeWidth}
-        stroke-linecap='round'
-        fill='transparent'
+        stroke-linecap="round"
+        fill="transparent"
         r={radius}
         cx={size / 2}
         cy={size / 2}
-        style={`stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};`}></circle>
+        style={`stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};`}
+      ></circle>
     </svg>
 
     <!-- Center value -->
-    <div class='absolute inset-0 flex items-center justify-center'>
-      <h2 class='mb-0 text-text text-shadow-xl'>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <h3 class="mb-0 text-text text-shadow-xl">
         {value}
-      </h2>
+      </h3>
     </div>
   </div>
 
   <!-- Text below radial -->
-  <span class='font-bold'>{text}</span>
+  <span class="font-bold">{text}</span>
 </div>
