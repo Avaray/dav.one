@@ -6,7 +6,7 @@ import Alert from "./reusables/Alert.astro";
 import HeadingWithIcon from "./reusables/HeadingWithIcon.astro";
 import Radial from "./reusables/Radial.astro";
 
-const isProduction = import.meta.env.PRODUCTION_BUILD;
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === "true";
 
 const randomScore = () => Math.floor(Math.random() * 101);
 
