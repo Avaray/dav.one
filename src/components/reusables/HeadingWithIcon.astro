@@ -1,19 +1,27 @@
 ---
-import Icon from '@xtreat/astro-iconify';
+import Icon from "@xtreat/astro-iconify";
 
 interface Props {
   icon: string;
   title: string;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  iconSize?: string; // ex. "1.5em", "2rem", "24px"
+  iconSize?: "xs" | "sm" | "md" | "lg" | "xl";
   iconClass?: string;
 }
 
-const { icon, title, level = 1, iconSize = '1.5em', iconClass = '' } = Astro.props;
+const { icon, title, level = 1, iconSize = "md", iconClass = "" } = Astro.props;
 const Tag = `h${level}` as any;
+
+const sizeClasses = {
+  xs: "h-[1em] w-[1em]",
+  sm: "h-[1.25em] w-[1.25em]",
+  md: "h-[1.5em] w-[1.5em]",
+  lg: "h-[1.75em] w-[1.75em]",
+  xl: "h-[2em] w-[2em]",
+};
 ---
 
-<Tag class='flex items-center gap-4'>
-  <Icon class={`h-[${iconSize}] w-[${iconSize}] ${iconClass}`} icon={icon} />
+<Tag class="flex items-center gap-4">
+  <Icon class={`${sizeClasses[iconSize]} ${iconClass}`} icon={icon} />
   {title}
 </Tag>
