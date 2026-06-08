@@ -1,25 +1,38 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import Icon from '@xtreat/astro-iconify';
+import type { CollectionEntry } from "astro:content";
+import Icon from "@xtreat/astro-iconify";
 
 interface Props {
-  article: CollectionEntry<'articles'>;
+  article: CollectionEntry<"articles">;
 }
 
 const { article } = Astro.props;
 ---
 
-<a href={`/${article.id}/`} aria-label={article.data.title} class='block no-underline my-4'>
-  <div class='flex flex-row gap-2'>
-    <div class='max-md:hidden flex flex-col items-center min-w-36 min-h-36 text-center rounded-lg aspect-square'>
-      <Icon icon={article.data.icon} class='mx-6 h-32 w-32 text-link *:fill-current mt-4' aria-hidden='true' />
+<a
+  href={`/${article.id}/`}
+  aria-label={article.data.title}
+  class="block no-underline my-4"
+>
+  <div class="flex flex-row gap-2">
+    <div
+      class="max-md:hidden flex flex-col items-center min-w-36 min-h-36 text-center rounded-lg aspect-square"
+    >
+      <Icon
+        icon={article.data.icon}
+        class="mx-6 h-32 w-32 text-link *:fill-current mt-4"
+        aria-hidden="true"
+      />
     </div>
 
     <article>
-      <h1 class='mb-2' aria-hidden='true'>
+      <h2 class="mb-2" aria-hidden="true">
         {article.data.title}
-      </h1>
-      <p class='mt-0! text-heading/80 font-normal tracking-normal' aria-hidden='true'>
+      </h2>
+      <p
+        class="mt-0! text-heading/80 font-normal tracking-normal"
+        aria-hidden="true"
+      >
         {article.data.description}
       </p>
     </article>
