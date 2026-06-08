@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
+import { unified } from "@astrojs/markdown-remark";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,11 +15,7 @@ export default defineConfig({
     format: "directory",
   },
   integrations: [
-    mdx({
-      rehypePlugins: [
-        rehypeCodeHighlightLines,
-      ],
-    }),
+    mdx(),
     sitemap(),
     react({
       include: ["**/react/*"],
@@ -67,6 +64,11 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: false,
+    processor: unified({
+      rehypePlugins: [
+        rehypeCodeHighlightLines,
+      ],
+    }),
   },
   // redirects: {
   //   "/rss": "/rss.xml",
