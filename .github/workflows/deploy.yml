@@ -58,12 +58,8 @@ jobs:
       - name: Install Playwright Browsers
         if: github.ref_name == 'main'
         run: |
-          if [ ! -d ~/.cache/ms-playwright/chromium-* ]; then
-            echo "📥 Installing Playwright Chromium..."
-            bunx playwright install chromium --with-deps
-          else
-            echo "✔️ Playwright Chromium already cached"
-          fi
+          echo "📥 Installing Playwright Chromium and OS dependencies"
+          bunx playwright install chromium --with-deps
 
       - name: Build Website
         env:
