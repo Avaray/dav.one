@@ -1,46 +1,68 @@
 <script>
-  const customThemesList = ['light', 'dark', 'retro', 'cyberpunk', 'greenery'];
+  const customThemesList = ["light", "dark", "greenery"];
 
   function loadTheme() {
     const url = new URL(window.location.href);
-    const theme = url.searchParams.get('theme');
+    const theme = url.searchParams.get("theme");
     theme && setTheme(theme);
   }
 
-  document.addEventListener('DOMContentLoaded', loadTheme);
+  document.addEventListener("DOMContentLoaded", loadTheme);
 
   // Function to set theme and save it to localStorage
   function setTheme(theme?: string) {
     const htmlElement = document.documentElement;
     // This will set the theme to a random one if no theme is provided
-    theme ??= customThemesList[Math.floor(Math.random() * customThemesList.length)];
-    htmlElement.setAttribute('data-theme', theme);
+    theme ??=
+      customThemesList[Math.floor(Math.random() * customThemesList.length)];
+    htmlElement.setAttribute("data-theme", theme);
     try {
-      localStorage.setItem('theme', theme);
+      localStorage.setItem("theme", theme);
     } catch (error) {}
+
+    triggerLogoGlitch();
+  }
+
+  function triggerLogoGlitch() {
+    const logo = document.querySelector(".glitch-logo") as HTMLElement;
+    if (!logo) return;
+
+    // Remove all existing glitch classes
+    logo.classList.remove("run-glitch-1", "run-glitch-2", "run-glitch-3");
+
+    // Force browser reflow to restart the animation if the same class is added again
+    void logo.offsetWidth;
+
+    // Add a random glitch class (1, 2, or 3)
+    const randomGlitch = Math.floor(Math.random() * 3) + 1;
+    logo.classList.add(`run-glitch-${randomGlitch}`);
   }
 
   // Update URL with theme if parameter is present
   // I don't want to use theme param in URL by default
   function updateURLWithTheme(theme: string) {
     const url = new URL(window.location.href);
-    if (url.searchParams.has('theme')) {
-      url.searchParams.set('theme', theme);
-      window.history.replaceState({}, '', url.href);
+    if (url.searchParams.has("theme")) {
+      url.searchParams.set("theme", theme);
+      window.history.replaceState({}, "", url.href);
     }
   }
 
   // Change themes with CTRL + Arrow keys
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener("keydown", (event) => {
     if (event.ctrlKey) {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || '';
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "";
       const currentIndex = customThemesList.indexOf(currentTheme);
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        const previousTheme = customThemesList[currentIndex - 1] ?? customThemesList[customThemesList.length - 1];
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        const previousTheme =
+          customThemesList[currentIndex - 1] ??
+          customThemesList[customThemesList.length - 1];
         setTheme(previousTheme);
         updateURLWithTheme(previousTheme);
-      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        const nextTheme = customThemesList[currentIndex + 1] ?? customThemesList[0];
+      } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        const nextTheme =
+          customThemesList[currentIndex + 1] ?? customThemesList[0];
         setTheme(nextTheme);
         updateURLWithTheme(nextTheme);
       }

@@ -1,9 +1,22 @@
 ---
-import Logo from '@assets/Logo.svg?raw';
+import Logo from "@assets/Logo.svg?raw";
 ---
 
-<header class='px-0 md:px-4 py-4 md:py-8 text-link'>
-  <a href='/' title='Return to the main page' aria-label='Return to the main page'>
-    <Fragment set:html={Logo} />
+<header class="px-0 md:px-4 py-4 md:py-8 text-link">
+  <a
+    href="/"
+    title="Return to the main page"
+    aria-label="Return to the main page"
+    class="glitch-logo"
+  >
+    <div class="glitch-base">
+      <Fragment set:html={Logo} />
+    </div>
+    <div class="glitch-layer glitch-layer-1" aria-hidden="true">
+      <Fragment set:html={Logo} />
+    </div>
+    <div class="glitch-layer glitch-layer-2" aria-hidden="true">
+      <Fragment set:html={Logo} />
+    </div>
   </a>
 </header>

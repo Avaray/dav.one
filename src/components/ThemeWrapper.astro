@@ -1,23 +1,10 @@
 <!doctype html>
-<html lang='en' class='transition-colors duration-500'>
+<html lang="en" class="transition-colors duration-500">
   {/* Set the initial theme */}
   <script is:inline>
-    const currentTheme = localStorage.getItem('theme') || 'greenery';
-    document.documentElement.setAttribute('data-theme', currentTheme);
+    const currentTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", currentTheme);
   </script>
-
-  {/* Set the theme for printing. Currently disabled. */}
-  <script is:inline>
-    let originalTheme;
-    window.addEventListener('beforeprint', () => {
-      originalTheme = document.documentElement.getAttribute('data-theme');
-      document.documentElement.setAttribute('data-theme', 'light');
-    });
-    window.addEventListener('afterprint', () => {
-      if (originalTheme) document.documentElement.setAttribute('data-theme', originalTheme);
-    });
-  </script>
-
   {/* Render the content */}
   <slot />
 </html>

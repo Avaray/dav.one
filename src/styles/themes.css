@@ -1,21 +1,22 @@
+/* @plugin "clampography/theme" { */
 @plugin "clampography/theme" {
-  /* @plugin "../../../../PACKAGES/clampography/src/theme-plugin.js" { */
   name: 'greenery';
-  logs: false;
 
   color-scheme: 'dark';
   default: false;
-  prefersdark: true;
+  prefersdark: false;
 
   background: oklch(16.77% 0.01 252.43);
-  surface: oklch(16.77% 0.01 252.43);
-  border: #6272a4;
+  surface: oklch(0.87 0.03 288.63 / 0.01);
+  border: oklch(0.87 0.03 288.63 / 0.8);
 
   heading: oklch(0.87 0.03 288.63);
-  text: oklch(0.87 0.03 288.63);
-  muted: #00d390;
+  text: oklch(0.87 0.03 288.63 / 0.8);
 
   link: oklch(76% 0.177 163.223);
-  primary: #00d390;
-  secondary: #00d390;
+  primary: oklch(76% 0.177 163.223);
+}
+
+[data-theme='greenery'] {
+  /* border: oklch(0.87 0.03 288.63 / 0.2); */
 }

@@ -1,9 +1,10 @@
 @import 'tailwindcss';
 @plugin "clampography" {
-  themes: retro --default, cyberpunk --prefersdark, light, dark;
+  themes: dark --default;
   base: true;
   extra: true;
   logs: true;
+  print: true;
 }
 
 /* ============================================
@@ -11,17 +12,6 @@
    ============================================ */
 @theme {
   --color-*: initial;
-
-  --color-code-bg: color-mix(
-    in oklab,
-    var(--color-base-content) 5%,
-    var(--color-base-100)
-  );
-  --color-code-highlight: color-mix(
-    in oklab,
-    var(--color-base-content) 15%,
-    var(--color-base-100)
-  );
 }
 
 @import './themes.css';
@@ -31,6 +21,15 @@
    BASE LAYER - Element Defaults
    ============================================ */
 @layer base {
+  *,
+  ::before,
+  ::after {
+    @apply transition-colors duration-[250ms] ease-in-out;
+  }
+
+  strong {
+    color: oklch(0.87 0.03 288.63 / 90);
+  }
   /* Print styles */
   @media print {
     @page {
@@ -64,6 +63,7 @@
 
   /* Code block enhancements */
   .code-line {
+    /* color: var(--clampography-text); */
     transition: color 0.3s, background-color 0.3s, filter 0.3s, opacity 0.3s;
   }
 
@@ -87,3 +87,91 @@
            sm:rounded-t-2xl;
   }
 }
+
+.glitch-logo {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+  .glitch-base {
+    position: relative;
+    z-index: 10;
+  }
+
+  .glitch-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+  }
+
+  .glitch-layer-1 {
+    color: var(--color-link);
+  }
+
+  .glitch-layer-2 {
+    color: var(--color-background);
+  }
+
+  /* Glitch Type 1 */
+  .run-glitch-1 .glitch-base { animation: g-base-1 0.4s cubic-bezier(.25,.46,.45,.94) both; }
+  .run-glitch-1 .glitch-layer-1 { animation: g-layer1-1 0.4s cubic-bezier(.25,.46,.45,.94) both; }
+  .run-glitch-1 .glitch-layer-2 { animation: g-layer2-1 0.4s cubic-bezier(.25,.46,.45,.94) both; }
+
+  /* Glitch Type 2 */
+  .run-glitch-2 .glitch-base { animation: g-base-2 0.5s cubic-bezier(.25,.46,.45,.94) both; }
+  .run-glitch-2 .glitch-layer-1 { animation: g-layer1-2 0.5s cubic-bezier(.25,.46,.45,.94) both; }
+  .run-glitch-2 .glitch-layer-2 { animation: g-layer2-2 0.5s cubic-bezier(.25,.46,.45,.94) both; }
+
+  /* Glitch Type 3 */
+  .run-glitch-3 .glitch-base { animation: g-base-3 0.6s cubic-bezier(.25,.46,.45,.94) both; }
+  .run-glitch-3 .glitch-layer-1 { animation: g-layer1-3 0.6s cubic-bezier(.25,.46,.45,.94) both; }
+  .run-glitch-3 .glitch-layer-2 { animation: g-layer2-3 0.6s cubic-bezier(.25,.46,.45,.94) both; }
+
+  @keyframes g-base-1 {
+    0%, 100% { transform: translate(0, 0) skew(0deg); }
+    20% { transform: translate(-2%, 1%) skew(-2deg); }
+    60% { transform: translate(2%, -1%) skew(1deg); }
+  }
+  @keyframes g-layer1-1 {
+    0%, 100% { opacity: 0; clip-path: inset(0); transform: translate(0); }
+    10% { opacity: 1; clip-path: inset(10% 0 70% 0); transform: translate(-5%, 1%); }
+    50% { opacity: 1; clip-path: inset(60% 0 10% 0); transform: translate(4%, -2%); }
+  }
+  @keyframes g-layer2-1 {
+    0%, 100% { opacity: 0; clip-path: inset(0); transform: translate(0); }
+    20% { opacity: 1; clip-path: inset(30% 0 40% 0); transform: translate(4%, -1%); }
+    60% { opacity: 1; clip-path: inset(15% 0 60% 0); transform: translate(-5%, 1%); }
+  }
+
+  @keyframes g-base-2 {
+    0%, 100% { transform: translate(0, 0) skew(0deg); }
+    30% { transform: translate(-3%, 0) skew(3deg); }
+    70% { transform: translate(1%, 2%) skew(-2deg); }
+  }
+  @keyframes g-layer1-2 {
+    0%, 100% { opacity: 0; clip-path: inset(0); transform: translate(0); }
+    20% { opacity: 1; clip-path: inset(20% 0 50% 0); transform: translate(-6%, 1%); }
+    60% { opacity: 1; clip-path: inset(80% 0 5% 0); transform: translate(7%, -1%); }
+  }
+  @keyframes g-layer2-2 {
+    0%, 100% { opacity: 0; clip-path: inset(0); transform: translate(0); }
+    30% { opacity: 1; clip-path: inset(60% 0 20% 0); transform: translate(5%, -2%); }
+    70% { opacity: 1; clip-path: inset(5% 0 80% 0); transform: translate(-4%, 2%); }
+  }
+
+  @keyframes g-base-3 {
+    0%, 100% { transform: translate(0, 0) skew(0deg); }
+    25% { transform: translate(3%, -2%) skew(2deg); }
+    75% { transform: translate(-2%, 1%) skew(-1deg); }
+  }
+  @keyframes g-layer1-3 {
+    0%, 100% { opacity: 0; clip-path: inset(0); transform: translate(0); }
+    20% { opacity: 1; clip-path: inset(10% 0 70% 0); transform: translate(5%, -1%); }
+    60% { opacity: 1; clip-path: inset(70% 0 10% 0); transform: translate(-6%, 2%); }
+  }
+  @keyframes g-layer2-3 {
+    0%, 100% { opacity: 0; clip-path: inset(0); transform: translate(0); }
+    25% { opacity: 1; clip-path: inset(40% 0 30% 0); transform: translate(-5%, 2%); }
+    75% { opacity: 1; clip-path: inset(20% 0 60% 0); transform: translate(6%, -1%); }
+  }
