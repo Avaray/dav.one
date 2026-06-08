@@ -6,7 +6,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import IndexEntry from '@components/reusables/IndexEntry.astro';
 
 const articles = await getCollection('articles', ({ data }) => {
-  return import.meta.env.PRODUCTION_BUILD ? data.draft !== true : true;
+  return String(import.meta.env.PRODUCTION_BUILD) === "true" ? data.draft !== true : true;
 });
 
 const sortedArticles = [...articles].sort((a, b) => {

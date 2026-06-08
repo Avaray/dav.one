@@ -4,7 +4,7 @@ import Alert from './reusables/Alert.astro';
 import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
 import Stat from './reusables/Stat.astro';
 
-const isProduction = import.meta.env.PRODUCTION_BUILD;
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === "true";
 
 export const isDrop = (previous: number[], current: number) => {
   const previousAverage = calculateAverageNumber(previous);

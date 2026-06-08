@@ -42,7 +42,7 @@ const getLatestFailureDate = async () => {
   }
 };
 
-const isProduction = import.meta.env.PRODUCTION_BUILD;
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === "true";
 
 const latestFailureDate = isProduction ? await getLatestFailureDate() : null;
 ---

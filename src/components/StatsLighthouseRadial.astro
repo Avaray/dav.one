@@ -1,5 +1,5 @@
 ---
-const isProduction = import.meta.env.PRODUCTION_BUILD;
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === "true";
 
 const { category, score, ariaLabel, tooltip } = Astro.props as {
   category: string;

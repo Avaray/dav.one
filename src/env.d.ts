@@ -1,7 +1,7 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-  readonly PRODUCTION_BUILD: boolean;
+  readonly PRODUCTION_BUILD: string;
   readonly CF_ZONE_ID: string;
   readonly CF_RADAR_TOKEN: string;
   readonly GOOGLE_PAGESPEED_KEY: string;

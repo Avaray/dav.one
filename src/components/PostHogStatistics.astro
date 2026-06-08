@@ -5,7 +5,7 @@ import Stat from './reusables/Stat.astro';
 
 const API_KEY = import.meta.env.POSTHOG_API_KEY;
 const PROJECT_ID = import.meta.env.POSTHOG_PROJECT_ID;
-const isProduction = import.meta.env.PRODUCTION_BUILD;
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === "true";
 
 // Calculate date range
 const endDate = new Date();
