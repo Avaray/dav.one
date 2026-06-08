@@ -4,6 +4,7 @@
   "version": "2.2.0",
   "scripts": {
     "dev": "astro dev",
+    "dev:prod": "PRODUCTION_BUILD=true astro dev",
     "clear": "astro dev --clear-cache",
     "serve": "astro dev --host 0.0.0.0",
     "build": "astro build",
