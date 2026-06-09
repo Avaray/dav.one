@@ -1,37 +1,241 @@
-<dialog id='preview' class='modal bg-base-100/80' onclick='preview.close()'>
-  <div class='modal-box p-0 mx-auto max-w-fit'>
-    <img
-      id='modal-image'
-      src=''
-      alt='Alt text'
-      width='768'
-      height='1344'
-      class='!m-0 h-auto max-h-[95vh] w-auto max-w-[95vw] object-contain'
-      loading='lazy'
-    />
+<dialog id="preview">
+  <div class="nav-btn prev-btn" id="prev-btn" aria-label="Previous image">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+    >
   </div>
-  <form method='dialog' class='modal-backdrop'>
-    <button></button>
-  </form>
 
-  <script type='module'>
-    function openModal({ src, width, height }) {
-      const modal = document.getElementById('preview');
-      const modalImg = document.getElementById('modal-image');
-      modalImg.src = src;
-      modalImg.width = width; // Set intrinsic width
-      modalImg.height = height; // Set intrinsic height
+  <img
+    id="modal-image"
+    src=""
+    alt=""
+    width="768"
+    height="1344"
+    loading="lazy"
+    class="select-none"
+  />
+
+  <div class="nav-btn next-btn" id="next-btn" aria-label="Next image">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg
+    >
+  </div>
+
+  <style>
+    #preview {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: auto;
+      max-width: 95vw;
+      max-height: 95vh;
+      outline: none;
+      overflow: hidden;
+    }
+    #preview[open] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    #preview::backdrop {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+    }
+    #modal-image {
+      max-width: 90vw;
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin: 0;
+      border-radius: 0.5rem;
+      cursor: zoom-out;
+      transition: opacity 0.2s ease-in-out;
+      opacity: 1;
+    }
+    #modal-image.fade-out {
+      opacity: 0;
+    }
+
+    .nav-btn {
+      color: white;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      transition:
+        background 0.2s,
+        opacity 0.2s;
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      z-index: 10;
+    }
+    .prev-btn {
+      left: 1rem;
+    }
+    .next-btn {
+      right: 1rem;
+    }
+
+    #preview.has-gallery[open] .nav-btn {
+      opacity: 0.7;
+      pointer-events: auto;
+    }
+    #preview.has-gallery[open] .nav-btn:hover {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script type="module">
+    const modal = document.getElementById("preview");
+    const modalImg = document.getElementById("modal-image");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    function updateModalImage(src, width, height) {
+      modalImg.classList.add("fade-out");
+      setTimeout(() => {
+        modalImg.src = src;
+        if (width) modalImg.width = width;
+        if (height) modalImg.height = height;
+        modalImg.classList.remove("fade-out");
+      }, 200); // Wait for fade out
+    }
+
+    function showNext() {
+      if (currentGallery.length <= 1) return;
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      const img = currentGallery[currentIndex];
+      updateModalImage(img.src, img.naturalWidth, img.naturalHeight);
+    }
+
+    function showPrev() {
+      if (currentGallery.length <= 1) return;
+      currentIndex =
+        (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      const img = currentGallery[currentIndex];
+      updateModalImage(img.src, img.naturalWidth, img.naturalHeight);
+    }
+
+    function openModal(imgElement) {
+      const galleryId = imgElement.getAttribute("data-gallery");
+
+      if (galleryId) {
+        currentGallery = Array.from(
+          document.querySelectorAll(`img[data-gallery="${galleryId}"]`),
+        );
+        currentIndex = currentGallery.indexOf(imgElement);
+        if (currentGallery.length > 1) {
+          modal.classList.add("has-gallery");
+        } else {
+          modal.classList.remove("has-gallery");
+        }
+      } else {
+        currentGallery = [imgElement];
+        currentIndex = 0;
+        modal.classList.remove("has-gallery");
+      }
+
+      modalImg.src = imgElement.src;
+      modalImg.width = imgElement.naturalWidth;
+      modalImg.height = imgElement.naturalHeight;
+      modalImg.classList.remove("fade-out");
       modal.showModal();
     }
 
-    document.querySelectorAll('img').forEach((img) => {
-      img.addEventListener('click', () => {
-        openModal({
-          src: img.src,
-          width: img.naturalWidth, // Get natural dimensions
-          height: img.naturalHeight,
-        });
-      });
+    // Attach click listeners to all images except the modal itself
+    document.querySelectorAll("img").forEach((img) => {
+      if (img.id === "modal-image") return;
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", () => openModal(img));
+    });
+
+    // Handle touch swiping for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modal.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true },
+    );
+
+    modal.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      },
+      { passive: true },
+    );
+
+    function handleSwipe() {
+      const SWIPE_THRESHOLD = 50;
+      if (touchEndX < touchStartX - SWIPE_THRESHOLD) showNext();
+      if (touchEndX > touchStartX + SWIPE_THRESHOLD) showPrev();
+    }
+
+    // Keyboard navigation
+    window.addEventListener("keydown", (e) => {
+      if (!modal.open) return;
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    });
+
+    // Close on backdrop click
+    modal.addEventListener("click", (e) => {
+      // If clicked exactly on the dialog (which is the transparent container filling the screen), close it.
+      if (e.target === modal) {
+        modal.close();
+      }
+    });
+
+    // Button listeners
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showPrev();
+    });
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showNext();
+    });
+
+    // Clicking the image itself closes the modal
+    modalImg.addEventListener("click", () => {
+      modal.close();
     });
   </script>
 </dialog>

@@ -22,13 +22,13 @@ const offset = circumference - (clampedValue / 100) * circumference;
 // Determine background color based on value
 let bgColorClass = "";
 if (clampedValue >= 90) {
-  bgColorClass = "text-clampography-success";
+  bgColorClass = "text-clampography-success fill-current";
 } else if (clampedValue >= 75) {
-  bgColorClass = "text-info";
+  bgColorClass = "text-clampography-info fill-current";
 } else if (clampedValue >= 50) {
-  bgColorClass = "text-warning";
+  bgColorClass = "text-clampography-warning fill-current";
 } else {
-  bgColorClass = "fill-error";
+  bgColorClass = "text-clampography-error fill-current";
 }
 ---
 

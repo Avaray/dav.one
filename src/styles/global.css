@@ -76,7 +76,7 @@
   }
 
   /* pre:hover .code-line:not(.darkened) {
-    @apply text-primary;
+    @apply text-clampography-primary;
   } */
 
   /* Chart component */

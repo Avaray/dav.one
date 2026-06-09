@@ -9,28 +9,28 @@ const { category, score, ariaLabel, tooltip } = Astro.props as {
 };
 const background =
   score >= 100
-    ? 'bg-success'
+    ? 'bg-clampography-success'
     : score >= 90
-      ? 'bg-info'
+      ? 'bg-clampography-info'
       : score >= 80
-        ? 'bg-warning'
+        ? 'bg-clampography-warning'
         : score >= 1
-          ? 'bg-error'
-          : 'bg-base-content';
+          ? 'bg-clampography-error'
+          : 'bg-clampography-muted';
 
 const normalizeNumber = (num: number) => (num % 1 === 0 ? num : parseFloat(num.toFixed(1)));
 ---
 
 <div class='flex flex-col items-center @container sm:aspect-square'>
   <div
-    class={`radial-progress text-base-content ${background} border-0 m-4 [--size:80cqi] after:transition-none`}
+    class={`radial-progress text-clampography-text ${background} border-0 m-4 [--size:80cqi] after:transition-none`}
     style=`--value:${score};`
     title={tooltip}
     aria-valuenow={score}
     aria-label={ariaLabel}
     role='progressbar'
   >
-    <span class='text-base-100 text-3xl -mt-1'>
+    <span class='text-clampography-background text-3xl -mt-1'>
       {score && isProduction ? normalizeNumber(score) : score}
     </span>
   </div>

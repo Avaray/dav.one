@@ -10,16 +10,37 @@ export const Card = ({ icon, title, link }) => {
   return (
     <a href={link} target='_blank' rel='noopener noreferrer' class='w-full no-underline!'>
       <div
-        class='w-full aspect-square flex flex-col items-center border rounded-2xl group hover:border-primary hover:bg-primary'
+        class='w-full aspect-square flex flex-col items-center border rounded-2xl group hover:border-clampography-primary hover:bg-clampography-primary'
       >
-        <div class='flex-1 p-2 mx-8 mt-8 text-primary group-hover:text-base-content'>
+        <div class='flex-1 p-2 mx-8 mt-8 text-clampography-primary group-hover:text-clampography-background'>
           <Icon icon={icon} class='h-full w-full group-hover:drop-shadow-sm' />
         </div>
         <div
-          class='my-4 mx-2 text-center tracking-wider group-hover:text-base-content group-hover:text-shadow-sm'
+          class='my-4 mx-2 text-center tracking-wider group-hover:text-clampography-background group-hover:text-shadow-sm'
         >
           {title}
         </div>
+      </div>
+    </a>
+  )
+}
+
+{/* horizontal button with icon on left and text on right. each button width adjust to its content */}
+export const Button = ({ icon, title, link }) => {
+  return (
+    <a href={link} target='_blank' rel='noopener noreferrer' class='no-underline!'>
+      <div
+        class='inline-flex items-center gap-2 px-4 py-2 border rounded-2xl group hover:border-clampography-primary hover:bg-clampography-primary'
+      >
+        <Icon
+          icon={icon}
+          class='w-7 h-7 text-clampography-primary group-hover:text-clampography-background group-hover:drop-shadow-sm shrink-0'
+        />
+        <span
+          class='tracking-wider group-hover:text-clampography-background group-hover:text-shadow-sm'
+        >
+          {title}
+        </span>
       </div>
     </a>
   )
@@ -33,11 +54,11 @@ All forms of help are welcome and valued.
 
 If you'd like to support my work financially, you can do so through:
 
-<div class='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 *:min-w-0 my-8'>
+<div class='flex flex-wrap gap-4 my-8'>
   {/* <Card title='Revolut' link='https://revolut.me/avaray' icon="simple-icons:revolut">Open Collective</Card> */}
-  <Card title='GitHub Sponsors' link='https://github.com/sponsors/Avaray/' icon="simple-icons:githubsponsors">GitHub Sponsors</Card>
-  <Card title='BuyMeACoffee' link='https://buymeacoffee.com/avaray' icon="simple-icons:buymeacoffee">BuyMeACoffee.com</Card>
-  <Card title='Patreon' link='https://patreon.com/Avaray_' icon="simple-icons:patreon">Patreon.com</Card>
-  <Card title='Open Collective' link='https://opencollective.com/avaray' icon="bi:opencollective">Open Collective</Card>
-  <Card title='Ko-fi' link='https://ko-fi.com/avaray_' icon="simple-icons:kofi">Ko-fi</Card>
+  <Button title='BuyMeACoffee' link='https://buymeacoffee.com/avaray' icon="simple-icons:buymeacoffee">BuyMeACoffee.com</Button>
+  <Button title='GitHub Sponsors' link='https://github.com/sponsors/Avaray/' icon="simple-icons:githubsponsors">GitHub Sponsors</Button>
+  <Button title='Patreon' link='https://patreon.com/Avaray_' icon="simple-icons:patreon">Patreon.com</Button>
+  <Button title='Open Collective' link='https://opencollective.com/avaray' icon="bi:opencollective">Open Collective</Button>
+  <Button title='Ko-fi' link='https://ko-fi.com/avaray_' icon="simple-icons:kofi">Ko-fi</Button>
 </div>

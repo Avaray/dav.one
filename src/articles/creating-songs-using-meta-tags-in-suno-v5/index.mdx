@@ -236,10 +236,10 @@ If you are generating a song in parts (extending clips), the **last 10 seconds**
             .replace(/>/g, '&gt;');
 
           if (isInfo) {
-            return '<span class="text-primary">' + safe + '</span>';
+            return '<span class="text-clampography-primary">' + safe + '</span>';
           }
           if (isWarning) {
-            return '<span class="text-warning">' + safe + '</span>';
+            return '<span class="text-clampography-warning">' + safe + '</span>';
           }
           return safe;
         });
@@ -266,9 +266,9 @@ If you are generating a song in parts (extending clips), the **last 10 seconds**
           .replace(/>/g, '&gt;');
 
         if (isInfo) {
-          code.innerHTML = '<span class="text-primary">' + safe + '</span>';
+          code.innerHTML = '<span class="text-clampography-primary">' + safe + '</span>';
         } else if (isWarning) {
-          code.innerHTML = '<span class="text-warning">' + safe + '</span>';
+          code.innerHTML = '<span class="text-clampography-warning">' + safe + '</span>';
         } else {
           code.innerHTML = safe;
         }

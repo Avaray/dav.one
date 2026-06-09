@@ -1,19 +1,32 @@
 ---
 import Icon from "@xtreat/astro-iconify";
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<'div'> {
+interface Props extends HTMLAttributes<"div"> {
   icon: string;
   iconRight?: boolean;
   iconFlip?: boolean;
+  color?: "success" | "error" | "warning" | "info";
 }
 
-const { icon, iconRight = false, iconFlip = false, ...attrs } = Astro.props;
+const {
+  icon,
+  iconRight = false,
+  iconFlip = false,
+  color,
+  ...attrs
+} = Astro.props;
 ---
 
-<div class={`flex items-center gap-4 ${iconRight ? 'flex-row-reverse' : ''}`} {...attrs}>
+<div
+  class={`flex items-center gap-4 ${iconRight ? "flex-row-reverse" : ""} ${color ? `text-clampography-${color}` : ""}`}
+  {...attrs}
+>
   <div class="shrink-0">
-    <Icon class={`text-text h-[8em] w-[8em] ${iconFlip ? 'flip-x' : ''}`} icon={icon} />
+    <Icon
+      class={`text-text h-[8em] w-[8em] ${iconFlip ? "flip-x" : ""}`}
+      icon={icon}
+    />
   </div>
   <div class="flex-1">
     <slot />

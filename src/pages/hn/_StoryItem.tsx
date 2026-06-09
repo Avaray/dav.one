@@ -35,7 +35,7 @@ const StoryItem = ({ story, index }: StoryItemProps) => {
   const domain = getDomain(story.url);
 
   return (
-    <div className="rounded-lg over:shadow-md transition-shadow p-4 border border-base-content/5">
+    <div className="rounded-lg over:shadow-md transition-shadow p-4 border border-clampography-text/5">
       <div className="flex gap-4">
         {/* Index */}
         <div className="shrink-0 text-gray-400 font-mono text-sm w-8">

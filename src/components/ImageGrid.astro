@@ -1,21 +1,27 @@
 ---
 // You are looking at freaking stupid hacks her, because cant use <slot /> in easy way
-const html = await Astro.slots.render('default');
-// This one matches all elements inside first paragraph
-const images = html.match(/<img.*?>/gm) || [];
+const html = await Astro.slots.render("default");
+const galleryId = Math.random().toString(36).substring(2, 9);
+const images =
+  html
+    .match(/<img.*?>/gm)
+    ?.map((img) => img.replace("<img", `<img data-gallery="${galleryId}"`)) ||
+  [];
 
-// In the future I need to re-think this function
 const gridCols = (imagesCount = images.length) => {
-  if (imagesCount % 4 === 0) return 'grid-cols-2 sm:grid-cols-4';
-  if (imagesCount % 3 === 0) return 'grid-cols-1 sm:grid-cols-3';
-  if (imagesCount % 2 === 0) return 'grid-cols-1 sm:grid-cols-2';
-  return 'grid-cols-1';
+  if (imagesCount % 4 === 0) return "grid-cols-2 sm:grid-cols-4";
+  if (imagesCount % 3 === 0) return "grid-cols-1 sm:grid-cols-3";
+  if (imagesCount % 2 === 0) return "grid-cols-1 sm:grid-cols-2";
+  return "grid-cols-1";
 };
 ---
 
-<div class={`grid ${gridCols()} rounded-lg`}>
+<div class={`grid ${gridCols()} rounded-lg gap-2`}>
   {
-    // check if there is at least one image without throwing errors
-    images.length > 1 ? <Fragment set:html={images} /> : <div class='skeleton w-full h-100 opacity-10' />
+    images.length > 0 ? (
+      <Fragment set:html={images.join("")} class="select-none" />
+    ) : (
+      <div class="skeleton w-full h-100 opacity-10" />
+    )
   }
 </div>

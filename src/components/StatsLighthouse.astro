@@ -43,17 +43,19 @@ if (isProduction) {
 }
 ---
 
-<div class="border rounded-2xl flex-1 p-4 select-none">
-  <div class="flex items-center justify-between text-base-content gap-4">
+<div
+  class="border rounded-2xl w-full lg:flex-2 p-4 select-none flex flex-col justify-center gap-4"
+>
+  <div class="flex items-center justify-between text-clampography-text gap-4">
     <HeadingWithIcon
-      icon="simple-icons:pagespeedinsights"
+      icon="simple-icons:lighthouse"
       title="Google PageSpeed Insights"
-      level={2}
+      level={3}
     />
 
     <a
       href={report.finalUrl}
-      class="hover:text-primary"
+      class="hover:text-clampography-primary"
       target="_blank"
       title="Go and check by yourself, you doubter! 😂"
     >
@@ -65,7 +67,7 @@ if (isProduction) {
   </div>
   {
     !isProduction && (
-      <Alert type="info">
+      <Alert type="warning">
         Real stats are generated only on{" "}
         <a href="https://dav.one/about-website/">main branch</a>
       </Alert>
