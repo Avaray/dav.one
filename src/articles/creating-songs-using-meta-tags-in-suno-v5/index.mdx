@@ -8,12 +8,19 @@ author: 'Dawid Wasowski'
 draft: true
 ---
 
-[Suno AI](https://suno.com/) v5 is one of the leading platforms for AI music creation, 
+import Alert from '@/components/reusables/Alert.astro'
+
+[Suno AI](https://suno.com/) is one of the leading platforms for AI music creation, 
 but getting great results requires more than just describing what you want. 
-This guide breaks down Meta Tags - technical commands that let you control every aspect of your songs, 
+This guide breaks down **Meta Tags** - technical commands that let you control aspects of your songs, 
 from structure and vocals to instrumentation and atmosphere. 
 To demonstrate these concepts in action, we'll walk through creating a complete drum and bass track, 
 applying Meta Tags step-by-step to achieve professional results.
+
+<Alert>
+This article applies to model version 5. 
+Version 5.5 works similarly but is more sensitive to text length, so the same input can produce songs 2 to 3 times longer.
+</Alert>
 
 ## Part 1: The Language of Suno (Meta Tags)
 
@@ -59,7 +66,7 @@ Suno sometimes splits lines awkwardly. To prevent this:
 Knowing the tags is half the battle. Knowing *what* to ask for is the other half. Here are 5 pillars you need to understand.
 
 ### 1. Dynamics (Tension & Release)
-A song is a journey, not a straight line [web:44].
+A song is a journey, not a straight line.
 *   **Tension:** Build anticipation. Use tags like `[Riser]`, `[Build-up]`, `[Accelerating]`.
 *   **Release:** The satisfying payoff (the Chorus or Drop). This is where the full bass and melody hit.
 *   *In Suno:* Don't just go from `[Verse]` to `[Chorus]`. Add a `[Pre-Chorus]` or `[Build-up]` to make the drop more impactful.
@@ -78,7 +85,7 @@ The *Style of Music* box is not just for genres. Suno v5 is accurate with specif
 Describe the "color" of the sound.
 *   **Warm vs. Cold:** *Warm analog pads* vs *Icy digital synths*.
 *   **Dense vs. Sparse:** *Wall of sound* (many instruments) vs *Minimalist* (just bass and drums).
-*   *In Suno:* These adjectives define the character of your track more than the genre name itself [web:50].
+*   *In Suno:* These adjectives define the character of your track more than the genre name itself.
 
 ### 4. Rhythm and Groove
 Most pop music is in 4/4 time, but the magic happens elsewhere.
