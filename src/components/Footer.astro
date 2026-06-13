@@ -2,8 +2,10 @@
 import FooterButton from '@/components/reusables/FooterButton.astro';
 
 const currentYear = new Date().getFullYear();
+const currentPath = Astro.url.pathname;
 
 const links = [
+  { href: '/', text: 'Home', icon: 'material-symbols-light:home-work-outline-rounded' },
   { href: '/about-me/', text: 'About me', icon: 'game-icons:astronaut-helmet' },
   { href: '/about-website/', text: 'About website', icon: 'game-icons:computing' },
   { href: '/support-me/', text: 'Support me', icon: 'game-icons:cherish' },
@@ -12,13 +14,15 @@ const links = [
   { href: '/rss.xml', text: 'RSS feed', icon: 'bx:rss', target: '_blank' },
   { href: '/sitemap-0.xml', text: 'Sitemap', icon: 'solar:documents-minimalistic-bold-duotone', target: '_blank' },
 ];
+
+const visibleLinks = links.filter((link) => !(link.href === '/' && currentPath === '/'));
 ---
 
 <!-- src/components/Footer.astro -->
 <footer class='mb-10vh select-none'>
   <hr />
   <nav class='flex flex-wrap justify-center items-start gap-8 p-4 mb-20'>
-    {links.map((link) => <FooterButton {...link} />)}
+    {visibleLinks.map((link) => <FooterButton {...link} />)}
   </nav>
   <div class='flex justify-center lg:justify-end mb-20'>
     <div class='p-4 self-center lg:self-end'>Copyright © {currentYear} - All rights reserved</div>
