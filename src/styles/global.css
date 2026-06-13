@@ -24,7 +24,7 @@
   *,
   ::before,
   ::after {
-    @apply transition-colors duration-[250ms] ease-in-out;
+    @apply transition-colors duration-250 ease-in-out;
   }
 
   strong {
