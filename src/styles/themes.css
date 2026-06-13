@@ -3,8 +3,8 @@
   name: 'greenery';
 
   color-scheme: 'dark';
-  default: false;
-  prefersdark: false;
+  default: true;
+  prefersdark: true;
 
   background: oklch(16.77% 0.01 252.43);
   surface: oklch(0.87 0.03 288.63 / 0.01);

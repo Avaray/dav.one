@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @plugin "clampography" {
-  themes: dark --default;
   base: true;
   extra: true;
   logs: true;
