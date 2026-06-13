@@ -72,14 +72,14 @@ const fetchCloudflareStats = async () => {
             viewer {
               zones(filter: { zoneTag: $zoneId }) {
                 totals: httpRequests1dGroups(
-                  filter: { date_gt: $since, clientRequestHTTPHost: "dav.one" },
+                  filter: { date_gt: $since },
                   limit: 30
                 ) {
                   uniq { uniques }
                   sum { requests bytes }
                 }
                 httpRequests1dGroups(
-                  filter: { date_gt: $since, clientRequestHTTPHost: "dav.one" },
+                  filter: { date_gt: $since },
                   limit: 30,
                   orderBy: [date_ASC]
                 ) {
@@ -205,8 +205,14 @@ const highestVisitorsCount = data30Days.reduce(
 
   <!-- Display above "md" media query -->
   <div class='hidden md:flex justify-between'>
-    <small class='px-1 text-clampography-text/90'>{data30Days[0].date}</small>
-    <small class='px-1 text-clampography-text/90'>{data30Days[data30Days.length - 1].date}</small>
+    {
+      data30Days.length > 0 && (
+        <>
+          <small class='px-1 text-clampography-text/90'>{data30Days[0].date}</small>
+          <small class='px-1 text-clampography-text/90'>{data30Days[data30Days.length - 1].date}</small>
+        </>
+      )
+    }
   </div>
 
   <!-- Display below "md" media query -->
