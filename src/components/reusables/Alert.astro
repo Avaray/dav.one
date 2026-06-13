@@ -1,66 +1,66 @@
 ---
-import Icon from "@xtreat/astro-iconify";
+import Icon from '@xtreat/astro-iconify';
 
 interface Props {
-  type?: "success" | "info" | "warning" | "error" | "link" | "neutral";
-  icon?: "success" | "info" | "warning" | "error" | "link" | "neutral";
+  type?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
+  icon?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
   noicon?: boolean;
 }
 
-const { type = "info", icon: iconOverride, noicon = false } = Astro.props;
+const { type = 'info', icon: iconOverride, noicon = false } = Astro.props;
 
 const typeMap = {
   success: {
-    base: "bg-clampography-success/20",
-    text: "text-clampography-success",
-    border: "border-clampography-success border-[1px]",
-    icon: "clarity:success-standard-solid",
+    base: 'bg-clampography-success/20',
+    text: 'text-clampography-success',
+    border: 'border-clampography-success border-[1px]',
+    icon: 'clarity:success-standard-solid',
   },
   info: {
-    base: "bg-clampography-info/20",
-    text: "text-clampography-info",
-    border: "border-clampography-info border-[1px]",
-    icon: "clarity:info-solid",
+    base: 'bg-clampography-info/20',
+    text: 'text-clampography-info',
+    border: 'border-clampography-info border-[1px]',
+    icon: 'clarity:info-solid',
   },
   warning: {
-    base: "bg-clampography-warning/20",
-    text: "text-clampography-warning",
-    border: "border-clampography-warning border-[1px]",
-    icon: "clarity:warning-solid",
+    base: 'bg-clampography-warning/20',
+    text: 'text-clampography-warning',
+    border: 'border-clampography-warning border-[1px]',
+    icon: 'clarity:warning-solid',
   },
   error: {
-    base: "bg-clampography-error/20",
-    text: "text-clampography-error",
-    border: "border-clampography-error border-[1px]",
-    icon: "clarity:error-solid",
+    base: 'bg-clampography-error/20',
+    text: 'text-clampography-error',
+    border: 'border-clampography-error border-[1px]',
+    icon: 'clarity:error-solid',
   },
   link: {
-    base: "bg-clampography-info/20",
-    text: "text-clampography-info",
-    border: "border-clampography-info border-[1px]",
-    icon: "mdi:link-variant",
+    base: 'bg-clampography-info/20',
+    text: 'text-clampography-info',
+    border: 'border-clampography-info border-[1px]',
+    icon: 'mdi:link-variant',
   },
   neutral: {
-    base: "bg-clampography-surface/20",
-    text: "text-clampography-text",
-    border: "border-clampography-text border-[1px]",
-    icon: "mdi:android-messages",
+    base: 'bg-clampography-surface/20',
+    text: 'text-clampography-text',
+    border: 'border-clampography-text border-[1px]',
+    icon: 'mdi:android-messages',
   },
 };
 
-const alertClass = `bg-clampography-surface ${typeMap[type].text} flex w-full items-center gap-3 my-4 rounded-xl p-[0.5em] [&_a]:text-inherit [&_a]:decoration-current`;
+const alertClass = `bg-clampography-surface ${typeMap[type].text} flex w-full items-center gap-3 my-4 rounded-xl [&_a]:!text-inherit [&_a]:![text-decoration-color:color-mix(in_oklab,currentcolor_30%,transparent)] [&_a:hover]:!decoration-current`;
 const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
 ---
 
-<div role="alert" class={alertClass}>
+<div role='alert' class={alertClass}>
   {
     !noicon && (
-      <span class="flex shrink-0 items-center">
-        <Icon icon={icon} class="size-[2em]" />
+      <span class='flex shrink-0 items-center'>
+        <Icon icon={icon} class='size-[2em]' />
       </span>
     )
   }
-  <span class="w-full">
+  <span class='w-full'>
     <slot />
   </span>
 </div>
