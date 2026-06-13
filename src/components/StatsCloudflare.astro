@@ -1,13 +1,10 @@
 ---
-import HeadingWithIcon from "./reusables/HeadingWithIcon.astro";
-import Alert from "./reusables/Alert.astro";
-import {
-  calculateAverageNumber,
-  calculatePercentageOf,
-} from "@scripts/utils.ts";
-import Stat from "./reusables/Stat.astro";
+import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
+import Alert from './reusables/Alert.astro';
+import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
+import Stat from './reusables/Stat.astro';
 
-const isProduction = String(import.meta.env.PRODUCTION_BUILD) === "true";
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === 'true';
 
 export const isDrop = (previous: number[], current: number) => {
   const previousAverage = calculateAverageNumber(previous);
@@ -16,14 +13,14 @@ export const isDrop = (previous: number[], current: number) => {
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + "M";
+    return (num / 1000000).toFixed(1) + 'M';
   } else if (num >= 1000) {
-    return (num / 1000).toFixed(1) + "k";
+    return (num / 1000).toFixed(1) + 'k';
   }
   return num.toString();
 };
 
-const CLOUDFLARE_GRAPHQL_URL = "https://api.cloudflare.com/client/v4/graphql";
+const CLOUDFLARE_GRAPHQL_URL = 'https://api.cloudflare.com/client/v4/graphql';
 const ZONE_ID = import.meta.env.CF_ZONE_ID;
 const API_TOKEN = import.meta.env.CF_RADAR_TOKEN;
 
@@ -34,7 +31,7 @@ const generateMockData = () => {
   for (let i = 29; i >= 0; i--) {
     const date = new Date();
     date.setDate(currentDate.getDate() - i - 1);
-    const formattedDate = date.toISOString().split("T")[0];
+    const formattedDate = date.toISOString().split('T')[0];
 
     dailyData.push({
       date: formattedDate,
@@ -58,16 +55,16 @@ const fetchCloudflareStats = async () => {
   thirtyDaysAgo.setDate(currentDate.getDate() - 31);
 
   // const formattedCurrentDate = currentDate.toISOString().split('T')[0];
-  const formattedThirtyDaysAgo = thirtyDaysAgo.toISOString().split("T")[0];
+  const formattedThirtyDaysAgo = thirtyDaysAgo.toISOString().split('T')[0];
 
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     Authorization: `Bearer ${API_TOKEN}`,
   };
 
   // https://pages.johnspurlock.com/graphql-schema-docs/cloudflare.html#AccountHttpRequests1dGroupsSum
   const dailyResponse = await fetch(CLOUDFLARE_GRAPHQL_URL, {
-    method: "POST",
+    method: 'POST',
     headers: headers,
     body: JSON.stringify({
       query: `
@@ -108,6 +105,9 @@ const fetchCloudflareStats = async () => {
   const data = await dailyResponse.json();
 
   try {
+    if (!data.data || data.errors) {
+      throw new Error(data.errors ? `GraphQL Error: ${data.errors[0]?.message}` : 'No data returned from API');
+    }
     const zoneData = data.data.viewer.zones[0];
     const totalUniques = zoneData.totals[0]?.uniq?.uniques || 0;
     const totalRequests = zoneData.totals[0]?.sum?.requests || 0;
@@ -141,65 +141,56 @@ const highestVisitorsCount = data30Days.reduce(
   (maxObj: any, currentObj: any) => {
     return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
   },
+  { date: '', pageViews: 0, requests: 0, uniques: 0 },
 );
 ---
 
-<div class="border rounded-2xl w-full p-4 select-none my-8">
-  <div
-    class="flex flex-col md:flex-row md:justify-between md:items-start gap-4"
-  >
-    <HeadingWithIcon
-      icon="icon-park-outline:analysis"
-      title="Cloudflare's Monthly Statistics"
-      level={3}
-    />
+<div class='border rounded-2xl w-full p-4 select-none my-8'>
+  <div class='flex flex-col md:flex-row md:justify-between md:items-start gap-4'>
+    <HeadingWithIcon icon='icon-park-outline:analysis' title="Cloudflare's Monthly Statistics" level={3} />
 
-    <div class="hidden md:flex gap-6 md:gap-8">
-      <div class="text-center">
-        <h3 class="font-bold mb-0 text-clampography-success">
+    <div class='hidden md:flex gap-6 md:gap-8'>
+      <div class='text-center'>
+        <h3 class='font-bold mb-0 text-clampography-success'>
           {formatNumber(totalUniques)}
         </h3>
-        <small class="text-clampography-text/90">Unique visitors</small>
+        <small class='text-clampography-text/90'>Unique visitors</small>
       </div>
-      <div class="text-center">
-        <h3 class="font-bold mb-0 text-clampography-success">
+      <div class='text-center'>
+        <h3 class='font-bold mb-0 text-clampography-success'>
           {formatNumber(totalRequests)}
         </h3>
-        <small class="text-clampography-text/90">Total requests</small>
+        <small class='text-clampography-text/90'>Total requests</small>
       </div>
     </div>
   </div>
 
   {
     !isProduction && (
-      <Alert type="info">
-        Real stats are generated only on{" "}
-        <a href="https://dav.one/about-website/">main branch</a>
+      <Alert type='info'>
+        Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
       </Alert>
     )
   }
 
-  <div
-    id="chart-container"
-    class="hidden md:flex w-full h-24 gap-1 mb-1 mt-8 items-end"
-  >
+  <div id='chart-container' class='hidden md:flex w-full h-24 gap-1 mb-1 mt-8 items-end'>
     {
       data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
         const previousDays = data30Days.slice(Math.max(index - 3, 0), index);
 
         const conditionalClasses = [
-          index === 0 ? "sm:rounded-bl-xl" : "",
-          index === data30Days.length - 1 ? "sm:rounded-br-xl" : "",
+          index === 0 ? 'sm:rounded-bl-xl' : '',
+          index === data30Days.length - 1 ? 'sm:rounded-br-xl' : '',
           isDrop(
             previousDays.map((d: any) => d.uniques),
             day.uniques,
           )
-            ? "bg-clampography-error"
-            : "bg-clampography-success",
+            ? 'bg-clampography-error'
+            : 'bg-clampography-success',
         ]
           .filter(Boolean)
-          .join(" ");
+          .join(' ');
 
         return (
           <div
@@ -213,21 +204,16 @@ const highestVisitorsCount = data30Days.reduce(
   </div>
 
   <!-- Display above "md" media query -->
-  <div class="hidden md:flex justify-between">
-    <small class="px-1 text-clampography-text/90">{data30Days[0].date}</small>
-    <small class="px-1 text-clampography-text/90"
-      >{data30Days[data30Days.length - 1].date}</small
-    >
+  <div class='hidden md:flex justify-between'>
+    <small class='px-1 text-clampography-text/90'>{data30Days[0].date}</small>
+    <small class='px-1 text-clampography-text/90'>{data30Days[data30Days.length - 1].date}</small>
   </div>
 
   <!-- Display below "md" media query -->
-  <div class="md:hidden grid grid-cols-2 md:grid-cols-4 gap-4">
-    <Stat value={formatNumber(totalUniques)} label="Unique Visitors" />
-    <Stat
-      value={formatNumber(highestVisitorsCount.uniques)}
-      label="Maximum Daily Visitors"
-    />
-    <Stat value={formatNumber(totalRequests)} label="Total Requests" />
-    <Stat value={totalBandwidthGB} label="Total Bandwidth" />
+  <div class='md:hidden grid grid-cols-2 md:grid-cols-4 gap-4'>
+    <Stat value={formatNumber(totalUniques)} label='Unique Visitors' />
+    <Stat value={formatNumber(highestVisitorsCount.uniques)} label='Maximum Daily Visitors' />
+    <Stat value={formatNumber(totalRequests)} label='Total Requests' />
+    <Stat value={totalBandwidthGB} label='Total Bandwidth' />
   </div>
 </div>
