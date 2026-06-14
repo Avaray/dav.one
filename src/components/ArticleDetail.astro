@@ -1,3 +1,18 @@
-<span class='rounded-lg border-solid border p-2 px-4 whitespace-normal md:whitespace-nowrap'>
+---
+interface Props {
+  class?: string;
+  print?: boolean;
+}
+
+const { class: className, print = true } = Astro.props;
+---
+
+<span
+  class:list={[
+    'rounded-lg border-solid border p-2 px-4 whitespace-normal md:whitespace-nowrap',
+    className,
+    !print && 'no-print',
+  ]}
+>
   <slot />
 </span>
