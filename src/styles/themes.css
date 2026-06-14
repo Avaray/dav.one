@@ -7,11 +7,11 @@
   prefersdark: true;
 
   background: oklch(16.77% 0.01 252.43);
-  surface: oklch(0.87 0.03 288.63 / 0.01);
-  border: oklch(0.87 0.03 288.63 / 0.8);
+  surface: oklch(0.87 0.03 288.63 / 0.07);
+  border: oklch(0.87 0.03 288.63 / 0.07);
 
   heading: oklch(0.87 0.03 288.63);
-  text: oklch(0.87 0.03 288.63 / 0.8);
+  text: oklch(0.87 0.03 288.63 / 0.9);
 
   link: oklch(76% 0.177 163.223);
   primary: oklch(76% 0.177 163.223);
