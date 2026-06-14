@@ -2,6 +2,7 @@
 title: "How AI disrupted Tailwind CSS"
 description: "Tailwind CSS laid off 75% of their engineering team due to AI's devastating impact on their business model. A deep dive into what happened, why it matters, and what the developer community thinks about the future of open-source sustainability."
 created: '2026-01-12'
+author: 'Dawid Wasowski'
 icon: 'file-icons:tailwind'
 genre: "Analysis"
 draft: true
@@ -19,7 +20,7 @@ What started as [a simple discussion](https://news.ycombinator.com/item?id=46527
 [LLM](https://en.wikipedia.org/wiki/Large_language_model)-friendly documentation became a window into one of the most 
 significant challenges facing [open-source](https://en.wikipedia.org/wiki/Open_source) projects in the AI era.
 
-<HeadingWithIcon icon="file-icons:tailwind" title="What is Tailwind CSS and why it matters" level={2} iconSize='xl' />
+<HeadingWithIcon icon="file-icons:tailwind" title="Why Tailwind CSS matters" level={2} iconSize='xl' />
 
 **Tailwind CSS** is a utility-first [CSS framework](https://en.wikipedia.org/wiki/CSS_framework) 
 that revolutionized how developers approach styling web applications. Instead of writing custom CSS, 
@@ -41,16 +42,16 @@ Adam revealed staggering numbers in his comments:
 - **Revenue down approximately 80%**
 - The docs were their primary discovery channel for paid products
 
-The mechanism is straightforward: developers now ask Claude, ChatGPT, 
-or Cursor to generate UI components instead of browsing documentation or purchasing pre-built templates. 
+The mechanism is straightforward: developers now ask [Claude](https://claude.ai/), [ChatGPT](https://chat.openai.com/), 
+or [Cursor](https://cursor.sh/) to generate UI components instead of browsing documentation or purchasing pre-built templates. 
 Every LLM seems to default to Tailwind for styling, but ironically, 
-this ubiquity doesn't translate to revenue—it bypasses the very documentation that drove customers to their paid offerings.
+this ubiquity doesn't translate to revenue - it bypasses the very documentation that drove customers to their paid offerings.
 
 One commenter captured the shift perfectly: "I have the entire UI basically working and I haven't even looked at the tailwind classes. I just say 'yes that's fine but can you improve the width for the sidebar on mobile'... I never had to look at the docs, I never went to their website."
 
 ### The shadcn Factor
 
-While AI grabbed headlines, many commenters identified shadcn/ui—launched in September 2023—as an equally significant threat. This free, open-source component system with a registry-based approach exploded in popularity, offering similar functionality to Tailwind Plus at zero cost. Several developers mentioned they stopped using Tailwind Plus entirely after discovering shadcn.
+While AI grabbed headlines, many commenters identified [shadcn/ui](https://ui.shadcn.com/) - launched in September 2023 - as an equally significant threat. This free, open-source component system with a registry-based approach exploded in popularity, offering similar functionality to Tailwind Plus at zero cost. Several developers mentioned they stopped using Tailwind Plus entirely after discovering shadcn.
 
 As one commenter noted: "I believe the new UI libraries hit hard more than the AI impact. When shadcn came out, it's so huge that I personally even feel there's no need to go for the raw Tailwind experience."
 
@@ -58,7 +59,7 @@ As one commenter noted: "I believe the new UI libraries hit hard more than the A
 
 Tailwind's business model had a fundamental flaw: they offered lifetime access for a one-time payment while promising continued updates. This worked during growth, but created an unsustainable situation once market saturation hit. As one developer explained: "When they say revenue is down 80%, it's because everyone already bought their library in its first few years of existence. And looking at their site there is nothing else to spend money on."
 
-Adam himself discussed this pricing strategy in a 2023 podcast, arguing that lifetime pricing captures customer lifetime value upfront and creates goodwill. However, this strategy assumes continuous customer acquisition—something AI and free alternatives severely disrupted.
+Adam himself discussed this pricing strategy in the 2023 [Hackers Incorporated](https://hackersincorporated.com/) podcast episode [Lifetime pricing is underrated](https://hackersincorporated.com/episodes/lifetime-pricing-is-underrated), arguing that lifetime pricing captures customer lifetime value upfront and creates goodwill. However, this strategy assumes continuous customer acquisition — something AI and free alternatives severely disrupted.
 
 <HeadingWithIcon icon="game-icons:uprising" title="Community Reactions" level={2} iconSize='xl' />
 
@@ -98,12 +99,12 @@ Several developers noted that companies like [Lovable](https://lovable.dev/) (cl
 
 One insightful comment: "Tailwind's business model is also value extraction from the standards they established. Isn't it more of a standards organization like ISO than a product company?"
 
-<HeadingWithIcon icon="game-icons:team-upgrade" title="Proposed Solutions from the Community" level={2} iconSize='xl' />
+<HeadingWithIcon icon="game-icons:team-upgrade" title="Proposed Solutions" level={2} iconSize='xl' />
 
-The discussion generated numerous suggestions:
+The community discussion generated numerous suggestions:
 
 ### AI-Native Monetization
-- Offer paid MCP (Model Context Protocol) servers or Claude Skills
+- Offer paid [MCP](https://en.wikipedia.org/wiki/Model_Context_Protocol) (Model Context Protocol) servers or Claude Skills
 - Sell LLM-optimized documentation to AI companies
 - Partner with Anthropic, OpenAI, or Cursor as official sponsors
 
@@ -114,18 +115,18 @@ The discussion generated numerous suggestions:
 - Offer enterprise licenses or consulting
 
 ### Strategic Partnerships
-- Acquisition by Vercel (frequently mentioned as natural fit)
+- Acquisition by [Vercel](https://vercel.com/) (frequently mentioned as natural fit)
 - Corporate sponsorships from companies using Tailwind
 - Create shadcn-compatible component registry
 
 ### Marketing Changes
 - Move beyond documentation as sole discovery channel
 - Target enterprise sales directly
-- Build better Figma integration
+- Build better [Figma](https://www.figma.com/) integration
 
 <HeadingWithIcon icon="game-icons:shrug" title="The Broader Implications" level={2} iconSize='xl' />
 
-This isn't just about Tailwind—it's a canary in the coal mine for the entire open-source ecosystem. As one commenter ominously noted: "This will happen to most businesses in all categories as more people rely on ChatGPT and Claude for discovery. No discovery - no business."
+This isn't just about Tailwind-it's a canary in the coal mine for the entire open-source ecosystem. As one commenter ominously noted: "This will happen to most businesses in all categories as more people rely on ChatGPT and Claude for discovery. No discovery - no business."
 
 The disruption spans multiple dimensions:
 
@@ -137,9 +138,9 @@ The disruption spans multiple dimensions:
 
 **The employment paradox**: AI makes developers more productive with Tailwind, increasing its usage, while simultaneously destroying the business that maintains it.
 
-<HeadingWithIcon icon="game-icons:screaming" title="What Comes Next?" level={2} iconSize='xl' />
+<HeadingWithIcon icon="game-icons:trail" title="What Comes Next?" level={2} iconSize='xl' />
 
-Tailwind continues with a skeleton crew—the three co-founders and one remaining engineer. Adam mentioned exploring solutions but admitted: "I can't prioritize it right now unfortunately, and I'm nervous to offer [LLM-optimized docs] without solving that problem first."
+Tailwind continues with a skeleton crew-the three co-founders and one remaining engineer. Adam mentioned exploring solutions but admitted: "I can't prioritize it right now unfortunately, and I'm nervous to offer LLM-optimized docs without solving that problem first."
 
 The community remains supportive but uncertain. Some predict acquisition, others suggest Tailwind should pivot to AI-native products, and pessimists warn this is the beginning of a broader collapse in open-source sustainability.
 
