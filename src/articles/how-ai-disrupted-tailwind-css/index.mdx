@@ -16,8 +16,7 @@ On January 7, 2026, [Adam Wathan](https://adamwathan.me/), creator of [Tailwind 
 made a [sobering announcement](https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957) 
 in a GitHub pull request discussion: 75% of Tailwind Labs' engineering team - three out of four engineers - 
 lost their jobs due to what he called **"the brutal impact AI has had on our business"**. 
-What started as [a simple discussion](https://news.ycombinator.com/item?id=46527950) about adding 
-[LLM](https://en.wikipedia.org/wiki/Large_language_model)-friendly documentation became a window into one of the most 
+What started as [a simple discussion](https://news.ycombinator.com/item?id=46527950) about adding an `llms.txt` file (a new standard for making documentation [LLM](https://en.wikipedia.org/wiki/Large_language_model)-friendly) became a window into one of the most 
 significant challenges facing [open-source](https://en.wikipedia.org/wiki/Open_source) projects in the AI era.
 
 <HeadingWithIcon icon="file-icons:tailwind" title="Why Tailwind CSS matters" level={2} iconSize='xl' />
@@ -42,24 +41,29 @@ Adam revealed staggering numbers in his comments:
 - **Revenue down approximately 80%**
 - The docs were their primary discovery channel for paid products
 
+In his personal podcast [Adam's Morning Walk](https://adams-morning-walk.transistor.fm/) (episode [We had six months left](https://adams-morning-walk.transistor.fm/episodes/we-had-six-months-left), released January 7, 2026), Adam candidly elaborated on these figures. He bluntly revealed the stark reality: without the layoffs, the company would have gone bankrupt by summer. The 80% revenue drop wasn't just a temporary dip - it was an existential threat.
+
 The mechanism is straightforward: developers now ask [Claude](https://claude.ai/), [ChatGPT](https://chat.openai.com/), 
 or [Cursor](https://cursor.sh/) to generate UI components instead of browsing documentation or purchasing pre-built templates. 
 Every LLM seems to default to Tailwind for styling, but ironically, 
 this ubiquity doesn't translate to revenue - it bypasses the very documentation that drove customers to their paid offerings.
 
-One commenter captured the shift perfectly: "I have the entire UI basically working and I haven't even looked at the tailwind classes. I just say 'yes that's fine but can you improve the width for the sidebar on mobile'... I never had to look at the docs, I never went to their website."
+One commenter captured the shift perfectly: 
+> "I have the entire UI basically working and I haven't even looked at the tailwind classes. I just say 'yes that's fine but can you improve the width for the sidebar on mobile'... I never had to look at the docs, I never went to their website."
 
 ### The shadcn Factor
 
 While AI grabbed headlines, many commenters identified [shadcn/ui](https://ui.shadcn.com/) - launched in September 2023 - as an equally significant threat. This free, open-source component system with a registry-based approach exploded in popularity, offering similar functionality to Tailwind Plus at zero cost. Several developers mentioned they stopped using Tailwind Plus entirely after discovering shadcn.
 
-As one commenter noted: "I believe the new UI libraries hit hard more than the AI impact. When shadcn came out, it's so huge that I personally even feel there's no need to go for the raw Tailwind experience."
+As one commenter noted: 
+> "I believe the new UI libraries hit hard more than the AI impact. When shadcn came out, it's so huge that I personally even feel there's no need to go for the raw Tailwind experience."
 
 ### The Lifetime Pricing Trap
 
-Tailwind's business model had a fundamental flaw: they offered lifetime access for a one-time payment while promising continued updates. This worked during growth, but created an unsustainable situation once market saturation hit. As one developer explained: "When they say revenue is down 80%, it's because everyone already bought their library in its first few years of existence. And looking at their site there is nothing else to spend money on."
+Tailwind's business model had a fundamental flaw: they offered lifetime access for a one-time payment while promising continued updates. This worked during growth, but created an unsustainable situation once market saturation hit. As one developer explained: 
+> "When they say revenue is down 80%, it's because everyone already bought their library in its first few years of existence. And looking at their site there is nothing else to spend money on."
 
-Adam himself discussed this pricing strategy in the 2023 [Hackers Incorporated](https://hackersincorporated.com/) podcast episode [Lifetime pricing is underrated](https://hackersincorporated.com/episodes/lifetime-pricing-is-underrated), arguing that lifetime pricing captures customer lifetime value upfront and creates goodwill. However, this strategy assumes continuous customer acquisition — something AI and free alternatives severely disrupted.
+Adam himself discussed this pricing strategy in the 2023 *Hackers Incorporated* podcast episode ["Lifetime pricing is underrated"](https://hackersincorporated.com/episodes/lifetime-pricing-is-underrated), arguing that lifetime pricing captures customer lifetime value upfront and creates goodwill. However, this strategy assumes continuous customer acquisition — something AI and free alternatives severely disrupted.
 
 <HeadingWithIcon icon="game-icons:uprising" title="Community Reactions" level={2} iconSize='xl' />
 
@@ -67,41 +71,47 @@ Adam himself discussed this pricing strategy in the 2023 [Hackers Incorporated](
 
 The dominant sentiment was sympathy and appreciation for Adam's transparency. Many commenters praised his honesty about the situation and expressed gratitude for Tailwind's contributions:
 
-- "Mad props to Adam for his honesty and transparency"
-- "Very happy Tailwind Plus and Insiders customer here. Happy to see that these comments are mostly supportive"
-- "I bought Tailwind UI years ago... I've appreciated the care and precision and highly recommend buying it"
+> "Mad props to Adam for his honesty and transparency"
+> "Very happy Tailwind Plus and Insiders customer here. Happy to see that these comments are mostly supportive"
+> "I bought Tailwind UI years ago... I've appreciated the care and precision and highly recommend buying it"
 
 Several developers shared they purchased Tailwind Plus specifically to support the project, even if they didn't use it extensively.
 
 ### Critical Perspectives on Business Decisions
 
-Others argued this was primarily a business model failure, not an AI problem:
+Others argued this was primarily a business model failure, not an AI problem. Popular tech creators on YouTube quickly weighed in. For instance, [Theo](https://t3.gg) in his video [The Tailwind drama](https://www.youtube.com/watch?v=luhgjBrRulk) highlighted why making documentation easier for AI bots to scrape would essentially be business suicide under Tailwind's current model. 
 
-- "The business model wasn't strong enough, just upselling templates for hundreds of dollars which AI can churn in few tokens was easy to disrupt"
-- "I think a problem is that tailwind has no moat... If it never received any further updates today it would still be effectively feature-complete"
-- "This is probably a case of tailwind growing their engineering team faster than they should have when the AI writing was on the wall in 2023"
+Comments from the GitHub community echoed similar sentiments:
 
-Multiple commenters questioned why Tailwind needed so many engineers for what is essentially a mature CSS library. The team had grown to 8 people (including founders) with engineering salaries reportedly in the $250-300K range.
+> "The business model wasn't strong enough, just upselling templates for hundreds of dollars which AI can churn in few tokens was easy to disrupt"
+> "I think a problem is that tailwind has no moat... If it never received any further updates today it would still be effectively feature-complete"
+> "This is probably a case of tailwind growing their engineering team faster than they should have when the AI writing was on the wall in 2023"
+
+Multiple commenters questioned the team size. To clarify the math: while the total company had grown to 8 people (including the founders), the core engineering team consisted of just 4 people, 3 of whom were laid off. Even with this relatively small engineering team, salaries reportedly in the $250-300K range simply became unsustainable.
 
 ### The Open Source Sustainability Debate
 
 This situation reignited discussions about open-source funding in the AI era:
 
-**The "AI is theft" camp** argued that LLM companies are "stealing traffic/money from creators" without compensation. One commenter wrote: "It's truly an awful dystopia. AI hyperscalers shamelessly monetize other people's work without compensation."
+**The "AI is theft" camp** argued that LLM companies are "stealing traffic/money from creators" without compensation. One commenter wrote: 
+> "It's truly an awful dystopia. AI hyperscalers shamelessly monetize other people's work without compensation."
 
-**The "adapt or die" camp** countered that this is simply technological disruption: "If a business model can't withstand being disrupted, it is no longer viable. Selling templates is now no longer viable, and blaming AI will not do anything."
+**The "adapt or die" camp** countered that this is simply technological disruption: 
+> "If a business model can't withstand being disrupted, it is no longer viable. Selling templates is now no longer viable, and blaming AI will not do anything."
 
-**The license debate** emerged, with many pointing out that Tailwind chose [MIT licensing](https://en.wikipedia.org/wiki/MIT_License), allowing free use by anyone, including AI companies. Some suggested: "If you want people to pay when they make a ton of money from your code, you should put that in the license" ([AGPL](https://www.gnu.org/licenses/agpl.html) was frequently mentioned).
+**The license debate** emerged, with many pointing out that Tailwind chose [MIT licensing](https://en.wikipedia.org/wiki/MIT_License), allowing free use by anyone, including AI companies. Some suggested: 
+> "If you want people to pay when they make a ton of money from your code, you should put that in the license" ([AGPL](https://www.gnu.org/licenses/agpl.html) was frequently mentioned).
 
 ### Recognition of Market Dynamics
 
-Several developers noted that companies like [Lovable](https://lovable.dev/) (claiming $250M ARR while heavily using Tailwind) contribute nothing financially, despite Tailwind's MIT license allowing this. Others observed that major tech companies pay millions for Microsoft 365 but nothing for critical infrastructure like Tailwind.
+Several developers noted that companies like [Lovable](https://lovable.dev/) (claiming $250M ARR while heavily using Tailwind) contribute nothing financially, despite Tailwind's MIT license allowing this. Others observed that major tech companies pay millions for [Microsoft 365](https://office.com) but nothing for critical infrastructure like Tailwind.
 
-One insightful comment: "Tailwind's business model is also value extraction from the standards they established. Isn't it more of a standards organization like ISO than a product company?"
+One insightful comment: 
+> "Tailwind's business model is also value extraction from the standards they established. Isn't it more of a standards organization like ISO than a product company?"
 
 <HeadingWithIcon icon="game-icons:team-upgrade" title="Proposed Solutions" level={2} iconSize='xl' />
 
-The community discussion generated numerous suggestions:
+The community offered numerous suggestions during the discussions. Additionally, analyses like *Better Stack*'s video [Tailwind is Dying](https://www.betterstack.com/blog/tailwind-is-dying/) highlighted how major players like Vercel could potentially step in to sponsor or acquire the project to save its infrastructure.
 
 ### AI-Native Monetization
 - Offer paid [MCP](https://en.wikipedia.org/wiki/Model_Context_Protocol) (Model Context Protocol) servers or Claude Skills
@@ -126,7 +136,8 @@ The community discussion generated numerous suggestions:
 
 <HeadingWithIcon icon="game-icons:shrug" title="The Broader Implications" level={2} iconSize='xl' />
 
-This isn't just about Tailwind-it's a canary in the coal mine for the entire open-source ecosystem. As one commenter ominously noted: "This will happen to most businesses in all categories as more people rely on ChatGPT and Claude for discovery. No discovery - no business."
+This isn't just about Tailwind-it's a canary in the coal mine for the entire open-source ecosystem. As one commenter ominously noted: 
+> "This will happen to most businesses in all categories as more people rely on ChatGPT and Claude for discovery. No discovery - no business."
 
 The disruption spans multiple dimensions:
 
@@ -140,7 +151,8 @@ The disruption spans multiple dimensions:
 
 <HeadingWithIcon icon="game-icons:trail" title="What Comes Next?" level={2} iconSize='xl' />
 
-Tailwind continues with a skeleton crew-the three co-founders and one remaining engineer. Adam mentioned exploring solutions but admitted: "I can't prioritize it right now unfortunately, and I'm nervous to offer LLM-optimized docs without solving that problem first."
+Tailwind continues with a skeleton crew-the three co-founders and one remaining engineer. Adam mentioned exploring solutions but admitted: 
+> "I can't prioritize it right now unfortunately, and I'm nervous to offer LLM-optimized docs without solving that problem first."
 
 The community remains supportive but uncertain. Some predict acquisition, others suggest Tailwind should pivot to AI-native products, and pessimists warn this is the beginning of a broader collapse in open-source sustainability.
 
