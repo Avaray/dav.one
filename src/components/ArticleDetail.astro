@@ -4,14 +4,14 @@ interface Props {
   print?: boolean;
 }
 
-const { class: className, print = true } = Astro.props;
+const { class: className, print = false } = Astro.props;
 ---
 
 <span
   class:list={[
-    'rounded-lg border-solid border p-2 px-4 whitespace-normal md:whitespace-nowrap',
+    'rounded-lg border border-solid p-2 px-4 whitespace-normal md:whitespace-nowrap',
     className,
-    !print && 'no-print',
+    print ? 'hidden print:inline' : '',
   ]}
 >
   <slot />

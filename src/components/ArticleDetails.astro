@@ -11,7 +11,14 @@ const details = {};
   <div class='flex items-center gap-2 flex-wrap'>
     <Detail>
       <span>Created on {readableDate(created, true)}</span>
-      {author && <span> by {author}</span>}
+      {
+        author && (
+          <span>
+            {' '}
+            by <b>{author}</b>
+          </span>
+        )
+      }
     </Detail>
     {
       updated && (
@@ -20,8 +27,8 @@ const details = {};
         </Detail>
       )
     }
-    <span class='hidden print:block border-solid border p-2 px-4 w-fit'>
+    <Detail print={true}>
       {articleUrl}
-    </span>
+    </Detail>
   </div>
 </div>
