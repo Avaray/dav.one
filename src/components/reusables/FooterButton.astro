@@ -19,11 +19,14 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
   class:list={[
     className,
     { active: isActive },
-    isActive && 'text-link',
+    isActive && 'text-clampography-link',
     'inline-flex flex-col items-center justify-center transition-colors',
   ]}
   {...props}
 >
-  <Icon icon={icon} class='h-10 w-10 text-text' />
+  <Icon
+    icon={icon}
+    class:list={['h-[2.5em] w-[2.5em]', isActive ? 'text-clampography-link' : 'text-clampography-text']}
+  />
   <p class='mt-1 text-center'>{text}</p>
 </a>
