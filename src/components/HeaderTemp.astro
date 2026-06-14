@@ -1,7 +1,17 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = 'dav.one', subtitle } = Astro.props;
+---
+
 <header class=''>
-  <a href='/' title='Return to the main page' aria-label='Return to the main page' class='font-bold'>
+  <a href='/' title='Return to the main page' aria-label='Return to the main page' class='font-bold header-link'>
     <h2 class=''>
-      <span class='text-clampography-heading'>dav.one</span>
+      <span class='text-clampography-heading'>{title}</span>
+      {subtitle && <span> - {subtitle}</span>}
     </h2>
   </a>
 </header>
