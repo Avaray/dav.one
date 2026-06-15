@@ -49,5 +49,6 @@ ready for production). However, you can switch themes with `CTRL` + `Arrow Keys`
 
 ## ©️ Copyright
 
-All articles and documents are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).\
-License is located in `LICENSE.md` file.
+* **Source Code**: The code for this blog is licensed under the [MIT License](LICENSE). Feel free to use it, learn from it, or use it as a template.
+* **Content**: All articles, text, and original images are copyrighted works licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). You may not copy, modify, or distribute them for commercial purposes without my explicit permission.
+* **Third-Party Assets**: Icons, Fonts, and other external assets used on this blog belong to their respective owners. A full list of credits and third-party licenses can be found on my [Attribution Page](https://github.com/Avaray/dav.one/blob/main/src/pages/attribution/index.mdx).
