@@ -46,7 +46,7 @@ const isProduction = String(import.meta.env.PRODUCTION_BUILD) === 'true';
 const latestFailureDate = isProduction ? FAKE_FAILURE_DATE : await getLatestFailureDate();
 ---
 
-<div class='border rounded-2xl w-full lg:flex-1 p-4 select-none flex flex-col gap-4 justify-between'>
+<div class='border rounded-2xl w-full lg:flex-1 p-4 select-none flex flex-col justify-between'>
   <div class='flex items-center justify-between text-clampography-text gap-4'>
     <HeadingWithIcon icon='icon-park-outline:analysis' title='Builds' level={3} />
     <a
