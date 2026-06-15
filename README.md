@@ -6,7 +6,7 @@ Blog about Stable Diffusion, Generative AI, Web Development, Frontend Frameworks
 
 Developed with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).\
 Built using [Astro](https://astro.build/) framework.\
-Styled with [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/).\
+Styled with [Tailwind CSS](https://tailwindcss.com/) and [Clampography](https://www.npmjs.com/package/clampography).\
 Deployed with [GitHub Actions](https://github.com/features/actions).\
 Hosted with [Cloudflare Pages](https://pages.cloudflare.com/).
 
