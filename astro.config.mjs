@@ -1,12 +1,11 @@
 import { defineConfig } from "astro/config";
-import { fileURLToPath, URL } from "node:url";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
-import { unified } from "@astrojs/markdown-remark";
+import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,22 +25,6 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
     ],
-    resolve: {
-      alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
-        "@articles": fileURLToPath(new URL("./src/articles", import.meta.url)),
-        "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
-        "@components": fileURLToPath(
-          new URL("./src/components", import.meta.url),
-        ),
-        "@layouts": fileURLToPath(new URL("./src/layouts", import.meta.url)),
-        "@reusables": fileURLToPath(
-          new URL("./src/components/reusables", import.meta.url),
-        ),
-        "@scripts": fileURLToPath(new URL("./src/scripts", import.meta.url)),
-        "@styles": fileURLToPath(new URL("./src/styles", import.meta.url)),
-      },
-    },
     server: {
       watch: {
         ignored: ["**/.astro/**", "**/node_modules/**", "**/dist/**"],
