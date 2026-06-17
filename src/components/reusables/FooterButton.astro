@@ -20,13 +20,17 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
     className,
     { active: isActive },
     isActive && 'text-clampography-link',
-    'inline-flex flex-col items-center justify-center transition-colors',
+    'group inline-flex flex-col items-center justify-center transition-colors',
   ]}
   {...props}
 >
   <Icon
     icon={icon}
-    class:list={['h-[2.5em] w-[2.5em]', isActive ? 'text-clampography-link' : 'text-clampography-text']}
+    class:list={[
+      'h-[2.5em] w-[2.5em]',
+      isActive ? 'text-clampography-link' : 'text-clampography-text',
+      'group-hover:text-clampography-heading transition-colors',
+    ]}
   />
   <p class='mt-1 text-center'>{text}</p>
 </a>
