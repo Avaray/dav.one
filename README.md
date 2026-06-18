@@ -27,25 +27,20 @@ cd dav.one
 Install dependencies
 
 ```
-deno task install
+bun i
 ```
 
 Start development server
 
 ```
-deno task dev
+bun run dev
 ```
 
 Build production version
 
 ```
-deno task build
+bun run build
 ```
-
-## ✨ Themes
-
-Currently theme switch component is hidden because I have just one theme for now. Rest of themes are experimental (not
-ready for production). However, you can switch themes with `CTRL` + `Arrow Keys` combination.
 
 ## ©️ Copyright
 
