@@ -37,6 +37,7 @@ async function scrapePageSpeedResults(url: string = "https://dav.one"): Promise<
 
   const browser: Browser = await chromium.launch({
     headless: true,
+    executablePath: process.env.GITHUB_ACTIONS ? "/usr/bin/google-chrome" : undefined,
   });
 
   const page: Page = await browser.newPage();

@@ -42,24 +42,10 @@ jobs:
           restore-keys: |
             astro-images-
 
-      # other branches are not using it
-      - name: Cache Playwright browsers
-        if: github.ref_name == 'main'
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            playwright-${{ runner.os }}-
 
       - name: Install Dependencies
         run: bun install
 
-      - name: Install Playwright Browsers
-        if: github.ref_name == 'main'
-        run: |
-          echo "📥 Installing Playwright Chromium and OS dependencies"
-          bunx playwright install chromium --with-deps
 
       - name: Build Website
         env:
