@@ -143,21 +143,23 @@ const highestVisitorsCount = data30Days.reduce(
   },
   { date: '', pageViews: 0, requests: 0, uniques: 0 },
 );
+
+const generatedAt = new Date().toISOString();
 ---
 
-<div class='border rounded-2xl w-full p-4 select-none my-8'>
+<div id='cloudflare-stats-container' class='border rounded-2xl w-full p-4 select-none my-8' data-generated-at={generatedAt}>
   <div class='flex flex-col md:flex-row md:justify-between md:items-start'>
     <HeadingWithIcon icon='icon-park-outline:analysis' title="Cloudflare's Monthly Statistics" level={3} />
 
     <div class='hidden md:flex gap-6 md:gap-8'>
       <div class='text-center'>
-        <h3 class='font-bold mb-0 text-clampography-success'>
+        <h3 id="cf-total-uniques" class='font-bold mb-0 text-clampography-success'>
           {formatNumber(totalUniques)}
         </h3>
         <small class='text-clampography-text/90'>Unique visitors</small>
       </div>
       <div class='text-center'>
-        <h3 class='font-bold mb-0 text-clampography-success'>
+        <h3 id="cf-total-requests" class='font-bold mb-0 text-clampography-success'>
           {formatNumber(totalRequests)}
         </h3>
         <small class='text-clampography-text/90'>Total requests</small>
@@ -165,15 +167,7 @@ const highestVisitorsCount = data30Days.reduce(
     </div>
   </div>
 
-  {
-    !isProduction && (
-      <Alert type='info'>
-        Real stats are generated only on <a href='https://dav.one/about-website/'>main branch</a>
-      </Alert>
-    )
-  }
-
-  <div id='chart-container' class='hidden md:flex w-full h-24 gap-1 mb-1 mt-8 items-end'>
+  <div id='cf-chart-container' class='hidden md:flex w-full h-24 gap-1 mb-1 mt-8 items-end'>
     {
       data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
@@ -208,8 +202,8 @@ const highestVisitorsCount = data30Days.reduce(
     {
       data30Days.length > 0 && (
         <>
-          <small class='px-1 text-clampography-text/90'>{data30Days[0].date}</small>
-          <small class='px-1 text-clampography-text/90'>{data30Days[data30Days.length - 1].date}</small>
+          <small id="cf-date-start" class='px-1 text-clampography-text/90'>{data30Days[0].date}</small>
+          <small id="cf-date-end" class='px-1 text-clampography-text/90'>{data30Days[data30Days.length - 1].date}</small>
         </>
       )
     }
@@ -217,9 +211,106 @@ const highestVisitorsCount = data30Days.reduce(
 
   <!-- Display below "md" media query -->
   <div class='md:hidden grid grid-cols-2 md:grid-cols-4 gap-4'>
-    <Stat value={formatNumber(totalUniques)} label='Unique Visitors' />
-    <Stat value={formatNumber(highestVisitorsCount.uniques)} label='Maximum Daily Visitors' />
-    <Stat value={formatNumber(totalRequests)} label='Total Requests' />
-    <Stat value={totalBandwidthGB} label='Total Bandwidth' />
+    <Stat id="cf-mobile-total-uniques" value={formatNumber(totalUniques)} label='Unique Visitors' />
+    <Stat id="cf-mobile-max-uniques" value={formatNumber(highestVisitorsCount.uniques)} label='Maximum Daily Visitors' />
+    <Stat id="cf-mobile-total-requests" value={formatNumber(totalRequests)} label='Total Requests' />
+    <Stat id="cf-mobile-total-bandwidth" value={totalBandwidthGB} label='Total Bandwidth' />
   </div>
 </div>
+
+<script>
+  import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
+
+  const formatNumber = (num: number): string => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'k';
+    }
+    return num.toString();
+  };
+
+  const isDrop = (previous: number[], current: number) => {
+    const previousAverage = calculateAverageNumber(previous);
+    return calculatePercentageOf(current, previousAverage, true) < 90;
+  };
+
+  const initCloudflareStats = async () => {
+    const container = document.getElementById('cloudflare-stats-container');
+    if (!container) return;
+
+    const generatedAtStr = container.getAttribute('data-generated-at');
+    if (!generatedAtStr) return;
+
+    const generatedAt = new Date(generatedAtStr).getTime();
+    const now = Date.now();
+    const hoursDifference = (now - generatedAt) / (1000 * 60 * 60);
+
+    if (hoursDifference > 48) {
+      try {
+        const response = await fetch('/cloudflare-stats.json');
+        if (!response.ok) throw new Error('Failed to fetch new stats');
+        
+        const data = await response.json();
+        
+        const totalBandwidthGB = (data.totalBytes / (1024 * 1024 * 1024)).toFixed(2);
+        const highestVisitorsCount = data.dailyData.reduce(
+          (maxObj: any, currentObj: any) => {
+            return currentObj.uniques > maxObj.uniques ? currentObj : maxObj;
+          },
+          { date: '', pageViews: 0, requests: 0, uniques: 0 },
+        );
+
+        const updateEl = (id: string, text: string) => {
+          const el = document.getElementById(id);
+          if (el) el.innerText = text;
+        };
+
+        // Desktop stats
+        updateEl('cf-total-uniques', formatNumber(data.totalUniques));
+        updateEl('cf-total-requests', formatNumber(data.totalRequests));
+
+        // Mobile stats
+        updateEl('cf-mobile-total-uniques', formatNumber(data.totalUniques));
+        updateEl('cf-mobile-max-uniques', formatNumber(highestVisitorsCount.uniques));
+        updateEl('cf-mobile-total-requests', formatNumber(data.totalRequests));
+        updateEl('cf-mobile-total-bandwidth', totalBandwidthGB);
+
+        // Dates
+        if (data.dailyData.length > 0) {
+          updateEl('cf-date-start', data.dailyData[0].date);
+          updateEl('cf-date-end', data.dailyData[data.dailyData.length - 1].date);
+        }
+
+        // Chart
+        const chartContainer = document.getElementById('cf-chart-container');
+        if (chartContainer) {
+          chartContainer.innerHTML = '';
+          data.dailyData.forEach((day: any, index: number) => {
+            const previousDays = data.dailyData.slice(Math.max(index - 3, 0), index);
+            const drop = isDrop(previousDays.map((d: any) => d.uniques), day.uniques);
+
+            let classes = ['chart-bar'];
+            if (index === 0) classes.push('sm:rounded-bl-xl');
+            if (index === data.dailyData.length - 1) classes.push('sm:rounded-br-xl');
+            if (drop) classes.push('bg-clampography-error');
+            else classes.push('bg-clampography-success');
+
+            const heightPercent = calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true);
+
+            const div = document.createElement('div');
+            div.className = classes.join(' ');
+            div.style.height = `${heightPercent}%`;
+            div.title = `${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`;
+            chartContainer.appendChild(div);
+          });
+        }
+      } catch (err) {
+        console.error('Error fetching dynamic cloudflare stats', err);
+      }
+    }
+  };
+
+  initCloudflareStats();
+  document.addEventListener('astro:page-load', initCloudflareStats);
+</script>

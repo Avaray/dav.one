@@ -1,8 +1,8 @@
 ---
-const { value, label } = Astro.props;
+const { value, label, id } = Astro.props;
 ---
 
 <div class='text-center p-4 border rounded-2xl bg-clampography-surface'>
-  <h2 class='font-bold text-clampography-success mb-1'>{value}</h2>
+  <h2 id={id} class='font-bold text-clampography-success mb-1'>{value}</h2>
   <small class='text-clampography-text/90'>{label}</small>
 </div>
