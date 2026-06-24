@@ -28,18 +28,18 @@ export async function onRequestGet(context: any) {
       headers: headers,
       body: JSON.stringify({
         query: `
-            query GetDailyStats($zoneId: String!, $since: ISO8601DateTime!, $host: String!) {
+            query GetDailyStats($zoneId: String!, $since: ISO8601DateTime!) {
               viewer {
                 zones(filter: { zoneTag: $zoneId }) {
                   totals: httpRequests1dGroups(
-                    filter: { date_gt: $since, clientRequestHTTPHost: $host },
+                    filter: { date_gt: $since },
                     limit: 30
                   ) {
                     uniq { uniques }
                     sum { requests bytes }
                   }
                   httpRequests1dGroups(
-                    filter: { date_gt: $since, clientRequestHTTPHost: $host },
+                    filter: { date_gt: $since },
                     limit: 30,
                     orderBy: [date_ASC]
                   ) {
@@ -54,7 +54,6 @@ export async function onRequestGet(context: any) {
         variables: {
           zoneId: ZONE_ID,
           since: formattedThirtyDaysAgo,
-          host: "dav.one",
         },
       }),
     });
