@@ -31,14 +31,14 @@ export const Button = ({ icon, title, link }) => {
   return (
     <a href={link} target='_blank' rel='noopener noreferrer' class='no-underline!'>
       <div
-        class='inline-flex items-center gap-2 px-4 py-2 border rounded-2xl group hover:border-clampography-primary hover:bg-clampography-primary'
+        class='inline-flex items-center gap-2 px-4 py-2 border rounded-2xl group hover:border-clampography-primary hover:bg-clampography-primary/20'
       >
         <Icon
           icon={icon}
-          class='w-7 h-7 text-clampography-primary group-hover:text-clampography-background group-hover:drop-shadow-sm shrink-0'
+          class='w-7 h-7 text-clampography-primary group-hover:text-clampography-heading group-hover:drop-shadow-sm shrink-0'
         />
         <span
-          class='tracking-wider group-hover:text-clampography-background group-hover:text-shadow-sm'
+          class='tracking-wider group-hover:text-clampography-heading group-hover:text-shadow-sm '
         >
           {title}
         </span>
