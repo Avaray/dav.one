@@ -46,7 +46,9 @@ const schema = {
 };
 
 // Add image field only if it exists
-imageUrl ? { image: imageUrl } : {};
+if (imageUrl) {
+  (schema as any).image = imageUrl;
+}
 ---
 
 <script type='application/ld+json' set:html={JSON.stringify(schema)} />
