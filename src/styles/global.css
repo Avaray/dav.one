@@ -78,12 +78,4 @@
   /* pre:hover .code-line:not(.darkened) {
     @apply text-clampography-primary;
   } */
-
-  /* Chart component */
-  .chart-bar {
-    @apply flex flex-1 gap-1 flex-col items-center
-           hover:scale-y-110 
-           origin-bottom
-           sm:rounded-t-2xl;
-  }
 }
