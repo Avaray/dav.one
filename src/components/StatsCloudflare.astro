@@ -3,6 +3,7 @@ import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 import Alert from './reusables/Alert.astro';
 import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
 import Stat from './reusables/Stat.astro';
+import Icon from '@xtreat/astro-iconify';
 
 const isProduction = String(import.meta.env.PRODUCTION_BUILD) === 'true';
 
@@ -172,6 +173,8 @@ const generatedAt = new Date().toISOString();
       data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
         const previousDays = data30Days.slice(Math.max(index - 3, 0), index);
+        const previousDay = index > 0 ? data30Days[index - 1] : null;
+        const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.3;
 
         const conditionalClasses = [
           index === 0 ? 'sm:rounded-bl-xl' : '',
@@ -191,7 +194,14 @@ const generatedAt = new Date().toISOString();
             class={`chart-bar ${conditionalClasses}`}
             style={`height: ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%`}
             title={`${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`}
-          />
+          >
+            {isSpike && (
+              <Icon
+                icon='material-symbols:fitbit-arrow-upward'
+                class='w-full h-auto shrink-0 text-clampography-background'
+              />
+            )}
+          </div>
         );
       })
     }
@@ -289,6 +299,8 @@ const generatedAt = new Date().toISOString();
           data.dailyData.forEach((day: any, index: number) => {
             const previousDays = data.dailyData.slice(Math.max(index - 3, 0), index);
             const drop = isDrop(previousDays.map((d: any) => d.uniques), day.uniques);
+            const previousDay = index > 0 ? data.dailyData[index - 1] : null;
+            const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.3;
 
             let classes = ['chart-bar'];
             if (index === 0) classes.push('sm:rounded-bl-xl');
@@ -302,6 +314,16 @@ const generatedAt = new Date().toISOString();
             div.className = classes.join(' ');
             div.style.height = `${heightPercent}%`;
             div.title = `${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`;
+
+            if (isSpike) {
+              const icon = document.createElement('iconify-icon');
+              icon.setAttribute('icon', 'material-symbols:fitbit-arrow-upward');
+              icon.setAttribute('width', '100%');
+              icon.style.color = 'var(--color-clampography-background)';
+              icon.style.flexShrink = '0';
+              div.appendChild(icon);
+            }
+
             chartContainer.appendChild(div);
           });
         }
