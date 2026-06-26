@@ -196,7 +196,7 @@ const generatedAt = new Date().toISOString();
         return (
           <div
             class={`chart-bar ${conditionalClasses}`}
-            style={`height: calc(20px + ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%)`}
+            style={`--bar-height: calc(20px + ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%)`}
             title={`${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`}
           >
             {isSpike && (
@@ -327,7 +327,7 @@ const generatedAt = new Date().toISOString();
 
             const div = document.createElement('div');
             div.className = classes.join(' ');
-            div.style.height = `calc(20px + ${heightPercent}%)`;
+            div.style.setProperty('--bar-height', `calc(20px + ${heightPercent}%)`);
             div.title = `${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`;
 
             if (isSpike) {
@@ -355,21 +355,12 @@ const generatedAt = new Date().toISOString();
 <style>
   @reference "tailwindcss";
   :global(.chart-bar) {
-    @apply flex flex-1 flex-col items-center relative sm:rounded-t-2xl;
+    @apply flex flex-1 flex-col items-center sm:rounded-t-2xl;
     gap: 0.25rem;
-  }
-  :global(.chart-bar::before) {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 0;
-    right: 0;
-    height: 0;
-    background: inherit;
-    border-radius: 0.75rem 0.75rem 0 0;
+    height: var(--bar-height);
     transition: height 0.15s ease;
   }
-  :global(.chart-bar:hover::before) {
-    height: 8px;
+  :global(.chart-bar:hover) {
+    height: calc(var(--bar-height) + 8px);
   }
 </style>
