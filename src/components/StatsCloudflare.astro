@@ -148,19 +148,23 @@ const highestVisitorsCount = data30Days.reduce(
 const generatedAt = new Date().toISOString();
 ---
 
-<div id='cloudflare-stats-container' class='border rounded-2xl w-full p-4 select-none my-8' data-generated-at={generatedAt}>
+<div
+  id='cloudflare-stats-container'
+  class='border rounded-2xl w-full p-4 select-none my-8'
+  data-generated-at={generatedAt}
+>
   <div class='flex flex-col md:flex-row md:justify-between md:items-start'>
     <HeadingWithIcon icon='icon-park-outline:analysis' title="Cloudflare's Monthly Statistics" level={3} />
 
     <div class='hidden md:flex gap-6 md:gap-8'>
       <div class='text-center'>
-        <h3 id="cf-total-uniques" class='font-bold mb-0 text-clampography-success'>
+        <h3 id='cf-total-uniques' class='font-bold mb-0 text-clampography-success'>
           {formatNumber(totalUniques)}
         </h3>
         <small class='text-clampography-text/90'>Unique visitors</small>
       </div>
       <div class='text-center'>
-        <h3 id="cf-total-requests" class='font-bold mb-0 text-clampography-success'>
+        <h3 id='cf-total-requests' class='font-bold mb-0 text-clampography-success'>
           {formatNumber(totalRequests)}
         </h3>
         <small class='text-clampography-text/90'>Total requests</small>
@@ -174,7 +178,7 @@ const generatedAt = new Date().toISOString();
         // Get the previous three days, ensuring we do not go out of bounds
         const previousDays = data30Days.slice(Math.max(index - 3, 0), index);
         const previousDay = index > 0 ? data30Days[index - 1] : null;
-        const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.3;
+        const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.33;
 
         const conditionalClasses = [
           index === 0 ? 'sm:rounded-bl-xl' : '',
@@ -212,8 +216,12 @@ const generatedAt = new Date().toISOString();
     {
       data30Days.length > 0 && (
         <>
-          <small id="cf-date-start" class='px-1 text-clampography-text/90'>{data30Days[0].date}</small>
-          <small id="cf-date-end" class='px-1 text-clampography-text/90'>{data30Days[data30Days.length - 1].date}</small>
+          <small id='cf-date-start' class='px-1 text-clampography-text/90'>
+            {data30Days[0].date}
+          </small>
+          <small id='cf-date-end' class='px-1 text-clampography-text/90'>
+            {data30Days[data30Days.length - 1].date}
+          </small>
         </>
       )
     }
@@ -221,10 +229,14 @@ const generatedAt = new Date().toISOString();
 
   <!-- Display below "md" media query -->
   <div class='md:hidden grid grid-cols-2 md:grid-cols-4 gap-4'>
-    <Stat id="cf-mobile-total-uniques" value={formatNumber(totalUniques)} label='Unique Visitors' />
-    <Stat id="cf-mobile-max-uniques" value={formatNumber(highestVisitorsCount.uniques)} label='Maximum Daily Visitors' />
-    <Stat id="cf-mobile-total-requests" value={formatNumber(totalRequests)} label='Total Requests' />
-    <Stat id="cf-mobile-total-bandwidth" value={totalBandwidthGB} label='Total Bandwidth' />
+    <Stat id='cf-mobile-total-uniques' value={formatNumber(totalUniques)} label='Unique Visitors' />
+    <Stat
+      id='cf-mobile-max-uniques'
+      value={formatNumber(highestVisitorsCount.uniques)}
+      label='Maximum Daily Visitors'
+    />
+    <Stat id='cf-mobile-total-requests' value={formatNumber(totalRequests)} label='Total Requests' />
+    <Stat id='cf-mobile-total-bandwidth' value={totalBandwidthGB} label='Total Bandwidth' />
   </div>
 </div>
 
@@ -260,9 +272,9 @@ const generatedAt = new Date().toISOString();
       try {
         const response = await fetch('/cloudflare-stats.json');
         if (!response.ok) throw new Error('Failed to fetch new stats');
-        
+
         const data = await response.json();
-        
+
         const totalBandwidthGB = (data.totalBytes / (1024 * 1024 * 1024)).toFixed(2);
         const highestVisitorsCount = data.dailyData.reduce(
           (maxObj: any, currentObj: any) => {
@@ -298,7 +310,10 @@ const generatedAt = new Date().toISOString();
           chartContainer.innerHTML = '';
           data.dailyData.forEach((day: any, index: number) => {
             const previousDays = data.dailyData.slice(Math.max(index - 3, 0), index);
-            const drop = isDrop(previousDays.map((d: any) => d.uniques), day.uniques);
+            const drop = isDrop(
+              previousDays.map((d: any) => d.uniques),
+              day.uniques,
+            );
             const previousDay = index > 0 ? data.dailyData[index - 1] : null;
             const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.3;
 
