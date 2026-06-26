@@ -20,6 +20,34 @@ const absoluteImageUrl = image && new URL(image, Astro.site).toString();
   /* I need to make this better in the future */
 }
 const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': new URL('/#website', Astro.site).toString(),
+      url: Astro.site?.toString(),
+      name: 'dav.one',
+      author: {
+        '@type': 'Person',
+        '@id': new URL('/#person', Astro.site).toString(),
+        name: 'Dawid Wasowski',
+        url: new URL('/about-me/', Astro.site).toString(),
+      },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': canonicalURL.toString(),
+      url: canonicalURL.toString(),
+      name: title,
+      description: description,
+      isPartOf: {
+        '@id': new URL('/#website', Astro.site).toString(),
+      },
+    },
+  ],
+};
 ---
 
 <head>
@@ -53,6 +81,9 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 
   {/* PostHog Web Analytics */}
   {isProduction && <PostHogScript />}
+
+  {/* Base JSON-LD */}
+  <script type='application/ld+json' set:html={JSON.stringify(schema)} />
 
   {/* Slot */}
   <slot />
