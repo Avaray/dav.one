@@ -355,8 +355,21 @@ const generatedAt = new Date().toISOString();
 <style>
   @reference "tailwindcss";
   :global(.chart-bar) {
-    @apply flex flex-1 gap-1 flex-col items-center
-           hover:-translate-y-2
-           sm:rounded-t-2xl;
+    @apply flex flex-1 flex-col items-center relative sm:rounded-t-2xl;
+    gap: 0.25rem;
+  }
+  :global(.chart-bar::before) {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: inherit;
+    border-radius: 0.75rem 0.75rem 0 0;
+    transition: height 0.15s ease;
+  }
+  :global(.chart-bar:hover::before) {
+    height: 8px;
   }
 </style>
