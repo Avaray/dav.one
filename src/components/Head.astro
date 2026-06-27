@@ -76,8 +76,15 @@ const schema = {
   <meta property='og:description' content={description} />
   <meta property='og:url' content={canonicalURL} />
   <meta property='og:type' content={ogType} />
-  <meta property='og:locale' content='pl_PL' />
-  {absoluteImageUrl && <meta property='og:image' content={new URL(image, Astro.site).toString()} />}
+  <meta property='og:locale' content='en_US' />
+  <meta property='og:site_name' content='dav.one' />
+  {absoluteImageUrl && <meta property='og:image' content={absoluteImageUrl} />}
+
+  {/* Twitter */}
+  <meta name='twitter:card' content={absoluteImageUrl ? 'summary_large_image' : 'summary'} />
+  <meta name='twitter:title' content={title} />
+  <meta name='twitter:description' content={description} />
+  {absoluteImageUrl && <meta name='twitter:image' content={absoluteImageUrl} />}
 
   {/* PostHog Web Analytics */}
   {isProduction && <PostHogScript />}
