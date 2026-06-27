@@ -21,7 +21,6 @@ const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   mainEntityOfPage: {
-    "@type": "WebPage",
     "@id": new URL(Astro.url.pathname, Astro.site).toString()
   },
   headline: title,
@@ -29,10 +28,11 @@ const schema = {
   inLanguage: "en-US",
   datePublished: created.toISOString(),
   dateModified: updated ? updated.toISOString() : created.toISOString(),
-  author: {
+  author: authorName === 'Dawid Wasowski' ? {
+    '@id': new URL('/#person', Astro.site).toString()
+  } : {
     '@type': 'Person',
-    name: authorName,
-     url: new URL('/about-me/', Astro.site)
+    name: authorName
   },
   genre: genre ? genre : undefined,
   // Map tags to keywords
