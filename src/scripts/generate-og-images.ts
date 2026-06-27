@@ -1,4 +1,5 @@
-import { readdir, readFile, mkdir } from 'node:fs/promises';
+import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { chromium } from 'playwright';
 
@@ -52,6 +53,23 @@ async function main() {
     const [prefix, name] = iconMatch[1].split(':');
     const svgUrl = `https://api.iconify.design/${prefix}/${name}.svg`;
     
+    const targetDir = join(publicDir, slug);
+    await mkdir(targetDir, { recursive: true });
+    
+    const outPath = join(targetDir, 'og.jpg');
+    const hashPath = join(targetDir, 'og.hash');
+    
+    const dataToHash = svgUrl + "oklch(76% 0.177 163.223)"; // Dodano kolor do hasha na wypadek zmiany motywu
+    const hash = createHash('md5').update(dataToHash).digest('hex');
+    
+    let existingHash = '';
+    try { existingHash = await readFile(hashPath, 'utf8'); } catch(e) {}
+    
+    if (existingHash === hash) {
+      console.log(`Skipping (cached): ${slug}`);
+      continue;
+    }
+    
     console.log(`Fetching icon for ${slug}: ${svgUrl}`);
     const svgRes = await fetch(svgUrl);
     if (!svgRes.ok) {
@@ -100,11 +118,8 @@ async function main() {
     
     await page.setContent(html);
     
-    const targetDir = join(publicDir, slug);
-    await mkdir(targetDir, { recursive: true });
-    
-    const outPath = join(targetDir, 'og.jpg');
     await page.screenshot({ path: outPath, type: 'jpeg', quality: 90 });
+    await writeFile(hashPath, hash);
     
     console.log(`Generated OG image for: ${slug}`);
   }
