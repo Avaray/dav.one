@@ -9,9 +9,9 @@ const { class: className, print = false } = Astro.props;
 
 <span
   class:list={[
-    'rounded-lg border border-solid p-2 px-4 whitespace-normal md:whitespace-nowrap',
+    'rounded-lg border border-solid px-(--clampography-spacing-md) py-(--clampography-spacing-xs) whitespace-normal md:whitespace-nowrap',
     className,
-    print ? 'hidden print:inline' : '',
+    print ? 'hidden print:inline-block' : 'inline-block',
   ]}
 >
   <slot />
