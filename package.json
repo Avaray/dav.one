@@ -8,7 +8,8 @@
     "dev:prod:host": "PRODUCTION_BUILD=true astro dev --host 0.0.0.0",
     "clear": "astro dev --clear-cache",
     "serve": "astro dev --host 0.0.0.0",
-    "build": "astro build",
+    "generate-og": "node --experimental-strip-types src/scripts/generate-og-images.ts",
+    "build": "bun run generate-og && astro build",
     "preview": "astro preview",
     "taze": "bunx taze latest"
   },
