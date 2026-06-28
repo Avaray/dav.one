@@ -4,7 +4,6 @@ import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 
 const buildTimeISO = new Date().toUTCString();
 
-const FAKE_FAILURE_DATE = 'Sat, 14 Dec 2024 03:17:42 GMT';
 
 const getLatestFailureDate = async () => {
   const repo = 'Avaray/dav.one';
@@ -41,9 +40,7 @@ const getLatestFailureDate = async () => {
   }
 };
 
-const isProduction = String(import.meta.env.PRODUCTION_BUILD) === 'true';
-
-const latestFailureDate = isProduction ? FAKE_FAILURE_DATE : await getLatestFailureDate();
+const latestFailureDate = await getLatestFailureDate();
 ---
 
 <div class='border rounded-2xl w-full lg:flex-1 p-4 select-none flex flex-col justify-between'>
