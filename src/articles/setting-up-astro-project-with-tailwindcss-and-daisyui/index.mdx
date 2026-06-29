@@ -188,58 +188,50 @@ Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#e
   Starting from Astro version 5.7.0, [Experimental fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/) is available.
 </Alert>
 
-You can use [UnoCSS](https://unocss.dev/) and its [web-fonts](https://unocss.dev/presets/web-fonts) preset to add custom fonts to your project.  
-This will let you use web fonts from [Google Fonts](https://fonts.google.com/), [Bunny](https://fonts.bunny.net/), and [FontShare](https://www.fontshare.com/) by simply providing the font names.
+You can use the native Astro Fonts API to easily add custom fonts to your project.
+This will let you use web fonts from Google Fonts or local fonts by simply providing the font names and configuring the providers.
 
-export const fonts = [
-  { label: "Deno", content: "deno i -D npm:unocss" },
-  { label: "Bun", content: "bun i -D unocss" },
-  { label: "NPM", content: "npm i -D unocss" },
-  { label: "PNPM", content: "pnpm add -D unocss" },
-  { label: "Yarn", content: "yarn add -D unocss" },
-]
+Since this is an experimental feature (as of Astro 5.7.0), you must enable it and configure your fonts in the **astro.config.mjs** config file. 
 
-<Tabs tabs={fonts} name="fonts" sync={true} />
-
-Add **UnoCSS** to **integrations list** in your **astro.config.mjs** config file and [configure it](https://unocss.dev/presets/web-fonts#options).  
-You can also keep your UnoCSS configuration [in a dedicated file](https://unocss.dev/integrations/astro) to keep Astro config file cleaner.
-
-
-```js [2,6-16]
+```js [2,6-22]
 import { defineConfig } from 'astro/config';
-import UnoCSS from 'unocss/astro'
+import { fontProviders } from "astro/config";
 
 export default defineConfig({
-  integrations: [
-    UnoCSS({
-      presets: [
-        presetWebFonts({
-          provider: 'google',
-          fonts: {
-            firamono: 'Fira Mono:400',
-            roboto: 'Roboto:200,400,700',
-          },
-        })
-      ]
-    })
+  experimental: {
+    fonts: true,
+  },
+  fonts: [
+    {
+      name: 'Fira Mono',
+      cssVariable: '--font-fira-mono',
+      provider: fontProviders.google(),
+      weights: [400],
+    },
+    {
+      name: 'Roboto',
+      cssVariable: '--font-roboto',
+      provider: fontProviders.google(),
+      weights: [200, 400, 700],
+    },
   ],
 });
 ```
 
 Now you can use fonts in **CSS** for specific [Themes](https://daisyui.com/docs/themes/).  
-Fonts will be loaded in moments when you switch between themes.
+Fonts will be loaded and available under the specified CSS variables.
 
-```
+```css
 [data-theme="dark"] {
-  font-family: 'Fira Mono';
+  font-family: var(--font-fira-mono);
 }
 ```
 
 Or you can use them in classic way.
 
-```
+```css
 body {
-  font-family: 'Roboto';
+  font-family: var(--font-roboto);
 }
 ```
 
