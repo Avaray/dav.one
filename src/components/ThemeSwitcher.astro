@@ -1,4 +1,4 @@
-<script>
+<script is:inline>
   const customThemesList = ["light", "dark", "greenery"];
 
   function loadTheme() {
@@ -10,11 +10,10 @@
   document.addEventListener("DOMContentLoaded", loadTheme);
 
   // Function to set theme and save it to localStorage
-  function setTheme(theme?: string) {
+  function setTheme(theme) {
     const htmlElement = document.documentElement;
     // This will set the theme to a random one if no theme is provided
-    theme ??=
-      customThemesList[Math.floor(Math.random() * customThemesList.length)];
+    theme = theme || customThemesList[Math.floor(Math.random() * customThemesList.length)];
     htmlElement.setAttribute("data-theme", theme);
     try {
       localStorage.setItem("theme", theme);
@@ -24,7 +23,7 @@
   }
 
   function triggerLogoGlitch() {
-    const logo = document.querySelector(".glitch-logo") as HTMLElement;
+    const logo = document.querySelector(".glitch-logo");
     if (!logo) return;
 
     // Remove all existing glitch classes
@@ -40,7 +39,7 @@
 
   // Update URL with theme if parameter is present
   // I don't want to use theme param in URL by default
-  function updateURLWithTheme(theme: string) {
+  function updateURLWithTheme(theme) {
     const url = new URL(window.location.href);
     if (url.searchParams.has("theme")) {
       url.searchParams.set("theme", theme);
@@ -56,13 +55,13 @@
       const currentIndex = customThemesList.indexOf(currentTheme);
       if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
         const previousTheme =
-          customThemesList[currentIndex - 1] ??
+          customThemesList[currentIndex - 1] ||
           customThemesList[customThemesList.length - 1];
         setTheme(previousTheme);
         updateURLWithTheme(previousTheme);
       } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
         const nextTheme =
-          customThemesList[currentIndex + 1] ?? customThemesList[0];
+          customThemesList[currentIndex + 1] || customThemesList[0];
         setTheme(nextTheme);
         updateURLWithTheme(nextTheme);
       }
