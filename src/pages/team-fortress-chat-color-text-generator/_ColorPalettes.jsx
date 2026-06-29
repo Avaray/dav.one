@@ -1,4 +1,4 @@
-import { COLOR_PALETTES } from "./serializer.js";
+import { COLOR_PALETTES } from "./_serializer.js";
 
 export default function ColorPalettes({ applyColor }) {
   const renderColorGrid = (category, colors) => {

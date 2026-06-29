@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { serializeEditorContent } from "./serializer.js";
+import { serializeEditorContent } from "./_serializer.js";
 import EditorArea from "./_EditorArea.jsx";
 import ColorPalettes from "./_ColorPalettes.jsx";
 import HistoryFavourites from "./_HistoryFavourites.jsx";

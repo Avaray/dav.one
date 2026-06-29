@@ -1,0 +1,31 @@
+---
+const isProduction = String(import.meta.env.PRODUCTION_BUILD) === 'true';
+---
+
+{isProduction && (
+  <script is:inline>
+    let cfLoaded = false;
+    function loadCloudflare() {
+      if (cfLoaded) return;
+      cfLoaded = true;
+      var script = document.createElement('script');
+      script.defer = true;
+      script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      script.setAttribute('data-cf-beacon', '{"token": "4755c603f98e48afbc92e0518d0783f2"}');
+      document.body.appendChild(script);
+      
+      // Remove event listeners once loaded
+      ["mousemove", "scroll", "keydown", "click", "touchstart"].forEach(function(e) {
+        window.removeEventListener(e, loadCloudflare);
+      });
+    }
+
+    // Listen for user interactions to load Cloudflare Analytics
+    ["mousemove", "scroll", "keydown", "click", "touchstart"].forEach(function(e) {
+      window.addEventListener(e, loadCloudflare, { once: true, passive: true });
+    });
+
+    // Fallback: load after 5 seconds if no interaction occurs
+    setTimeout(loadCloudflare, 5000);
+  </script>
+)}

@@ -1,7 +1,8 @@
 ---
-import globalCssUrl from '@/styles/global.css?url';
+import globalCss from '@/styles/global.css?inline';
 
 import PostHogScript from './PostHogScript.astro';
+import CloudflareAnalytics from './CloudflareAnalytics.astro';
 
 interface Props {
   title: string;
@@ -58,7 +59,7 @@ const schema = {
   <meta name='generator' content={Astro.generator} />
 
   {/* Conditionally load global styles */}
-  {!ignoreGlobalStyles && <link rel='stylesheet' href={globalCssUrl} />}
+  {!ignoreGlobalStyles && <style set:html={globalCss} />}
 
   {/* Prevent indexing on non-main branches */}
   {!isProduction && <meta name='robots' content='noindex, nofollow' />}
@@ -88,6 +89,9 @@ const schema = {
 
   {/* PostHog Web Analytics */}
   {isProduction && <PostHogScript />}
+
+  {/* Cloudflare Web Analytics */}
+  {isProduction && <CloudflareAnalytics />}
 
   {/* Base JSON-LD */}
   <script type='application/ld+json' set:html={JSON.stringify(schema)} />

@@ -1,5 +1,3 @@
-import { execSync } from "node:child_process";
-
 export const readableDate = (date: string, full = false) => {
   return new Date(Number(date)).toLocaleDateString("en-us", {
     year: "numeric",
@@ -7,18 +5,6 @@ export const readableDate = (date: string, full = false) => {
     day: "numeric",
   });
 };
-
-export function getCurrentBranch() {
-  try {
-    const branch = execSync("git rev-parse --abbrev-ref HEAD")
-      .toString()
-      .trim();
-    return branch;
-  } catch (error) {
-    console.error("Error getting git branch:", error);
-    return "unknown";
-  }
-}
 
 // I switched to Playwright script
 // I will leave it here for now
