@@ -150,10 +150,11 @@ In this example, four themes are specified. **Cupcake** is the default theme. **
 
 ## 7. Add Typography plugin (optional)
 
-<Alert>Recently I created the [Clampography](https://www.npmjs.com/package/clampography) - an alternative for Tailwind CSS Typography. You might like it.</Alert>
-
 By default, [Tailwind CSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
-To make [Typography](https://tailwindcss-typography.vercel.app/) available in your project, first you need to install package.
+
+### Official Typography Plugin
+
+To make official [Typography](https://tailwindcss-typography.vercel.app/) plugin available in your project, first you need to install package.
 
 export const typography = [
   { label: "Deno", content: "deno i -D npm:@tailwindcss/typography" },
@@ -175,12 +176,47 @@ Add plugin in your CSS file.
 Finally add the **prose** class somewhere in your project, for example, to your **body** tag.  
 Everything inside the **body** tag will be affected by [Tailwind CSS Typography](https://tailwindcss-typography.vercel.app/).
 
-```
+```html
 <body class="prose">
 ```
 
 I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#applying-a-type-scale) and [this page of daisyUI](https://daisyui.com/docs/layout-and-typography/) to learn more.  
 Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply) with class **prose** in your CSS may cause issues.
+
+### Clampography
+
+<Alert>Recently I created [Clampography](https://www.npmjs.com/package/clampography) - a fluid typography and theming plugin for Tailwind CSS v4. It automatically generates a fluid type scale using CSS clamp() functions.</Alert>
+
+Instead of the official plugin, you can use Clampography. It restores typography defaults and scales smoothly between mobile and desktop sizes.
+
+To install it in your project, run the following command in your terminal.
+
+export const clampography = [
+  { label: "Deno", content: "deno i npm:clampography" },
+  { label: "Bun", content: "bun i clampography" },
+  { label: "NPM", content: "npm i clampography" },
+  { label: "PNPM", content: "pnpm add clampography" },
+  { label: "Yarn", content: "yarn add clampography" },
+];
+
+<Tabs tabs={clampography} name="clampography" sync={true} />
+
+Then, add it to your CSS file:
+
+```css [2-6]
+@import "tailwindcss";
+@plugin "clampography" {
+  themes: all;
+  forms: true;
+  extra: true;
+}
+```
+
+Now you just need to apply the theme to your **body** tag. Unlike the official plugin, Clampography uses `:where()` selectors, meaning it has zero specificity and doesn't require a `prose` class wrapper.
+
+```html
+<body data-theme="dark" class="bg-clampography-background text-clampography-text">
+```
 
 ## 8. Add custom fonts (optional)
 
