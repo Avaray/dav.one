@@ -2,7 +2,7 @@
 @plugin "clampography" {
   base: true;
   extra: true;
-  forms: true;
+  forms: false;
   kbd: true;
   print: true;
 }
