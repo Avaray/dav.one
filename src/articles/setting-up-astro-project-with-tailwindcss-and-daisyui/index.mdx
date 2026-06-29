@@ -68,8 +68,8 @@ To make [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](daisyui.com) avai
 You can make it available globally or locally. Everything depends on your needs.
 In following examples, we will make them available globally.
 
-Assume your global CSS file is in src/styles/**global.css**
-```[2]
+Assume your global CSS file is in `src/styles/global.css`
+```
 @import "tailwindcss";
 @plugin "daisyui";
 ```
@@ -124,7 +124,7 @@ export const run = [
 
 If you want, you can take a few additional steps that might be useful to you.
 
-## 5. Configure Tailwind CSS (optional)
+## 5. Configure Tailwind CSS 
 
 If you are not planning to use [default color palette](https://tailwindcss.com/docs/colors#default-color-palette-reference), [you can disable it](https://tailwindcss.com/docs/colors#disabling-default-colors).  
 This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wikipedia.org/wiki/Gzip)). 
@@ -135,7 +135,7 @@ This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wi
 }
 ```
 
-## 6. Configure daisyUI (optional)
+## 6. Configure daisyUI 
 
 By default, [daisyUI](https://daisyui.com/) has two themes: **light** and **dark** and you don't need to configure anything to make it work. 
 They adjust according to the user's settings (browser/system). 
@@ -148,7 +148,7 @@ In this example, four themes are specified. **Cupcake** is the default theme. **
 }
 ```
 
-## 7. Add Typography plugin (optional)
+## 7. Add Typography plugin 
 
 By default, [Tailwind CSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
 
@@ -208,7 +208,7 @@ Then, add it to your CSS file:
 
 And that's it! For full documentation, check out the [usage guide](https://github.com/Avaray/clampography/blob/main/docs/usage.md#basic-usage).
 
-## 8. Add custom fonts (optional)
+## 8. Add custom fonts 
 
 You can use the [Astro Fonts API](https://docs.astro.build/en/guides/fonts/) to easily add custom fonts to your project.
 This allows you to integrate [external providers](https://docs.astro.build/en/reference/font-provider-reference/#built-in-providers) or [local files](https://docs.astro.build/en/guides/fonts/#using-a-local-font-file) by simply defining their names and configuring the sources.
@@ -254,7 +254,7 @@ body {
 }
 ```
 
-## 9. Add SVG Icons (optional)
+## 9. Add SVG Icons 
 
 Recently [Xander Treat](https://xtreat.dev/) created [@xtreat/astro-iconify](https://www.npmjs.com/package/@xtreat/astro-iconify) package to make it easy to use [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) icons in your [Astro](https://astro.build/) projects.  
 Comparing to other SVG icon [integrations](https://astro.build/integrations/?search=icon), this one lets you use any icons from [Iconify](https://iconify.design/) without hassles.  
@@ -291,7 +291,7 @@ import Icon from '@xtreat/astro-iconify';
 <Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
 ```
 
-## 10. Add React (optional)
+## 10. Add React 
 
 [Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same time!).  
 To add them, you should follow [integration guides](https://docs.astro.build/en/guides/integrations-guide/) and [daisyUI guides](https://daisyui.com/docs/install/#framework-install-tutorials).
@@ -334,7 +334,7 @@ Add the following lines to **compilerOptions** section.
 }
 ```
 
-## 11. Recommended Integrations (optional)
+## 11. Recommended Integrations 
 
 If you chose **Basic, minimal starter** at the beginning of this tutorial, then you may also consider the following integrations.  
 I will not cover them in this tutorial, but I believe you will be able to add them yourself.
