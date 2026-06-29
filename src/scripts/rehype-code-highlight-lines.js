@@ -1,5 +1,5 @@
-// This plugin requires specifying the code block language.
-// Otherwise it will not work.
+// This plugin highlights specific lines in code blocks.
+// It works with or without specifying the code block language.
 
 import { visit } from "unist-util-visit";
 
@@ -55,12 +55,29 @@ export function rehypeCodeHighlightLines() {
         );
 
         if (codeElement) {
-          const metastring = codeElement.data?.meta ||
+          let metastring = codeElement.data?.meta ||
             codeElement.properties?.metastring ||
             codeElement.properties?.metaString ||
             codeElement.properties?.["data-meta"] ||
             node.data?.meta ||
             node.properties?.metastring;
+
+          // FALLBACK: Sprawdzenie klas, jeśli parser potraktował nawiasy jako nazwę języka
+          if (!metastring && codeElement.properties?.className) {
+            const classNames = codeElement.properties.className;
+            
+            // rehype przechowuje klasy jako tablicę ciągów znaków
+            if (Array.isArray(classNames)) {
+              const pseudoLangMeta = classNames.find(c => 
+                typeof c === 'string' && c.startsWith('language-[') && c.endsWith(']')
+              );
+              
+              if (pseudoLangMeta) {
+                // Zamienia np. "language-[1, 2-4]" na "[1, 2-4]"
+                metastring = pseudoLangMeta.replace('language-', '');
+              }
+            }
+          }
 
           if (metastring && typeof metastring === "string" && metastring.includes("[")) {
             const excludedLines = parseLineRanges(metastring);
