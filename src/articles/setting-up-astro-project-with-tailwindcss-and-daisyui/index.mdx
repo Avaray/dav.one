@@ -185,22 +185,19 @@ Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#e
 ## 8. Add custom fonts (optional)
 
 <Alert>
-  Starting from Astro version 5.7.0, [Experimental fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/) is available.
+  The native [Astro Fonts API](https://docs.astro.build/en/guides/fonts/) is officially available and ready to use!
 </Alert>
 
 You can use the native Astro Fonts API to easily add custom fonts to your project.
 This will let you use web fonts from Google Fonts or local fonts by simply providing the font names and configuring the providers.
 
-Since this is an experimental feature (as of Astro 5.7.0), you must enable it and configure your fonts in the **astro.config.mjs** config file. 
+To get started, configure your fonts in the **astro.config.mjs** config file. 
 
-```js [2,6-22]
+```js [2,5-20]
 import { defineConfig } from 'astro/config';
 import { fontProviders } from "astro/config";
 
 export default defineConfig({
-  experimental: {
-    fonts: true,
-  },
   fonts: [
     {
       name: 'Fira Mono',
@@ -213,6 +210,7 @@ export default defineConfig({
       cssVariable: '--font-roboto',
       provider: fontProviders.google(),
       weights: [200, 400, 700],
+      subsets: ["latin", "latin-ext"],
     },
   ],
 });
