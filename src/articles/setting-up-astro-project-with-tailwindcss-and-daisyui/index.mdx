@@ -9,11 +9,10 @@ author: 'Dawid Wasowski'
 ---
 
 import Icon from '@xtreat/astro-iconify';
-import Tabs from 'Tabs.astro';
-import TabsSync from 'TabsSync.astro';
-import Alert from '@/components/reusables/Alert.astro'
+import Tabs from '@reusables/Tabs.astro';
+import Alert from '@reusables/Alert.astro'
 
-<TabsSync />
+
 
 ## 1. Initialize your new [Astro](https://docs.astro.build/en/getting-started/) project 
 {/* {#startsa} */}
@@ -30,7 +29,7 @@ export const initialization = [
   { label: "Yarn", content: "yarn create astro" },
 ];
 
-<Tabs tabs={initialization} name="initialization" />
+<Tabs tabs={initialization} name="initialization" sync={true} />
 
 ## 2. Install Dependencies
 
@@ -42,7 +41,7 @@ export const dependencies = [
   { label: "Yarn", content: "yarn add vite@latest tailwindcss @tailwindcss/vite\nyarn add -D daisyui" },
 ];
 
-<Tabs tabs={dependencies} name="dependencies" />
+<Tabs tabs={dependencies} name="dependencies" sync={true} />
 
 ## 3. Configure Astro
 
@@ -121,7 +120,7 @@ export const run = [
   { label: 'Yarn', content: 'yarn dev' },
 ]
 
-<Tabs tabs={run} name="run" />
+<Tabs tabs={run} name="run" sync={true} />
 
 If you want, you can take a few additional steps that might be useful to you.
 
@@ -164,7 +163,7 @@ export const typography = [
   { label: "Yarn", content: "yarn add -D @tailwindcss/typography" },
 ];
 
-<Tabs tabs={typography} name="typography" />
+<Tabs tabs={typography} name="typography" sync={true} />
 
 Add plugin in your CSS file.
 
@@ -200,7 +199,7 @@ export const fonts = [
   { label: "Yarn", content: "yarn add -D unocss" },
 ]
 
-<Tabs tabs={fonts} name="fonts" />
+<Tabs tabs={fonts} name="fonts" sync={true} />
 
 Add **UnoCSS** to **integrations list** in your **astro.config.mjs** config file and [configure it](https://unocss.dev/presets/web-fonts#options).  
 You can also keep your UnoCSS configuration [in a dedicated file](https://unocss.dev/integrations/astro) to keep Astro config file cleaner.
@@ -261,7 +260,7 @@ export const icons = [
   { label: "Yarn", content: "yarn add @xtreat/astro-iconify" },
 ];
 
-<Tabs tabs={icons} name="icons" />
+<Tabs tabs={icons} name="icons" sync={true} />
 
 Then you will be able to use icons in **.astro** files like:
 
@@ -297,7 +296,7 @@ export const react = [
   { label: "Yarn", content: "yarn add @astrojs/react react react-dom @types/react @types/react-dom" },
 ];
 
-<Tabs tabs={react} name="react" />
+<Tabs tabs={react} name="react" sync={true} />
 
 Edit the **astro.config.mjs** configuration file again. Add [React](https://react.dev/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
 

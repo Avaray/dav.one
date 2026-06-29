@@ -1,0 +1,194 @@
+---
+interface TabItem {
+  label: string;
+  content: string;
+}
+
+interface Props {
+  tabs: TabItem[];
+  name: string;
+  sync?: boolean;
+  class?: string;
+  tabListClass?: string;
+  tabButtonClass?: string;
+  tabActiveClass?: string;
+  panelContainerClass?: string;
+  panelClass?: string;
+}
+
+const {
+  tabs,
+  name,
+  sync = false,
+  class: containerClass = '',
+  tabListClass = '',
+  tabButtonClass = '',
+  tabActiveClass = '',
+  panelContainerClass = '',
+  panelClass = '',
+} = Astro.props;
+---
+
+<code-tabs
+  data-name={name}
+  data-sync={sync ? 'true' : 'false'}
+  data-active-class={tabActiveClass}
+  class:list={['tabs-container', containerClass]}
+>
+  <div role='tablist' class:list={['tabs-list', tabListClass]}>
+    {
+      tabs.map((tab, index) => (
+        <button
+          role='tab'
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-controls={`${name}-panel-${index}`}
+          id={`${name}-tab-${index}`}
+          class:list={['tab-button', tabButtonClass, index === 0 ? tabActiveClass : '']}
+          data-tab-index={index}
+          type='button'
+        >
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class:list={['tabs-panels', panelContainerClass]}>
+    {
+      tabs.map((tab, index) => (
+        <div
+          role='tabpanel'
+          id={`${name}-panel-${index}`}
+          aria-labelledby={`${name}-tab-${index}`}
+          class:list={['tab-panel', panelClass, { hidden: index !== 0 }]}
+        >
+          <pre>{tab.content}</pre>
+        </div>
+      ))
+    }
+  </div>
+</code-tabs>
+
+<style>
+  .tabs-container {
+    display: block;
+    width: 100%;
+  }
+
+  .tabs-list {
+    display: flex;
+    gap: 0.25rem;
+    /* border-bottom: 1px solid var(--clampography-border); */
+    /* margin-bottom: 0; */
+  }
+
+  .tab-button {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--clampography-muted);
+    opacity: 0.6;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+  }
+
+  .tab-button:hover {
+    opacity: 0.8;
+  }
+
+  .tab-button[aria-selected='true'] {
+    opacity: 1;
+    color: var(--clampography-primary);
+    border-bottom-color: var(--clampography-primary);
+  }
+
+  .tabs-panels {
+    background: var(--color-code-bg);
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .tab-panel {
+    padding: 0;
+  }
+
+  .tab-panel.hidden {
+    display: none;
+  }
+
+  .tab-panel pre {
+    margin: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+</style>
+
+<script>
+  class CodeTabs extends HTMLElement {
+    syncHandler: ((event: Event) => void) | undefined;
+
+    constructor() {
+      super();
+      const isSync = this.dataset.sync === 'true';
+      const activeClasses = this.dataset.activeClass ? this.dataset.activeClass.split(' ').filter(Boolean) : [];
+      const buttons = this.querySelectorAll('.tab-button');
+      const panels = this.querySelectorAll('.tab-panel');
+
+      const setActiveTab = (index: number) => {
+        buttons.forEach((btn, i) => {
+          btn.setAttribute('aria-selected', 'false');
+          if (activeClasses.length > 0) {
+            btn.classList.remove(...activeClasses);
+          }
+          if (panels[i]) {
+            panels[i].classList.add('hidden');
+          }
+        });
+
+        if (buttons[index]) {
+          buttons[index].setAttribute('aria-selected', 'true');
+          if (activeClasses.length > 0) {
+            buttons[index].classList.add(...activeClasses);
+          }
+        }
+        if (panels[index]) {
+          panels[index].classList.remove('hidden');
+        }
+      };
+
+      buttons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          const label = btn.textContent?.trim();
+          setActiveTab(index);
+
+          if (isSync && label) {
+            window.dispatchEvent(new CustomEvent('code-tabs-sync', { detail: { label } }));
+          }
+        });
+      });
+
+      if (isSync) {
+        this.syncHandler = (event: Event) => {
+          const customEvent = event as CustomEvent;
+          const targetLabel = customEvent.detail.label;
+          const targetIndex = Array.from(buttons).findIndex((b) => b.textContent?.trim() === targetLabel);
+
+          if (targetIndex !== -1) {
+            setActiveTab(targetIndex);
+          }
+        };
+        window.addEventListener('code-tabs-sync', this.syncHandler);
+      }
+    }
+
+    disconnectedCallback() {
+      if (this.syncHandler) {
+        window.removeEventListener('code-tabs-sync', this.syncHandler);
+      }
+    }
+  }
+
+  customElements.define('code-tabs', CodeTabs);
+</script>
