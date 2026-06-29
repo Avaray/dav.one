@@ -37,7 +37,7 @@ if (clampedValue >= 90) {
     <svg class='transform -rotate-90' width={size} height={size}>
       <!-- Background ring (20% opacity) - drawn first -->
       <circle
-        class='text-bg-text stroke-current opacity-20'
+        class='text-clampography-muted/20 stroke-current'
         stroke-width={strokeWidth}
         fill='transparent'
         r={radius}
@@ -49,7 +49,7 @@ if (clampedValue >= 90) {
 
       <!-- Progress circle (full opacity) - drawn last, on top -->
       <circle
-        class='text-text stroke-current transition-all duration-500 ease-out'
+        class='text-clampography-heading stroke-current transition-all duration-500 ease-out'
         stroke-width={strokeWidth}
         stroke-linecap='round'
         fill='transparent'
@@ -61,7 +61,7 @@ if (clampedValue >= 90) {
 
     <!-- Center value -->
     <div class='absolute inset-0 flex items-center justify-center @container'>
-      <span class='mb-0 text-[1.5em] text-shadow-xl'>
+      <span class='mb-0 text-[1.7em] text-clampography-heading font-bold text-shadow-xl'>
         {value}
       </span>
     </div>
