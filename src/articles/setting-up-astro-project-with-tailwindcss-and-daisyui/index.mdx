@@ -2,7 +2,7 @@
 title: 'Setting up Astro project with Tailwind CSS V4 and daisyUI V5'
 description: 'Astro is a fantastic tool for building static sites. Tailwind CSS is a utility-first CSS framework that simplifies styling. daisyUI is a collection of ready-to-use components specifically designed for Tailwind CSS. The combination of these three popular tools provides an efficient and effective way to create beautiful websites. This article will guide you through the process of setting everything up.'
 created: '2025-01-20T13:37:00.000Z'
-updated: '2025-06-17T08:12:57.504Z'
+updated: '2026-06-29T11:06:57.088Z'
 icon: 'logos:astro-icon'
 genre: 'Web Development'
 author: 'Dawid Wasowski'
@@ -184,18 +184,13 @@ Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#e
 
 ## 8. Add custom fonts (optional)
 
-<Alert>
-  The native [Astro Fonts API](https://docs.astro.build/en/guides/fonts/) is officially available and ready to use!
-</Alert>
+You can use [Astro Fonts API](https://docs.astro.build/en/guides/fonts/) to easily add custom fonts to your project.
+This will let you use fonts from [providers](https://docs.astro.build/en/reference/font-provider-reference/#built-in-providers) or [local fonts](https://docs.astro.build/en/guides/fonts/#using-a-local-font-file) by simply providing the font names and configuring the providers.
 
-You can use the native Astro Fonts API to easily add custom fonts to your project.
-This will let you use web fonts from Google Fonts or local fonts by simply providing the font names and configuring the providers.
+To get started, configure your fonts in the `astro.config.mjs` config file. 
 
-To get started, configure your fonts in the **astro.config.mjs** config file. 
-
-```js [2,5-20]
-import { defineConfig } from 'astro/config';
-import { fontProviders } from "astro/config";
+```js [1,4-18]
+import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
   fonts: [
@@ -216,7 +211,7 @@ export default defineConfig({
 });
 ```
 
-Now you can use fonts in **CSS** for specific [Themes](https://daisyui.com/docs/themes/).  
+Now you can use these fonts in **CSS** for specific [Themes](https://daisyui.com/docs/themes/).  
 Fonts will be loaded and available under the specified CSS variables.
 
 ```css
