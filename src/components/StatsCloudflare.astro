@@ -228,7 +228,7 @@ const generatedAt = new Date().toISOString();
   </div>
 
   <!-- Display below "md" media query -->
-  <div class='md:hidden grid grid-cols-2 md:grid-cols-4 gap-4'>
+  <div class='md:hidden mt-4 grid grid-cols-2 md:grid-cols-4 gap-4'>
     <Stat id='cf-mobile-total-uniques' value={formatNumber(totalUniques)} label='Unique Visitors' />
     <Stat
       id='cf-mobile-max-uniques'
@@ -236,7 +236,7 @@ const generatedAt = new Date().toISOString();
       label='Maximum Daily Visitors'
     />
     <Stat id='cf-mobile-total-requests' value={formatNumber(totalRequests)} label='Total Requests' />
-    <Stat id='cf-mobile-total-bandwidth' value={totalBandwidthGB} label='Total Bandwidth' />
+    <Stat id='cf-mobile-total-bandwidth' value={`${totalBandwidthGB} GB`} label='Total Bandwidth' />
   </div>
 </div>
 
