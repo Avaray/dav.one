@@ -47,7 +47,7 @@ export const dependencies = [
 
 Open project in your favorite editor. If it's [VSCode](https://code.visualstudio.com/), you can also install [official Astro extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode).
 
-Edit the **astro.config.mjs** file, located in the root of your project. You need to add [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) as a [Vite plugin](https://docs.astro.build/en/recipes/add-yaml-support/).
+Edit the `astro.config.mjs` file, located in the root of your project. You need to add [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) as a [Vite plugin](https://docs.astro.build/en/recipes/add-yaml-support/).
 
 ```js [2,7]
 import { defineConfig } from "astro/config";
@@ -74,14 +74,14 @@ Assume your global CSS file is in src/styles/**global.css**
 @plugin "daisyui";
 ```
 
-Then, import CSS file in the **.astro** [component](https://docs.astro.build/en/basics/astro-components/) or [layout](https://docs.astro.build/en/basics/layouts/). Remember to set the proper path to your CSS file.
+Then, import CSS file in the `.astro` [component](https://docs.astro.build/en/basics/astro-components/) or [layout](https://docs.astro.build/en/basics/layouts/). Remember to set the proper path to your CSS file.
 ```astro [2]
 ---
 import '../src/styles/global.css';
 ---
 ```
 
-Another way to import the CSS file in the **.astro** component:
+Another way to import the CSS file in the `.astro` component:
 
 ```[2]
 <style is:global>
@@ -89,7 +89,7 @@ Another way to import the CSS file in the **.astro** component:
 </style>
 ```
 
-If you are not planning to use CSS files at all, you can import them in **.astro** component like this:
+If you are not planning to use CSS files at all, you can import them in `.astro` component like this:
 
 ```[2-3]
 <style is:global>
@@ -181,7 +181,7 @@ Everything inside the `body` tag will be affected by Tailwind CSS Typography.
 ```
 
 I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#applying-a-type-scale) and [this page of daisyUI](https://daisyui.com/docs/layout-and-typography/) to learn more.  
-Also, be aware that using [@apply](https://tailwindcss.com/docs/functions-and-directives#apply-directive) with class **prose** in your CSS may cause issues.
+Also, be aware that using [@apply](https://tailwindcss.com/docs/functions-and-directives#apply-directive) with class `prose` in your CSS may cause issues.
 
 ### Clampography
 
@@ -237,7 +237,7 @@ export default defineConfig({
 });
 ```
 
-Now you can use these fonts in **CSS** for specific [Themes](https://daisyui.com/docs/themes/#how-to-add-custom-styles-for-a-specific-theme).  
+Now you can use these fonts in CSS for specific [Themes](https://daisyui.com/docs/themes/#how-to-add-custom-styles-for-a-specific-theme).  
 Fonts will be loaded and available under the specified CSS variables.
 
 ```css
@@ -273,7 +273,7 @@ export const icons = [
 
 <Tabs tabs={icons} name="icons" sync={true} />
 
-Then you will be able to use icons in **.astro** files like:
+Then you will be able to use icons in `.astro` files like:
 
 ```
 ---
@@ -309,7 +309,7 @@ export const react = [
 
 <Tabs tabs={react} name="react" sync={true} />
 
-Edit the **astro.config.mjs** configuration file again. Add [React](https://react.dev/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
+Edit the `astro.config.mjs` configuration file again. Add [React](https://react.dev/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
 
 ```js [2,6]
 import { defineConfig } from "astro/config";
