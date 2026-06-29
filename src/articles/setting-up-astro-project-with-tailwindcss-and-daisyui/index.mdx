@@ -22,8 +22,8 @@ Command will launch a [CLI wizard](https://docs.astro.build/en/install-and-setup
 Setup a project as you like. **Just don't install dependencies during the setup process.** You will do that later.
 
 export const initialization = [
-  { label: "Deno", content: "deno -A npm:create-astro@latest" },
   { label: "Bun", content: "bunx create-astro@latest" },
+  { label: "Deno", content: "deno -A npm:create-astro@latest" },
   { label: "NPM", content: "npm create astro@latest" },
   { label: "PNPM", content: "pnpm create astro@latest" },
   { label: "Yarn", content: "yarn create astro" },
@@ -34,8 +34,8 @@ export const initialization = [
 ## 2. Install Dependencies
 
 export const dependencies = [
-  { label: "Deno", content: "deno i --allow-scripts npm:vite@latest npm:tailwindcss npm:@tailwindcss/vite\ndeno i -D npm:daisyui" },
   { label: "Bun", content: "bun i vite@latest tailwindcss @tailwindcss/vite\nbun i -D daisyui" },
+  { label: "Deno", content: "deno i --allow-scripts npm:vite@latest npm:tailwindcss npm:@tailwindcss/vite\ndeno i -D npm:daisyui" },
   { label: "NPM", content: "npm i vite@latest tailwindcss @tailwindcss/vite\nnpm i -D daisyui" },
   { label: "PNPM", content: "pnpm add vite@latest tailwindcss @tailwindcss/vite\npnpm add -D daisyui" },
   { label: "Yarn", content: "yarn add vite@latest tailwindcss @tailwindcss/vite\nyarn add -D daisyui" },
@@ -113,8 +113,8 @@ If you are not planning to use CSS files at all, you can import them in **.astro
 </div>
 
 export const run = [
-  { label: 'Deno', content: 'deno task dev' },
   { label: 'Bun', content: 'bun run dev' },
+  { label: 'Deno', content: 'deno task dev' },
   { label: 'NPM', content: 'npm run dev' },
   { label: 'PNPM', content: 'pnpm dev' },
   { label: 'Yarn', content: 'yarn dev' },
@@ -154,11 +154,11 @@ By default, [Tailwind CSS](https://tailwindcss.com/) resets all styles. If you'r
 
 ### Official Typography Plugin
 
-To make official [Typography](https://tailwindcss-typography.vercel.app/) plugin available in your project, first you need to install package.
+To make official [Typography Plugin](https://www.npmjs.com/package/@tailwindcss/typography) available in your project, first you need to install package.
 
 export const typography = [
-  { label: "Deno", content: "deno i -D npm:@tailwindcss/typography" },
   { label: "Bun", content: "bun i -D @tailwindcss/typography" },
+  { label: "Deno", content: "deno i -D npm:@tailwindcss/typography" },
   { label: "NPM", content: "npm i -D @tailwindcss/typography" },
   { label: "PNPM", content: "pnpm add -D @tailwindcss/typography" },
   { label: "Yarn", content: "yarn add -D @tailwindcss/typography" },
@@ -173,8 +173,8 @@ Add plugin in your CSS file.
 @plugin "@tailwindcss/typography";
 ```
 
-Finally add the **prose** class somewhere in your project, for example, to your **body** tag.  
-Everything inside the **body** tag will be affected by [Tailwind CSS Typography](https://tailwindcss-typography.vercel.app/).
+Finally add the `prose` class somewhere in your project, for example, to your `body` tag.  
+Everything inside the `body` tag will be affected by Tailwind CSS Typography.
 
 ```html
 <body class="prose">
@@ -185,15 +185,13 @@ Also, be aware that using [@apply](https://tailwindcss.com/docs/reusing-styles#e
 
 ### Clampography
 
-<Alert>Recently I created [Clampography](https://www.npmjs.com/package/clampography) - a fluid typography and theming plugin for Tailwind CSS v4. It automatically generates a fluid type scale using CSS clamp() functions.</Alert>
-
-Instead of the official plugin, you can use Clampography. It restores typography defaults and scales smoothly between mobile and desktop sizes.
-
+[Clampography](https://www.npmjs.com/package/clampography) is a new alternative to the official typography plugin. 
+It restores typography defaults and scales smoothly between mobile and desktop sizes. 
 To install it in your project, run the following command in your terminal.
 
 export const clampography = [
-  { label: "Deno", content: "deno i npm:clampography" },
   { label: "Bun", content: "bun i clampography" },
+  { label: "Deno", content: "deno i npm:clampography" },
   { label: "NPM", content: "npm i clampography" },
   { label: "PNPM", content: "pnpm add clampography" },
   { label: "Yarn", content: "yarn add clampography" },
@@ -203,20 +201,12 @@ export const clampography = [
 
 Then, add it to your CSS file:
 
-```css [2-6]
+```css [2]
 @import "tailwindcss";
-@plugin "clampography" {
-  themes: all;
-  forms: true;
-  extra: true;
-}
+@plugin "clampography";
 ```
 
-Now you just need to apply the theme to your **body** tag. Unlike the official plugin, Clampography uses `:where()` selectors, meaning it has zero specificity and doesn't require a `prose` class wrapper.
-
-```html
-<body data-theme="dark" class="bg-clampography-background text-clampography-text">
-```
+And that's it! For full documentation, check out the [usage guide](https://github.com/Avaray/clampography/blob/main/docs/usage.md#basic-usage).
 
 ## 8. Add custom fonts (optional)
 
@@ -274,8 +264,8 @@ To install icons in your project, run the following command in your terminal.
 
 {/* Need to fix those commands, because they were generated by AI */}
 export const icons = [
-  { label: "Deno", content: "deno i npm:@xtreat/astro-iconify" },
   { label: "Bun", content: "bun i @xtreat/astro-iconify" },
+  { label: "Deno", content: "deno i npm:@xtreat/astro-iconify" },
   { label: "NPM", content: "npm i @xtreat/astro-iconify" },
   { label: "PNPM", content: "pnpm add @xtreat/astro-iconify" },
   { label: "Yarn", content: "yarn add @xtreat/astro-iconify" },
@@ -310,8 +300,8 @@ For this tutorial, we will add [React](https://react.dev/) framework manually.
 To install it in your project, run the following command in your terminal.
 
 export const react = [
-  { label: "Deno", content: "deno i --allow-scripts npm:@astrojs/react npm:react npm:react-dom npm:@types/react npm:@types/react-dom" },
   { label: "Bun", content: "bun i @astrojs/react react react-dom @types/react @types/react-dom" },
+  { label: "Deno", content: "deno i --allow-scripts npm:@astrojs/react npm:react npm:react-dom npm:@types/react npm:@types/react-dom" },
   { label: "NPM", content: "npm i @astrojs/react react react-dom @types/react @types/react-dom" },
   { label: "PNPM", content: "pnpm add @astrojs/react react react-dom @types/react @types/react-dom" },
   { label: "Yarn", content: "yarn add @astrojs/react react react-dom @types/react @types/react-dom" },
