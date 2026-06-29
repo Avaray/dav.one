@@ -86,20 +86,15 @@ const stats = await getStats();
 
 {
   stats && (
-    <div class='border rounded-2xl w-full p-4 select-none my-8 bg-clampography-surface'>
+    <div class='border rounded-2xl w-full p-4 select-none my-8'>
       <HeadingWithIcon icon='simple-icons:posthog' title="PostHog's Web Analytics" level={3} />
 
-      <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
+      <div class='grid grid-cols-2 md:grid-cols-4 gap-4 mt-4'>
         <Stat value={stats.unique_visitors} label='Unique Visitors' />
         <Stat value={stats.pageviews} label='Page Views' />
         <Stat value={stats.pages_per_visitor} label='Pages per Visitor' />
         <Stat value={stats.total_events} label='Total Events' />
       </div>
-      {isProduction && (
-        <p class='my-4'>
-          * These statistics were added on January 3, 2026. So far, they do not reflect the true monthly values.
-        </p>
-      )}
     </div>
   )
 }

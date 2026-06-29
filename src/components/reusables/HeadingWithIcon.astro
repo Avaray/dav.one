@@ -7,9 +7,10 @@ interface Props {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   iconSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   iconClass?: string;
+  flipHorizontal?: boolean;
 }
 
-const { icon, title, level = 1, iconSize = 'md', iconClass = '' } = Astro.props;
+const { icon, title, level = 1, iconSize = 'md', iconClass = '', flipHorizontal = false } = Astro.props;
 const Tag = `h${level}` as any;
 
 const sizeClasses = {
@@ -22,6 +23,6 @@ const sizeClasses = {
 ---
 
 <Tag class='flex items-center gap-4'>
-  {icon && <Icon class={`shrink-0 ${sizeClasses[iconSize]} ${iconClass}`} icon={icon} />}
+  {icon && <Icon class={`shrink-0 ${sizeClasses[iconSize]} ${iconClass} ${flipHorizontal ? 'scale-x-[-1]' : ''}`} icon={icon} />}
   {title}
 </Tag>
