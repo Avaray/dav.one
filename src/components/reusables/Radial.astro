@@ -22,7 +22,7 @@ const bgColorClass =
 ---
 
 <div class='inline-flex flex-col items-center gap-3' title={description}>
-  <div class='relative inline-flex items-center justify-center w-[120px] h-[120px]'>
+  <div class='relative inline-flex items-center justify-center h-30 w-30'>
     <svg class='transform -rotate-90' width='120' height='120'>
       <!-- Background and filled circle -->
       <circle
@@ -30,8 +30,7 @@ const bgColorClass =
         stroke-width='8'
         r='56'
         cx='60'
-        cy='60'
-      />
+        cy='60'></circle>
 
       <!-- Progress circle -->
       <circle
@@ -42,8 +41,7 @@ const bgColorClass =
         r='56'
         cx='60'
         cy='60'
-        style={`stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};`}
-      />
+        style={`stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};`}></circle>
     </svg>
 
     <!-- Center value -->
