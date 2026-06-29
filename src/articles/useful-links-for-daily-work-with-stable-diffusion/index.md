@@ -40,8 +40,7 @@ author: "Dawid Wasowski"
   [Pony Diffusion](https://civitai.com/models/257749/pony-diffusion-v6-xl)
   models, but [author](https://github.com/Jelosus2) said it will be extended to
   other models.
-- [VastAI Docker Images](https://github.com/ai-dock)
-  <span class="badge badge-soft badge-warning">Outdated</span> - containerized
+- [VastAI Docker Images](https://github.com/vast-ai/base-image) - containerized
   UIs such as [Forge](https://hub.docker.com/r/vastai/sd-forge),
   [ComfyUI](https://hub.docker.com/r/vastai/comfy), and
   [Fooocus](https://hub.docker.com/r/vastai/fooocus). Can be run on either a
