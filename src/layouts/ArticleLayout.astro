@@ -18,7 +18,8 @@ interface Props {
 const { entry } = Astro.props;
 
 const { title, description, created, updated, author, tags, image } = entry.data;
-const ogImage = image || `/${entry.id}/og.jpg`;
+const imageUrl = typeof image === 'string' ? image : image?.src;
+const ogImage = imageUrl || `/${entry.id}/og.jpg`;
 ---
 
 <!doctype html>
