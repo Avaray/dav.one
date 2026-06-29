@@ -105,8 +105,7 @@ author: "Dawid Wasowski"
 
 ## Tools
 
-- [CLIP Interrogator](https://huggingface.co/spaces/pharmapsychotic/CLIP-Interrogator)
-  <span class="badge badge-soft badge-warning">Currently broken</span> -
+- [CLIP Interrogator](https://huggingface.co/spaces/pharmapsychotic/CLIP-Interrogator) -
   analyzes images and generates descriptive text prompts for SD1 & SDXL.
   [This one](https://huggingface.co/spaces/fffiloni/CLIP-Interrogator-2) is for
   SD2 and [this one](https://huggingface.co/spaces/deepghs/wd14_tagging_online)
