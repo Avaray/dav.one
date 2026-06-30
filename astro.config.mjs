@@ -4,7 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import minify from "astro-minify-html-swc";
-import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.js";
+import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.ts";
 import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
