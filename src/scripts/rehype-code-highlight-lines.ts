@@ -3,7 +3,7 @@ import { visit } from "unist-util-visit";
 export interface RehypeCodeHighlightLinesOptions {
   /**
    * CSS class added to every line of code.
-   * @default "code-line"
+   * @default ""
    */
   lineClassName?: string;
   
@@ -46,17 +46,25 @@ export interface RehypeCodeHighlightLinesOptions {
    * @default "line-number"
    */
   lineNumberClassName?: string;
+
+  /**
+   * Whether to add a `data-line` attribute to each line span.
+   * Useful if you prefer CSS pseudo-element counters over `showLineNumbers`.
+   * @default false
+   */
+  addDataLineAttribute?: boolean;
 }
 
 // Default plugin configuration options
 const defaultOptions: Required<RehypeCodeHighlightLinesOptions> = {
-  lineClassName: "code-line",
+  lineClassName: "",
   darkenedClassName: "darkened",
   highlightedClassName: "highlighted",
   mode: "dim-others",
   delimiter: "square",
   showLineNumbers: false,
   lineNumberClassName: "line-number",
+  addDataLineAttribute: false,
 };
 
 function parseLineRanges(meta: string, rangeRegex: RegExp): number[] {
@@ -90,7 +98,11 @@ function parseLineRanges(meta: string, rangeRegex: RegExp): number[] {
 
 function createLineSpan(content: string, lineNumber: number, targetLines: number[], options: Required<RehypeCodeHighlightLinesOptions>) {
   const isTarget = targetLines.includes(lineNumber);
-  const classNames = [options.lineClassName];
+  const classNames: string[] = [];
+  
+  if (options.lineClassName) {
+    classNames.push(options.lineClassName);
+  }
 
   // Logic for assigning classes based on the selected mode
   if (options.mode === "dim-others") {
@@ -118,13 +130,18 @@ function createLineSpan(content: string, lineNumber: number, targetLines: number
   // Add the actual content of the code line
   children.push({ type: "text", value: content });
 
+  const properties: any = {};
+  if (classNames.length > 0) {
+    properties.className = classNames;
+  }
+  if (options.addDataLineAttribute) {
+    properties["data-line"] = lineNumber;
+  }
+
   return {
     type: "element",
     tagName: "span",
-    properties: {
-      className: classNames,
-      "data-line": lineNumber,
-    },
+    properties: properties,
     children: children,
   };
 }

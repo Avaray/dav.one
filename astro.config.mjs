@@ -52,8 +52,6 @@ export default defineConfig({
     processor: unified({
       rehypePlugins: [
         [rehypeCodeHighlightLines, /** @type {import('./src/scripts/rehype-code-highlight-lines.ts').RehypeCodeHighlightLinesOptions} */ ({
-          mode: "dim-others",
-          delimiter: "square",
         })]
       ],
     }),
