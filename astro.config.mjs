@@ -5,6 +5,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import minify from "astro-minify-html-swc";
 import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.ts";
+
+
 import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
@@ -49,7 +51,13 @@ export default defineConfig({
     syntaxHighlight: false,
     processor: unified({
       rehypePlugins: [
-        rehypeCodeHighlightLines,
+        [rehypeCodeHighlightLines, {
+          mode: "highlight-only",              // 'dim-others' or 'highlight-only'
+          highlightedClassName: "bg-gray-800", // CSS / Tailwind class for highlighted lines
+          delimiter: "curly",                  // use {...} instead of [...]
+          showLineNumbers: true,               // render line numbers as <span>
+          lineNumberClassName: "text-gray-500 mr-4 select-none" // Tailwind classes for line numbers
+        }]
       ],
     }),
   },
