@@ -172,7 +172,7 @@ const generatedAt = new Date().toISOString();
     </div>
   </div>
 
-  <div id='cf-chart-container' class='hidden md:flex w-full h-24 gap-1 mb-1 mt-8 items-end'>
+  <div id='cf-chart-container' class='hidden md:flex w-full h-[132px] gap-1 mb-1 mt-4 items-end'>
     {
       data30Days.map((day: any, index: number) => {
         // Get the previous three days, ensuring we do not go out of bounds
@@ -196,7 +196,7 @@ const generatedAt = new Date().toISOString();
         return (
           <div
             class={`chart-bar ${conditionalClasses}`}
-            style={`--bar-height: calc(20px + ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}%)`}
+            style={`--bar-height: calc(24px + ${calculatePercentageOf(day.uniques, highestVisitorsCount.uniques, true)}px)`}
             title={`${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`}
           >
             {isSpike && (
@@ -327,7 +327,7 @@ const generatedAt = new Date().toISOString();
 
             const div = document.createElement('div');
             div.className = classes.join(' ');
-            div.style.setProperty('--bar-height', `calc(20px + ${heightPercent}%)`);
+            div.style.setProperty('--bar-height', `calc(24px + ${heightPercent}px)`);
             div.title = `${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`;
 
             if (isSpike) {
