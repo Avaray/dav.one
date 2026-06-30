@@ -138,6 +138,12 @@ function createLineSpan(content: string, lineNumber: number, targetLines: number
     properties["data-line"] = lineNumber;
   }
 
+  // If the span would have no attributes and no line number element, 
+  // simply return the raw text node instead of an empty <span>
+  if (Object.keys(properties).length === 0 && !options.showLineNumbers) {
+    return { type: "text", value: content };
+  }
+
   return {
     type: "element",
     tagName: "span",

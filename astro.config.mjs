@@ -54,7 +54,7 @@ export default defineConfig({
         [rehypeCodeHighlightLines, /** @type {import('./src/scripts/rehype-code-highlight-lines.ts').RehypeCodeHighlightLinesOptions} */ ({
           mode: "dim-others",
           delimiter: "square",
-          lineClassName: "code-line",
+          lineClassName: "",
           darkenedClassName: "darkened",
         })]
       ],
