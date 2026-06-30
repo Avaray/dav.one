@@ -59,6 +59,10 @@
   .badge {
     font-size: inherit;
     line-height: inherit;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+    border: 1px solid currentColor;
+    border-radius: 0.5em;
+    font-size: 0.75em;
   }
 
   /* Code block enhancements */
