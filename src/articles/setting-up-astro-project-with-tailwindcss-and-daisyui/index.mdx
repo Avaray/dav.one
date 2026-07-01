@@ -187,7 +187,7 @@ Also, be aware that using [@apply](https://tailwindcss.com/docs/functions-and-di
 
 [Clampography](https://www.npmjs.com/package/clampography) is a new alternative to the official typography plugin. 
 It restores typography defaults and scales smoothly between mobile and desktop sizes. 
-To install it in your project, run the following command in your terminal.
+To install it in your project, run the following command in your terminal:
 
 export const clampography = [
   { label: "Bun", content: "bun i clampography" },
@@ -199,15 +199,26 @@ export const clampography = [
 
 <Tabs tabs={clampography} name="clampography" sync={true} />
 
-Then, add it to your CSS file:
+Then, add it to your CSS file. 
+We use the `typography` option to [scope the styles](https://github.com/Avaray/clampography/blob/main/docs/usage.md#scope-isolation-prose-mode) to prevent breaking daisyUI components.
 
-```css [2]
+```css [2-4]
 @import "tailwindcss";
-@plugin "clampography";
+@plugin "clampography" {
+  typography: ".clampography";
+}
 @plugin "daisyui";
 ```
 
-And that's it! For full documentation, check out the [usage guide](https://github.com/Avaray/clampography/blob/main/docs/usage.md#basic-usage).
+Finally, to apply the styles, simply add the `clampography` class to the element that wraps your content. 
+
+```astro
+<article class="clampography">
+  <slot />
+</article>
+```
+
+For full documentation, check out [the usage guide](https://github.com/Avaray/clampography/blob/main/docs/usage.md).
 
 ## 8. Add custom fonts 
 
