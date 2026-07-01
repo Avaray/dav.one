@@ -79,14 +79,6 @@
     color: currentColor;
   }
 
-  .inline-highlighted {
-    color: var(--text-clampography-primary); /* oklch(76% 0.177 163.223) — zielony */
-  }
-
-  /* pre:hover .code-line:not(.darkened) {
-    @apply text-clampography-primary;
-  } */
-
   /* Inline character highlights: restore full text color even inside a darkened line */
   .inline-highlighted {
     color: var(--clampography-text);
