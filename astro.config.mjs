@@ -56,6 +56,7 @@ export default defineConfig({
           delimiter: "square",
           lineClassName: "code-line",
           darkenedClassName: "darkened",
+          inlineHighlightedClassName: "bg-clampography-primary/20 text-clampography-primary px-1 rounded", // Przykład Tailwind
         })]
       ],
     }),

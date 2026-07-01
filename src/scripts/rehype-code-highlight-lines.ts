@@ -20,6 +20,12 @@ export interface RehypeCodeHighlightLinesOptions {
   highlightedClassName?: string;
   
   /**
+   * CSS class for targeted inline text ranges (e.g. {1:5-10}).
+   * @default "inline-highlighted"
+   */
+  inlineHighlightedClassName?: string;
+
+  /**
    * Plugin operation mode:
    * - `'dim-others'`: dims lines that are NOT specified in the brackets.
    * - `'highlight-only'`: adds a highlight class ONLY to the lines specified in the brackets.
@@ -55,11 +61,22 @@ export interface RehypeCodeHighlightLinesOptions {
   addDataLineAttribute?: boolean;
 }
 
+interface InlineRange {
+  start: number;
+  end: number;
+}
+
+interface LineTarget {
+  isFullLine: boolean;
+  inlineRanges: InlineRange[];
+}
+
 // Default plugin configuration options
 const defaultOptions: Required<RehypeCodeHighlightLinesOptions> = {
   lineClassName: "",
   darkenedClassName: "darkened",
   highlightedClassName: "highlighted",
+  inlineHighlightedClassName: "inline-highlighted",
   mode: "dim-others",
   delimiter: "square",
   showLineNumbers: false,
@@ -67,37 +84,90 @@ const defaultOptions: Required<RehypeCodeHighlightLinesOptions> = {
   addDataLineAttribute: false,
 };
 
-function parseLineRanges(meta: string, rangeRegex: RegExp): number[] {
-  if (!meta) return [];
+function parseLineTargets(meta: string, rangeRegex: RegExp): Map<number, LineTarget> {
+  const targets = new Map<number, LineTarget>();
+  if (!meta) return targets;
 
   const rangeMatch = meta.match(rangeRegex);
-  if (!rangeMatch) return [];
+  if (!rangeMatch) return targets;
 
   const rangeString = rangeMatch[1];
   const ranges = rangeString.split(",").map((s) => s.trim());
-  const lineNumbers: number[] = [];
 
   for (const range of ranges) {
-    if (range.includes("-")) {
+    if (range.includes(":")) {
+      const [lineStr, charsStr] = range.split(":");
+      const lineNum = parseInt(lineStr.trim());
+      if (isNaN(lineNum)) continue;
+
+      let startChar, endChar;
+      if (charsStr.includes("-")) {
+        const [start, end] = charsStr.split("-").map((num) => parseInt(num.trim()));
+        startChar = start;
+        endChar = end;
+      } else {
+        startChar = parseInt(charsStr.trim());
+        endChar = startChar;
+      }
+
+      if (!isNaN(startChar) && !isNaN(endChar)) {
+        if (!targets.has(lineNum)) {
+          targets.set(lineNum, { isFullLine: false, inlineRanges: [] });
+        }
+        targets.get(lineNum)!.inlineRanges.push({ start: startChar, end: endChar });
+      }
+    } else if (range.includes("-")) {
       const [start, end] = range.split("-").map((num) => parseInt(num.trim()));
       if (!isNaN(start) && !isNaN(end)) {
         for (let i = start; i <= end; i++) {
-          lineNumbers.push(i);
+          if (!targets.has(i)) {
+            targets.set(i, { isFullLine: true, inlineRanges: [] });
+          } else {
+            targets.get(i)!.isFullLine = true;
+          }
         }
       }
     } else {
       const lineNum = parseInt(range.trim());
       if (!isNaN(lineNum)) {
-        lineNumbers.push(lineNum);
+        if (!targets.has(lineNum)) {
+          targets.set(lineNum, { isFullLine: true, inlineRanges: [] });
+        } else {
+          targets.get(lineNum)!.isFullLine = true;
+        }
       }
     }
   }
 
-  return lineNumbers.sort((a, b) => a - b);
+  // Normalize inline ranges (sort and merge overlaps)
+  for (const target of targets.values()) {
+    if (target.inlineRanges.length > 0) {
+      target.inlineRanges.sort((a, b) => a.start - b.start);
+      const merged: InlineRange[] = [];
+      for (const r of target.inlineRanges) {
+        if (merged.length === 0) {
+          merged.push({ ...r });
+        } else {
+          const last = merged[merged.length - 1];
+          if (r.start <= last.end + 1) { // merge overlapping or adjacent
+            last.end = Math.max(last.end, r.end);
+          } else {
+            merged.push({ ...r });
+          }
+        }
+      }
+      target.inlineRanges = merged;
+    }
+  }
+
+  return targets;
 }
 
-function createLineSpan(content: string, lineNumber: number, targetLines: number[], options: Required<RehypeCodeHighlightLinesOptions>) {
-  const isTarget = targetLines.includes(lineNumber);
+function createLineSpan(content: string, lineNumber: number, targets: Map<number, LineTarget>, options: Required<RehypeCodeHighlightLinesOptions>) {
+  const target = targets.get(lineNumber);
+  const isFullLineTarget = target?.isFullLine ?? false;
+  const hasInlineTargets = target ? target.inlineRanges.length > 0 : false;
+
   const classNames: string[] = [];
   
   if (options.lineClassName) {
@@ -106,11 +176,14 @@ function createLineSpan(content: string, lineNumber: number, targetLines: number
 
   // Logic for assigning classes based on the selected mode
   if (options.mode === "dim-others") {
-    if (!isTarget && options.darkenedClassName) {
+    // A line is darkened if it's NOT a full line target
+    // (Even if it has inline targets, the line itself remains darkened)
+    if (!isFullLineTarget && options.darkenedClassName) {
       classNames.push(options.darkenedClassName);
     }
   } else if (options.mode === "highlight-only") {
-    if (isTarget && options.highlightedClassName) {
+    // A line gets the line highlight class only if it's a full line target
+    if (isFullLineTarget && options.highlightedClassName) {
       classNames.push(options.highlightedClassName);
     }
   }
@@ -128,7 +201,33 @@ function createLineSpan(content: string, lineNumber: number, targetLines: number
   }
 
   // Add the actual content of the code line
-  children.push({ type: "text", value: content });
+  if (hasInlineTargets && target) {
+    let currentIndex = 0; // 0-based index
+    for (const r of target.inlineRanges) {
+      // 1-based to 0-based index mapping
+      const startIndex = Math.max(0, r.start - 1);
+      const endIndex = Math.min(content.length, r.end); // exclusive slice boundary is same as 1-based end
+
+      if (startIndex > currentIndex) {
+        children.push({ type: "text", value: content.slice(currentIndex, startIndex) });
+      }
+
+      if (startIndex < content.length && endIndex > startIndex) {
+        children.push({
+          type: "element",
+          tagName: "span",
+          properties: { className: [options.inlineHighlightedClassName] },
+          children: [{ type: "text", value: content.slice(startIndex, endIndex) }]
+        });
+      }
+      currentIndex = Math.max(currentIndex, endIndex);
+    }
+    if (currentIndex < content.length) {
+      children.push({ type: "text", value: content.slice(currentIndex) });
+    }
+  } else {
+    children.push({ type: "text", value: content });
+  }
 
   const properties: any = {};
   if (classNames.length > 0) {
@@ -140,7 +239,7 @@ function createLineSpan(content: string, lineNumber: number, targetLines: number
 
   // If the span would have no attributes and no line number element, 
   // simply return the raw text node instead of an empty <span>
-  if (Object.keys(properties).length === 0 && !options.showLineNumbers) {
+  if (Object.keys(properties).length === 0 && !options.showLineNumbers && !hasInlineTargets) {
     return { type: "text", value: content };
   }
 
@@ -195,9 +294,9 @@ export function rehypeCodeHighlightLines(userOptions: RehypeCodeHighlightLinesOp
           }
 
           if (metastring && typeof metastring === "string" && metastring.includes(openChar)) {
-            const targetLines = parseLineRanges(metastring, rangeRegex);
+            const targets = parseLineTargets(metastring, rangeRegex);
 
-            if (targetLines.length > 0) {
+            if (targets.size > 0) {
               const textNode = codeElement.children?.find((child: any) => child.type === "text");
 
               if (textNode && textNode.value) {
@@ -211,7 +310,7 @@ export function rehypeCodeHighlightLines(userOptions: RehypeCodeHighlightLinesOp
                     newChildren.push({ type: "text", value: "\n" });
                   }
 
-                  newChildren.push(createLineSpan(line, lineNumber, targetLines, options));
+                  newChildren.push(createLineSpan(line, lineNumber, targets, options));
                 });
 
                 codeElement.children = newChildren;
