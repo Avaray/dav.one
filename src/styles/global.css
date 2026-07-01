@@ -72,11 +72,12 @@
   }
 
   .code-line.darkened {
-    opacity: 0.5;
+    /* Używamy color-mix zamiast opacity, dzięki czemu dzieci (inline-highlight) mogą nadpisać własny 'color' i być w 100% nieprzezroczyste */
+    color: color-mix(in srgb, currentColor 40%, transparent);
   }
 
   pre:hover .code-line.darkened {
-    opacity: 1;
+    color: currentColor;
   }
 
   /* pre:hover .code-line:not(.darkened) {
