@@ -72,15 +72,23 @@
   }
 
   .code-line.darkened {
-    /* Używamy color-mix zamiast opacity, dzięki czemu dzieci (inline-highlight) mogą nadpisać własny 'color' i być w 100% nieprzezroczyste */
-    color: color-mix(in srgb, currentColor 40%, transparent);
+    color: color-mix(in oklab, currentColor 40%, transparent);
   }
 
   pre:hover .code-line.darkened {
     color: currentColor;
   }
 
+  .inline-highlighted {
+    color: var(--text-clampography-primary); /* oklch(76% 0.177 163.223) — zielony */
+  }
+
   /* pre:hover .code-line:not(.darkened) {
     @apply text-clampography-primary;
   } */
+
+  /* Inline character highlights: restore full text color even inside a darkened line */
+  .inline-highlighted {
+    color: var(--clampography-text);
+  }
 }
