@@ -150,11 +150,11 @@ In this example, four themes are specified. **Cupcake** is the default theme. **
 
 ## 7. Add Typography plugin 
 
-By default, [Tailwind CSS](https://tailwindcss.com/) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
+By default, [Tailwind CSS](https://tailwindcss.com/docs/preflight) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
 
-### Official Typography Plugin
+### Tailwind Typography
 
-To make official [Typography Plugin](https://www.npmjs.com/package/@tailwindcss/typography) available in your project, first you need to install package.
+To make [official typography plugin](https://www.npmjs.com/package/@tailwindcss/typography) available in your project, first you need to install package.
 
 export const typography = [
   { label: "Bun", content: "bun i -D @tailwindcss/typography" },
@@ -173,11 +173,12 @@ Add plugin in your CSS file.
 @plugin "@tailwindcss/typography";
 ```
 
-Finally add the `prose` class somewhere in your project, for example, to your `body` tag.  
-Everything inside the `body` tag will be affected by Tailwind CSS Typography.
+Finally add the `prose` class somewhere in your project, for example, to your `<article>` tag. This will apply the typography styles to all text inside this element.
 
 ```html
-<body class="prose">
+<article class="prose">
+  <slot />
+</article>
 ```
 
 I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#basic-usage) and [this page of daisyUI](https://daisyui.com/docs/layout-and-typography/) to learn more.  
