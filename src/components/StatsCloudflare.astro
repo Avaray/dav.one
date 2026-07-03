@@ -227,7 +227,6 @@ const generatedAt = new Date().toISOString();
     }
   </div>
 
-  <!-- Display below "md" media query -->
   <div class='md:hidden mt-4 grid grid-cols-2 md:grid-cols-4 gap-4'>
     <Stat id='cf-mobile-total-uniques' value={formatNumber(totalUniques)} label='Unique Visitors' />
     <Stat
@@ -238,6 +237,10 @@ const generatedAt = new Date().toISOString();
     <Stat id='cf-mobile-total-requests' value={formatNumber(totalRequests)} label='Total Requests' />
     <Stat id='cf-mobile-total-bandwidth' value={`${totalBandwidthGB} GB`} label='Total Bandwidth' />
   </div>
+
+  <template id='cf-spike-icon-template'>
+    <Icon icon='material-symbols:fitbit-arrow-upward' class='w-full h-auto shrink-0 text-clampography-background' />
+  </template>
 </div>
 
 <script>
@@ -315,7 +318,7 @@ const generatedAt = new Date().toISOString();
               day.uniques,
             );
             const previousDay = index > 0 ? data.dailyData[index - 1] : null;
-            const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.3;
+            const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.33;
 
             let classes = ['chart-bar'];
             if (index === 0) classes.push('sm:rounded-bl-xl');
@@ -331,12 +334,10 @@ const generatedAt = new Date().toISOString();
             div.title = `${day.date}\n\n${day.pageViews} page views\n${day.uniques} unique visitors`;
 
             if (isSpike) {
-              const icon = document.createElement('iconify-icon');
-              icon.setAttribute('icon', 'material-symbols:fitbit-arrow-upward');
-              icon.setAttribute('width', '100%');
-              icon.style.color = 'var(--color-clampography-background)';
-              icon.style.flexShrink = '0';
-              div.appendChild(icon);
+              const template = document.getElementById('cf-spike-icon-template') as HTMLTemplateElement;
+              if (template) {
+                div.appendChild(template.content.cloneNode(true));
+              }
             }
 
             chartContainer.appendChild(div);
