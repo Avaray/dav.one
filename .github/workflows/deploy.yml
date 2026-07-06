@@ -6,8 +6,6 @@ on:
       - main
       - next
   workflow_dispatch:
-  schedule:
-    - cron: '55 23 * * *' # Uruchamia się codziennie o 23:55 UTC
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
