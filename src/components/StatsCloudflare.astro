@@ -267,11 +267,14 @@ const generatedAt = new Date().toISOString();
     const generatedAtStr = container.getAttribute('data-generated-at');
     if (!generatedAtStr) return;
 
-    const generatedAt = new Date(generatedAtStr).getTime();
-    const now = Date.now();
-    const hoursDifference = (now - generatedAt) / (1000 * 60 * 60);
+    const generatedAtDate = new Date(generatedAtStr);
+    const now = new Date();
+    const hoursDifference = (now.getTime() - generatedAtDate.getTime()) / (1000 * 60 * 60);
 
-    if (hoursDifference > 24) {
+    // Fetch new stats if more than 24 hours have passed, OR if the calendar day has changed
+    const isNewDay = now.getUTCDate() !== generatedAtDate.getUTCDate();
+
+    if (hoursDifference > 24 || isNewDay) {
       try {
         const response = await fetch('/cloudflare-stats.json');
         if (!response.ok) throw new Error('Failed to fetch new stats');
