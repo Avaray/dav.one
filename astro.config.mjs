@@ -4,10 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import minify from "astro-minify-html-swc";
-import { rehypeCodeHighlightLines } from "./src/scripts/rehype-code-highlight-lines.ts";
-
-
-import { unified } from '@astrojs/markdown-remark';
+import { shikiCodeHighlightLines } from "./src/scripts/shiki-code-highlight-lines.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,17 +45,18 @@ export default defineConfig({
     layout: "constrained",
   },
   markdown: {
-    syntaxHighlight: false,
-    processor: unified({
-      rehypePlugins: [
-        [rehypeCodeHighlightLines, /** @type {import('./src/scripts/rehype-code-highlight-lines.ts').RehypeCodeHighlightLinesOptions} */ ({
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "none",
+      transformers: [
+        shikiCodeHighlightLines({
           mode: "dim-others",
           delimiter: "square",
           lineClassName: "code-line",
           darkenedClassName: "darkened",
-        })]
-      ],
-    }),
+        })
+      ]
+    }
   },
   // redirects: {
   //   "/rss": "/rss.xml",
