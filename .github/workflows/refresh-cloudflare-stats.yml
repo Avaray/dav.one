@@ -16,19 +16,19 @@ jobs:
         run: |
           DATE_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           DATE_WAW=$(TZ=Europe/Warsaw date +"%Y-%m-%d %H:%M:%S %Z")
-          echo "🕒 Rozpoczęto: $DATE_UTC (Czas w Polsce: $DATE_WAW)"
+          echo "🕒 Started: $DATE_UTC (Poland Time: $DATE_WAW)"
           
-          echo "🌐 Odświeżanie https://dav.one/cloudflare-stats.json..."
+          echo "🌐 Refreshing https://dav.one/cloudflare-stats.json..."
           
           HTTP_STATUS=$(curl -sS -o /dev/null -w "%{http_code}" https://dav.one/cloudflare-stats.json)
           
           if [ "$HTTP_STATUS" -eq 200 ]; then
-            echo "✅ Sukces! Endpoint poprawnie zwrócił kod $HTTP_STATUS."
+            echo "✅ Success! Endpoint returned HTTP $HTTP_STATUS."
           else
-            echo "❌ Błąd! Endpoint zwrócił kod $HTTP_STATUS."
+            echo "❌ Error! Endpoint returned HTTP $HTTP_STATUS."
             exit 1
           fi
           
           END_DATE_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           END_DATE_WAW=$(TZ=Europe/Warsaw date +"%Y-%m-%d %H:%M:%S %Z")
-          echo "🏁 Zakończono: $END_DATE_UTC (Czas w Polsce: $END_DATE_WAW)"
+          echo "🏁 Finished: $END_DATE_UTC (Poland Time: $END_DATE_WAW)"
