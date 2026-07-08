@@ -1,6 +1,6 @@
 ## 🧻 My Blog
 
-[![Cloudflare Pages Deployment](https://github.com/Avaray/dav.one/actions/workflows/deploy.yml/badge.svg)](https://github.com/Avaray/dav.one/actions/workflows/cloudflare-pages-deployment.yml)
+[![Cloudflare Pages Deployment](https://github.com/Avaray/dav.one/actions/workflows/cloudflare-pages-deployment.yml/badge.svg)](https://github.com/Avaray/dav.one/actions/workflows/cloudflare-pages-deployment.yml)
 
 Blog about Stable Diffusion, Generative AI, Web Development, Frontend Frameworks and Programming in general.
 
