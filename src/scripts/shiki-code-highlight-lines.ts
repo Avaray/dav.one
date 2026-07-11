@@ -1,3 +1,5 @@
+import type { ShikiTransformer } from 'shiki';
+
 export interface ShikiCodeHighlightLinesOptions {
   /**
    * CSS class added to every line of code.
@@ -147,7 +149,7 @@ function extractText(node: any): string {
   return "";
 }
 
-export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOptions = {}) {
+export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOptions = {}): ShikiTransformer {
   const options = { ...defaultOptions, ...userOptions };
   const openChar = options.delimiter === "curly" ? "{" : "[";
   const closeChar = options.delimiter === "curly" ? "}" : "]";
