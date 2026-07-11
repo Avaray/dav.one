@@ -3,7 +3,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import minify from "astro-minify-html-swc";
+import minifyHtml from "./src/integrations/minify-html.ts";
 import { shikiCodeHighlightLines } from "./src/scripts/shiki-code-highlight-lines.ts";
 
 // https://astro.build/config
@@ -18,7 +18,7 @@ export default defineConfig({
     react({
       include: ["**/react/*"],
     }),
-    minify(),
+    minifyHtml(),
   ],
   vite: {
     plugins: [

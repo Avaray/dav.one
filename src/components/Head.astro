@@ -80,6 +80,9 @@ const schema = {
   <meta property='og:locale' content='en_US' />
   <meta property='og:site_name' content='dav.one' />
   {absoluteImageUrl && <meta property='og:image' content={absoluteImageUrl} />}
+  {absoluteImageUrl && <meta property='og:image:width' content='1200' />}
+  {absoluteImageUrl && <meta property='og:image:height' content='630' />}
+  {absoluteImageUrl && <meta property='og:image:type' content={absoluteImageUrl.endsWith('.png') ? 'image/png' : 'image/jpeg'} />}
 
   {/* Twitter */}
   <meta name='twitter:card' content={absoluteImageUrl ? 'summary_large_image' : 'summary'} />
