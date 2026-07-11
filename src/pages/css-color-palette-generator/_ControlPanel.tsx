@@ -1,5 +1,5 @@
 import React from "react";
-import type { ColorFormat } from "./_Types.ts";
+import type { ColorFormat } from "./_types.ts";
 
 interface ControlPanelProps {
   colorCount: number;
