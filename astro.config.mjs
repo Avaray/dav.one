@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import minifyHtml from "./src/integrations/minify-html.ts";
 import { shikiCodeHighlightLines } from "./src/scripts/shiki-code-highlight-lines.ts";
+import { qrcode } from 'vite-plugin-qrcode';
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +24,7 @@ export default defineConfig({
   vite: {
     plugins: [
       tailwindcss(),
+      qrcode(),
     ],
     server: {
       watch: {
