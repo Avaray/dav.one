@@ -6,7 +6,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import IndexEntry from '@components/reusables/IndexEntry.astro';
 
 const articles = await getCollection('articles', ({ data }) => {
-  return String(import.meta.env.PRODUCTION_BUILD) === "true" ? data.draft !== true : true;
+  return String(import.meta.env.PRODUCTION_BUILD) === 'true' ? data.draft !== true : true;
 });
 
 const sortedArticles = [...articles].sort((a, b) => {
@@ -17,5 +17,16 @@ const sortedArticles = [...articles].sort((a, b) => {
 ---
 
 <PageLayout title={siteTitle} description={siteDescription}>
-  {sortedArticles.map((article) => <IndexEntry article={article} />)}
+  <div class='flex flex-col gap-(--clampography-spacing-xs)'>
+    {
+      sortedArticles.map((article, index) => (
+        <>
+          <IndexEntry article={article} />
+          {index < sortedArticles.length - 1 && (
+            <hr class='border-t-2 border-dashed border-clampography-text/20 bg-clampography-background m-0' />
+          )}
+        </>
+      ))
+    }
+  </div>
 </PageLayout>

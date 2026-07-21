@@ -9,7 +9,7 @@ interface Props {
 const { article } = Astro.props;
 ---
 
-<a href={`/${article.id}/`} aria-label={article.data.title} class='block no-underline my-4'>
+<a href={`/${article.id}/`} aria-label={article.data.title} class='block no-underline py-4'>
   <div class='flex flex-row gap-2'>
     <div class='max-md:hidden flex flex-col items-center min-w-36 min-h-36 text-center rounded-lg aspect-square'>
       <Icon icon={article.data.icon} class='mx-6 h-32 w-32 text-link *:fill-current mt-4' aria-hidden='true' />
@@ -19,12 +19,12 @@ const { article } = Astro.props;
       <h2 class='mb-2 flex items-center gap-3' aria-hidden='true'>
         <Icon
           icon={article.data.icon}
-          class='md:hidden shrink-0 w-[2.5em] h-[2.5em] *:fill-current'
+          class='md:hidden shrink-0 w-[2.5em] h-[2.5em] *:fill-clampography-primary'
           aria-hidden='true'
         />
         <span>{article.data.title}</span>
       </h2>
-      <p class='mt-0! text-heading/80 font-normal tracking-normal' aria-hidden='true'>
+      <p class='mt-0! text-clampography-text font-normal tracking-normal' aria-hidden='true'>
         {article.data.description}
       </p>
     </article>

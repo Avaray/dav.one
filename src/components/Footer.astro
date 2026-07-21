@@ -20,7 +20,9 @@ const visibleLinks = links.filter((link) => !(link.href === '/' && currentPath =
 
 <!-- src/components/Footer.astro -->
 <footer class='mb-10vh select-none'>
-  <hr />
+  <hr
+    class='border-t-2 border-dashed border-clampography-text/20 bg-clampography-background mt-(--clampography-spacing-xs)'
+  />
   <nav class='flex flex-wrap justify-center items-start gap-8 p-4 mb-20'>
     {visibleLinks.map((link) => <FooterButton {...link} />)}
   </nav>
