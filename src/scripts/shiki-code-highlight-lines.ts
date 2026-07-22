@@ -1,6 +1,21 @@
 import type { ShikiTransformer } from 'shiki';
 import type { Element, ElementContent, Text } from 'hast';
 
+/**
+ * Extends Shiki's official per-run state bag (`this.meta` inside transformer hooks)
+ * with our own cache. Populated once in `preprocess()` — which always runs before
+ * any `line()`/`pre()` call — and reused by every `line()` call for the same code
+ * block, instead of re-parsing the meta string on every single line.
+ */
+declare module 'shiki' {
+  interface ShikiTransformerContextMeta {
+    __highlightLinesCache?: {
+      targets: Map<number, LineTarget>;
+      wordPatterns: RegExp[];
+    };
+  }
+}
+
 export interface ShikiCodeHighlightLinesOptions {
   /**
    * CSS class added to every line of code.
@@ -253,12 +268,22 @@ export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOpti
         this.options.meta.__raw = `${this.options.lang} ${this.options.meta.__raw || ''}`.trim();
         this.options.lang = 'plaintext';
       }
+
+      // Parse the meta string exactly once per code block. `preprocess()` always runs
+      // before `line()`/`pre()`, so every later hook can just read this instead of
+      // re-parsing the same meta string on every single line.
+      const metaRaw: string = this.options.meta?.__raw ?? "";
+      this.meta.__highlightLinesCache = {
+        targets: parseLineTargets(metaRaw, rangeRegex, options.inlineHighlightedClassName),
+        wordPatterns: parseWordPatterns(metaRaw),
+      };
     },
 
     pre(node: Element) {
-      const metaRaw: string = this.options.meta?.__raw ?? "";
-      const currentTargets = parseLineTargets(metaRaw, rangeRegex, options.inlineHighlightedClassName);
-      const wordPatterns = parseWordPatterns(metaRaw);
+      const { targets: currentTargets, wordPatterns } = this.meta.__highlightLinesCache ?? {
+        targets: new Map<number, LineTarget>(),
+        wordPatterns: [],
+      };
 
       if (currentTargets.size > 0 || wordPatterns.length > 0) {
         this.addClassToHast(node, "has-highlighted");
@@ -266,9 +291,10 @@ export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOpti
     },
 
     line(node: Element, lineNum: number) {
-      const metaRaw: string = this.options.meta?.__raw ?? "";
-      const currentTargets = parseLineTargets(metaRaw, rangeRegex, options.inlineHighlightedClassName);
-      const wordPatterns = parseWordPatterns(metaRaw);
+      const { targets: currentTargets, wordPatterns } = this.meta.__highlightLinesCache ?? {
+        targets: new Map<number, LineTarget>(),
+        wordPatterns: [],
+      };
 
       if (options.lineClassName) {
         this.addClassToHast(node, options.lineClassName);
