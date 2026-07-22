@@ -1,4 +1,5 @@
 import type { ShikiTransformer } from 'shiki';
+import type { Element, ElementContent, Text } from 'hast';
 
 export interface ShikiCodeHighlightLinesOptions {
   /**
@@ -26,6 +27,13 @@ export interface ShikiCodeHighlightLinesOptions {
   inlineHighlightedClassName?: string;
 
   /**
+   * CSS class for text matched by a word/regex pattern (e.g. /useState/).
+   * Applies across the whole code block, regardless of line number.
+   * @default "word-highlighted"
+   */
+  wordHighlightedClassName?: string;
+
+  /**
    * Plugin operation mode:
    * - `'dim-others'`: dims lines that are NOT specified in the brackets.
    * - `'highlight-only'`: adds a highlight class ONLY to the lines specified in the brackets.
@@ -45,6 +53,8 @@ export interface ShikiCodeHighlightLinesOptions {
 interface InlineRange {
   start: number;
   end: number;
+  /** CSS class applied to this specific range (lets different range sources coexist). */
+  className: string;
 }
 
 interface LineTarget {
@@ -57,11 +67,45 @@ const defaultOptions: Required<ShikiCodeHighlightLinesOptions> = {
   darkenedClassName: "darkened",
   highlightedClassName: "highlighted",
   inlineHighlightedClassName: "inline-highlighted",
+  wordHighlightedClassName: "word-highlighted",
   mode: "dim-others",
   delimiter: "square",
 };
 
-function parseLineTargets(meta: string, rangeRegex: RegExp): Map<number, LineTarget> {
+/**
+ * Sorts and merges overlapping/adjacent ranges that share the same className.
+ * Ranges with different classNames are never merged into each other, so distinct
+ * highlight sources (e.g. explicit char ranges vs. word/regex matches) keep their
+ * own styling instead of being blended into one span.
+ */
+function mergeRanges(ranges: InlineRange[]): InlineRange[] {
+  if (ranges.length === 0) return [];
+
+  const sorted = [...ranges].sort((a, b) => a.start - b.start);
+  const merged: InlineRange[] = [{ ...sorted[0] }];
+
+  for (const r of sorted.slice(1)) {
+    const last = merged[merged.length - 1];
+    if (r.className === last.className && r.start <= last.end + 1) {
+      last.end = Math.max(last.end, r.end);
+    } else {
+      merged.push({ ...r });
+    }
+  }
+
+  return merged;
+}
+
+/** True if two 1-based inclusive character ranges overlap at all. */
+function rangesOverlap(a: InlineRange, b: InlineRange): boolean {
+  return a.start <= b.end && b.start <= a.end;
+}
+
+function parseLineTargets(
+  meta: string,
+  rangeRegex: RegExp,
+  inlineHighlightedClassName: string,
+): Map<number, LineTarget> {
   const targets = new Map<number, LineTarget>();
   if (!meta) return targets;
 
@@ -91,7 +135,11 @@ function parseLineTargets(meta: string, rangeRegex: RegExp): Map<number, LineTar
         if (!targets.has(lineNum)) {
           targets.set(lineNum, { isFullLine: false, inlineRanges: [] });
         }
-        targets.get(lineNum)!.inlineRanges.push({ start: startChar, end: endChar });
+        targets.get(lineNum)!.inlineRanges.push({
+          start: startChar,
+          end: endChar,
+          className: inlineHighlightedClassName,
+        });
       }
     } else if (range.includes("-")) {
       const [start, end] = range.split("-").map((num) => parseInt(num.trim()));
@@ -116,24 +164,10 @@ function parseLineTargets(meta: string, rangeRegex: RegExp): Map<number, LineTar
     }
   }
 
-  // Normalize inline ranges (sort and merge overlaps)
+  // Normalize inline ranges (sort and merge overlaps within the same class)
   for (const target of targets.values()) {
     if (target.inlineRanges.length > 0) {
-      target.inlineRanges.sort((a, b) => a.start - b.start);
-      const merged: InlineRange[] = [];
-      for (const r of target.inlineRanges) {
-        if (merged.length === 0) {
-          merged.push({ ...r });
-        } else {
-          const last = merged[merged.length - 1];
-          if (r.start <= last.end + 1) {
-            last.end = Math.max(last.end, r.end);
-          } else {
-            merged.push({ ...r });
-          }
-        }
-      }
-      target.inlineRanges = merged;
+      target.inlineRanges = mergeRanges(target.inlineRanges);
     }
   }
 
@@ -141,11 +175,64 @@ function parseLineTargets(meta: string, rangeRegex: RegExp): Map<number, LineTar
 }
 
 /**
+ * Extracts every `/pattern/flags` token from the meta string (e.g. `/useState/`
+ * or case-insensitive `/error/i`). Independent of the line-range syntax, so it
+ * works whether or not `[...]`/`{...}` ranges are also present.
+ */
+function parseWordPatterns(meta: string): RegExp[] {
+  const patterns: RegExp[] = [];
+  if (!meta) return patterns;
+
+  const wordPatternRegex = /\/((?:\\\/|[^/])+)\/([a-zA-Z]*)/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = wordPatternRegex.exec(meta)) !== null) {
+    const [, rawPattern, flags] = match;
+    const pattern = rawPattern.replace(/\\\//g, "/");
+    const normalizedFlags = flags.includes("g") ? flags : `${flags}g`;
+
+    try {
+      patterns.push(new RegExp(pattern, normalizedFlags));
+    } catch {
+      // Invalid regex supplied in the meta string — skip it rather than failing the build.
+    }
+  }
+
+  return patterns;
+}
+
+/**
+ * Runs every word/regex pattern against a single line's plain text and returns
+ * the (merged) set of matched character ranges, tagged with `className`.
+ */
+function findWordMatchRanges(lineText: string, patterns: RegExp[], className: string): InlineRange[] {
+  const raw: InlineRange[] = [];
+
+  for (const pattern of patterns) {
+    pattern.lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = pattern.exec(lineText)) !== null) {
+      if (match[0].length === 0) {
+        // Avoid an infinite loop on zero-width matches (e.g. `/x*/`).
+        pattern.lastIndex++;
+        continue;
+      }
+      raw.push({ start: match.index + 1, end: match.index + match[0].length, className });
+    }
+  }
+
+  return mergeRanges(raw);
+}
+
+/**
  * Recursively extract the full plain text from a Shiki HAST node tree.
  */
-function extractText(node: any): string {
-  if (node.type === "text") return node.value ?? "";
-  if (node.children) return node.children.map(extractText).join("");
+function extractText(node: Element | ElementContent): string {
+  if (node.type === "text") return (node as Text).value ?? "";
+  if ("children" in node && node.children) {
+    return node.children.map(extractText).join("");
+  }
   return "";
 }
 
@@ -158,18 +245,30 @@ export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOpti
   return {
     name: "shiki-code-highlight-lines",
 
-    pre(node: any) {
-      const metaRaw: string = this.options.meta?.__raw ?? "";
-      const currentTargets = parseLineTargets(metaRaw, rangeRegex);
+    preprocess() {
+      // If the language starts and ends with our delimiters (e.g., "[2]" or "{2-3}")
+      // it means the user forgot to specify the language and the parser took line numbers as the language.
+      if (this.options.lang && this.options.lang.startsWith(openChar) && this.options.lang.endsWith(closeChar)) {
+        this.options.meta = this.options.meta || {};
+        this.options.meta.__raw = `${this.options.lang} ${this.options.meta.__raw || ''}`.trim();
+        this.options.lang = 'plaintext';
+      }
+    },
 
-      if (currentTargets.size > 0) {
+    pre(node: Element) {
+      const metaRaw: string = this.options.meta?.__raw ?? "";
+      const currentTargets = parseLineTargets(metaRaw, rangeRegex, options.inlineHighlightedClassName);
+      const wordPatterns = parseWordPatterns(metaRaw);
+
+      if (currentTargets.size > 0 || wordPatterns.length > 0) {
         this.addClassToHast(node, "has-highlighted");
       }
     },
 
-    line(node: any, lineNum: number) {
+    line(node: Element, lineNum: number) {
       const metaRaw: string = this.options.meta?.__raw ?? "";
-      const currentTargets = parseLineTargets(metaRaw, rangeRegex);
+      const currentTargets = parseLineTargets(metaRaw, rangeRegex, options.inlineHighlightedClassName);
+      const wordPatterns = parseWordPatterns(metaRaw);
 
       if (options.lineClassName) {
         this.addClassToHast(node, options.lineClassName);
@@ -177,7 +276,6 @@ export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOpti
 
       const target = currentTargets.get(lineNum);
       const isFullLineTarget = target?.isFullLine ?? false;
-      const hasInlineTargets = target ? target.inlineRanges.length > 0 : false;
 
       if (currentTargets.size > 0) {
         if (options.mode === "dim-others") {
@@ -191,36 +289,54 @@ export function shikiCodeHighlightLines(userOptions: ShikiCodeHighlightLinesOpti
         }
       }
 
-      // Handle inline character-level highlights
-      if (hasInlineTargets && target) {
-        const fullText = extractText(node);
-        const newChildren: any[] = [];
-        let currentIndex = 0;
+      // Handle inline character-level highlights: explicit {line:start-end} ranges
+      // plus /word/regex/ matches, combined without breaking either feature.
+      const explicitRanges = target?.inlineRanges ?? [];
 
-        for (const r of target.inlineRanges) {
-          const startIndex = Math.max(0, r.start - 1);
-          const endIndex = Math.min(fullText.length, r.end);
-
-          if (startIndex > currentIndex) {
-            newChildren.push({ type: "text", value: fullText.slice(currentIndex, startIndex) });
-          }
-
-          if (startIndex < fullText.length && endIndex > startIndex) {
-            newChildren.push({
-              type: "element",
-              tagName: "span",
-              properties: { className: [options.inlineHighlightedClassName] },
-              children: [{ type: "text", value: fullText.slice(startIndex, endIndex) }],
-            });
-          }
-          currentIndex = Math.max(currentIndex, endIndex);
-        }
-        if (currentIndex < fullText.length) {
-          newChildren.push({ type: "text", value: fullText.slice(currentIndex) });
-        }
-
-        node.children = newChildren;
+      if (explicitRanges.length === 0 && wordPatterns.length === 0) {
+        return;
       }
+
+      const fullText = extractText(node);
+
+      const wordRanges = wordPatterns.length > 0
+        ? findWordMatchRanges(fullText, wordPatterns, options.wordHighlightedClassName).filter(
+            (wordRange) => !explicitRanges.some((explicitRange) => rangesOverlap(wordRange, explicitRange)),
+          )
+        : [];
+
+      const allRanges = [...explicitRanges, ...wordRanges].sort((a, b) => a.start - b.start);
+
+      if (allRanges.length === 0) {
+        return;
+      }
+
+      const newChildren: ElementContent[] = [];
+      let currentIndex = 0;
+
+      for (const r of allRanges) {
+        const startIndex = Math.max(0, r.start - 1);
+        const endIndex = Math.min(fullText.length, r.end);
+
+        if (startIndex > currentIndex) {
+          newChildren.push({ type: "text", value: fullText.slice(currentIndex, startIndex) });
+        }
+
+        if (startIndex < fullText.length && endIndex > startIndex) {
+          newChildren.push({
+            type: "element",
+            tagName: "span",
+            properties: { className: [r.className] },
+            children: [{ type: "text", value: fullText.slice(startIndex, endIndex) }],
+          });
+        }
+        currentIndex = Math.max(currentIndex, endIndex);
+      }
+      if (currentIndex < fullText.length) {
+        newChildren.push({ type: "text", value: fullText.slice(currentIndex) });
+      }
+
+      node.children = newChildren;
     },
   };
 }
