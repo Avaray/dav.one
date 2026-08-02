@@ -177,7 +177,7 @@ const generatedAt = new Date().toISOString();
         // Get the previous three days, ensuring we do not go out of bounds
         const previousDays = data30Days.slice(Math.max(index - 3, 0), index);
         const previousDay = index > 0 ? data30Days[index - 1] : null;
-        const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.33;
+        const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 2;
 
         const conditionalClasses = [
           index === 0 ? 'sm:rounded-bl-xl' : '',
@@ -320,7 +320,7 @@ const generatedAt = new Date().toISOString();
               day.uniques,
             );
             const previousDay = index > 0 ? data.dailyData[index - 1] : null;
-            const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 1.33;
+            const isSpike = previousDay !== null && day.uniques > previousDay.uniques * 2;
 
             let classes = ['chart-bar'];
             if (index === 0) classes.push('sm:rounded-bl-xl');
