@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+search=yes
+ai-input=yes
+ai-train=no
+
 Sitemap: https://dav.one/sitemap-index.xml
