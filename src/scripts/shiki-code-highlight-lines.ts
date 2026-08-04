@@ -3,8 +3,8 @@ import type { Element, ElementContent, Text } from 'hast';
 
 /**
  * Extends Shiki's official per-run state bag (`this.meta` inside transformer hooks)
- * with our own cache. Populated once in `preprocess()` — which always runs before
- * any `line()`/`pre()` call — and reused by every `line()` call for the same code
+ * with our own cache. Populated once in `preprocess()` - which always runs before
+ * any `line()`/`pre()` call - and reused by every `line()` call for the same code
  * block, instead of re-parsing the meta string on every single line.
  */
 declare module 'shiki' {
@@ -209,7 +209,7 @@ function parseWordPatterns(meta: string): RegExp[] {
     try {
       patterns.push(new RegExp(pattern, normalizedFlags));
     } catch {
-      // Invalid regex supplied in the meta string — skip it rather than failing the build.
+      // Invalid regex supplied in the meta string - skip it rather than failing the build.
     }
   }
 
