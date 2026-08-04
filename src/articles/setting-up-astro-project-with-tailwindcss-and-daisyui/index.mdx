@@ -137,7 +137,7 @@ This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wi
 
 By default, [daisyUI](https://daisyui.com/) has two themes: **light** and **dark** and you don't need to configure anything to make it work. 
 They adjust according to the user's settings (browser/system). 
-However, you can customize it as you like. Check [Config](https://daisyui.com/docs/config/) and [Themes](https://daisyui.com/docs/themes/) pages for more information. 
+However, you can customize it as you like. Check [config](https://daisyui.com/docs/config/) and [themes](https://daisyui.com/docs/themes/) pages for more information. 
 In this example, four themes are specified. **Cupcake** is the default theme. **Forest** will be used if the user has dark mode enabled. **Light** and **Dark** are also available for manual switching.
 
 ```css [2]
@@ -148,7 +148,7 @@ In this example, four themes are specified. **Cupcake** is the default theme. **
 
 ## 7. Add Typography plugin 
 
-By default, [Tailwind CSS](https://tailwindcss.com/docs/preflight) resets all styles. If you're planning to create a **blog** or other text-based content, you should consider adding typography plugin.
+By default, [Tailwind CSS](https://tailwindcss.com/docs/preflight) resets all styles. If you're planning to create a [blog](https://en.wikipedia.org/wiki/Blog) or other text-based content, you should consider adding typography plugin.
 
 ### Tailwind Typography
 
@@ -185,7 +185,7 @@ I recommend reading [official documentation](https://github.com/tailwindlabs/tai
 
 [Clampography](https://www.npmjs.com/package/clampography) is a new alternative to the official typography plugin. 
 It restores typography defaults and scales smoothly between mobile and desktop sizes. 
-To install it in your project, run the following command in your terminal:
+To install it in your project, run the following command in your terminal.
 
 export const clampography = [
   { label: "Bun", content: "bun i clampography" },
@@ -363,7 +363,7 @@ export default function Counter() {
 }
 ```
 
-Then use it in an Astro component with a hydration directive:
+Then use it in an Astro component with a [hydration directive](https://docs.astro.build/en/guides/framework-components/#hydrating-interactive-components):
 
 ```astro [2,5]
 ---
@@ -377,8 +377,7 @@ This will make the button interactive in the browser.
 
 ### Vue
 
-You can also add [Vue](https://vuejs.org/) to your Astro project. The process is very similar to React.
-
+You can also add [Vue](https://vuejs.org/) to your Astro project. The process is very similar to React.  
 To install it in your project, run the following command in your terminal.
 
 export const vue = [
@@ -420,7 +419,7 @@ const count = ref(0);
 </template>
 ```
 
-Then use it in an Astro component with a hydration directive:
+Then use it in an Astro component with a [hydration directive](https://docs.astro.build/en/guides/framework-components/#hydrating-interactive-components):
 
 ```astro [2,5]
 ---
@@ -432,13 +431,91 @@ import Counter from '../components/Counter.vue';
 
 This will make the button interactive in the browser.
 
-## 11. Recommended Integrations 
+## 11. MDX
 
-If you chose **Basic, minimal starter** at the beginning of this tutorial, then you may also consider the following integrations.  
-I will not cover them in this tutorial, but I believe you will be able to add them yourself.
+[MDX](https://mdxjs.com/) allows you to use JavaScript expressions, variables, and imported components directly inside your [Markdown](https://en.wikipedia.org/wiki/Markdown) content. It's a great choice if you plan to write blog posts and want more flexibility than plain Markdown offers - for example, embedding a React or Vue component inside an article.
 
-- [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/)  
-- [Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+To install it in your project, run the following command in your terminal.
+
+export const mdx = [
+  { label: "Bun", content: "bun i @astrojs/mdx" },
+  { label: "Deno", content: "deno i --allow-scripts npm:@astrojs/mdx" },
+  { label: "NPM", content: "npm i @astrojs/mdx" },
+  { label: "PNPM", content: "pnpm add @astrojs/mdx" },
+  { label: "Yarn", content: "yarn add @astrojs/mdx" },
+];
+
+<Tabs tabs={mdx} name="mdx" sync={true} />
+
+Edit the `astro.config.mjs` configuration file again. Add [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
+
+```js [2,6]
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+
+export default defineConfig({
+  integrations: [
+    mdx()
+  ],
+});
+```
+
+That's it - no extra configuration is required to start using `.mdx` files. Any file placed inside `src/pages/` with the `.mdx` extension will now be treated as a page. For example, create `src/pages/hello.mdx`:
+
+```mdx
+---
+title: My first MDX page
+---
+
+import Counter from '../components/Counter';
+
+# Hello, MDX!
+
+This is regular Markdown, but I can also use **imported components** here.
+
+<Counter client:load />
+```
+
+## 12. Sitemap
+
+[Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/) automatically generates a `sitemap-index.xml` file (and one or more numbered `sitemap-N.xml` files) based on the pages in your project. 
+This helps [search engines](https://en.wikipedia.org/wiki/Search_engine) discover and index your content more effectively. 
+To install it in your project, run the following command in your terminal.
+
+export const sitemap = [
+  { label: "Bun", content: "bun i @astrojs/sitemap" },
+  { label: "Deno", content: "deno i --allow-scripts npm:@astrojs/sitemap" },
+  { label: "NPM", content: "npm i @astrojs/sitemap" },
+  { label: "PNPM", content: "pnpm add @astrojs/sitemap" },
+  { label: "Yarn", content: "yarn add @astrojs/sitemap" },
+];
+
+<Tabs tabs={sitemap} name="sitemap" sync={true} />
+
+Edit the `astro.config.mjs` configuration file again. Add [sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation). Unlike MDX, the sitemap integration also requires you to set the `site` option - your deployed site's URL - since sitemap entries need absolute URLs.
+
+```js [2,7]
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+
+export default defineConfig({
+  site: "https://example.com",
+  integrations: [
+    sitemap()
+  ],
+});
+```
+
+After [building](https://docs.astro.build/en/reference/cli-reference/#astro-build) your site, you'll find `sitemap-index.xml` and `sitemap-0.xml` in your output directory.
+
+Finally, it's a good idea to point [crawlers](https://en.wikipedia.org/wiki/Web_crawler) to your sitemap by adding a line to your `public/robots.txt` file:
+
+```plaintext [4]
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap-index.xml
+```
 
 ## 12. Finish
 
