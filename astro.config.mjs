@@ -17,6 +17,8 @@ export default defineConfig({
     mdx(),
     sitemap(),
     react({
+      // This "include" is needed if you use multiple JSX frameworks in the same project
+      // React components must then live under a path matching this glob (e.g. src/components/react/)
       include: ["**/react/*"],
     }),
     minifyHtml(),
