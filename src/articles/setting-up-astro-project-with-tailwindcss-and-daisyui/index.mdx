@@ -301,12 +301,15 @@ import Icon from '@xtreat/astro-iconify';
 <Icon class="h-42 w-42" icon="game-icons:balloon-dog" />
 ```
 
-## 10. Add React 
+## 10. Add JavaScript Frameworks
 
 [Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same time!).  
 To add them, you should follow [integration guides](https://docs.astro.build/en/guides/integrations-guide/) and [daisyUI guides](https://daisyui.com/docs/install/#framework-install-tutorials).
 
-For this tutorial, we will add [React](https://react.dev/) framework manually.  
+### React
+
+For this tutorial, we will add [React](https://react.dev/) and [Vue](https://vuejs.org/) to our project. 
+The process is very similar for both frameworks. 
 To install it in your project, run the following command in your terminal.
 
 export const react = [
@@ -365,6 +368,63 @@ Then use it in an Astro component with a hydration directive:
 ```astro [2,5]
 ---
 import Counter from '../components/Counter';
+---
+
+<Counter client:load />
+```
+
+This will make the button interactive in the browser.
+
+### Vue
+
+You can also add [Vue](https://vuejs.org/) to your Astro project. The process is very similar to React.
+
+To install it in your project, run the following command in your terminal.
+
+export const vue = [
+  { label: "Bun", content: "bun i @astrojs/vue vue" },
+  { label: "Deno", content: "deno i --allow-scripts npm:@astrojs/vue npm:vue" },
+  { label: "NPM", content: "npm i @astrojs/vue vue" },
+  { label: "PNPM", content: "pnpm add @astrojs/vue vue" },
+  { label: "Yarn", content: "yarn add @astrojs/vue vue" },
+];
+
+<Tabs tabs={vue} name="vue" sync={true} />
+
+Edit the `astro.config.mjs` configuration file again. Add [Vue](https://vuejs.org/) to the [integrations list](https://docs.astro.build/en/guides/integrations-guide/#manual-installation).
+
+```js [2,6]
+import { defineConfig } from "astro/config";
+import vue from "@astrojs/vue";
+
+export default defineConfig({
+  integrations: [
+    vue()
+  ],
+});
+```
+
+To see Vue in action, you can add a simple component and render it inside an Astro file. For example, create a component at `src/components/Counter.vue` like this:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const count = ref(0);
+</script>
+
+<template>
+  <button @click="count++">
+    Clicked {{ count }} times
+  </button>
+</template>
+```
+
+Then use it in an Astro component with a hydration directive:
+
+```astro [2,5]
+---
+import Counter from '../components/Counter.vue';
 ---
 
 <Counter client:load />
