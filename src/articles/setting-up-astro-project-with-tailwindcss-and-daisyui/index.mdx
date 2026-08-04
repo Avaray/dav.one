@@ -81,7 +81,7 @@ import '../src/styles/global.css';
 
 Another way to import the CSS file in the `.astro` component:
 
-```[2]
+```astro [2]
 <style is:global>
   @import '../src/styles/global.css';
 </style>
@@ -89,7 +89,7 @@ Another way to import the CSS file in the `.astro` component:
 
 If you are not planning to use CSS files at all, you can import them in `.astro` component like this:
 
-```[2-3]
+```astro [2-3]
 <style is:global>
   @import "tailwindcss";
   @plugin "daisyui";
@@ -127,7 +127,7 @@ If you want, you can take a few additional steps that might be useful to you.
 If you are not planning to use [default color palette](https://tailwindcss.com/docs/colors#default-color-palette-reference), [you can disable it](https://tailwindcss.com/docs/colors#disabling-default-colors).  
 This will reduce the size of your CSS file by about 3kB ([gzipped](https://en.wikipedia.org/wiki/Gzip)). 
 
-```[2]
+```css [2]
 @theme {
   --color-*: initial;
 }
@@ -140,7 +140,7 @@ They adjust according to the user's settings (browser/system).
 However, you can customize it as you like. Check [Config](https://daisyui.com/docs/config/) and [Themes](https://daisyui.com/docs/themes/) pages for more information. 
 In this example, four themes are specified. **Cupcake** is the default theme. **Forest** will be used if the user has dark mode enabled. **Light** and **Dark** are also available for manual switching.
 
-```[2]
+```css [2]
 @plugin "daisyui" {
   themes: light, dark, cupcake --default, forest --prefersdark;
 }
@@ -285,7 +285,7 @@ export const icons = [
 
 Then you will be able to use icons in `.astro` files like:
 
-``` [2,5]
+```astro [2,5]
 ---
 import Icon from "@xtreat/astro-iconify";
 ---
@@ -343,6 +343,34 @@ Add the following lines to **compilerOptions** section.
   }
 }
 ```
+
+To see React in action, you can add a very simple component and render it inside an Astro file. For example, create a component at `src/components/Counter.tsx` like this:
+
+```tsx
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)} className="btn btn-primary">
+      Clicked {count} times
+    </button>
+  );
+}
+```
+
+Then use it in an Astro component with a hydration directive:
+
+```astro [2,5]
+---
+import Counter from '../components/Counter';
+---
+
+<Counter client:load />
+```
+
+This will make the button interactive in the browser.
 
 ## 11. Recommended Integrations 
 
