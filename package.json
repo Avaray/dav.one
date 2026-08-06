@@ -22,7 +22,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^7.1.6",
+    "astro": "^7.2.0",
     "clampography": "^2.1.1",
     "marked": "^18.0.9",
     "playwright": "^1.62.1",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@swc/html": "^1.15.47",
-    "daisyui": "^5.7.15",
+    "daisyui": "^5.7.16",
     "vite-plugin-qrcode": "^0.4.1"
   }
 }
