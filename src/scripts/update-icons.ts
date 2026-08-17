@@ -40,12 +40,9 @@ async function main() {
   const response = await fetch('https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json');
   const allCollections = await response.json();
 
-  const generatedLines = [
-    'The majority of the icons used on this website are open-source, accessed primarily via [Iconify](https://iconify.design/). These include collections such as:',
-    ''
-  ];
+  const listItems = [];
 
-  for (const collection of Array.from(collections).sort()) {
+  for (const collection of collections) {
     const data = allCollections[collection];
     if (data) {
       const name = data.name;
@@ -58,14 +55,27 @@ async function main() {
         licenseText = `[${licenseName}](${licenseUrl})`;
       }
       
-      generatedLines.push(`* **[${name}](${url})**: Licensed under ${licenseText}`);
+      listItems.push({
+        name,
+        text: `- **[${name}](${url})**: Licensed under ${licenseText}`
+      });
     } else {
-      generatedLines.push(`* **${collection}**: Collection details not found on Iconify.`);
+      listItems.push({
+        name: collection,
+        text: `* **${collection}**: Collection details not found on Iconify.`
+      });
     }
   }
 
-  generatedLines.push('');
-  generatedLines.push('I am neither the creator nor the owner of any of these icons. All rights, including trademarks, remain with their respective authors and maintainers.');
+  listItems.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+
+  const generatedLines = [
+    'The majority of the icons used on this website are open-source, accessed primarily via [Iconify](https://iconify.design/). These include collections such as:',
+    '',
+    ...listItems.map(item => item.text),
+    '',
+    'All rights, including trademarks, remain with their respective authors and maintainers.'
+  ];
 
   const generatedContent = generatedLines.join('\n');
 
