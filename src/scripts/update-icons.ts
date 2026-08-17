@@ -70,7 +70,8 @@ async function main() {
   listItems.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
 
   const generatedLines = [
-    'The majority of the icons used on this website are open-source, accessed primarily via [Iconify](https://iconify.design/). These include collections such as:',
+    'The majority of the icons used on this website are open-source, accessed primarily via [Iconify](https://iconify.design/).',
+    'These include collections such as:',
     '',
     ...listItems.map(item => item.text),
     '',
