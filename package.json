@@ -24,7 +24,7 @@
     "@xtreat/astro-iconify": "^1.2.7",
     "astro": "^7.2.2",
     "clampography": "^2.1.1",
-    "marked": "^18.0.9",
+    "marked": "^18.0.10",
     "playwright": "^1.62.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@swc/html": "^1.16.0",
-    "daisyui": "^5.7.17",
+    "daisyui": "^5.7.18",
     "vite-plugin-qrcode": "^0.4.1"
   }
 }
