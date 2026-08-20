@@ -2,7 +2,7 @@
 title: "Useful links for daily work with Stable Diffusion"
 description: "A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion."
 created: "2023-10-06T13:37:00.000Z"
-updated: "2025-06-21T16:42:03.377Z"
+updated: "2026-08-20T10:11:34.039Z"
 icon: "game-icons:andromeda-chain"
 genre: "Tools & Resources"
 author: "Dawid Wasowski"
@@ -112,6 +112,14 @@ author: "Dawid Wasowski"
 - [Diffusion Tokenizer](https://sd-tokenizer.rocker.boo/) - converts text
   prompts into numerical tokens used by diffusion models.
 
+## Curated Lists
+
+- [Awesome Stable Diffusion](https://github.com/doanbactam/awesome-stable-diffusion) - 
+  actively updated catalog of Stable Diffusion projects (WebUIs, ComfyUI
+  nodes, LoRA/DreamBooth training tools, ControlNet extensions, upscalers,
+  inpainting tools, mobile/desktop apps, and more), organized by programming
+  language rather than by function.
+
 ## Tutorials
 
 - [stable-diffusion-art.com](https://stable-diffusion-art.com/tutorials/) - a
@@ -123,6 +131,8 @@ author: "Dawid Wasowski"
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/) - some
   examples of how to use
   [Nodes](https://comfyui-wiki.com/en/interface/node-options) in ComfyUI.
+- [Workflows @ ComfyUI.org](https://comfyui.org/en/workflows/) - a huge collection of workflows for ComfyUI. 
+- [Workflows @ Comfy.org](https://comfy.org/workflows/) - another collection of workflows for ComfyUI.
 
 ## Communities
 
