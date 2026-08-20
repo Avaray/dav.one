@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@swc/html": "^1.16.1",
-    "daisyui": "^5.7.19",
+    "daisyui": "^5.7.20",
     "vite-plugin-qrcode": "^0.4.1"
   }
 }
