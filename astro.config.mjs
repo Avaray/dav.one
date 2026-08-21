@@ -41,7 +41,7 @@ export default defineConfig({
   image: {
     // Tailwind default breakpoints
     // https://tailwindcss.com/docs/responsive-design#overview
-    breakpoints: [320, 480, 640, 768, 1024, 1280, 1536],
+    breakpoints: [320, 360, 420, 480, 640, 768, 1024, 1280, 1536],
     // Disabling because using Tailwind
     // https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles
     responsiveStyles: false,
