@@ -21,12 +21,24 @@ const gridSizes = () => {
 
 const images = imgTags.map((img) => {
   let newImg = img.replace('<img', `<img data-gallery="${galleryId}"`);
+
+  // Inject correct sizes for responsive image selection
   const sizes = gridSizes();
   if (/sizes=/.test(newImg)) {
     newImg = newImg.replace(/sizes=(["']).*?\1/, `sizes="${sizes}"`);
   } else {
     newImg = newImg.replace('<img', `<img sizes="${sizes}"`);
   }
+
+  // Copy alt text to title attribute for native browser tooltip on hover
+  if (!/\btitle=/.test(newImg)) {
+    const altMatch = newImg.match(/\balt=(["'])([\s\S]*?)\1/);
+    const alt = altMatch?.[2]?.trim();
+    if (alt) {
+      newImg = newImg.replace('<img', `<img title="${alt}"`);
+    }
+  }
+
   return newImg;
 });
 ---
