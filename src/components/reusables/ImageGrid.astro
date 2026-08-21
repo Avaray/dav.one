@@ -2,7 +2,7 @@
 // You are looking at freaking stupid hacks her, because cant use <slot /> in easy way
 const html = await Astro.slots.render('default');
 const galleryId = Math.random().toString(36).substring(2, 9);
-const imgTags = html.match(/<img.*?>/gm) || [];
+const imgTags = html.match(/<img[\s\S]*?>/g) || [];
 const imagesCount = imgTags.length;
 
 const gridCols = () => {
@@ -23,7 +23,7 @@ const images = imgTags.map((img) => {
   let newImg = img.replace('<img', `<img data-gallery="${galleryId}"`);
   const sizes = gridSizes();
   if (/sizes=/.test(newImg)) {
-    newImg = newImg.replace(/sizes=(["'])[^\1]*\1/, `sizes="${sizes}"`);
+    newImg = newImg.replace(/sizes=(["']).*?\1/, `sizes="${sizes}"`);
   } else {
     newImg = newImg.replace('<img', `<img sizes="${sizes}"`);
   }
