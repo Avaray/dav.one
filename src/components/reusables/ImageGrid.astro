@@ -2,14 +2,33 @@
 // You are looking at freaking stupid hacks her, because cant use <slot /> in easy way
 const html = await Astro.slots.render('default');
 const galleryId = Math.random().toString(36).substring(2, 9);
-const images = html.match(/<img.*?>/gm)?.map((img) => img.replace('<img', `<img data-gallery="${galleryId}"`)) || [];
+const imgTags = html.match(/<img.*?>/gm) || [];
+const imagesCount = imgTags.length;
 
-const gridCols = (imagesCount = images.length) => {
+const gridCols = () => {
   if (imagesCount % 4 === 0) return 'grid-cols-2 sm:grid-cols-4';
   if (imagesCount % 3 === 0) return 'grid-cols-1 sm:grid-cols-3';
   if (imagesCount % 2 === 0) return 'grid-cols-1 sm:grid-cols-2';
   return 'grid-cols-1';
 };
+
+const gridSizes = () => {
+  if (imagesCount % 4 === 0) return '(min-width: 1024px) 25vw, (min-width: 640px) 25vw, 50vw';
+  if (imagesCount % 3 === 0) return '(min-width: 1024px) 33vw, (min-width: 640px) 33vw, 100vw';
+  if (imagesCount % 2 === 0) return '(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw';
+  return '(min-width: 1024px) 100vw, 100vw';
+};
+
+const images = imgTags.map((img) => {
+  let newImg = img.replace('<img', `<img data-gallery="${galleryId}"`);
+  const sizes = gridSizes();
+  if (/sizes=/.test(newImg)) {
+    newImg = newImg.replace(/sizes=(["'])[^\1]*\1/, `sizes="${sizes}"`);
+  } else {
+    newImg = newImg.replace('<img', `<img sizes="${sizes}"`);
+  }
+  return newImg;
+});
 ---
 
 <div class={`grid ${gridCols()} rounded-lg gap-2`}>
