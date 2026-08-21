@@ -27,7 +27,7 @@ const {
   <div class='image-diff relative w-full overflow-hidden select-none rounded-xl' data-position={initialPosition}>
     <!-- After Image (Bottom Layer) -->
     <div class='image-diff-after w-full'>
-      <Image src={afterImage} alt={afterAlt} class='w-full h-auto block' loading='lazy' />
+      <Image src={afterImage} alt={afterAlt} class='w-full h-auto block' loading='lazy' sizes='(min-width: 1044px) 1004px, calc(100vw - 20px)' />
     </div>
 
     <!-- Before Image (Top Layer with Clip) -->
@@ -35,7 +35,7 @@ const {
       class='image-diff-before absolute inset-0 overflow-hidden'
       style={`clip-path: inset(0 ${100 - initialPosition}% 0 0);`}
     >
-      <Image src={beforeImage} alt={beforeAlt} class='w-full h-auto block' loading='lazy' />
+      <Image src={beforeImage} alt={beforeAlt} class='w-full h-auto block' loading='lazy' sizes='(min-width: 1044px) 1004px, calc(100vw - 20px)' />
     </div>
 
     <!-- Slider Handle with larger hit area -->
