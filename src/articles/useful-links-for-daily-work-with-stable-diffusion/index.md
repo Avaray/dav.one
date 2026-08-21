@@ -130,12 +130,8 @@ author: "Dawid Wasowski"
 
 ## Communities
 
-- [Stable Diffusion @ Reddit](https://www.reddit.com/r/StableDiffusion/) - a
-  place where you can find news related to
-  [Stable Diffusion](https://stability.ai/stable-image) and
-  [Flux](https://blackforestlabs.ai/) models. You can find there many
-  interesting works and discussions. That's also a good place to ask for help if
-  you have any problems with your work.
+- [Stable Diffusion @ Reddit.com](https://www.reddit.com/r/StableDiffusion/) - 
+  Originally focused on [Stable Diffusion](https://stability.ai/stable-image), this subreddit has evolved into a broader community for generative AI graphics and video. It is a reliable place to find the latest news and discussions, primarily focusing on open models. You can also view various community artworks and ask for technical help if you experience problems with your own projects.
 
 ## Discord Servers
 
