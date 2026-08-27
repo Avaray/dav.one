@@ -22,7 +22,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^7.2.7",
+    "astro": "^7.2.8",
     "clampography": "^2.1.1",
     "marked": "^18.0.11",
     "playwright": "^1.62.1",
