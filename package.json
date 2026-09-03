@@ -20,9 +20,9 @@
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5",
+    "@types/react-dom": "^19.2.7",
     "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^7.2.10",
+    "astro": "^7.3.1",
     "clampography": "^2.1.1",
     "marked": "^18.0.11",
     "playwright": "^1.62.1",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@swc/html": "^1.16.1",
-    "daisyui": "^5.7.24",
+    "daisyui": "^5.7.28",
     "vite-plugin-qrcode": "^0.4.1"
   }
 }
