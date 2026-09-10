@@ -148,11 +148,17 @@ In this example, four themes are specified. **Cupcake** is the default theme. **
 
 ## 7. Add Typography plugin 
 
-By default, [Tailwind CSS](https://tailwindcss.com/docs/preflight) resets all styles. If you're planning to create a [blog](https://en.wikipedia.org/wiki/Blog) or other text-based content, you should consider adding typography plugin.
+By default, [Tailwind CSS](https://tailwindcss.com/docs/preflight) resets all text styles (headings lose their size, margins disappear, 
+lists lose bullets, etc.). If you're planning to create a [blog](https://en.wikipedia.org/wiki/Blog) or render Markdown content, 
+the easiest way to restore beautiful text formatting - without writing custom CSS for every HTML tag - is by using a typography plugin.
 
-### Tailwind Typography
+There are two great options for this, depending on whether you prefer standard breakpoint-based scaling or modern fluid scaling.
 
-To make [official typography plugin](https://www.npmjs.com/package/@tailwindcss/typography) available in your project, first you need to install package.
+### Option 1: The official Tailwind Typography plugin
+
+The official [@tailwindcss/typography](https://www.npmjs.com/package/@tailwindcss/typography) plugin is the industry standard. It's incredibly robust, highly customizable, and tested across thousands of projects. To handle different screen sizes, it relies on utility classes like `prose-sm` for mobile and `prose-lg` for desktop, meaning your text size "snaps" at specific CSS breakpoints.
+
+To make it available in your project, first install the package.
 
 export const typography = [
   { label: "Bun", content: "bun i -D @tailwindcss/typography" },
@@ -164,27 +170,31 @@ export const typography = [
 
 <Tabs tabs={typography} name="typography" sync={true} />
 
-Add plugin in your CSS file.
+Add the plugin to your CSS file.
 
 ```css [2]
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 ```
 
-Finally add the `prose` class somewhere in your project, for example, to your `<article>` tag. This will apply the typography styles to all text inside this element.
+Finally, add the `prose` class somewhere in your project, for example, to your `<article>` tag. This will apply the typography styles to all text inside this element.
 
 ```html
-<article class="prose">
+<article class="prose lg:prose-xl">
   <slot />
 </article>
 ```
 
-I recommend reading [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#basic-usage) and [this page of daisyUI](https://daisyui.com/docs/layout-and-typography/) to learn more.  
+I recommend reading the [official documentation](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#basic-usage) 
+and [this page of daisyUI](https://daisyui.com/docs/layout-and-typography/) to learn more.
 
-### Clampography
+### Option 2: Fluid scaling with Clampography
 
-[Clampography](https://www.npmjs.com/package/clampography) is a new alternative to the official typography plugin. 
-It restores typography defaults and scales smoothly between mobile and desktop sizes. 
+I created [Clampography](https://www.npmjs.com/package/clampography) as a modern alternative to the official plugin. 
+Instead of relying on rigid CSS breakpoints (`prose-sm`, `prose-lg`), it uses the [CSS clamp()](https://caniuse.com/css-math-functions) function. 
+This means your text and margins **scale smoothly and automatically** between mobile and desktop sizes. 
+No snapping, no media queries, just perfectly fluid typography everywhere.
+
 To install it in your project, run the following command in your terminal.
 
 export const clampography = [
@@ -197,8 +207,7 @@ export const clampography = [
 
 <Tabs tabs={clampography} name="clampography" sync={true} />
 
-Then, add it to your CSS file. 
-We use the `typography` option to [scope the styles](https://github.com/Avaray/clampography/blob/main/docs/usage.md#scope-isolation-prose-mode) to prevent breaking daisyUI components.
+Then, add it to your CSS file. We use the `typography` option to [scope the styles](https://github.com/Avaray/clampography/blob/main/docs/usage.md#scope-isolation-prose-mode) (similar to `prose`) to prevent it from accidentally styling UI components like daisyUI buttons.
 
 ```css [2-4]
 @import "tailwindcss";
@@ -216,7 +225,7 @@ Finally, to apply the styles, simply add the `clampography` class to the element
 </article>
 ```
 
-For full documentation, check out [the usage guide](https://github.com/Avaray/clampography/blob/main/docs/usage.md).
+For full documentation and customization options, check out [the usage guide](https://github.com/Avaray/clampography/blob/main/docs/usage.md).
 
 ## 8. Add custom fonts 
 
@@ -266,9 +275,54 @@ body {
 
 ## 9. Add SVG Icons 
 
-[astro-iconify-component](https://github.com/Avaray/astro-iconify-component) is a package I created to make it easy to use [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) icons in [Astro](https://astro.build/) projects. It gives you access to all icons from [Iconify](https://iconify.design/) (over 300,000 open-source vector icons).
+There are two great ways to add [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) icons from [Iconify](https://iconify.design/) (a massive catalog of over 300,000 open-source vector icons) to your Astro project. The choice depends on your project's specific needs.
 
-While there are various [existing packages](https://astro.build/integrations/?search=iconify) for Iconify, they often fall short: some lack the newest icons, others rely on dynamic `fetch` calls (which can cause Iconify to block your requests during development if your project uses many icons), and the official Iconify package requires too much configuration for everyday use. I created `astro-iconify-component` as a simple, hassle-free solution to address all of these problems.
+### Option 1: The official `astro-icon` plugin
+
+For most complex projects, the official [astro-icon](https://github.com/natemoo-re/astro-icon) package is the standard choice. It's incredibly powerful and optimizes your HTML by generating **SVG sprites**. This means if you render the *exact same icon* dozens of times on a single page (like an edit icon in a long data table), it only outputs the SVG code once and references it, saving significant bandwidth.
+
+To use it, you install the package by running the following command in your terminal.
+
+export const astroIcon = [
+  { label: "Bun", content: "bun i -D astro-icon" },
+  { label: "Deno", content: "deno i -D npm:astro-icon" },
+  { label: "NPM", content: "npm i -D astro-icon" },
+  { label: "PNPM", content: "pnpm add -D astro-icon" },
+  { label: "Yarn", content: "yarn add -D astro-icon" },
+];
+
+<Tabs tabs={astroIcon} name="astroIcon" sync={true} />
+
+Then, register the integration in your `astro.config.mjs`.
+
+```js [2,6]
+import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+
+export default defineConfig({
+  integrations: [
+    icon()
+  ],
+});
+```
+
+Finally, you can use the component in your `.astro` files.
+
+```astro
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<Icon name="mdi:home" class="w-6 h-6 text-blue-500" />
+```
+
+Check out [their official documentation](https://www.astroicon.dev/) for more advanced features.
+
+### Option 2: Zero-config with `astro-iconify-component`
+
+I created my own package called [astro-iconify-component](https://github.com/Avaray/astro-iconify-component) as a completely hassle-free alternative. Instead of using sprites, it relies purely on generating **inline SVG code**.
+
+It requires **zero configuration**, no Vite plugins, and provides immediate access to the entire Iconify catalog right out of the box. It also provides native components for React, Vue, and Svelte out of the box, making it exceptionally easy to use inside [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files or static islands. If you value absolute simplicity over extreme HTML optimization for repeated icons, this is for you.
 
 To install it in your project, run the following command in your terminal.
 
@@ -294,10 +348,11 @@ import Icon from "astro-iconify-component";
 <Icon name="mdi:alert" title="Warning" />
 ```
 
-Or in [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files like:
+Or seamlessly in your UI framework islands and MDX files:
 
 ```mdx
-import Icon from 'astro-iconify-component';
+{/* In MDX or React */}
+import Icon from 'astro-iconify-component/react';
 
 <Icon name="game-icons:balloon-dog" class="h-42 w-42" />
 ```
