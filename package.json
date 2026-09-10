@@ -14,27 +14,27 @@
     "taze": "bunx taze latest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/mdx": "^8.0.1",
     "@astrojs/react": "^6.0.5",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.7",
-    "@xtreat/astro-iconify": "^1.2.7",
-    "astro": "^7.3.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "astro": "^7.3.2",
+    "astro-iconify-component": "^0.1.0-beta.2",
     "clampography": "^2.1.1",
-    "marked": "^18.0.11",
+    "marked": "^18.0.12",
     "playwright": "^1.63.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@swc/html": "^1.16.2",
-    "daisyui": "^5.7.28",
+    "daisyui": "^5.7.34",
     "vite-plugin-qrcode": "^0.4.1"
   }
 }
