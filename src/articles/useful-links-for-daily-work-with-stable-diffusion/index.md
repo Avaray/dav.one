@@ -2,7 +2,7 @@
 title: "Useful links for daily work with Stable Diffusion"
 description: "A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion."
 created: "2023-10-06T13:37:00.000Z"
-updated: "2026-08-20T10:11:34.039Z"
+updated: "2026-09-09T13:09:30.087Z"
 icon: "game-icons:andromeda-chain"
 genre: "Tools & Resources"
 author: "Dawid Wasowski"
@@ -56,6 +56,9 @@ author: "Dawid Wasowski"
   especially [LoRA Studio](https://huggingface.co/spaces/enzostvs/lora-studio).
 - [OpenModelDB](https://openmodeldb.info/) - a community driven database of AI
   Upscaling models.
+- [Mal's Models](https://huggingface.co/spaces/malcolmrey/browser) - a
+  searchable catalog of [malcolmrey's](https://huggingface.co/malcolmrey) models (mostly image LoRAs). 
+  Useful for quickly checking which models are available and finding inspiration before downloading.
 
 ## Server rentals
 
