@@ -1,5 +1,7 @@
-export const readableDate = (date: string, full = false) => {
-  return new Date(Number(date)).toLocaleDateString("en-us", {
+export const readableDate = (date: Date | string | number, full = false) => {
+  const parsedDate = date instanceof Date ? date : new Date(date);
+
+  return parsedDate.toLocaleDateString("en-us", {
     year: "numeric",
     month: full ? "long" : "short",
     day: "numeric",
