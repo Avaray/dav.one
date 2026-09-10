@@ -1,5 +1,5 @@
 ---
-import Icon from '@xtreat/astro-iconify';
+import Icon from 'astro-iconify-component';
 
 interface Props {
   icon?: string;
@@ -11,7 +11,15 @@ interface Props {
   class?: string;
 }
 
-const { icon, title, level = 1, iconSize = 'md', iconClass = '', flipHorizontal = false, class: className = '' } = Astro.props;
+const {
+  icon,
+  title,
+  level = 1,
+  iconSize = 'md',
+  iconClass = '',
+  flipHorizontal = false,
+  class: className = '',
+} = Astro.props;
 const Tag = `h${level}` as any;
 
 const sizeClasses = {
@@ -24,6 +32,13 @@ const sizeClasses = {
 ---
 
 <Tag class={`flex items-center gap-4 ${className}`.trim()}>
-  {icon && <Icon class={`shrink-0 ${sizeClasses[iconSize]} ${iconClass} ${flipHorizontal ? 'scale-x-[-1]' : ''}`} icon={icon} />}
+  {
+    icon && (
+      <Icon
+        class={`shrink-0 ${sizeClasses[iconSize]} ${iconClass} ${flipHorizontal ? 'scale-x-[-1]' : ''}`}
+        name={icon}
+      />
+    )
+  }
   {title}
 </Tag>

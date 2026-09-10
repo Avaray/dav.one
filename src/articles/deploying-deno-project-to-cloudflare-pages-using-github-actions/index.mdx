@@ -8,7 +8,7 @@ genre: 'Tutorial'
 author: 'Dawid Wasowski'
 ---
 
-import Icon from '@xtreat/astro-iconify';
+import Icon from 'astro-iconify-component';
 
 [Cloudflare Pages](https://pages.cloudflare.com) is one of the best options for hosting [static websites](https://en.wikipedia.org/wiki/Static_web_page), 
 primarily due to its robust [Content Delivery Network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) and [cost-effective pricing](https://www.cloudflare.com/plans/), 
@@ -125,7 +125,7 @@ jobs:
 - Argument `--commit-dirty=true` prevents Wrangler from building your project second time.
 
 <div class='group flex items-center my-12 gap-4' {...props}>
-  <div><Icon icon="game-icons:thumb-up" class='h-40 w-40 text-clampography-primary transition-transform duration-300 ease-in-out group-hover:-translate-y-4 group-hover:-rotate-12 origin-bottom' /></div>
+  <div><Icon name="game-icons:thumb-up" class='h-40 w-40 text-clampography-primary transition-transform duration-300 ease-in-out group-hover:-translate-y-4 group-hover:-rotate-12 origin-bottom' /></div>
   <div class='flex flex-col'>
     <div class='flex gap-6 text-5xl mt-6 font-bold text-clampography-primary'>
       <span class="select-none">That's it!</span>

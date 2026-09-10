@@ -1,5 +1,5 @@
 ---
-import Icon from '@xtreat/astro-iconify';
+import Icon from 'astro-iconify-component';
 
 interface Props {
   href: string;
@@ -25,7 +25,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
   {...props}
 >
   <Icon
-    icon={icon}
+    name={icon}
     class:list={[
       'h-[2.5em] w-[2.5em]',
       isActive ? 'text-clampography-link' : 'text-clampography-text',

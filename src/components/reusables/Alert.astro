@@ -1,5 +1,5 @@
 ---
-import Icon from '@xtreat/astro-iconify';
+import Icon from 'astro-iconify-component';
 
 interface Props {
   type?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
@@ -56,7 +56,7 @@ const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
   {
     !noicon && (
       <span class='flex shrink-0 items-center'>
-        <Icon icon={icon} class='size-[2em]' />
+        <Icon name={icon} class='size-[2em]' />
       </span>
     )
   }
