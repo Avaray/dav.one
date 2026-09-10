@@ -5,10 +5,10 @@ interface Props {
   type?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
   icon?: 'success' | 'info' | 'warning' | 'error' | 'link' | 'neutral';
   noicon?: boolean;
-  noBorder?: boolean;
+  noborder?: boolean;
 }
 
-const { type = 'info', icon: iconOverride, noicon = false, noBorder = false } = Astro.props;
+const { type = 'info', icon: iconOverride, noicon = false, noborder = false } = Astro.props;
 
 const typeMap = {
   success: {
@@ -49,7 +49,8 @@ const typeMap = {
   },
 };
 
-const alertClass = `${typeMap[type].base} ${typeMap[type].text} ${typeMap[type].border} flex w-full items-center gap-3 my-4 p-(--clampography-spacing-sm) rounded-xl [&_strong]:!text-inherit [&_a]:!text-inherit [&_a]:![text-decoration-color:color-mix(in_oklab,currentcolor_30%,transparent)] [&_a:hover]:!decoration-current`;
+const borderClass = noborder ? 'border-0' : typeMap[type].border;
+const alertClass = `${typeMap[type].base} ${typeMap[type].text} ${borderClass} flex w-full items-center gap-3 my-4 p-(--clampography-spacing-sm) rounded-xl [&_strong]:!text-inherit [&_a]:!text-inherit [&_a]:![text-decoration-color:color-mix(in_oklab,currentcolor_30%,transparent)] [&_a:hover]:!decoration-current`;
 const icon = iconOverride ? typeMap[iconOverride].icon : typeMap[type].icon;
 ---
 
