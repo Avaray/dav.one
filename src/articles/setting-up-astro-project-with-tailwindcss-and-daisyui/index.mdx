@@ -308,7 +308,7 @@ export default defineConfig({
 
 Finally, you can use the component in your `.astro` files.
 
-```astro
+```astro [2,5]
 ---
 import { Icon } from 'astro-icon/components';
 ---
@@ -316,13 +316,13 @@ import { Icon } from 'astro-icon/components';
 <Icon name="mdi:home" class="w-6 h-6 text-blue-500" />
 ```
 
-Check out [their official documentation](https://www.astroicon.dev/) for more advanced features.
+Check out [official documentation](https://iconify.design/docs/usage/svg/astro/) for more information.
 
 ### Option 2: Zero-config with `astro-iconify-component`
 
 I created my own package called [astro-iconify-component](https://github.com/Avaray/astro-iconify-component) as a completely hassle-free alternative. Instead of using sprites, it relies purely on generating **inline SVG code**.
 
-It requires **zero configuration**, no Vite plugins, and provides immediate access to the entire Iconify catalog right out of the box. It also provides native components for React, Vue, and Svelte out of the box, making it exceptionally easy to use inside [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files or static islands. If you value absolute simplicity over extreme HTML optimization for repeated icons, this is for you.
+It requires **zero configuration**, no Vite plugins, and provides immediate access to the entire Iconify catalog right out of the box. It also provides native components for React, Vue, and Svelte out of the box, making it exceptionally easy to use inside [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) files or static islands. 
 
 To install it in your project, run the following command in your terminal.
 
@@ -365,11 +365,12 @@ To search for icons, I recommend using the official [Iconify website](https://ic
 [Astro](https://astro.build/) lets you use popular frameworks, such as [React](https://react.dev/), [Vue](https://vuejs.org/) or [Svelte](https://svelte.dev/) (even in the same time!).  
 To add them, you should follow [integration guides](https://docs.astro.build/en/guides/integrations-guide/) and [daisyUI guides](https://daisyui.com/docs/install/#framework-install-tutorials).
 
+For this tutorial, we will add React and Vue to our project. 
+The process is very similar for both frameworks. 
+
 ### React
 
-For this tutorial, we will add [React](https://react.dev/) and [Vue](https://vuejs.org/) to our project. 
-The process is very similar for both frameworks. 
-To install it in your project, run the following command in your terminal.
+To install React in your project, run the following command in your terminal.
 
 export const react = [
   { label: "Bun", content: "bun i @astrojs/react react react-dom @types/react @types/react-dom" },
@@ -521,7 +522,7 @@ export default defineConfig({
 
 That's it - no extra configuration is required to start using `.mdx` files. Any file placed inside `src/pages/` with the `.mdx` extension will now be treated as a page. For example, create `src/pages/hello.mdx`:
 
-```mdx
+```mdx [2,4-14]
 ---
 title: My first MDX page
 ---
@@ -533,6 +534,9 @@ import Counter from '../components/Counter';
 This is regular Markdown, but I can also use **imported components** here.
 
 <Counter client:load />
+
+You can also use inline JavaScript expressions directly in the text! 
+For example: 2 + 2 = {2 + 2}, or the current year is {new Date().getFullYear()}.
 ```
 
 ## 12. Sitemap
