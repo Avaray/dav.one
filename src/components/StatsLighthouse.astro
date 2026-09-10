@@ -1,6 +1,6 @@
 ---
 import { scrapePageSpeedResults } from '@scripts/pagespeed-scraper.ts';
-import Icon from '@xtreat/astro-iconify';
+import Icon from 'astro-iconify-component';
 import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 import Radial from './reusables/Radial.astro';
 
@@ -52,7 +52,7 @@ if (isProduction) {
     />
 
     <a href={report.finalUrl} class='hover:text-clampography-primary' target='_blank' title='See the details'>
-      <Icon icon='octicon:link-external-16' class='inline-block w-8 h-8' />
+      <Icon name='octicon:link-external-16' class='inline-block w-8 h-8' />
     </a>
   </div>
 

@@ -2,7 +2,7 @@
 import HeadingWithIcon from './reusables/HeadingWithIcon.astro';
 import { calculateAverageNumber, calculatePercentageOf } from '@scripts/utils.ts';
 import Stat from './reusables/Stat.astro';
-import Icon from '@xtreat/astro-iconify';
+import Icon from 'astro-iconify-component';
 
 const isProduction = String(import.meta.env.PRODUCTION_BUILD) === 'true';
 
@@ -200,7 +200,7 @@ const generatedAt = new Date().toISOString();
           >
             {isSpike && (
               <Icon
-                icon='material-symbols:fitbit-arrow-upward'
+                name='material-symbols:fitbit-arrow-upward'
                 class='w-full h-auto shrink-0 text-clampography-background'
               />
             )}
@@ -238,7 +238,7 @@ const generatedAt = new Date().toISOString();
   </div>
 
   <template id='cf-spike-icon-template'>
-    <Icon icon='material-symbols:fitbit-arrow-upward' class='w-full h-auto shrink-0 text-clampography-background' />
+    <Icon name='material-symbols:fitbit-arrow-upward' class='w-full h-auto shrink-0 text-clampography-background' />
   </template>
 </div>
 
