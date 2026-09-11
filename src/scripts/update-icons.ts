@@ -26,19 +26,23 @@ async function main() {
   for (const file of files) {
     if (!/\.(astro|tsx|jsx|ts|js|mdx|md)$/.test(file)) continue;
     const content = await fs.readFile(file, 'utf-8');
-    // `icon=` is unambiguous — not a standard HTML attribute, safe to match anywhere
+    // `icon=` JSX/Astro prop — unambiguous, safe to match anywhere
     const iconPropRegex = /\bicon=["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
-    // `name=` is ambiguous (<meta name='twitter:image'> etc.), so only match inside <Icon tags.
-    // [^>]* spans newlines too, so multiline <Icon\n  name='…'\n/> is handled correctly.
+    // `name=` — ambiguous (<meta name='twitter:image'>), so only match inside <Icon tags.
+    // [^>]* spans newlines, so multi-line <Icon\n  name='…'\n/> is handled correctly.
     const iconNameRegex = /<Icon\b[^>]*\bname=["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
+    // `icon:` key in JS object literals and YAML frontmatter — unambiguous, safe to match anywhere.
+    // Catches Alert.astro typeMap, Footer.astro nav array, article frontmatter, etc.
+    const iconObjectRegex = /\bicon:\s*["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
 
-    for (const regex of [iconPropRegex, iconNameRegex]) {
+    for (const regex of [iconPropRegex, iconNameRegex, iconObjectRegex]) {
       let match;
       while ((match = regex.exec(content)) !== null) {
         const collection = match[1].split(':')[0];
         collections.add(collection);
       }
     }
+
 
   }
 
