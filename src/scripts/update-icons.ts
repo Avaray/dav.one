@@ -20,12 +20,14 @@ async function walk(dir: string, fileList: string[] = []) {
 
 async function main() {
   const files = await walk(SRC_DIR);
-  const iconRegex = /icon(?:=|:\s*)["']([a-z0-9-]+:[a-z0-9-]+)["']/gi;
   const collections = new Set<string>();
+
 
   for (const file of files) {
     if (!/\.(astro|tsx|jsx|ts|js|mdx|md)$/.test(file)) continue;
     const content = await fs.readFile(file, 'utf-8');
+    // Match both `name=` and `icon=` props (with = or : syntax), supporting hyphens in prefix
+    const iconRegex = /(?:name|icon)(?:=|:\s*)["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
     let match;
     while ((match = iconRegex.exec(content)) !== null) {
       const iconString = match[1];
@@ -33,6 +35,7 @@ async function main() {
       collections.add(collection);
     }
   }
+
 
   console.log('Found collections:', Array.from(collections));
 
