@@ -2,7 +2,7 @@
 title: "Useful links for daily work with Stable Diffusion"
 description: "A simple list of useful websites, places and tools that will help you in your daily work with Stable Diffusion."
 created: "2023-10-06T13:37:00.000Z"
-updated: "2026-09-09T13:09:30.087Z"
+updated: "2026-09-11T18:14:44Z"
 icon: "game-icons:andromeda-chain"
 genre: "Tools & Resources"
 author: "Dawid Wasowski"
@@ -10,8 +10,9 @@ author: "Dawid Wasowski"
 
 ## User Interfaces
 
-- [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) and
-  [reForge](https://github.com/Panchovix/stable-diffusion-webui-reForge)
+- [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo), 
+  [reForge](https://github.com/Panchovix/stable-diffusion-webui-reForge) and 
+  [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 - [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 - [InvokeAI](https://github.com/invoke-ai/InvokeAI)
@@ -145,13 +146,19 @@ your work, and find inspiration. You need to find your favorite one by yourself.
 - [AI Revolution](https://discord.gg/bQPPbaHtdt)
 - [AI Art with Sebastian Kamph](https://discord.gg/vVCWFhMsrx)
 - [Stable Diffusion](https://discord.gg/stablediffusion)
+- [ComfyUI](https://discord.gg/XZ3MN43WWK)
 
 ## YouTube Channels
 
 All of the following YouTube channels offer useful tutorials and interesting
 content.
 
-- [Olivio Sarikas](https://www.youtube.com/@OlivioSarikas/videos)
-- [Sebastian Kamph](https://www.youtube.com/@sebastiankamph/videos)
-- [Aitrepreneur](https://www.youtube.com/@Aitrepreneur/videos)
-- [Nerdy Rodent](https://www.youtube.com/@NerdyRodent/videos)
+- [Olivio Sarikas](https://www.youtube.com/@OlivioSarikas/search?query=diffusion%20sd)
+- [Sebastian Kamph](https://www.youtube.com/@sebastiankamph/search?query=diffusion%20sd)
+- [Aitrepreneur](https://www.youtube.com/@Aitrepreneur/search?query=diffusion%20sd)
+- [Nerdy Rodent](https://www.youtube.com/@NerdyRodent/search?query=diffusion%20sd)
+- [Pixaroma](https://www.youtube.com/@pixaroma/search?query=diffusion%20sd)
+- [SECourses](https://www.youtube.com/@SECourses/search?query=diffusion%20sd)
+- [AI Search](https://www.youtube.com/@theAIsearch/search?query=diffusion%20sd)
+- [ControlAltAI](https://www.youtube.com/@controlaltai/search?query=diffusion%20sd)
+- [Latent Vision](https://www.youtube.com/@latentvision/videos)
