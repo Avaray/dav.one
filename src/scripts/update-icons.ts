@@ -26,14 +26,20 @@ async function main() {
   for (const file of files) {
     if (!/\.(astro|tsx|jsx|ts|js|mdx|md)$/.test(file)) continue;
     const content = await fs.readFile(file, 'utf-8');
-    // Match both `name=` and `icon=` props (with = or : syntax), supporting hyphens in prefix
-    const iconRegex = /(?:name|icon)(?:=|:\s*)["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
-    let match;
-    while ((match = iconRegex.exec(content)) !== null) {
-      const iconString = match[1];
-      const collection = iconString.split(':')[0];
-      collections.add(collection);
+    // `icon=` is unambiguous — not a standard HTML attribute, safe to match anywhere
+    const iconPropRegex = /\bicon=["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
+    // `name=` is ambiguous (<meta name='twitter:image'> etc.), so only match inside <Icon tags.
+    // [^>]* spans newlines too, so multiline <Icon\n  name='…'\n/> is handled correctly.
+    const iconNameRegex = /<Icon\b[^>]*\bname=["']([a-z0-9]+(?:-[a-z0-9]+)*:[a-z0-9-]+)["']/gi;
+
+    for (const regex of [iconPropRegex, iconNameRegex]) {
+      let match;
+      while ((match = regex.exec(content)) !== null) {
+        const collection = match[1].split(':')[0];
+        collections.add(collection);
+      }
     }
+
   }
 
 
