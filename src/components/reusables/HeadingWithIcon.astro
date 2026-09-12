@@ -37,6 +37,8 @@ const sizeClasses = {
       <Icon
         class={`shrink-0 ${sizeClasses[iconSize]} ${iconClass} ${flipHorizontal ? 'scale-x-[-1]' : ''}`}
         name={icon}
+        aria-hidden='true'
+        focusable='false'
       />
     )
   }
