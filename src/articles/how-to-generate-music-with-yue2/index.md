@@ -2,7 +2,7 @@
 title: "Generate Music with YuE2: A Simple Guide to Style and Lyrics Prompts"
 description: "YuE2 is an AI model that turns your lyrics and a style description into a full song - and it's already competing with Suno. This guide breaks down exactly how to structure your lyrics and style prompts, from section tags and syllable counts to choosing the right planning mode, so what you get back actually matches what you had in mind."
 created: "2026-09-12T16:58:06Z"
-icon: "game-icons:pianist"
+icon: "game-icons:button-finger"
 genre: "Tutorial"
 author: "Dawid Wasowski"
 ---
