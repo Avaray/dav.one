@@ -27,13 +27,24 @@ Below, you'll find a detailed breakdown of how to write each of these fields so 
 
 YuE2 reads your lyrics as a sequence of labeled blocks, not as one long poem. Put a label in square brackets before each part of the song:
 
-```
+```text [1,4,7,10,13,16]
 [Verse]
+I’m walking down this empty street...
+
 [Pre-Chorus]
+And every step I take...
+
 [Chorus]
+We are the fire burning through...
+
 [Bridge]
+Maybe we were lost, or maybe...
+
 [Interlude]
+Hold your breath and listen...
+
 [Outro]
+There's nothing left...
 ```
 
 Only write actual words under a label. Don't put a song title above the lyrics, and don't add notes to yourself inside the text - the lyrics field should contain nothing but the section tags and the words that get sung.
