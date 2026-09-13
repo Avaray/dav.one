@@ -100,7 +100,7 @@ Order doesn't matter much - put the words that matter most to you first, since t
 
 ## Keep your lyrics' language and your style prompt in sync
 
-YuE2 can sing in several languages. If your style prompt says "Korean pop," write your lyrics in Korean. If it says "English rock," write them in English. Mixing a genre associated with one language and lyrics in a different language tends to produce less natural-sounding results, since the model is trying to match a vocal style it learned alongside that language.
+YuE2 can sing in several languages. If your style prompt says "Korean pop", write your lyrics in Korean. If it says "English rock", write them in English. Mixing a genre associated with one language and lyrics in a different language tends to produce less natural-sounding results, since the model is trying to match a vocal style it learned alongside that language.
 
 ## Choosing how much creative control to give up
 
