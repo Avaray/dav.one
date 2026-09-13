@@ -114,7 +114,7 @@ When you generate a song, you set a `cot` (chain-of-thought / planning) option:
 
 Because the planning stage in `"full"` and `"melody"` modes produces a readable score before any audio is made, you can preview it, and even hand-edit it, before committing to a final render.
 
-In practice, `cot="full"` tends to be the most reliable setting overall, and it's the one to reach for if you want an **instrumental track with no vocals at all**. With the full melody-and-chord plan in place, the model has enough structure to build a complete arrangement even when there are no words to sing.
+In practice, `cot="full"` tends to be the most reliable setting overall, and it's the one to reach for if you want an **instrumental track with no vocals at all**. With the full melody-and-chord plan in place, the model has enough structure to build a complete arrangement even when there are no words to sing. You'll see exactly what that looks like in the instrumental version of the complete example below.
 
 ## Making a cover of an existing song
 
@@ -131,6 +131,8 @@ The result keeps the original melody and words but performs them in a new style 
 Because YuE2 keeps the plan (the ABC score) separate from the final audio, you can revise a song without starting over. You can hand-edit the score yourself, or describe the change you want in plain language (for example, "make the harmony more jazzy and add a saxophone solo") and let an editing agent update the score and style prompt for you. YuE2 then renders the updated version from the revised plan.
 
 ## A complete example, put together
+
+**Song with lyrics**
 
 **Style prompt:**
 
@@ -169,6 +171,33 @@ Brighter days, brighter days
 ```
 
 Notice the structure: labeled sections, a blank line between each one, no written intro, a repeated chorus written out in full, and a style prompt that covers genre, instruments, mood, and vocal type.
+
+**Instrumental version**
+
+Same song, same arrangement, just nobody singing. Every section tag stays exactly where it was - only the lyric lines underneath them and the vocal-related words in the style prompt are gone:
+
+**Style prompt:**
+
+```
+Indie pop, bright acoustic guitar, soft drums, hopeful, instrumental
+```
+
+**Lyrics:**
+```
+[Verse]
+
+[Pre-Chorus]
+
+[Chorus]
+
+[Bridge]
+
+[Chorus]
+
+[Outro]
+```
+
+This is different from leaving `lyrics` empty altogether - YuE2 still needs the section tags to plan the arrangement, it just has no words to set a melody to.
 
 ## Quick checklist before you generate
 
