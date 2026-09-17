@@ -55,13 +55,10 @@ author: "Dawid Wasowski"
 - [HuggingFace](https://huggingface.co/) - a platform for sharing and deploying
   AI models.\
   I recommend checking out the
-  [Spaces](https://huggingface.co/spaces?category=image-generation) section and
+  [Spaces @ Huggingface](https://huggingface.co/spaces?category=image-generation) section and
   especially [LoRA Studio](https://huggingface.co/spaces/enzostvs/lora-studio).
 - [OpenModelDB](https://openmodeldb.info/) - a community driven database of AI
   Upscaling models.
-- [Mal's Models](https://huggingface.co/spaces/malcolmrey/browser) - a
-  searchable catalog of [malcolmrey's](https://huggingface.co/malcolmrey) models (mostly image LoRAs). 
-  Useful for quickly checking which models are available and finding inspiration before downloading.
 
 ## Server rentals
 
