@@ -50,6 +50,8 @@ author: "Dawid Wasowski"
   great Checkpoints, Lora's, Embeddings and more. Almost every model has some
   images generated using it. So you can easily find out if it's worth
   downloading. Also it's a great place for inspiration.
+- [CivArchive](https://civarchive.com/) and [CivitAIArchive](https://civitaiarchive.com/) - 
+  archives for finding AI models, their versions, metadata, and sample images, including older or removed resources.
 - [HuggingFace](https://huggingface.co/) - a platform for sharing and deploying
   AI models.\
   I recommend checking out the
