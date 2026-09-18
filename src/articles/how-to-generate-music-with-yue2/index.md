@@ -126,9 +126,9 @@ YuE2 can also restyle a song that already exists:
 
 The result keeps the original melody and words but performs them in a new style - for example, turning a folk song into a heavy metal track.
 
-## Editing a song after it's generated
+<!-- ## Editing a song after it's generated
 
-Because YuE2 keeps the plan (the ABC score) separate from the final audio, you can revise a song without starting over. You can hand-edit the score yourself, or describe the change you want in plain language (for example, "make the harmony more jazzy and add a saxophone solo") and let an editing agent update the score and style prompt for you. YuE2 then renders the updated version from the revised plan.
+Because YuE2 keeps the plan (the ABC score) separate from the final audio, you can revise a song without starting over. You can hand-edit the score yourself, or describe the change you want in plain language (for example, "make the harmony more jazzy and add a saxophone solo") and let an editing agent update the score and style prompt for you. YuE2 then renders the updated version from the revised plan. -->
 
 ## A complete example, put together
 
