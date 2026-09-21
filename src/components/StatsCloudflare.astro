@@ -192,6 +192,11 @@ const generatedAt = new Date().toISOString();
           .filter(Boolean)
           .join(' ');
 
+        const drop = isDrop(
+            previousDays.map((d: any) => d.uniques),
+            day.uniques,
+          );
+
         return (
           <div
             class={`chart-bar ${conditionalClasses}`}
@@ -202,6 +207,12 @@ const generatedAt = new Date().toISOString();
               <Icon
                 name='material-symbols:fitbit-arrow-upward'
                 class='w-full h-auto shrink-0 text-clampography-background'
+              />
+            )}
+            {drop && (
+              <Icon
+                name='material-symbols:fitbit-arrow-upward'
+                class='w-full h-auto shrink-0 text-clampography-background rotate-180'
               />
             )}
           </div>
@@ -239,6 +250,9 @@ const generatedAt = new Date().toISOString();
 
   <template id='cf-spike-icon-template'>
     <Icon name='material-symbols:fitbit-arrow-upward' class='w-full h-auto shrink-0 text-clampography-background' />
+  </template>
+  <template id='cf-drop-icon-template'>
+    <Icon name='material-symbols:fitbit-arrow-upward' class='w-full h-auto shrink-0 text-clampography-background rotate-180' />
   </template>
 </div>
 
@@ -337,6 +351,12 @@ const generatedAt = new Date().toISOString();
 
             if (isSpike) {
               const template = document.getElementById('cf-spike-icon-template') as HTMLTemplateElement;
+              if (template) {
+                div.appendChild(template.content.cloneNode(true));
+              }
+            }
+            if (drop) {
+              const template = document.getElementById('cf-drop-icon-template') as HTMLTemplateElement;
               if (template) {
                 div.appendChild(template.content.cloneNode(true));
               }
