@@ -3,7 +3,7 @@
     "type": "module",
     "version": "2.2.0",
     "scripts": {
-        "dev": "bun run src/scripts/update-icons.ts && astro dev",
+        "dev": "astro dev",
         "dev:prod": "PRODUCTION_BUILD=true astro dev",
         "dev:prod:host": "PRODUCTION_BUILD=true astro dev --host 0.0.0.0",
         "clear": "astro dev --clear-cache",
