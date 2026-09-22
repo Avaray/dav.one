@@ -1,40 +1,36 @@
 {
-  "name": "dav.one",
-  "type": "module",
-  "version": "2.2.0",
-  "scripts": {
-    "dev": "astro dev",
-    "dev:prod": "PRODUCTION_BUILD=true astro dev",
-    "dev:prod:host": "PRODUCTION_BUILD=true astro dev --host 0.0.0.0",
-    "clear": "astro dev --clear-cache",
-    "serve": "astro dev --host 0.0.0.0",
-    "generate-og": "node --experimental-strip-types src/scripts/generate-og-images.ts",
-    "build": "bun run generate-og && astro build",
-    "preview": "astro preview",
-    "taze": "bunx taze latest"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^8.0.1",
-    "@astrojs/react": "^6.0.6",
-    "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.4",
-    "@tailwindcss/vite": "^4.3.3",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "astro": "^7.3.3",
-    "astro-iconify-component": "^0.1.0-beta.4",
-    "clampography": "^2.1.1",
-    "marked": "^18.0.13",
-    "playwright": "^1.63.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "sharp": "^0.35.4",
-    "tailwindcss": "^4.3.3",
-    "unist-util-visit": "^5.1.0"
-  },
-  "devDependencies": {
-    "@swc/html": "^1.16.2",
-    "daisyui": "^5.7.42",
-    "vite-plugin-qrcode": "^0.4.1"
-  }
+    "name": "dav.one",
+    "type": "module",
+    "version": "2.2.0",
+    "scripts": {
+        "dev": "bun run src/scripts/update-icons.ts && astro dev",
+        "dev:prod": "PRODUCTION_BUILD=true astro dev",
+        "dev:prod:host": "PRODUCTION_BUILD=true astro dev --host 0.0.0.0",
+        "clear": "astro dev --clear-cache",
+        "serve": "astro dev --host 0.0.0.0",
+        "generate-og": "node --experimental-strip-types src/scripts/generate-og-images.ts",
+        "build": "bun run src/scripts/update-icons.ts && bun run generate-og && astro build",
+        "preview": "astro preview",
+        "taze": "bunx taze latest"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^8.0.1",
+        "@astrojs/react": "^6.0.6",
+        "@astrojs/rss": "^4.0.19",
+        "@astrojs/sitemap": "^3.7.4",
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "astro": "^7.3.3",
+        "astro-iconify-component": "^0.1.0-beta.4",
+        "clampography": "^2.1.1",
+        "marked": "^18.0.14",
+        "playwright": "^1.63.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "sharp": "^0.35.4",
+        "tailwindcss": "^4.3.3",
+        "unist-util-visit": "^5.1.0"
+    },
+    "devDependencies": { "@swc/html": "^1.16.2", "daisyui": "^5.7.43", "vite-plugin-qrcode": "^0.4.1" }
 }
