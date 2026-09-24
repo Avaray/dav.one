@@ -27,17 +27,16 @@ cargo install ime
 
 ### Using Bun / NPM / PNPM  (JavaScript ecosystem)
 
-You can run `ime` instantly without installation using `bunx`, or install it globally via `npm` or `pnpm`:
-
-```bash
+```bash [2,5]
 # Run instantly without installation using Bun
 bunx @avaray/ime photo.jpg
 
 # Install globally with NPM
 npm install -g @avaray/ime
-```
 
-These are just two simple examples. Any well-known package manager should be able to install `@avaray/ime` globally, and most of them also offer running it without the need for installation.
+# Run instantly without installation using PNPM
+pnpx @avaray/ime -t -e -p
+```
 
 ## ⚡️ Usage
 
@@ -172,7 +171,7 @@ ime ./photos --tui
 
 If you provide a directory path instead of a file, `ime` will automatically process all supported files in that directory. Use the `-r` flag to process subdirectories recursively.
 
-```bash
+```bash [2,5,8,11]
 # Strip metadata from all images in the 'photos' directory and its subdirectories
 ime ./photos -s -r
 
