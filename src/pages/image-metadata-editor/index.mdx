@@ -1,18 +1,26 @@
 ---
-layout: '@layouts/PageLayout.astro'
+layout: '@layouts/BasicLayout.astro'
 title: 'Immage Metadata Editor'
 description: 'A fast, lightweight CLI for reading, writing, and wiping metadata from image files.'
 ---
 
-# 🧬 Image Metadata Editor
+# 🧬 ime
 
-**ime** is a fast, lightweight, and portable [CLI](https://en.wikipedia.org/wiki/Command-line_interface) written in [Rust](https://rust-lang.org/) for **reading**, **writing**, and completely **wiping** metadata from image files.
+**ime** (Image Metadata Editor) is a fast, lightweight, and portable [CLI](https://en.wikipedia.org/wiki/Command-line_interface) written in [Rust](https://rust-lang.org/) 
+for **reading**, **writing**, and completely **wiping** [metadata](https://en.wikipedia.org/wiki/Metadata#Photographs) from image files. 
+I'm building this tool as a dependency for my [ComfyUI](https://comfy.org/) custom nodes. 
+The TUI (Terminal UI) was built using [Ratatui](https://ratatui.rs/) as an extra feature. 
+Overall, the tool operates on [JSON](https://en.wikipedia.org/wiki/JSON).
 
 ![Screenshot of TUI mode](screenshot_01.jpg)
 
 ## Installation
 
-### Using Cargo (Recommended for Rust users)
+### Pre-built binaries
+
+You can download a pre-built executable for your operating system from the [Releases](https://github.com/Avaray/image-metadata-editor/releases/latest) page.
+
+### Using Cargo (Rust ecosystem)
 
 If you have Rust installed, you can easily install the latest version directly from crates.io:
 
@@ -20,9 +28,19 @@ If you have Rust installed, you can easily install the latest version directly f
 cargo install ime
 ```
 
-### Pre-built binaries
+### Using Bun / NPM / PNPM  (JavaScript ecosystem)
 
-Alternatively, you can download a pre-built executable for your operating system from the [Releases](https://github.com/Avaray/image-metadata-editor/releases) page.
+You can run `ime` instantly without installation using `bunx`, or install it globally via `npm` or `pnpm`:
+
+```bash
+# Run instantly without installation using Bun
+bunx @avaray/ime photo.jpg
+
+# Install globally with NPM
+npm install -g @avaray/ime
+```
+
+These are just two simple examples. Any well-known package manager should be able to install `@avaray/ime` globally, and most of them also offer running it without the need for installation.
 
 ## Usage
 
