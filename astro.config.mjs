@@ -28,6 +28,16 @@ export default defineConfig({
       tailwindcss(),
       qrcode(),
     ],
+    build: {
+      rollupOptions: {
+        onwarn(warning, warn) {
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use astro:head-inject')) {
+            return;
+          }
+          warn(warning);
+        }
+      }
+    },
     server: {
       watch: {
         ignored: ["**/.astro/**", "**/node_modules/**", "**/dist/**"],
