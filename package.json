@@ -28,13 +28,14 @@
         "playwright": "^1.63.0",
         "react": "^19.3.0",
         "react-dom": "^19.3.0",
-        "sharp": "^0.35.4",
+        "sharp": "^0.35.5",
         "tailwindcss": "^4.3.3",
         "unist-util-visit": "^5.1.0"
     },
     "devDependencies": {
-        "@swc/html": "^1.16.2",
-        "daisyui": "^5.7.44",
+        "@swc/html": "^1.16.13",
+        "asciinema-player": "^3.17.0",
+        "daisyui": "^5.7.47",
         "vite-plugin-qrcode": "^0.4.1"
     }
 }
