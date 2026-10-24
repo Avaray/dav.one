@@ -1,0 +1,169 @@
+---
+title: "Upscale images locally with chaiNNer"
+description: "chaiNNer is a free, node-based tool that lets you build custom image-processing pipelines — from upscaling and face restoration to batch processing. In this article, I'll show you how to install chaiNNer, where to get models, how to build a simple workflow, and how the results look on real photos and anime illustrations."
+created: "2026-09-16T08:17:43Z"
+icon: "lucide:image-upscale"
+genre: "Tutorial"
+author: "Dawid Wasowski"
+draft: true
+---
+
+import ImageDiff from '@reusables/ImageDiff.astro'
+import Alert from '@/components/reusables/Alert.astro'
+
+## The problem with small images
+
+You have a photo — maybe scanned from an old print, downloaded from an early 2000s website, or exported at a low resolution. Scaling it up in any standard image editor just gives you a blurry mess. That's because traditional upscaling (bilinear, bicubic) simply interpolates between existing pixels. It has no idea what the image is supposed to look like.
+
+AI-based upscaling works differently. Instead of guessing pixel colors mathematically, a neural network trained on thousands of image pairs learns what details are likely to exist at higher resolutions. The result is sharper edges, recovered texture, and far less blur — at least when you use the right model for the right type of image.
+
+## What is chaiNNer?
+
+[chaiNNer](https://github.com/chaiNNer-org/chaiNNer) is a free, open-source, node-based image processing tool. You build a visual pipeline by connecting nodes: load an image, run it through a model, save the result. That's it at the core, but the tool supports a wide range of operations — color correction, face restoration, tiling for large images, and batch processing entire directories.
+
+It runs fully locally. No subscriptions, no cloud, no per-image limits.
+
+**Alternatives worth knowing about:**
+
+- [Topaz Gigapixel AI](https://www.topazlabs.com/gigapixel-ai) — the commercial standard, polished UI, expensive.
+- [Upscayl](https://github.com/upscayl/upscayl) — simpler free alternative, fewer options than chaiNNer.
+- Stable Diffusion UIs (Forge, ComfyUI) — have upscaling built in, but it's just one step in a larger pipeline, not the focus.
+
+chaiNNer sits in a sweet spot: free, powerful, and flexible enough to handle edge cases that simpler tools can't.
+
+## Hardware requirements
+
+chaiNNer can run on a GPU or fall back to CPU, but the experience differs a lot depending on what you have.
+
+**GPU (recommended)**
+
+Most models run on the GPU via [CUDA](https://developer.nvidia.com/cuda-toolkit) (Nvidia) or ROCm (AMD). VRAM usage depends on the model architecture and the resolution of the image being processed:
+
+- **2–4 GB VRAM** — lighter models (ESRGAN-based) on small-to-medium images. Tiling helps, but you're limited in what you can run comfortably.
+- **6–8 GB VRAM** — a reasonable sweet spot. Most popular models work without tiling on typical inputs.
+- **10+ GB VRAM** — larger architectures (HAT, RealHAT) and high-resolution inputs without needing to tile.
+
+**CPU fallback**
+
+chaiNNer can run models entirely on the CPU if you don't have a compatible GPU. It works, but expect processing times that are many times slower — what takes a few seconds on a GPU can take several minutes on CPU. Still useful for occasional jobs or testing.
+
+## Installation
+
+Download the installer for your operating system from the [chaiNNer releases page](https://github.com/chaiNNer-org/chaiNNer/releases). Windows, macOS, and Linux are all supported.
+
+On first launch, chaiNNer will ask you to install its Python backend. Let it do that — it handles everything automatically. After that you're in the node editor.
+
+<Alert type="info">
+chaiNNer uses its own isolated Python environment. You don't need Python installed separately on your system.
+</Alert>
+
+## Where to get models
+
+This is the part most tutorials skip. chaiNNer is just the runner — the actual upscaling quality comes from the model you load into it.
+
+[OpenModelDB](https://openmodeldb.info/) is the best place to browse models. It has a large collection with previews, tags, and scale factors. You can filter by:
+
+- **Scale** — 2x, 4x, 8x
+- **Architecture** — ESRGAN, SPAN, HAT, and others
+- **Purpose** — photography, anime, compression artifact removal, etc.
+
+Download a model as a `.pth` or `.safetensors` file and put it somewhere on your drive. chaiNNer will let you point to it when you add a "Load Model" node to your pipeline.
+
+<Alert type="warning">
+Avoid downloading models in `.pt` format. PyTorch's `.pt` (and `.pth`) files use Python's [pickle](https://docs.python.org/3/library/pickle.html) serialization, which can execute arbitrary code when loaded. A malicious `.pt` file is a valid attack vector. Prefer `.safetensors` whenever available — the format was designed specifically to prevent this.
+</Alert>
+
+## My workflow
+
+Below is the workflow I use for most upscaling jobs. It handles a single image: loads it, tiles it to avoid running out of VRAM on large inputs, runs the upscale model, and saves the result.
+
+{/* TODO: Add screenshot of the chaiNNer workflow */}
+
+The key nodes are:
+
+- **Load Image** — points to the source file
+- **Load Model** — points to your `.pth` or `.safetensors` model file
+- **Upscale Image** — connects the image and model, runs inference
+- **Save Image** — writes the output to disk
+
+For images larger than what fits comfortably in your VRAM, wrap the Upscale Image node in a **Tile** node. It splits the image into overlapping tiles, upscales each one, and stitches them back together seamlessly.
+
+## Real photos — 4x upscale
+
+For real photographs, models trained on natural image datasets work best. I used [4x-UltraSharp](https://openmodeldb.info/models/4x-UltraSharp) here, which produces sharp results without introducing obvious artifacts on skin, foliage, and architectural details.
+
+{/* TODO: Replace placeholder images with actual before/after photos */}
+
+{/*
+<ImageDiff
+  beforeImage={import('./before-photo.jpg')}
+  afterImage={import('./after-photo.jpg')}
+  beforeCaption="Original (low resolution)"
+  afterCaption="4x upscale — 4x-UltraSharp"
+/>
+*/}
+
+Things that tend to work well with photo-targeted models:
+
+- Skin texture and pores
+- Architectural lines and brickwork
+- Fabric and hair
+- Out-of-focus backgrounds (bokeh stays soft)
+
+Things that can go wrong:
+
+- Heavily compressed JPEGs — the model may "restore" details that weren't really there
+- Very dark or noisy areas — results vary a lot by model
+
+If you're working with heavily compressed source images, consider running an artifact-removal model first before upscaling.
+
+## Anime and illustrations — 4x upscale
+
+Photo models produce over-sharpened, unnatural results on anime frames and flat illustrations. You need a model trained specifically on that type of content.
+
+I used [4x-AnimeSharp](https://openmodeldb.info/models/4x-AnimeSharp) for the example below. It preserves clean lines, flat color areas, and cel-shading without smearing or adding fake texture.
+
+{/* TODO: Replace placeholder images with actual before/after anime images */}
+
+{/*
+<ImageDiff
+  beforeImage={import('./before-anime.jpg')}
+  afterImage={import('./after-anime.jpg')}
+  beforeCaption="Original (low resolution)"
+  afterCaption="4x upscale — 4x-AnimeSharp"
+/>
+*/}
+
+What works well:
+
+- Linework and outlines — stay sharp and clean
+- Flat color fills — no added grain or texture
+- Subtitles and text in screenshots — readable at higher res
+
+What to watch for:
+
+- Very thin lines at certain angles can sometimes get a slight wobble
+- Gradients in backgrounds may occasionally show banding — depends on the source quality
+
+## Choosing a model
+
+There's no single best model. The right choice depends on what you're upscaling.
+
+| Type of image | Recommended models |
+|---|---|
+| Real photographs | [4x-UltraSharp](https://openmodeldb.info/models/4x-UltraSharp), [RealESRGAN_x4plus](https://github.com/xinntao/Real-ESRGAN) |
+| Anime / illustrations | [4x-AnimeSharp](https://openmodeldb.info/models/4x-AnimeSharp), [4xAnime6600](https://openmodeldb.info/models/4xAnime6600) |
+| Compressed JPEGs | Run a JPEG artifact removal model first, then upscale |
+| Old scans / prints | [RealESRGAN_x4plus](https://github.com/xinntao/Real-ESRGAN) handles noise and grain well |
+
+When in doubt, download two or three models and run the same image through all of them. It takes a few minutes and you'll immediately see which one produces the result you want.
+
+## Batch processing
+
+Processing a whole folder of images is straightforward in chaiNNer. Instead of a "Load Image" node, use a **Load Images** (iterator) node pointed at a directory. Connect it to the rest of the pipeline, and at the end use a **Save Image** node with a dynamic path that mirrors the source filename.
+
+The pipeline runs through every image in the folder automatically. On a mid-range GPU this is fast enough to process hundreds of images overnight without any manual work.
+
+<Alert type="info">
+chaiNNer shows a live progress bar and estimated time remaining during batch jobs. If something goes wrong with a specific file, it logs the error and continues processing the rest.
+</Alert>
