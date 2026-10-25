@@ -6,7 +6,7 @@ description: 'Offline loyalty-card manager for Android: all your cards on your p
 
 ## Privacy Policy for Cardstack App ([one.dav.cardstack](https://play.google.com/store/apps/details?id=one.dav.cardstack))
 
-**Last updated: 24.10.2026**
+**Last updated: 25.10.2026**
 
 **Dawid Wąsowski** built the "Cardstack" app as a free app. This SERVICE is
 provided by Dawid Wąsowski at no cost and is intended for use as is. This app
@@ -27,15 +27,25 @@ Everything stays on your device, inside the app's private storage:
 
 Backup files you export (`.cardstack` files) are written only where you
 choose to save or share them. Password-protected backups are encrypted on
-your device; the password never leaves your device.
+your device; the password never leaves your device. Single cards you share
+(via QR code or file) leave your device only through your explicit share
+action.
+
+The app is excluded from Android's automatic cloud backup, so your cards
+are never uploaded to your Google Drive by the system. If you use
+Android's device-to-device transfer while setting up a new phone, your
+app data moves with it — that transfer is initiated by you, between your
+own devices.
 
 ### System Permissions
 
 Cardstack requests a minimal set of permissions, each used for one stated
 purpose only:
 
-*   **Camera** - only to scan barcodes and photograph cards. The camera is
+*   **Camera** - only for the live barcode scanner. The camera is
     active solely while the scanner is open; images are processed on-device.
+    Card photos come from the system camera or gallery picker — the app
+    only receives the images you explicitly choose.
 *   **Notifications** - only to show the expiry reminders you set.
 *   **Biometric** - only to unlock the app when you enable the app lock.
     Biometric data never leaves your device's secure hardware and is never
